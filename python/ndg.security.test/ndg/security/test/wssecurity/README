@@ -1,0 +1,11 @@
+WS-Security Module Unit tests
+=============================
+This is adapted from the ZSI Echo service sample code.  To run:
+
+$ cd ./server
+$ ./echoServer.py
+
+in another terminal:
+
+$ cd ./client
+$ ./echoClientTest.py

@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.openssl</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        Module&nbsp;openssl
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.common.openssl-module.html">Module ndg.security.common.openssl</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""OpenSSL utilities module - contains OpenSSLConfig class for</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">parsing OpenSSL configuration files</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"08/02/07"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2007 STFC &amp; NERC"</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-string">"""This software may be distributed under the terms of the Q Public </tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-string">License, version 1.0 or later."""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.authz.__revision__=ndg.security.common.authz-module.html#__revision__,Variable ndg.security.common.authz.pdp.__revision__=ndg.security.common.authz.pdp-module.html#__revision__,Variable ndg.security.common.authz.pdp.browse.__revision__=ndg.security.common.authz.pdp.browse-module.html#__revision__,Variable ndg.security.common.authz.pdp.proftp.__revision__=ndg.security.common.authz.pdp.proftp-module.html#__revision__,Variable ndg.security.common.authz.pep.__revision__=ndg.security.common.authz.pep-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.gatekeeper.__revision__=ndg.security.common.gatekeeper-module.html#__revision__,Variable ndg.security.common.logService.__revision__=ndg.security.common.logService-module.html#__revision__,Variable ndg.security.common.logService.log_services_server.__revision__=ndg.security.common.logService.log_services_server-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.pylons.security_util.__revision__=ndg.security.common.pylons.security_util-module.html#__revision__,Variable ndg.security.common.saml.__revision__=ndg.security.common.saml-module.html#__revision__,Variable ndg.security.common.sessionCookie.__revision__=ndg.security.common.sessionCookie-module.html#__revision__,Variable ndg.security.common.utils.ClassFactory.__revision__=ndg.security.common.utils.ClassFactory-module.html#__revision__,Variable ndg.security.common.utils.ConfigFileParsers.__revision__=ndg.security.common.utils.ConfigFileParsers-module.html#__revision__,Variable ndg.security.common.wssecurity.BaseSignatureHandler.__revision__=ndg.security.common.wssecurity.BaseSignatureHandler-module.html#__revision__,Variable ndg.security.common.wssecurity.__revision__=ndg.security.common.wssecurity-module.html#__revision__,Variable ndg.security.common.wssecurity.dom.__revision__=ndg.security.common.wssecurity.dom-module.html#__revision__,Variable ndg.security.common.wssecurity.etree.__revision__=ndg.security.common.wssecurity.etree-module.html#__revision__,Variable ndg.security.common.xmlsec.__revision__=ndg.security.common.xmlsec-module.html#__revision__,Variable ndg.security.common.xmlsec.dom.__revision__=ndg.security.common.xmlsec.dom-module.html#__revision__,Variable ndg.security.common.xmlsec.etree.__revision__=ndg.security.common.xmlsec.etree-module.html#__revision__,Variable ndg.security.common.zsi_utils.httpproxy.__revision__=ndg.security.common.zsi_utils.httpproxy-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.authenservice.MyProxy.__revision__=ndg.security.server.authenservice.MyProxy-module.html#__revision__,Variable ndg.security.server.authenservice.__revision__=ndg.security.server.authenservice-module.html#__revision__,Variable ndg.security.server.authenservice.session_mgr_my_proxy_client.__revision__=ndg.security.server.authenservice.session_mgr_my_proxy_client-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.certs.ca.__revision__=ndg.security.server.conf.certs.ca-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.pylons.container.lib.openid_provider_util.__revision__=ndg.security.server.pylons.container.lib.openid_provider_util-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__,Variable ndg.security.server.wsgi.openid_provider.__revision__=ndg.security.server.wsgi.openid_provider-module.html#__revision__,Variable ndg.security.server.wsgi.soap.__revision__=ndg.security.server.wsgi.soap-module.html#__revision__,Variable ndg.security.server.wsgi.wssecurity.__revision__=ndg.security.server.wsgi.wssecurity-module.html#__revision__,Variable ndg.security.test.Log.LogTest.__revision__=ndg.security.test.Log.LogTest-module.html#__revision__,Variable ndg.security.test.Log.__revision__=ndg.security.test.Log-module.html#__revision__,Variable ndg.security.test.X509.X509Test.__revision__=ndg.security.test.X509.X509Test-module.html#__revision__,Variable ndg.security.test.X509.__revision__=ndg.security.test.X509-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.__revision__=ndg.security.test.XMLSecDoc-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__=ndg.security.test.XMLSecDoc.xmlSecDocTest-module.html#__revision__,Variable ndg.security.test.__revision__=ndg.security.test-module.html#__revision__,Variable ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__=ndg.security.test.attAuthority.AttAuthorityClientTest-module.html#__revision__,Variable ndg.security.test.attAuthority.__revision__=ndg.security.test.attAuthority-module.html#__revision__,Variable ndg.security.test.attAuthority.attCertLog.__revision__=ndg.security.test.attAuthority.attCertLog-module.html#__revision__,Variable ndg.security.test.attAuthority.ca.__revision__=ndg.security.test.attAuthority.ca-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAServer.__revision__=ndg.security.test.attAuthority.siteAServer-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAUserRoles.__revision__=ndg.security.test.attAuthority.siteAUserRoles-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBServer.__revision__=ndg.security.test.attAuthority.siteBServer-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBUserRoles.__revision__=ndg.security.test.attAuthority.siteBUserRoles-module.html#__revision__,Variable ndg.security.test.attCert.AttCertTest.__revision__=ndg.security.test.attCert.AttCertTest-module.html#__revision__,Variable ndg.security.test.attCert.__revision__=ndg.security.test.attCert-module.html#__revision__,Variable ndg.security.test.authenservice.__revision__=ndg.security.test.authenservice-module.html#__revision__,Variable ndg.security.test.authenservice.test_authen_service.__revision__=ndg.security.test.authenservice.test_authen_service-module.html#__revision__,Variable ndg.security.test.authz.pdp.testProftPDP.__revision__=ndg.security.test.authz.pdp.testProftPDP-module.html#__revision__,Variable ndg.security.test.ca.__revision__=ndg.security.test.ca-module.html#__revision__,Variable ndg.security.test.ca.caClientTest.__revision__=ndg.security.test.ca.caClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.MyProxyClientTest.__revision__=ndg.security.test.myProxy.MyProxyClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.__revision__=ndg.security.test.myProxy-module.html#__revision__,Variable ndg.security.test.saml.__revision__=ndg.security.test.saml-module.html#__revision__,Variable ndg.security.test.sessionCookie.SessionCookieTest.__revision__=ndg.security.test.sessionCookie.SessionCookieTest-module.html#__revision__,Variable ndg.security.test.sessionCookie.__revision__=ndg.security.test.sessionCookie-module.html#__revision__,Variable ndg.security.test.sessionMgr.__revision__=ndg.security.test.sessionMgr-module.html#__revision__,Variable ndg.security.test.sessionMgr.ca.__revision__=ndg.security.test.sessionMgr.ca-module.html#__revision__,Variable ndg.security.test.sessionMgr.test.__revision__=ndg.security.test.sessionMgr.test-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__=ndg.security.test.sessionMgrClient.SessionMgrClientTest-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.__revision__=ndg.security.test.sessionMgrClient-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.ca.__revision__=ndg.security.test.sessionMgrClient.ca-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.server.__revision__=ndg.security.test.sessionMgrClient.server-module.html#__revision__,Variable ndg.security.test.wsSecurity.__revision__=ndg.security.test.wsSecurity-module.html#__revision__,Variable ndg.security.test.wsSecurity.client.__revision__=ndg.security.test.wsSecurity.client-module.html#__revision__,Variable ndg.security.test.wsSecurity.server.__revision__=ndg.security.test.wsSecurity.server-module.html#__revision__,Variable ndg.security.test.xmlsec.__revision__=ndg.security.test.xmlsec-module.html#__revision__,Variable ndg.security.test.xmlsec.dom.__revision__=ndg.security.test.xmlsec.dom-module.html#__revision__,Variable ndg.security.test.xmlsec.etree.test_etree.__revision__=ndg.security.test.xmlsec.etree.test_etree-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.authz.__revision__
+ndg.security.common.authz.pdp.__revision__
+ndg.security.common.authz.pdp.browse.__revision__
+ndg.security.common.authz.pdp.proftp.__revision__
+ndg.security.common.authz.pep.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.gatekeeper.__revision__
+ndg.security.common.logService.__revision__
+ndg.security.common.logService.log_services_server.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.pylons.security_util.__revision__
+ndg.security.common.saml.__revision__
+ndg.security.common.sessionCookie.__revision__
+ndg.security.common.utils.ClassFactory.__revision__
+ndg.security.common.utils.ConfigFileParsers.__revision__
+ndg.security.common.wssecurity.BaseSignatureHandler.__revision__
+ndg.security.common.wssecurity.__revision__
+ndg.security.common.wssecurity.dom.__revision__
+ndg.security.common.wssecurity.etree.__revision__
+ndg.security.common.xmlsec.__revision__
+ndg.security.common.xmlsec.dom.__revision__
+ndg.security.common.xmlsec.etree.__revision__
+ndg.security.common.zsi_utils.httpproxy.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.authenservice.MyProxy.__revision__
+ndg.security.server.authenservice.__revision__
+ndg.security.server.authenservice.session_mgr_my_proxy_client.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.certs.ca.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.pylons.container.lib.openid_provider_util.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__
+ndg.security.server.wsgi.openid_provider.__revision__
+ndg.security.server.wsgi.soap.__revision__
+ndg.security.server.wsgi.wssecurity.__revision__
+ndg.security.test.Log.LogTest.__revision__
+ndg.security.test.Log.__revision__
+ndg.security.test.X509.X509Test.__revision__
+ndg.security.test.X509.__revision__
+ndg.security.test.XMLSecDoc.__revision__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__
+ndg.security.test.__revision__
+ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__
+ndg.security.test.attAuthority.__revision__
+ndg.security.test.attAuthority.attCertLog.__revision__
+ndg.security.test.attAuthority.ca.__revision__
+ndg.security.test.attAuthority.siteAServer.__revision__
+ndg.security.test.attAuthority.siteAUserRoles.__revision__
+ndg.security.test.attAuthority.siteBServer.__revision__
+ndg.security.test.attAuthority.siteBUserRoles.__revision__
+ndg.security.test.attCert.AttCertTest.__revision__
+ndg.security.test.attCert.__revision__
+ndg.security.test.authenservice.__revision__
+ndg.security.test.authenservice.test_authen_service.__revision__
+ndg.security.test.authz.pdp.testProftPDP.__revision__
+ndg.security.test.ca.__revision__
+ndg.security.test.ca.caClientTest.__revision__
+ndg.security.test.myProxy.MyProxyClientTest.__revision__
+ndg.security.test.myProxy.__revision__
+ndg.security.test.saml.__revision__
+ndg.security.test.sessionCookie.SessionCookieTest.__revision__
+ndg.security.test.sessionCookie.__revision__
+ndg.security.test.sessionMgr.__revision__
+ndg.security.test.sessionMgr.ca.__revision__
+ndg.security.test.sessionMgr.test.__revision__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__
+ndg.security.test.sessionMgrClient.__revision__
+ndg.security.test.sessionMgrClient.ca.__revision__
+ndg.security.test.sessionMgrClient.server.__revision__
+ndg.security.test.wsSecurity.__revision__
+ndg.security.test.wsSecurity.client.__revision__
+ndg.security.test.wsSecurity.server.__revision__
+ndg.security.test.xmlsec.__revision__
+ndg.security.test.xmlsec.dom.__revision__
+ndg.security.test.xmlsec.etree.test_etree.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id: openssl.py 2927 2007-10-05 09:43:44Z pjkersha $'</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt><tt class="py-op">,</tt> <tt class="py-name">os</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ConfigParser</tt> <tt class="py-keyword">import</tt> <tt class="py-name">SafeConfigParser</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">M2Crypto</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Variable ZSI.wstools.Namespaces.OASIS.X509TOKEN.X509=ZSI.wstools.Namespaces.OASIS.X509TOKEN-class.html#X509,Module ndg.security.common.X509=ndg.security.common.X509-module.html,Package ndg.security.test.X509=ndg.security.test.X509-module.html"><a title="ZSI.wstools.Namespaces.OASIS.X509TOKEN.X509
+ndg.security.common.X509
+ndg.security.test.X509" class="py-name" href="#" onclick="return doclink('link-1', 'X509', 'link-1');">X509</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">X509_Name</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________        </tt> </tt>
+<a name="OpenSSLConfigError"></a><div id="OpenSSLConfigError-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="OpenSSLConfigError-toggle" onclick="return toggle('OpenSSLConfigError');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfigError-class.html">OpenSSLConfigError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfigError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OpenSSLConfigError-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-docstring">"""Exceptions related to OpenSSLConfig class"""</tt>    </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________        </tt> </tt>
+<a name="OpenSSLConfig"></a><div id="OpenSSLConfig-def"><a name="L25"></a><tt class="py-lineno"> 25</tt> <a class="py-toggle" href="#" id="OpenSSLConfig-toggle" onclick="return toggle('OpenSSLConfig');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html">OpenSSLConfig</a><tt class="py-op">(</tt><tt class="py-base-class">SafeConfigParser</tt><tt class="py-op">,</tt> <tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OpenSSLConfig-expanded"><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-docstring">"""Wrapper to OpenSSL Configuration file to allow extraction of</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    required distinguished name used for making certificate requests</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    @type _certReqDNParamName: tuple</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar _certReqDNParamName: permissable keys for Distinguished Name</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    (not including CN which gets set separately).  This is used in __setReqDN</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    to check input</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    @type _caDirPat: string</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar _caDirPat: sub-directory path to CA config directory</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">    @type __gridCASubDir: string</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar __gridCASubDir: sub-directory of globus user for CA settings"""</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">     </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable ndg.security.common.openssl.OpenSSLConfig._certReqDNParamName=ndg.security.common.openssl.OpenSSLConfig-class.html#_certReqDNParamName"><a title="ndg.security.common.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-2', '_certReqDNParamName', 'link-2');">_certReqDNParamName</a></tt> <tt class="py-op">=</tt> <tt class="py-name">X509_Name</tt><tt class="py-op">.</tt><tt class="py-name">nid</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.keys()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#keys,Method ndg.security.common.AttCert.AttCert.keys()=ndg.security.common.AttCert.AttCert-class.html#keys,Method ndg.security.common.X509.X500DN.keys()=ndg.security.common.X509.X500DN-class.html#keys,Variable ndg.security.common.pylons.security_util.SSOServiceQuery.keys=ndg.security.common.pylons.security_util.SSOServiceQuery-class.html#keys,Method ndg.security.common.pylons.security_util.SecuritySession.keys()=ndg.security.common.pylons.security_util.SecuritySession-class.html#keys,Method ndg.security.common.saml.AttributeAssertion.keys()=ndg.security.common.saml.AttributeAssertion-class.html#keys,Method ndg.security.common.wssecurity.WSSecurityConfig.keys()=ndg.security.common.wssecurity.WSSecurityConfig-class.html#keys,Method ndg.security.server.AttAuthority.AttAuthority.keys()=ndg.security.server.AttAuthority.AttAuthority-class.html#keys,Method ndg.security.server.SessionMgr.SessionMgr.keys()=ndg.security.server.SessionMgr.SessionMgr-class.html#keys,Method ndg.security.server.ca.SimpleCA.keys()=ndg.security.server.ca.SimpleCA-class.html#keys"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.keys
+ndg.security.common.AttCert.AttCert.keys
+ndg.security.common.X509.X500DN.keys
+ndg.security.common.pylons.security_util.SSOServiceQuery.keys
+ndg.security.common.pylons.security_util.SecuritySession.keys
+ndg.security.common.saml.AttributeAssertion.keys
+ndg.security.common.wssecurity.WSSecurityConfig.keys
+ndg.security.server.AttAuthority.AttAuthority.keys
+ndg.security.server.SessionMgr.SessionMgr.keys
+ndg.security.server.ca.SimpleCA.keys" class="py-name" href="#" onclick="return doclink('link-3', 'keys', 'link-3');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">     </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable ndg.security.common.openssl.OpenSSLConfig._caDirPat=ndg.security.common.openssl.OpenSSLConfig-class.html#_caDirPat"><a title="ndg.security.common.openssl.OpenSSLConfig._caDirPat" class="py-name" href="#" onclick="return doclink('link-4', '_caDirPat', 'link-4');">_caDirPat</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">'\$dir'</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">     </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable ndg.security.common.openssl.OpenSSLConfig.__gridCASubDir=ndg.security.common.openssl.OpenSSLConfig-class.html#__gridCASubDir,Variable ndg.security.server.ca.SimpleCA.__gridCASubDir=ndg.security.server.ca.SimpleCA-class.html#__gridCASubDir"><a title="ndg.security.common.openssl.OpenSSLConfig.__gridCASubDir
+ndg.security.server.ca.SimpleCA.__gridCASubDir" class="py-name" href="#" onclick="return doclink('link-5', '__gridCASubDir', 'link-5');">__gridCASubDir</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-string">".globus"</tt><tt class="py-op">,</tt> <tt class="py-string">"simpleCA"</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig.__init__"></a><div id="OpenSSLConfig.__init__-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__init__-toggle" onclick="return toggle('OpenSSLConfig.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">caDir</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__init__-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-docstring">"""Initial OpenSSL configuration optionally setting a file path to</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        read from</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        @type filePath: string        </tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">        @param filePath: path to OpenSSL configuration file</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        @type caDir: string</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        @param caDir: directory for SimpleCA.  This is substituted for $dir</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        in OpenSSL config file where present.  caDir can be left out in </tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">        which case the substitution is not done"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">SafeConfigParser</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method ndg.security.client.GatekeeperClient.GatekeeperClient.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClient-class.html#__init__,Method ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClientError-class.html#__init__,Method ndg.security.client.LogClient.LogClient.__init__()=ndg.security.client.LogClient.LogClient-class.html#__init__,Method ndg.security.client.LogClient.LogClientError.__init__()=ndg.security.client.LogClient.LogClientError-class.html#__init__,Method ndg.security.client.LogClient.SOAPHandler.__init__()=ndg.security.client.LogClient.SOAPHandler-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClient.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html#__init__,Method ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig.__init__()=ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig-class.html#__init__,Method ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOMiddleware.__init__()=ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOMiddleware-class.html#__init__,Method ndg.security.client.ssoclient.ssoclient.lib.app_globals.Globals.__init__()=ndg.security.client.ssoclient.ssoclient.lib.app_globals.Globals-class.html#__init__,Method ndg.security.client.ssoclient.ssoclient.tests.TestController.__init__()=ndg.security.client.ssoclient.ssoclient.tests.TestController-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthorityClient.__init__()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.AttCert.AttCert.__init__()=ndg.security.common.AttCert.AttCert-class.html#__init__,Method ndg.security.common.AttCert.AttCertReadOnlyDict.__init__()=ndg.security.common.AttCert.AttCertReadOnlyDict-class.html#__init__,Method ndg.security.common.CredWallet.CredRepos.__init__()=ndg.security.common.CredWallet.CredRepos-class.html#__init__,Method ndg.security.common.CredWallet.CredWallet.__init__()=ndg.security.common.CredWallet.CredWallet-class.html#__init__,Method ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__()=ndg.security.common.CredWallet.CredWalletAttributeRequestDenied-class.html#__init__,Method ndg.security.common.CredWallet.NullCredRepos.__init__()=ndg.security.common.CredWallet.NullCredRepos-class.html#__init__,Method ndg.security.common.CredWallet._CredWalletException.__init__()=ndg.security.common.CredWallet._CredWalletException-class.html#__init__,Method ndg.security.common.SQLObject.CredRepos.__init__()=ndg.security.common.SQLObject.CredRepos-class.html#__init__,Method ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI._SecurityCGI.__init__()=ndg.security.common.SecurityCGI._SecurityCGI-class.html#__init__,Method ndg.security.common.SessionMgr.AttributeRequestDenied.__init__()=ndg.security.common.SessionMgr.AttributeRequestDenied-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgrClient.__init__()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__()=ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.X509.X500DN.__init__()=ndg.security.common.X509.X500DN-class.html#__init__,Method ndg.security.common.X509.X509Cert.__init__()=ndg.security.common.X509.X509Cert-class.html#__init__,Method ndg.security.common.X509.X509Stack.__init__()=ndg.security.common.X509.X509Stack-class.html#__init__,Method ndg.security.common.XMLSec.XMLSecDoc.__init__()=ndg.security.common.XMLSec.XMLSecDoc-class.html#__init__,Method ndg.security.common.authz.pdp.PDPInterface.__init__()=ndg.security.common.authz.pdp.PDPInterface-class.html#__init__,Method ndg.security.common.authz.pdp.PDPMissingResourceConstraints.__init__()=ndg.security.common.authz.pdp.PDPMissingResourceConstraints-class.html#__init__,Method ndg.security.common.authz.pdp.PDPMissingUserHandleAttr.__init__()=ndg.security.common.authz.pdp.PDPMissingUserHandleAttr-class.html#__init__,Method ndg.security.common.authz.pdp.PDPUnknownResourceType.__init__()=ndg.security.common.authz.pdp.PDPUnknownResourceType-class.html#__init__,Method ndg.security.common.authz.pdp.PDPUserAccessDenied.__init__()=ndg.security.common.authz.pdp.PDPUserAccessDenied-class.html#__init__,Method ndg.security.common.authz.pdp.PDPUserInsufficientPrivileges.__init__()=ndg.security.common.authz.pdp.PDPUserInsufficientPrivileges-class.html#__init__,Method ndg.security.common.authz.pdp.PDPUserNotLoggedIn.__init__()=ndg.security.common.authz.pdp.PDPUserNotLoggedIn-class.html#__init__,Method ndg.security.common.authz.pdp.browse.AttributeCertificateRequestError.__init__()=ndg.security.common.authz.pdp.browse.AttributeCertificateRequestError-class.html#__init__,Method ndg.security.common.authz.pdp.browse.BrowsePDP.__init__()=ndg.security.common.authz.pdp.browse.BrowsePDP-class.html#__init__,Method ndg.security.common.authz.pdp.browse.InitSessionCtxError.__init__()=ndg.security.common.authz.pdp.browse.InitSessionCtxError-class.html#__init__,Method ndg.security.common.authz.pdp.browse.InvalidAttributeCertificate.__init__()=ndg.security.common.authz.pdp.browse.InvalidAttributeCertificate-class.html#__init__,Method ndg.security.common.authz.pdp.browse.InvalidSessionMsg.__init__()=ndg.security.common.authz.pdp.browse.InvalidSessionMsg-class.html#__init__,Method ndg.security.common.authz.pdp.browse.SessionExpiredMsg.__init__()=ndg.security.common.authz.pdp.browse.SessionExpiredMsg-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.AttributeCertificateRequestError.__init__()=ndg.security.common.authz.pdp.proftp.AttributeCertificateRequestError-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.FTPAccess.__init__()=ndg.security.common.authz.pdp.proftp.FTPAccess-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.InitSessionCtxError.__init__()=ndg.security.common.authz.pdp.proftp.InitSessionCtxError-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.InvalidAttributeCertificate.__init__()=ndg.security.common.authz.pdp.proftp.InvalidAttributeCertificate-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.InvalidSessionMsg.__init__()=ndg.security.common.authz.pdp.proftp.InvalidSessionMsg-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.ProftpPDP.__init__()=ndg.security.common.authz.pdp.proftp.ProftpPDP-class.html#__init__,Method ndg.security.common.authz.pdp.proftp.SessionExpiredMsg.__init__()=ndg.security.common.authz.pdp.proftp.SessionExpiredMsg-class.html#__init__,Method ndg.security.common.authz.pep.PEP.__init__()=ndg.security.common.authz.pep.PEP-class.html#__init__,Method ndg.security.common.ca.CertificateAuthorityClient.__init__()=ndg.security.common.ca.CertificateAuthorityClient-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__()=ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec-class.html#__init__,Method ndg.security.common.gatekeeper.Gatekeeper.__init__()=ndg.security.common.gatekeeper.Gatekeeper-class.html#__init__,Method ndg.security.common.gatekeeper.GatekeeperError.__init__()=ndg.security.common.gatekeeper.GatekeeperError-class.html#__init__,Method ndg.security.common.gatekeeper.GatekeeperResrc.__init__()=ndg.security.common.gatekeeper.GatekeeperResrc-class.html#__init__,Method ndg.security.common.gatekeeper.PullModelHandler.__init__()=ndg.security.common.gatekeeper.PullModelHandler-class.html#__init__,Method ndg.security.common.logService.log_services.debugRequest.__init__()=ndg.security.common.logService.log_services.debugRequest-class.html#__init__,Method ndg.security.common.logService.log_services.debugRequestWrapper.__init__()=ndg.security.common.logService.log_services.debugRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.debugResponse.__init__()=ndg.security.common.logService.log_services.debugResponse-class.html#__init__,Method ndg.security.common.logService.log_services.debugResponseWrapper.__init__()=ndg.security.common.logService.log_services.debugResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.errorRequest.__init__()=ndg.security.common.logService.log_services.errorRequest-class.html#__init__,Method ndg.security.common.logService.log_services.errorRequestWrapper.__init__()=ndg.security.common.logService.log_services.errorRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.errorResponse.__init__()=ndg.security.common.logService.log_services.errorResponse-class.html#__init__,Method ndg.security.common.logService.log_services.errorResponseWrapper.__init__()=ndg.security.common.logService.log_services.errorResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.infoRequest.__init__()=ndg.security.common.logService.log_services.infoRequest-class.html#__init__,Method ndg.security.common.logService.log_services.infoRequestWrapper.__init__()=ndg.security.common.logService.log_services.infoRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.infoResponse.__init__()=ndg.security.common.logService.log_services.infoResponse-class.html#__init__,Method ndg.security.common.logService.log_services.infoResponseWrapper.__init__()=ndg.security.common.logService.log_services.infoResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.logBindingSOAP.__init__()=ndg.security.common.logService.log_services.logBindingSOAP-class.html#__init__,Method ndg.security.common.logService.log_services.warningRequest.__init__()=ndg.security.common.logService.log_services.warningRequest-class.html#__init__,Method ndg.security.common.logService.log_services.warningRequestWrapper.__init__()=ndg.security.common.logService.log_services.warningRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.warningResponse.__init__()=ndg.security.common.logService.log_services.warningResponse-class.html#__init__,Method ndg.security.common.logService.log_services.warningResponseWrapper.__init__()=ndg.security.common.logService.log_services.warningResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services_server.log.__init__()=ndg.security.common.logService.log_services_server.log-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__()=ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__()=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html#__init__,Method ndg.security.common.openssl.OpenSSLConfig.__init__()=ndg.security.common.openssl.OpenSSLConfig-class.html#__init__,Method ndg.security.common.pylons.security_util.SecuritySession.__init__()=ndg.security.common.pylons.security_util.SecuritySession-class.html#__init__,Method ndg.security.common.saml.AttributeAssertion.__init__()=ndg.security.common.saml.AttributeAssertion-class.html#__init__,Method ndg.security.common.saml.AttributeAssertionReadOnlyDict.__init__()=ndg.security.common.saml.AttributeAssertionReadOnlyDict-class.html#__init__,Method ndg.security.common.sessionCookie.SessionCookie.__init__()=ndg.security.common.sessionCookie.SessionCookie-class.html#__init__,Method ndg.security.common.utils.ClassFactory.ClassFactoryError.__init__()=ndg.security.common.utils.ClassFactory.ClassFactoryError-class.html#__init__,Method ndg.security.common.wssecurity.BaseSignatureHandler.BaseSignatureHandler.__init__()=ndg.security.common.wssecurity.BaseSignatureHandler.BaseSignatureHandler-class.html#__init__,Method ndg.security.common.wssecurity.BaseSignatureHandler.WSSecurityError.__init__()=ndg.security.common.wssecurity.BaseSignatureHandler.WSSecurityError-class.html#__init__,Method ndg.security.common.wssecurity.WSSecurityConfig.__init__()=ndg.security.common.wssecurity.WSSecurityConfig-class.html#__init__,Method ndg.security.common.wssecurity.dom.EncryptionHandler.__init__()=ndg.security.common.wssecurity.dom.EncryptionHandler-class.html#__init__,Method ndg.security.common.xmlsec.etree.XMLSecDoc.__init__()=ndg.security.common.xmlsec.etree.XMLSecDoc-class.html#__init__,Method ndg.security.common.zsi_utils.elementtreeproxy.ElementTreeProxy.__init__()=ndg.security.common.zsi_utils.elementtreeproxy.ElementTreeProxy-class.html#__init__,Method ndg.security.common.zsi_utils.httpproxy.ProxyHTTPConnection.__init__()=ndg.security.common.zsi_utils.httpproxy.ProxyHTTPConnection-class.html#__init__,Method ndg.security.server.AttAuthority.AAUserRoles.__init__()=ndg.security.server.AttAuthority.AAUserRoles-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority.__init__()=ndg.security.server.AttAuthority.AttAuthority-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthorityError.__init__()=ndg.security.server.AttAuthority.AttAuthorityError-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__()=ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService-class.html#__init__,Method ndg.security.server.AttAuthority.AttCertLog.__init__()=ndg.security.server.AttAuthority.AttCertLog-class.html#__init__,Method ndg.security.server.Log.Log.__init__()=ndg.security.server.Log.Log-class.html#__init__,Method ndg.security.server.SessionMgr.AbstractAutheNService.__init__()=ndg.security.server.SessionMgr.AbstractAutheNService-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr.__init__()=ndg.security.server.SessionMgr.SessionMgr-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__()=ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#__init__,Method ndg.security.server.SessionMgr.UserSession.__init__()=ndg.security.server.SessionMgr.UserSession-class.html#__init__,Method ndg.security.server.SessionMgr._SessionMgrException.__init__()=ndg.security.server.SessionMgr._SessionMgrException-class.html#__init__,Method ndg.security.server.authenservice.MyProxy.CmdLineClient.__init__()=ndg.security.server.authenservice.MyProxy.CmdLineClient-class.html#__init__,Method ndg.security.server.authenservice.MyProxy.MyProxyClient.__init__()=ndg.security.server.authenservice.MyProxy.MyProxyClient-class.html#__init__,Method ndg.security.server.authenservice.MyProxy._HostCheck.__init__()=ndg.security.server.authenservice.MyProxy._HostCheck-class.html#__init__,Method ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__()=ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService-class.html#__init__,Method ndg.security.server.ca.SimpleCA.__init__()=ndg.security.server.ca.SimpleCA-class.html#__init__,Method ndg.security.server.conf.userRoles.UserRoles.__init__()=ndg.security.server.conf.userRoles.UserRoles-class.html#__init__,Method ndg.security.server.pylons.container.lib.app_globals.Globals.__init__()=ndg.security.server.pylons.container.lib.app_globals.Globals-class.html#__init__,Method ndg.security.server.pylons.container.lib.openid_provider_util.State.__init__()=ndg.security.server.pylons.container.lib.openid_provider_util.State-class.html#__init__,Method ndg.security.server.pylons.container.tests.TestController.__init__()=ndg.security.server.pylons.container.tests.TestController-class.html#__init__,Method ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOMiddleware.__init__()=ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOMiddleware-class.html#__init__,Method ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig.__init__()=ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig-class.html#__init__,Method ndg.security.server.sso.sso.lib.app_globals.Globals.__init__()=ndg.security.server.sso.sso.lib.app_globals.Globals-class.html#__init__,Method ndg.security.server.sso.sso.tests.TestController.__init__()=ndg.security.server.sso.sso.tests.TestController-class.html#__init__,Method ndg.security.server.wsgi.openid_provider.OpenIDProviderMiddleware.__init__()=ndg.security.server.wsgi.openid_provider.OpenIDProviderMiddleware-class.html#__init__,Method ndg.security.server.wsgi.openid_provider.RenderingInterface.__init__()=ndg.security.server.wsgi.openid_provider.RenderingInterface-class.html#__init__,Method ndg.security.server.wsgi.soap.SOAPBindingMiddleware.__init__()=ndg.security.server.wsgi.soap.SOAPBindingMiddleware-class.html#__init__,Method ndg.security.server.wsgi.soap.SOAPMiddleware.__init__()=ndg.security.server.wsgi.soap.SOAPMiddleware-class.html#__init__,Method ndg.security.server.wsgi.wssecurity.WSSecurityFilter.__init__()=ndg.security.server.wsgi.wssecurity.WSSecurityFilter-class.html#__init__,Method ndg.security.server.wsgi.wssecurity.WSSecuritySignatureFilter.__init__()=ndg.security.server.wsgi.wssecurity.WSSecuritySignatureFilter-class.html#__init__,Method ndg.security.server.zsi.attributeauthority.AttributeAuthorityWS.__init__()=ndg.security.server.zsi.attributeauthority.AttributeAuthorityWS-class.html#__init__,Method ndg.security.test.Log.LogTest.LogTestSuite.__init__()=ndg.security.test.Log.LogTest.LogTestSuite-class.html#__init__,Method ndg.security.test.X509.X509Test.X509TestSuite.__init__()=ndg.security.test.X509.X509Test.X509TestSuite-class.html#__init__,Method ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite.__init__()=ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite-class.html#__init__,Method ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite.__init__()=ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite-class.html#__init__,Method ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles.__init__()=ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles-class.html#__init__,Method ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles.__init__()=ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles-class.html#__init__,Method ndg.security.test.attCert.AttCertTest.AttCertTestSuite.__init__()=ndg.security.test.attCert.AttCertTest.AttCertTestSuite-class.html#__init__,Method ndg.security.test.authenservice.test_authen_service.TestAutheNService.__init__()=ndg.security.test.authenservice.test_authen_service.TestAutheNService-class.html#__init__,Method ndg.security.test.authz.pdp.testProftPDP.ProftpPDPTestSuite.__init__()=ndg.security.test.authz.pdp.testProftPDP.ProftpPDPTestSuite-class.html#__init__,Method ndg.security.test.ca.caClientTest.CAClientTestSuite.__init__()=ndg.security.test.ca.caClientTest.CAClientTestSuite-class.html#__init__,Method ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite.__init__()=ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite-class.html#__init__,Method ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite.__init__()=ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite-class.html#__init__,Method ndg.security.test.sessionMgr.test.SessionMgrTestSuite.__init__()=ndg.security.test.sessionMgr.test.SessionMgrTestSuite-class.html#__init__,Method ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite.__init__()=ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite-class.html#__init__,Method ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP.__init__()=ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP-class.html#__init__,Method ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.EchoResponse_Dec.__init__()=ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.EchoResponse_Dec-class.html#__init__,Method ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.Echo_Dec.__init__()=ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.Echo_Dec-class.html#__init__,Method ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite.__init__()=ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP.__init__()=ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService.__init__()=ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService-class.html#__init__,Method ndg.security.test.wsSecurity.server.echoServer.EchoService.__init__()=ndg.security.test.wsSecurity.server.echoServer.EchoService-class.html#__init__,Method ndg.security.test.xmlsec.etree.test_etree.XMLSecDocTestSuite.__init__()=ndg.security.test.xmlsec.etree.test_etree.XMLSecDocTestSuite-class.html#__init__"><a title="ndg.security.client.GatekeeperClient.GatekeeperClient.__init__
+ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__
+ndg.security.client.LogClient.LogClient.__init__
+ndg.security.client.LogClient.LogClientError.__init__
+ndg.security.client.LogClient.SOAPHandler.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClient.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__
+ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig.__init__
+ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOMiddleware.__init__
+ndg.security.client.ssoclient.ssoclient.lib.app_globals.Globals.__init__
+ndg.security.client.ssoclient.ssoclient.tests.TestController.__init__
+ndg.security.common.AttAuthority.AttAuthorityClient.__init__
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.AttCert.AttCert.__init__
+ndg.security.common.AttCert.AttCertReadOnlyDict.__init__
+ndg.security.common.CredWallet.CredRepos.__init__
+ndg.security.common.CredWallet.CredWallet.__init__
+ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__
+ndg.security.common.CredWallet.NullCredRepos.__init__
+ndg.security.common.CredWallet._CredWalletException.__init__
+ndg.security.common.SQLObject.CredRepos.__init__
+ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI._SecurityCGI.__init__
+ndg.security.common.SessionMgr.AttributeRequestDenied.__init__
+ndg.security.common.SessionMgr.SessionMgrClient.__init__
+ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.X509.X500DN.__init__
+ndg.security.common.X509.X509Cert.__init__
+ndg.security.common.X509.X509Stack.__init__
+ndg.security.common.XMLSec.XMLSecDoc.__init__
+ndg.security.common.authz.pdp.PDPInterface.__init__
+ndg.security.common.authz.pdp.PDPMissingResourceConstraints.__init__
+ndg.security.common.authz.pdp.PDPMissingUserHandleAttr.__init__
+ndg.security.common.authz.pdp.PDPUnknownResourceType.__init__
+ndg.security.common.authz.pdp.PDPUserAccessDenied.__init__
+ndg.security.common.authz.pdp.PDPUserInsufficientPrivileges.__init__
+ndg.security.common.authz.pdp.PDPUserNotLoggedIn.__init__
+ndg.security.common.authz.pdp.browse.AttributeCertificateRequestError.__init__
+ndg.security.common.authz.pdp.browse.BrowsePDP.__init__
+ndg.security.common.authz.pdp.browse.InitSessionCtxError.__init__
+ndg.security.common.authz.pdp.browse.InvalidAttributeCertificate.__init__
+ndg.security.common.authz.pdp.browse.InvalidSessionMsg.__init__
+ndg.security.common.authz.pdp.browse.SessionExpiredMsg.__init__
+ndg.security.common.authz.pdp.proftp.AttributeCertificateRequestError.__init__
+ndg.security.common.authz.pdp.proftp.FTPAccess.__init__
+ndg.security.common.authz.pdp.proftp.InitSessionCtxError.__init__
+ndg.security.common.authz.pdp.proftp.InvalidAttributeCertificate.__init__
+ndg.security.common.authz.pdp.proftp.InvalidSessionMsg.__init__
+ndg.security.common.authz.pdp.proftp.ProftpPDP.__init__
+ndg.security.common.authz.pdp.proftp.SessionExpiredMsg.__init__
+ndg.security.common.authz.pep.PEP.__init__
+ndg.security.common.ca.CertificateAuthorityClient.__init__
+ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__
+ndg.security.common.gatekeeper.Gatekeeper.__init__
+ndg.security.common.gatekeeper.GatekeeperError.__init__
+ndg.security.common.gatekeeper.GatekeeperResrc.__init__
+ndg.security.common.gatekeeper.PullModelHandler.__init__
+ndg.security.common.logService.log_services.debugRequest.__init__
+ndg.security.common.logService.log_services.debugRequestWrapper.__init__
+ndg.security.common.logService.log_services.debugResponse.__init__
+ndg.security.common.logService.log_services.debugResponseWrapper.__init__
+ndg.security.common.logService.log_services.errorRequest.__init__
+ndg.security.common.logService.log_services.errorRequestWrapper.__init__
+ndg.security.common.logService.log_services.errorResponse.__init__
+ndg.security.common.logService.log_services.errorResponseWrapper.__init__
+ndg.security.common.logService.log_services.infoRequest.__init__
+ndg.security.common.logService.log_services.infoRequestWrapper.__init__
+ndg.security.common.logService.log_services.infoResponse.__init__
+ndg.security.common.logService.log_services.infoResponseWrapper.__init__
+ndg.security.common.logService.log_services.logBindingSOAP.__init__
+ndg.security.common.logService.log_services.warningRequest.__init__
+ndg.security.common.logService.log_services.warningRequestWrapper.__init__
+ndg.security.common.logService.log_services.warningResponse.__init__
+ndg.security.common.logService.log_services.warningResponseWrapper.__init__
+ndg.security.common.logService.log_services_server.log.__init__
+ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__
+ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__
+ndg.security.common.openssl.OpenSSLConfig.__init__
+ndg.security.common.pylons.security_util.SecuritySession.__init__
+ndg.security.common.saml.AttributeAssertion.__init__
+ndg.security.common.saml.AttributeAssertionReadOnlyDict.__init__
+ndg.security.common.sessionCookie.SessionCookie.__init__
+ndg.security.common.utils.ClassFactory.ClassFactoryError.__init__
+ndg.security.common.wssecurity.BaseSignatureHandler.BaseSignatureHandler.__init__
+ndg.security.common.wssecurity.BaseSignatureHandler.WSSecurityError.__init__
+ndg.security.common.wssecurity.WSSecurityConfig.__init__
+ndg.security.common.wssecurity.dom.EncryptionHandler.__init__
+ndg.security.common.xmlsec.etree.XMLSecDoc.__init__
+ndg.security.common.zsi_utils.elementtreeproxy.ElementTreeProxy.__init__
+ndg.security.common.zsi_utils.httpproxy.ProxyHTTPConnection.__init__
+ndg.security.server.AttAuthority.AAUserRoles.__init__
+ndg.security.server.AttAuthority.AttAuthority.__init__
+ndg.security.server.AttAuthority.AttAuthorityError.__init__
+ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__
+ndg.security.server.AttAuthority.AttCertLog.__init__
+ndg.security.server.Log.Log.__init__
+ndg.security.server.SessionMgr.AbstractAutheNService.__init__
+ndg.security.server.SessionMgr.SessionMgr.__init__
+ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__
+ndg.security.server.SessionMgr.UserSession.__init__
+ndg.security.server.SessionMgr._SessionMgrException.__init__
+ndg.security.server.authenservice.MyProxy.CmdLineClient.__init__
+ndg.security.server.authenservice.MyProxy.MyProxyClient.__init__
+ndg.security.server.authenservice.MyProxy._HostCheck.__init__
+ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__
+ndg.security.server.ca.SimpleCA.__init__
+ndg.security.server.conf.userRoles.UserRoles.__init__
+ndg.security.server.pylons.container.lib.app_globals.Globals.__init__
+ndg.security.server.pylons.container.lib.openid_provider_util.State.__init__
+ndg.security.server.pylons.container.tests.TestController.__init__
+ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOMiddleware.__init__
+ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig.__init__
+ndg.security.server.sso.sso.lib.app_globals.Globals.__init__
+ndg.security.server.sso.sso.tests.TestController.__init__
+ndg.security.server.wsgi.openid_provider.OpenIDProviderMiddleware.__init__
+ndg.security.server.wsgi.openid_provider.RenderingInterface.__init__
+ndg.security.server.wsgi.soap.SOAPBindingMiddleware.__init__
+ndg.security.server.wsgi.soap.SOAPMiddleware.__init__
+ndg.security.server.wsgi.wssecurity.WSSecurityFilter.__init__
+ndg.security.server.wsgi.wssecurity.WSSecuritySignatureFilter.__init__
+ndg.security.server.zsi.attributeauthority.AttributeAuthorityWS.__init__
+ndg.security.test.Log.LogTest.LogTestSuite.__init__
+ndg.security.test.X509.X509Test.X509TestSuite.__init__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite.__init__
+ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite.__init__
+ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles.__init__
+ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles.__init__
+ndg.security.test.attCert.AttCertTest.AttCertTestSuite.__init__
+ndg.security.test.authenservice.test_authen_service.TestAutheNService.__init__
+ndg.security.test.authz.pdp.testProftPDP.ProftpPDPTestSuite.__init__
+ndg.security.test.ca.caClientTest.CAClientTestSuite.__init__
+ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite.__init__
+ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite.__init__
+ndg.security.test.sessionMgr.test.SessionMgrTestSuite.__init__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite.__init__
+ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP.__init__
+ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.EchoResponse_Dec.__init__
+ndg.security.test.wsSecurity.client.EchoService_services_types.ns0.Echo_Dec.__init__
+ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite.__init__
+ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP.__init__
+ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService.__init__
+ndg.security.test.wsSecurity.server.echoServer.EchoService.__init__
+ndg.security.test.xmlsec.etree.test_etree.XMLSecDocTestSuite.__init__" class="py-name" href="#" onclick="return doclink('link-6', '__init__', 'link-6');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">         </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__reqDN</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method ndg.security.common.XMLSec.XMLSecDoc.__setFilePath()=ndg.security.common.XMLSec.XMLSecDoc-class.html#__setFilePath,Method ndg.security.common.openssl.OpenSSLConfig.__setFilePath()=ndg.security.common.openssl.OpenSSLConfig-class.html#__setFilePath"><a title="ndg.security.common.XMLSec.XMLSecDoc.__setFilePath
+ndg.security.common.openssl.OpenSSLConfig.__setFilePath" class="py-name" href="#" onclick="return doclink('link-7', '__setFilePath', 'link-7');">__setFilePath</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Variable ndg.security.common.XMLSec.XMLSecDoc.filePath=ndg.security.common.XMLSec.XMLSecDoc-class.html#filePath,Variable ndg.security.common.openssl.OpenSSLConfig.filePath=ndg.security.common.openssl.OpenSSLConfig-class.html#filePath,Variable ndg.security.common.xmlsec.etree.XMLSecDoc.filePath=ndg.security.common.xmlsec.etree.XMLSecDoc-class.html#filePath"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-8', 'filePath', 'link-8');">filePath</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-comment"># Set-up CA directory</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig.setCADir()=ndg.security.common.openssl.OpenSSLConfig-class.html#setCADir"><a title="ndg.security.common.openssl.OpenSSLConfig.setCADir" class="py-name" href="#" onclick="return doclink('link-9', 'setCADir', 'link-9');">setCADir</a></tt><tt class="py-op">(</tt><tt id="link-10" class="py-name" targets="Variable ndg.security.common.openssl.OpenSSLConfig.caDir=ndg.security.common.openssl.OpenSSLConfig-class.html#caDir"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-10', 'caDir', 'link-10');">caDir</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">             </tt>
+<a name="OpenSSLConfig.__setFilePath"></a><div id="OpenSSLConfig.__setFilePath-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__setFilePath-toggle" onclick="return toggle('OpenSSLConfig.__setFilePath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__setFilePath">__setFilePath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__setFilePath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__setFilePath-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">        @type filePath: string</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">        @param filePath: path for OpenSSL configuration file"""</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-11" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-11', 'filePath', 'link-8');">filePath</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-12', 'filePath', 'link-8');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">basestring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-13" class="py-name" targets="Class ndg.security.common.openssl.OpenSSLConfigError=ndg.security.common.openssl.OpenSSLConfigError-class.html"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-13', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                    <tt class="py-string">"Input OpenSSL config file path must be a string"</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">access</tt><tt class="py-op">(</tt><tt id="link-14" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-14', 'filePath', 'link-8');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">R_OK</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-15" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-15', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"not found or no read access"</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                                          </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-16" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-16', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                    <tt class="py-string">"OpenSSL config file path is not valid: \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                    <tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-17', 'filePath', 'link-8');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                     </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-18', 'filePath', 'link-8');">filePath</a></tt> </tt>
+</div><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                     </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.__getFilePath"></a><div id="OpenSSLConfig.__getFilePath-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__getFilePath-toggle" onclick="return toggle('OpenSSLConfig.__getFilePath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__getFilePath">__getFilePath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__getFilePath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__getFilePath-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        @return: file path for OpenSSL configuration file"""</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt id="link-19" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-19', 'filePath', 'link-8');">filePath</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-20" class="py-name" targets="Method ndg.security.common.XMLSec.XMLSecDoc.__getFilePath()=ndg.security.common.XMLSec.XMLSecDoc-class.html#__getFilePath,Method ndg.security.common.openssl.OpenSSLConfig.__getFilePath()=ndg.security.common.openssl.OpenSSLConfig-class.html#__getFilePath"><a title="ndg.security.common.XMLSec.XMLSecDoc.__getFilePath
+ndg.security.common.openssl.OpenSSLConfig.__getFilePath" class="py-name" href="#" onclick="return doclink('link-20', '__getFilePath', 'link-20');">__getFilePath</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                        <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-21" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.__setFilePath
+ndg.security.common.openssl.OpenSSLConfig.__setFilePath" class="py-name" href="#" onclick="return doclink('link-21', '__setFilePath', 'link-7');">__setFilePath</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"file path for configuration file"</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">             </tt>
+<a name="OpenSSLConfig.setCADir"></a><div id="OpenSSLConfig.setCADir-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.setCADir-toggle" onclick="return toggle('OpenSSLConfig.setCADir');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#setCADir">setCADir</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">caDir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.setCADir-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.setCADir-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        @type caDir: string</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">        @param caDir: path for OpenSSL configuration file"""</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-22" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-22', 'caDir', 'link-10');">caDir</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-comment"># Try to set default from 'HOME' env variable</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">homeDir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">environ</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.get()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#get,Method ndg.security.common.X509.X500DN.get()=ndg.security.common.X509.X500DN-class.html#get,Method ndg.security.common.pylons.security_util.SecuritySession.get()=ndg.security.common.pylons.security_util.SecuritySession-class.html#get,Method ndg.security.common.wssecurity.WSSecurityConfig.get()=ndg.security.common.wssecurity.WSSecurityConfig-class.html#get,Method ndg.security.server.AttAuthority.AttAuthority.get()=ndg.security.server.AttAuthority.AttAuthority-class.html#get,Method ndg.security.server.SessionMgr.SessionMgr.get()=ndg.security.server.SessionMgr.SessionMgr-class.html#get,Method ndg.security.server.ca.SimpleCA.get()=ndg.security.server.ca.SimpleCA-class.html#get"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.common.pylons.security_util.SecuritySession.get
+ndg.security.common.wssecurity.WSSecurityConfig.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-23', 'get', 'link-23');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'HOME'</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">homeDir</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">environ</tt><tt class="py-op">[</tt><tt class="py-string">'HOME'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt>  </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                                            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.__gridCASubDir
+ndg.security.server.ca.SimpleCA.__gridCASubDir" class="py-name" href="#" onclick="return doclink('link-24', '__gridCASubDir', 'link-5');">__gridCASubDir</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-25', 'caDir', 'link-10');">caDir</a></tt><tt class="py-op">,</tt> <tt class="py-name">basestring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-26" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-26', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                    <tt class="py-string">"Input OpenSSL CA directory path must be a string"</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">access</tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-27', 'caDir', 'link-10');">caDir</a></tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">R_OK</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-28" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-28', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"not found or no read access"</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                                          </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-29" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-29', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                    <tt class="py-string">"OpenSSL CA directory path is not valid: \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                    <tt class="py-op">(</tt><tt id="link-30" class="py-name"><a title="ndg.security.common.XMLSec.XMLSecDoc.filePath
+ndg.security.common.openssl.OpenSSLConfig.filePath
+ndg.security.common.xmlsec.etree.XMLSecDoc.filePath" class="py-name" href="#" onclick="return doclink('link-30', 'filePath', 'link-8');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                     </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt> <tt class="py-op">=</tt> <tt id="link-31" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-31', 'caDir', 'link-10');">caDir</a></tt> </tt>
+</div><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                     </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.__getCADir"></a><div id="OpenSSLConfig.__getCADir-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__getCADir-toggle" onclick="return toggle('OpenSSLConfig.__getCADir');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__getCADir">__getCADir</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__getCADir-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__getCADir-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype caDir: string</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">        @return caDir: directory path for CA configuration files"""</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt id="link-32" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-32', 'caDir', 'link-10');">caDir</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-33" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig.__getCADir()=ndg.security.common.openssl.OpenSSLConfig-class.html#__getCADir"><a title="ndg.security.common.openssl.OpenSSLConfig.__getCADir" class="py-name" href="#" onclick="return doclink('link-33', '__getCADir', 'link-33');">__getCADir</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                     <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-34" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.setCADir" class="py-name" href="#" onclick="return doclink('link-34', 'setCADir', 'link-9');">setCADir</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                     <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"directory path for CA configuration files"</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.__getReqDN"></a><div id="OpenSSLConfig.__getReqDN-def"><a name="L140"></a><tt class="py-lineno">140</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__getReqDN-toggle" onclick="return toggle('OpenSSLConfig.__getReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__getReqDN">__getReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__getReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__getReqDN-expanded"><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype reqDN: dict</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">        @return reqDN: Distinguished Name for certificate request"""</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__reqDN</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.__setReqDN"></a><div id="OpenSSLConfig.__setReqDN-def"><a name="L147"></a><tt class="py-lineno">147</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__setReqDN-toggle" onclick="return toggle('OpenSSLConfig.__setReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#__setReqDN">__setReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">reqDN</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__setReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__setReqDN-expanded"><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">        @type reqDN: dict</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring">        @param reqDN: Distinguished Name for certificate request"""</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-35" class="py-name" targets="Variable ndg.security.common.openssl.OpenSSLConfig.reqDN=ndg.security.common.openssl.OpenSSLConfig-class.html#reqDN"><a title="ndg.security.common.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-35', 'reqDN', 'link-35');">reqDN</a></tt><tt class="py-op">,</tt> <tt class="py-name">dict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">,</tt> <tt class="py-string">"Distinguished Name must be dict type"</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">         </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-name">invalidKw</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">k</tt> <tt class="py-keyword">for</tt> <tt class="py-name">k</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dict</tt> \ </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                     <tt class="py-keyword">if</tt> <tt class="py-name">k</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-36', '_certReqDNParamName', 'link-2');">_certReqDNParamName</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">invalidKw</tt><tt class="py-op">:</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-string">"Invalid certificate request keyword(s): %s.  Valid keywords are: %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">invalidKw</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-37', '_certReqDNParamName', 'link-2');">_certReqDNParamName</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__reqDN</tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-38', 'reqDN', 'link-35');">reqDN</a></tt> </tt>
+</div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-39', 'reqDN', 'link-35');">reqDN</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-40" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig.__getReqDN()=ndg.security.common.openssl.OpenSSLConfig-class.html#__getReqDN"><a title="ndg.security.common.openssl.OpenSSLConfig.__getReqDN" class="py-name" href="#" onclick="return doclink('link-40', '__getReqDN', 'link-40');">__getReqDN</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                     <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-41" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig.__setReqDN()=ndg.security.common.openssl.OpenSSLConfig-class.html#__setReqDN"><a title="ndg.security.common.openssl.OpenSSLConfig.__setReqDN" class="py-name" href="#" onclick="return doclink('link-41', '__setReqDN', 'link-41');">__setReqDN</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                     <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"Distinguished Name for certificate request"</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig.read"></a><div id="OpenSSLConfig.read-def"><a name="L168"></a><tt class="py-lineno">168</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.read-toggle" onclick="return toggle('OpenSSLConfig.read');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#read">read</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.read-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.read-expanded"><a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-docstring">"""Override base class version to avoid parsing error with the first</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring">        'RANDFILE = ...' part of the openssl file.  Also, reformat _sections </tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">        to allow for the style of SSL config files where section headings can </tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">        have spaces either side of the brackets e.g. </tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-docstring">        [ sectionName ] </tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-docstring">        and comments can occur on the same line as an option e.g. </tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-docstring">        option = blah # This is option blah</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-docstring">        Reformat _sections to """</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">            <tt class="py-name">file</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-name">fileTxt</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Method ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig.read()=ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig-class.html#read,Method ndg.security.common.AttCert.AttCert.read()=ndg.security.common.AttCert.AttCert-class.html#read,Method ndg.security.common.X509.X509Cert.read()=ndg.security.common.X509.X509Cert-class.html#read,Method ndg.security.common.XMLSec.XMLSecDoc.read()=ndg.security.common.XMLSec.XMLSecDoc-class.html#read,Method ndg.security.common.openssl.OpenSSLConfig.read()=ndg.security.common.openssl.OpenSSLConfig-class.html#read,Method ndg.security.common.wssecurity.WSSecurityConfig.read()=ndg.security.common.wssecurity.WSSecurityConfig-class.html#read,Method ndg.security.common.xmlsec.etree.XMLSecDoc.read()=ndg.security.common.xmlsec.etree.XMLSecDoc-class.html#read,Method ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig.read()=ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig-class.html#read"><a title="ndg.security.client.ssoclient.ssoclient.config.ssoClientMiddleware.SSOClientConfig.read
+ndg.security.common.AttCert.AttCert.read
+ndg.security.common.X509.X509Cert.read
+ndg.security.common.XMLSec.XMLSecDoc.read
+ndg.security.common.openssl.OpenSSLConfig.read
+ndg.security.common.wssecurity.WSSecurityConfig.read
+ndg.security.common.xmlsec.etree.XMLSecDoc.read
+ndg.security.server.sso.sso.config.ssoServiceMiddleware.SSOServiceConfig.read" class="py-name" href="#" onclick="return doclink('link-42', 'read', 'link-42');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-43" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-43', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">                <tt class="py-string">"Error reading OpenSSL config file \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">                                                    <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-name">idx</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-string">'\[\s*\w*\s*\]'</tt><tt class="py-op">,</tt> <tt class="py-name">fileTxt</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">span</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-name">file</tt><tt class="py-op">.</tt><tt class="py-name">seek</tt><tt class="py-op">(</tt><tt class="py-name">idx</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-name">SafeConfigParser</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig.readfp()=ndg.security.common.openssl.OpenSSLConfig-class.html#readfp"><a title="ndg.security.common.openssl.OpenSSLConfig.readfp" class="py-name" href="#" onclick="return doclink('link-44', 'readfp', 'link-44');">readfp</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">file</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">         </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-comment"># Filter section names and reomve comments from options</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">for</tt> <tt class="py-name">section</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.items()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#items,Method ndg.security.common.AttCert.AttCert.items()=ndg.security.common.AttCert.AttCert-class.html#items,Method ndg.security.common.X509.X500DN.items()=ndg.security.common.X509.X500DN-class.html#items,Method ndg.security.common.pylons.security_util.SecuritySession.items()=ndg.security.common.pylons.security_util.SecuritySession-class.html#items,Method ndg.security.common.saml.AttributeAssertion.items()=ndg.security.common.saml.AttributeAssertion-class.html#items,Method ndg.security.common.wssecurity.WSSecurityConfig.items()=ndg.security.common.wssecurity.WSSecurityConfig-class.html#items,Method ndg.security.server.AttAuthority.AttAuthority.items()=ndg.security.server.AttAuthority.AttAuthority-class.html#items,Method ndg.security.server.SessionMgr.SessionMgr.items()=ndg.security.server.SessionMgr.SessionMgr-class.html#items,Method ndg.security.server.ca.SimpleCA.items()=ndg.security.server.ca.SimpleCA-class.html#items"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.items
+ndg.security.common.AttCert.AttCert.items
+ndg.security.common.X509.X500DN.items
+ndg.security.common.pylons.security_util.SecuritySession.items
+ndg.security.common.saml.AttributeAssertion.items
+ndg.security.common.wssecurity.WSSecurityConfig.items
+ndg.security.server.AttAuthority.AttAuthority.items
+ndg.security.server.SessionMgr.SessionMgr.items
+ndg.security.server.ca.SimpleCA.items" class="py-name" href="#" onclick="return doclink('link-45', 'items', 'link-45');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">            <tt class="py-name">newSection</tt> <tt class="py-op">=</tt> <tt class="py-name">section</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">[</tt><tt class="py-name">newSection</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">                                    <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">opt</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig._filtOptVal()=ndg.security.common.openssl.OpenSSLConfig-class.html#_filtOptVal"><a title="ndg.security.common.openssl.OpenSSLConfig._filtOptVal" class="py-name" href="#" onclick="return doclink('link-46', '_filtOptVal', 'link-46');">_filtOptVal</a></tt><tt class="py-op">(</tt><tt class="py-name">optVal</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">                                          <tt class="py-keyword">for</tt> <tt class="py-name">opt</tt><tt class="py-op">,</tt> <tt class="py-name">optVal</tt> <tt class="py-keyword">in</tt> <tt class="py-name">val</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.items
+ndg.security.common.AttCert.AttCert.items
+ndg.security.common.X509.X500DN.items
+ndg.security.common.pylons.security_util.SecuritySession.items
+ndg.security.common.saml.AttributeAssertion.items
+ndg.security.common.wssecurity.WSSecurityConfig.items
+ndg.security.server.AttAuthority.AttAuthority.items
+ndg.security.server.SessionMgr.SessionMgr.items
+ndg.security.server.ca.SimpleCA.items" class="py-name" href="#" onclick="return doclink('link-47', 'items', 'link-45');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">[</tt><tt class="py-name">section</tt><tt class="py-op">]</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">        </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Method ndg.security.common.openssl.OpenSSLConfig._setReqDN()=ndg.security.common.openssl.OpenSSLConfig-class.html#_setReqDN"><a title="ndg.security.common.openssl.OpenSSLConfig._setReqDN" class="py-name" href="#" onclick="return doclink('link-48', '_setReqDN', 'link-48');">_setReqDN</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig._filtOptVal"></a><div id="OpenSSLConfig._filtOptVal-def"><a name="L202"></a><tt class="py-lineno">202</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._filtOptVal-toggle" onclick="return toggle('OpenSSLConfig._filtOptVal');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#_filtOptVal">_filtOptVal</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">optVal</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._filtOptVal-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._filtOptVal-expanded"><a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-docstring">"""For option value, filter out comments and substitute $dir with</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring">        the CA directory location</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring">        @type optVal: string</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-docstring">        @param optVal: option value"""</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-name">filtVal</tt> <tt class="py-op">=</tt> <tt class="py-name">optVal</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'#'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-comment"># Replace $dir with CA directory path</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfig._caDirPat" class="py-name" href="#" onclick="return doclink('link-49', '_caDirPat', 'link-4');">_caDirPat</a></tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caDir</tt><tt class="py-op">,</tt> <tt class="py-name">filtVal</tt><tt class="py-op">)</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">            <tt class="py-comment"># Leave $dir in place as no CA directory has been set</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">return</tt> <tt class="py-name">filtVal</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">         </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.readfp"></a><div id="OpenSSLConfig.readfp-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.readfp-toggle" onclick="return toggle('OpenSSLConfig.readfp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#readfp">readfp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">fp</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.readfp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.readfp-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set to not implemented as using a file object could be problematic</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">        given read() has to seek ahead to the first actual section to avoid</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring">        parsing errors"""</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">,</tt> <tt class="py-string">"Use read method instead"</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_parseReqDN</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._setReqDN"></a><div id="OpenSSLConfig._setReqDN-def"><a name="L225"></a><tt class="py-lineno">225</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._setReqDN-toggle" onclick="return toggle('OpenSSLConfig._setReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.openssl.OpenSSLConfig-class.html#_setReqDN">_setReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._setReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._setReqDN-expanded"><a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set Required DN parameters from the configuration file returning</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-docstring">        them in a dictionary"""</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">         </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-comment"># Nb. Match over line boundaries</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__reqDN</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">            <tt class="py-op">{</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">                <tt class="py-string">'O'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.common.pylons.security_util.SecuritySession.get
+ndg.security.common.wssecurity.WSSecurityConfig.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-50', 'get', 'link-23');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'req_distinguished_name'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">                              <tt class="py-string">'0.organizationName_default'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">                <tt class="py-string">'OU'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.common.pylons.security_util.SecuritySession.get
+ndg.security.common.wssecurity.WSSecurityConfig.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-51', 'get', 'link-23');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'req_distinguished_name'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">                               <tt class="py-string">'0.organizationalUnitName_default'</tt><tt class="py-op">)</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-52" class="py-name"><a title="ndg.security.common.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-52', 'OpenSSLConfigError', 'link-13');">OpenSSLConfigError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">            <tt class="py-string">'Error setting content of Distinguished Name from file "%s": %s'</tt><tt class="py-op">%</tt>\ </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">                                                    <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:55 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
