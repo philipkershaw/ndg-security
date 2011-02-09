@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>myproxy.utils.openssl</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="myproxy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MyProxy Client</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="myproxy-module.html">Package&nbsp;myproxy</a> ::
+        <a href="myproxy.utils-module.html">Package&nbsp;utils</a> ::
+        Module&nbsp;openssl
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="myproxy.utils.openssl-module.html">Module myproxy.utils.openssl</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""OpenSSL utilities module - contains OpenSSLConfig class for</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">parsing OpenSSL configuration files</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"08/02/07"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2009 Science and Technology Facilities Council"</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"""BSD - See LICENSE file in top-level directory"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Philip.Kershaw@stfc.ac.uk"</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable myproxy.__revision__=myproxy-module.html#__revision__,Variable myproxy.client.__revision__=myproxy.client-module.html#__revision__,Variable myproxy.utils.__revision__=myproxy.utils-module.html#__revision__,Variable myproxy.utils.openssl.__revision__=myproxy.utils.openssl-module.html#__revision__"><a title="myproxy.__revision__
+myproxy.client.__revision__
+myproxy.utils.__revision__
+myproxy.utils.openssl.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id:openssl.py 4643 2008-12-15 14:53:53Z pjkersha $'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ConfigParser</tt> <tt class="py-keyword">import</tt> <tt class="py-name">SafeConfigParser</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">M2Crypto</tt><tt class="py-op">.</tt><tt class="py-name">X509</tt> <tt class="py-keyword">import</tt> <tt class="py-name">X509_Name</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfigError"></a><div id="OpenSSLConfigError-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="OpenSSLConfigError-toggle" onclick="return toggle('OpenSSLConfigError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfigError-class.html">OpenSSLConfigError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfigError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OpenSSLConfigError-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt class="py-docstring">"""Exceptions related to OpenSSLConfig class"""</tt>    </tt>
+</div><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig"></a><div id="OpenSSLConfig-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="OpenSSLConfig-toggle" onclick="return toggle('OpenSSLConfig');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html">OpenSSLConfig</a><tt class="py-op">(</tt><tt class="py-base-class">SafeConfigParser</tt><tt class="py-op">,</tt> <tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OpenSSLConfig-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-docstring">"""Wrapper to OpenSSL Configuration file to allow extraction of</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    required distinguished name used for making certificate requests</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    @type _certReqDNParamName: tuple</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar _certReqDNParamName: permissable keys for Distinguished Name</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    (not including CN which gets set separately).  This is used in _setReqDN</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">    to check input</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    @type _caDirPat: string</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar _caDirPat: sub-directory path to CA config directory</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    @type _gridCASubDir: string</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar _gridCASubDir: sub-directory of globus user for CA settings"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">     </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig._certReqDNParamName=myproxy.utils.openssl.OpenSSLConfig-class.html#_certReqDNParamName"><a title="myproxy.utils.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-1', '_certReqDNParamName', 'link-1');">_certReqDNParamName</a></tt> <tt class="py-op">=</tt> <tt class="py-name">X509_Name</tt><tt class="py-op">.</tt><tt class="py-name">nid</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>     </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig._caDirPat=myproxy.utils.openssl.OpenSSLConfig-class.html#_caDirPat"><a title="myproxy.utils.openssl.OpenSSLConfig._caDirPat" class="py-name" href="#" onclick="return doclink('link-2', '_caDirPat', 'link-2');">_caDirPat</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">'\$dir'</tt><tt class="py-op">)</tt>     </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig._gridCASubDir=myproxy.utils.openssl.OpenSSLConfig-class.html#_gridCASubDir"><a title="myproxy.utils.openssl.OpenSSLConfig._gridCASubDir" class="py-name" href="#" onclick="return doclink('link-3', '_gridCASubDir', 'link-3');">_gridCASubDir</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-string">".globus"</tt><tt class="py-op">,</tt> <tt class="py-string">"simpleCA"</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig.__init__"></a><div id="OpenSSLConfig.__init__-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.__init__-toggle" onclick="return toggle('OpenSSLConfig.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">caDir</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.__init__-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-docstring">"""Initial OpenSSL configuration optionally setting a file path to</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        read from</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">        @type filePath: string        </tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">        @param filePath: path to OpenSSL configuration file</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        @type caDir: string</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        @param caDir: directory for SimpleCA.  This is substituted for $dir</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">        in OpenSSL config file where present.  caDir can be left out in </tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        which case the substitution is not done"""</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">         </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">SafeConfigParser</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method myproxy.client.MyProxyClient.__init__()=myproxy.client.MyProxyClient-class.html#__init__,Method myproxy.client._HostCheck.__init__()=myproxy.client._HostCheck-class.html#__init__,Method myproxy.utils.openssl.OpenSSLConfig.__init__()=myproxy.utils.openssl.OpenSSLConfig-class.html#__init__"><a title="myproxy.client.MyProxyClient.__init__
+myproxy.client._HostCheck.__init__
+myproxy.utils.openssl.OpenSSLConfig.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-4');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">         </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_reqDN</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._setFilePath()=myproxy.utils.openssl.OpenSSLConfig-class.html#_setFilePath"><a title="myproxy.utils.openssl.OpenSSLConfig._setFilePath" class="py-name" href="#" onclick="return doclink('link-5', '_setFilePath', 'link-5');">_setFilePath</a></tt><tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig.filePath=myproxy.utils.openssl.OpenSSLConfig-class.html#filePath"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-6', 'filePath', 'link-6');">filePath</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-comment"># Set-up CA directory</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig.setCADir()=myproxy.utils.openssl.OpenSSLConfig-class.html#setCADir"><a title="myproxy.utils.openssl.OpenSSLConfig.setCADir" class="py-name" href="#" onclick="return doclink('link-7', 'setCADir', 'link-7');">setCADir</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig.caDir=myproxy.utils.openssl.OpenSSLConfig-class.html#caDir"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-8', 'caDir', 'link-8');">caDir</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">             </tt>
+<a name="OpenSSLConfig._setFilePath"></a><div id="OpenSSLConfig._setFilePath-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._setFilePath-toggle" onclick="return toggle('OpenSSLConfig._setFilePath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_setFilePath">_setFilePath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._setFilePath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._setFilePath-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">        @type filePath: string</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">        @param filePath: path for OpenSSL configuration file"""</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-9" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-9', 'filePath', 'link-6');">filePath</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-10', 'filePath', 'link-6');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">basestring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-11" class="py-name" targets="Class myproxy.utils.openssl.OpenSSLConfigError=myproxy.utils.openssl.OpenSSLConfigError-class.html"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-11', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Input OpenSSL config file path must "</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                                         <tt class="py-string">"be a string"</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">access</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-12', 'filePath', 'link-6');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">R_OK</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-13" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-13', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Not found or no read access"</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                                          </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-14" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-14', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"OpenSSL config file path is not "</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                                         <tt class="py-string">'valid: "%s": %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-15', 'filePath', 'link-6');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                     </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filePath</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-16', 'filePath', 'link-6');">filePath</a></tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                     </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._getFilePath"></a><div id="OpenSSLConfig._getFilePath-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._getFilePath-toggle" onclick="return toggle('OpenSSLConfig._getFilePath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getFilePath">_getFilePath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._getFilePath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._getFilePath-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        @return: file path for OpenSSL configuration file"""</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__filePath</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt id="link-17" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-17', 'filePath', 'link-6');">filePath</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-18" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._getFilePath()=myproxy.utils.openssl.OpenSSLConfig-class.html#_getFilePath"><a title="myproxy.utils.openssl.OpenSSLConfig._getFilePath" class="py-name" href="#" onclick="return doclink('link-18', '_getFilePath', 'link-18');">_getFilePath</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                        <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-19" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._setFilePath" class="py-name" href="#" onclick="return doclink('link-19', '_setFilePath', 'link-5');">_setFilePath</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"file path for configuration file"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">             </tt>
+<a name="OpenSSLConfig.setCADir"></a><div id="OpenSSLConfig.setCADir-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.setCADir-toggle" onclick="return toggle('OpenSSLConfig.setCADir');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#setCADir">setCADir</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">caDir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.setCADir-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.setCADir-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        @type caDir: string</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        @param caDir: path for OpenSSL configuration file"""</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-20" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-20', 'caDir', 'link-8');">caDir</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-comment"># Try to set default from 'HOME' env variable</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">homeDir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">environ</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'HOME'</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">homeDir</tt><tt class="py-op">:</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">homeDir</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._gridCASubDir" class="py-name" href="#" onclick="return doclink('link-21', '_gridCASubDir', 'link-3');">_gridCASubDir</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-22" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-22', 'caDir', 'link-8');">caDir</a></tt><tt class="py-op">,</tt> <tt class="py-name">basestring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-23" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-23', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Input OpenSSL CA directory path "</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                                         <tt class="py-string">"must be a string"</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">access</tt><tt class="py-op">(</tt><tt id="link-24" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-24', 'caDir', 'link-8');">caDir</a></tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">R_OK</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-25" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-25', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Not found or no read access"</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                                          </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-26" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-26', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">"OpenSSL CA directory path is not "</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                                         <tt class="py-string">'valid: "%s": %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.filePath" class="py-name" href="#" onclick="return doclink('link-27', 'filePath', 'link-6');">filePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                     </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-28', 'caDir', 'link-8');">caDir</a></tt> </tt>
+</div><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                     </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._getCADir"></a><div id="OpenSSLConfig._getCADir-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._getCADir-toggle" onclick="return toggle('OpenSSLConfig._getCADir');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getCADir">_getCADir</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._getCADir-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._getCADir-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype caDir: string</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">        @return caDir: directory path for CA configuration files"""</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt> </tt>
+</div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt id="link-29" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.caDir" class="py-name" href="#" onclick="return doclink('link-29', 'caDir', 'link-8');">caDir</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-30" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._getCADir()=myproxy.utils.openssl.OpenSSLConfig-class.html#_getCADir"><a title="myproxy.utils.openssl.OpenSSLConfig._getCADir" class="py-name" href="#" onclick="return doclink('link-30', '_getCADir', 'link-30');">_getCADir</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                     <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.setCADir" class="py-name" href="#" onclick="return doclink('link-31', 'setCADir', 'link-7');">setCADir</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                     <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"directory path for CA configuration files"</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._getReqDN"></a><div id="OpenSSLConfig._getReqDN-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._getReqDN-toggle" onclick="return toggle('OpenSSLConfig._getReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getReqDN">_getReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._getReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._getReqDN-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get property method</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype reqDN: dict</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">        @return reqDN: Distinguished Name for certificate request"""</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_reqDN</tt> </tt>
+</div><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._setReqDN"></a><div id="OpenSSLConfig._setReqDN-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._setReqDN-toggle" onclick="return toggle('OpenSSLConfig._setReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_setReqDN">_setReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">reqDN</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._setReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._setReqDN-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set property method</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">        @type reqDN: dict</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">        @param reqDN: Distinguished Name for certificate request"""</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-32" class="py-name" targets="Variable myproxy.utils.openssl.OpenSSLConfig.reqDN=myproxy.utils.openssl.OpenSSLConfig-class.html#reqDN"><a title="myproxy.utils.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-32', 'reqDN', 'link-32');">reqDN</a></tt><tt class="py-op">,</tt> <tt class="py-name">dict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">(</tt><tt class="py-string">"Distinguished Name must be dict type"</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">         </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-name">invalidKw</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt id="link-33" class="py-name" targets="Variable myproxy.client.MyProxyClient.k=myproxy.client.MyProxyClient-class.html#k"><a title="myproxy.client.MyProxyClient.k" class="py-name" href="#" onclick="return doclink('link-33', 'k', 'link-33');">k</a></tt> <tt class="py-keyword">for</tt> <tt id="link-34" class="py-name"><a title="myproxy.client.MyProxyClient.k" class="py-name" href="#" onclick="return doclink('link-34', 'k', 'link-33');">k</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">dict</tt> \ </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                     <tt class="py-keyword">if</tt> <tt id="link-35" class="py-name"><a title="myproxy.client.MyProxyClient.k" class="py-name" href="#" onclick="return doclink('link-35', 'k', 'link-33');">k</a></tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt id="link-36" class="py-name" targets="Class myproxy.utils.openssl.OpenSSLConfig=myproxy.utils.openssl.OpenSSLConfig-class.html"><a title="myproxy.utils.openssl.OpenSSLConfig" class="py-name" href="#" onclick="return doclink('link-36', 'OpenSSLConfig', 'link-36');">OpenSSLConfig</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-37', '_certReqDNParamName', 'link-1');">_certReqDNParamName</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">invalidKw</tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">(</tt><tt class="py-string">"Invalid certificate request keyword(s): "</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                                 <tt class="py-string">"%s.  Valid keywords are: %s"</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                                 <tt class="py-op">(</tt><tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">invalidKw</tt><tt class="py-op">)</tt><tt class="py-op">,</tt>  </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">                                 <tt class="py-string">', '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-38" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig" class="py-name" href="#" onclick="return doclink('link-38', 'OpenSSLConfig', 'link-36');">OpenSSLConfig</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._certReqDNParamName" class="py-name" href="#" onclick="return doclink('link-39', '_certReqDNParamName', 'link-1');">_certReqDNParamName</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_reqDN</tt> <tt class="py-op">=</tt> <tt id="link-40" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-40', 'reqDN', 'link-32');">reqDN</a></tt> </tt>
+</div><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig.reqDN" class="py-name" href="#" onclick="return doclink('link-41', 'reqDN', 'link-32');">reqDN</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-42" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._getReqDN()=myproxy.utils.openssl.OpenSSLConfig-class.html#_getReqDN"><a title="myproxy.utils.openssl.OpenSSLConfig._getReqDN" class="py-name" href="#" onclick="return doclink('link-42', '_getReqDN', 'link-42');">_getReqDN</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                     <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._setReqDN()=myproxy.utils.openssl.OpenSSLConfig-class.html#_setReqDN"><a title="myproxy.utils.openssl.OpenSSLConfig._setReqDN" class="py-name" href="#" onclick="return doclink('link-43', '_setReqDN', 'link-43');">_setReqDN</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                     <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"Distinguished Name for certificate request"</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig.read"></a><div id="OpenSSLConfig.read-def"><a name="L161"></a><tt class="py-lineno">161</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.read-toggle" onclick="return toggle('OpenSSLConfig.read');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#read">read</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.read-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.read-expanded"><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-docstring">"""Override base class version to avoid parsing error with the first</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">        'RANDFILE = ...' part of the openssl file.  Also, reformat _sections </tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">        to allow for the style of SSL config files where section headings can </tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring">        have spaces either side of the brackets e.g. </tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-docstring">        [ sectionName ] </tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">        and comments can occur on the same line as an option e.g. </tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">        option = blah # This is option blah</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">        Reformat _sections to """</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">            <tt class="py-name">file</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filePath</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt class="py-name">fileTxt</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig.read()=myproxy.utils.openssl.OpenSSLConfig-class.html#read"><a title="myproxy.utils.openssl.OpenSSLConfig.read" class="py-name" href="#" onclick="return doclink('link-44', 'read', 'link-44');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-45" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-45', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">'Reading OpenSSL config file "%s": %s'</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                                                    <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filePath</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-name">idx</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-string">'\[\s*\w*\s*\]'</tt><tt class="py-op">,</tt> <tt class="py-name">fileTxt</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">span</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-name">file</tt><tt class="py-op">.</tt><tt class="py-name">seek</tt><tt class="py-op">(</tt><tt class="py-name">idx</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">SafeConfigParser</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig.readfp()=myproxy.utils.openssl.OpenSSLConfig-class.html#readfp"><a title="myproxy.utils.openssl.OpenSSLConfig.readfp" class="py-name" href="#" onclick="return doclink('link-46', 'readfp', 'link-46');">readfp</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">file</tt><tt class="py-op">)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">         </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-comment"># Filter section names and remove comments from options</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">for</tt> <tt class="py-name">section</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">            <tt class="py-name">newSection</tt> <tt class="py-op">=</tt> <tt class="py-name">section</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">[</tt><tt class="py-name">newSection</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">                                    <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">opt</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method myproxy.utils.openssl.OpenSSLConfig._filtOptVal()=myproxy.utils.openssl.OpenSSLConfig-class.html#_filtOptVal"><a title="myproxy.utils.openssl.OpenSSLConfig._filtOptVal" class="py-name" href="#" onclick="return doclink('link-47', '_filtOptVal', 'link-47');">_filtOptVal</a></tt><tt class="py-op">(</tt><tt class="py-name">optVal</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">                                          <tt class="py-keyword">for</tt> <tt class="py-name">opt</tt><tt class="py-op">,</tt> <tt class="py-name">optVal</tt> <tt class="py-keyword">in</tt> <tt class="py-name">val</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_sections</tt><tt class="py-op">[</tt><tt class="py-name">section</tt><tt class="py-op">]</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._setReqDN" class="py-name" href="#" onclick="return doclink('link-48', '_setReqDN', 'link-43');">_setReqDN</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">     </tt>
+<a name="OpenSSLConfig._filtOptVal"></a><div id="OpenSSLConfig._filtOptVal-def"><a name="L194"></a><tt class="py-lineno">194</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._filtOptVal-toggle" onclick="return toggle('OpenSSLConfig._filtOptVal');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_filtOptVal">_filtOptVal</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">optVal</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._filtOptVal-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._filtOptVal-expanded"><a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt class="py-docstring">"""For option value, filter out comments and substitute $dir with</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-docstring">        the CA directory location</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-docstring">        @type optVal: string</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-docstring">        @param optVal: option value"""</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-name">filtVal</tt> <tt class="py-op">=</tt> <tt class="py-name">optVal</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'#'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-comment"># Replace $dir with CA directory path</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">return</tt> <tt id="link-49" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig" class="py-name" href="#" onclick="return doclink('link-49', 'OpenSSLConfig', 'link-36');">OpenSSLConfig</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfig._caDirPat" class="py-name" href="#" onclick="return doclink('link-50', '_caDirPat', 'link-2');">_caDirPat</a></tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_caDir</tt><tt class="py-op">,</tt> <tt class="py-name">filtVal</tt><tt class="py-op">)</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-comment"># Leave $dir in place as no CA directory has been set</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">return</tt> <tt class="py-name">filtVal</tt> </tt>
+</div><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">         </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig.readfp"></a><div id="OpenSSLConfig.readfp-def"><a name="L209"></a><tt class="py-lineno">209</tt> <a class="py-toggle" href="#" id="OpenSSLConfig.readfp-toggle" onclick="return toggle('OpenSSLConfig.readfp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#readfp">readfp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">fp</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig.readfp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig.readfp-expanded"><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set to not implemented as using a file object could be problematic</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-docstring">        given read() has to seek ahead to the first actual section to avoid</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-docstring">        parsing errors"""</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">"Use read method instead"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="OpenSSLConfig._setReqDN"></a><div id="OpenSSLConfig._setReqDN-def"><a name="L216"></a><tt class="py-lineno">216</tt> <a class="py-toggle" href="#" id="OpenSSLConfig._setReqDN-toggle" onclick="return toggle('OpenSSLConfig._setReqDN');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="myproxy.utils.openssl.OpenSSLConfig-class.html#_setReqDN">_setReqDN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenSSLConfig._setReqDN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OpenSSLConfig._setReqDN-expanded"><a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set Required DN parameters from the configuration file returning</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-docstring">        them in a dictionary"""</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">         </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-comment"># Nb. Match over line boundaries</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_reqDN</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">                <tt class="py-string">'O'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'req_distinguished_name'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">                              <tt class="py-string">'0.organizationName_default'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">                <tt class="py-string">'OU'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'req_distinguished_name'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">                               <tt class="py-string">'0.organizationalUnitName_default'</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-51" class="py-name"><a title="myproxy.utils.openssl.OpenSSLConfigError" class="py-name" href="#" onclick="return doclink('link-51', 'OpenSSLConfigError', 'link-11');">OpenSSLConfigError</a></tt><tt class="py-op">(</tt><tt class="py-string">'Setting content of Distinguished Name '</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                                     <tt class="py-string">'from file "%s": %s'</tt> <tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filePath</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="myproxy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MyProxy Client</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Fri Feb 27 13:59:02 2009</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
