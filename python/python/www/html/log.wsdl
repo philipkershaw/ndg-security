@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="log"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="debugRequest">
+    <part name="debugReq" type="xsd:string"/>
+  </message>
+
+  <message name="debugResponse">
+    <part name="debugResp" type="xsd:string"/>
+  </message>
+
+  <message name="infoRequest">
+    <part name="infoReq" type="xsd:string"/>
+  </message>
+
+  <message name="infoResponse">
+    <part name="infoResp" type="xsd:string"/>
+  </message>
+
+  <message name="warningRequest">
+    <part name="warningReq" type="xsd:string"/>
+  </message>
+
+  <message name="warningResponse">
+    <part name="warningResp" type="xsd:string"/>
+  </message>
+
+  <message name="errorRequest">
+    <part name="errorReq" type="xsd:string"/>
+  </message>
+
+  <message name="errorResponse">
+    <part name="errorResp" type="xsd:string"/>
+  </message>
+
+  
+  <portType name="log">
+    <operation name="debug">
+      <input message="tns:debugRequest"/>
+      <output message="tns:debugResponse"/>
+    </operation>
+
+    <operation name="info">
+      <input message="tns:infoRequest"/>
+      <output message="tns:infoResponse"/>
+    </operation>
+
+    <operation name="warning">
+      <input message="tns:warningRequest"/>
+      <output message="tns:warningResponse"/>
+    </operation>
+
+    <operation name="error">
+      <input message="tns:errorRequest"/>
+      <output message="tns:errorResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="logBinding" type="tns:log">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+                      
+    <operation name="debug">
+      <soap:operation soapAction="urn:log#debug"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </output> 
+    </operation>
+
+    <operation name="info">
+      <soap:operation soapAction="urn:log#info"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </output> 
+    </operation>
+
+    <operation name="warning">
+      <soap:operation soapAction="urn:log#warning"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </output> 
+    </operation>    
+
+    <operation name="error">
+      <soap:operation soapAction="urn:log#error"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:log" use="encoded"/>
+      </output> 
+    </operation>    
+  </binding>
+
+  <service name="logService">
+    <documentation>NDG Logging Web Service</documentation>
+    <port name="log" binding="tns:logBinding">
+      <soap:address location="http://localhost:5100"/>
+    </port>
+  </service>
+</definitions>

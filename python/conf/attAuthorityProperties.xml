@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAprop>
+<!--
+    <name>BODC</name>
+    <keyFile></keyFile>
+    <keyPwd></keyPwd>
+    <certFile></certFile>
+-->
+    <name>BADC</name>
+    <keyFile></keyFile>
+    <keyPwd></keyPwd>
+    <certFile></certFile>
+    <caCertFile></caCertFile>
+    <attCertLifeTime></attCertLifeTime>
+	<attCertNotBeforeOff></attCertNotBeforeOff>
+    <attCertFilePfx></attCertFilePfx>
+    <attCertFileSfx></attCertFileSfx>
+    <mapConfigFile></mapConfigFile>
+    <attCertDir></attCertDir>
+    <dnSeparator></dnSeparator>
+    <usrRolesModFilePath></usrRolesModFilePath>
+    <usrRolesModName></usrRolesModName>
+    <usrRolesClassName></usrRolesClassName>
+    <usrRolesPropFile></usrRolesPropFile>
+</AAprop>

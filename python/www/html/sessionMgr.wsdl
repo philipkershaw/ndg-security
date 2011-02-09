@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="sessionMgr"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="addUserRequest">
+    <part name="addUserReq" type="xsd:string"/>
+  </message>
+
+  <message name="addUserResponse">
+    <part name="addUserResp" type="xsd:string"/>
+  </message>
+
+  <message name="connectRequest">
+    <part name="connectReq" type="xsd:string"/>
+  </message>
+
+  <message name="connectResponse">
+    <part name="connectResp" type="xsd:string"/>
+  </message>
+
+  <message name="authorisationRequest">
+    <part name="authorisationReq" type="xsd:string"/>
+  </message>
+
+  <message name="authorisationResponse">
+    <part name="authorisationResp" type="xsd:string"/>
+  </message>
+
+  <message name="pubKeyRequest">
+    <part name="pubKeyReq" type="xsd:string"/>
+  </message>
+
+  <message name="pubKeyResponse">
+    <part name="pubKeyResp" type="xsd:string"/>
+  </message>
+
+  
+  <portType name="sessionMgr">
+    <operation name="addUser">
+      <input message="tns:addUserRequest"/>
+      <output message="tns:addUserResponse"/>
+    </operation>
+    
+    <operation name="connect">
+      <input message="tns:connectRequest"/>
+      <output message="tns:connectResponse"/>
+    </operation>
+
+    <operation name="reqAuthorisation">
+      <input message="tns:authorisationRequest"/>
+      <output message="tns:authorisationResponse"/>
+    </operation>
+
+    <operation name="getPubKey">
+      <input message="tns:pubKeyRequest"/>
+      <output message="tns:pubKeyResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="sessionMgrBinding" type="tns:sessionMgr">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addUser">
+      <soap:operation soapAction="urn:sessionMgr#addUser"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output> 
+    </operation>
+    <operation name="connect">
+      <soap:operation soapAction="urn:sessionMgr#connect"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output> 
+    </operation>
+    <operation name="reqAuthorisation">
+      <soap:operation soapAction="urn:sessionMgr#reqAuthorisation"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output>
+    </operation>
+    <operation name="getPubKey">
+      <soap:operation soapAction="urn:sessionMgr#getPubKey"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="sessionMgrService">
+    <documentation>NDG BADC Session Manager Web Service</documentation>
+    <port name="sessionMgr" binding="tns:sessionMgrBinding">
+      <soap:address location=""/>
+    </port>
+  </service>
+</definitions>
