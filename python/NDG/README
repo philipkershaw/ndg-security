@@ -1,0 +1,6 @@
+NDG Prototype version 0.63 24/04/06
+___________________________________
+
+To install:
+
+$ <path to NDG python> setup.py install

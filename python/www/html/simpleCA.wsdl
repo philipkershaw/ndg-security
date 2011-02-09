@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="simpleCA"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="reqCertRequest">
+    <part name="usrCertReq" type="xsd:string"/>
+  </message>
+
+  <message name="reqCertResponse">
+    <part name="usrCert" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  
+  <portType name="simpleCA">
+    <operation name="reqCert">
+      <input message="tns:reqCertRequest"/>
+      <output message="tns:reqCertResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="simpleCABinding" type="tns:simpleCA">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="reqCert">
+      <soap:operation soapAction="urn:simpleCA#reqCert"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:simpleCA" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:simpleCA" use="encoded"/>
+      </output> 
+    </operation>
+  </binding>
+
+  <service name="simpleCAService">
+    <documentation>simpleCA web service</documentation>
+    <port name="simpleCA" binding="tns:simpleCABinding">
+      <soap:address location=""/>
+    </port>
+  </service>
+</definitions>

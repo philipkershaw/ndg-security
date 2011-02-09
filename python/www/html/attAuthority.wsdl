@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="attAuthority"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="authorisationRequest">
+    <part name="authorisationReq" type="xsd:string"/>
+  </message>
+
+  <message name="authorisationResponse">
+    <part name="authorisationResp" type="xsd:string"/>
+  </message>
+
+  <message name="trustedHostInfoRequest">
+    <part name="trustedHostInfoReq" type="xsd:string"/>
+  </message>
+
+  <message name="trustedHostInfoResponse">
+    <part name="trustedHostInfoResp" type="xsd:string"/>
+  </message>
+
+  <message name="pubKeyRequest">
+    <part name="pubKeyReq" type="xsd:string"/>
+  </message>
+
+  <message name="pubKeyResponse">
+    <part name="pubKeyResp" type="xsd:string"/>
+  </message>
+
+  
+  <portType name="attAuthority">
+    <operation name="reqAuthorisation">
+      <input message="tns:authorisationRequest"/>
+      <output message="tns:authorisationResponse"/>
+    </operation>
+
+    <operation name="getTrustedHostInfo">
+      <input message="tns:trustedHostInfoRequest"/>
+      <output message="tns:trustedHostInfoResponse"/>
+    </operation>
+
+    <operation name="getPubKey">
+      <input message="tns:pubKeyRequest"/>
+      <output message="tns:pubKeyResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="attAuthorityBinding" type="tns:attAuthority">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="reqAuthorisation">
+      <soap:operation soapAction="urn:attAuthority#reqAuthorisation"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </output> 
+    </operation>
+
+    <operation name="getTrustedHostInfo">
+      <soap:operation soapAction="urn:attAuthority#getTrustedHostInfo"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </output> 
+    </operation>
+
+    <operation name="getPubKey">
+      <soap:operation soapAction="urn:attAuthority#getPubKey"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:attAuthority" use="encoded"/>
+      </output> 
+    </operation>    
+  </binding>
+
+  <service name="attAuthorityService">
+    <documentation>NDG Attribute Authority Web Service</documentation>
+    <port name="attAuthority" binding="tns:attAuthorityBinding">
+      <soap:address location=""/>
+    </port>
+  </service>
+</definitions>
