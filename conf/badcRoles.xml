@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<roleSet>
+<role>
+   <name>active</name>
+   <description>Aerosol and Chemical Transport In Tropical Convection</description>
+</role>
+<role>
+   <name>adriex</name>
+   <description>ADRIEX (Aerosol Direct Radiative Impact Experiment)</description>
+</role>
+<role>
+   <name>amma</name>
+   <description>African Monsoon Multidisciplinary Analyses (AMMA) Dataset</description>
+</role>
+<role>
+   <name>ammaukmo</name>
+   <description>Near real time Met Office data for AMMA project</description>
+</role>
+<role>
+   <name>ardaaos</name>
+   <description>Assimilation of Remote-sensed Data for Applications in the Atmospheric and Oceanographic Sciences</description>
+</role>
+<role>
+   <name>assim</name>
+   <description>Met Office - Stratospheric Assimilated Data</description>
+</role>
+<role>
+   <name>autex</name>
+   <description>Autumn and Winter Experiments (AUTEX/WINTEX) Dataset</description>
+</role>
+<role>
+   <name>buncefield</name>
+   <description>Buncefield Smoke Experiment</description>
+</role>
+<role>
+   <name>caesar</name>
+   <description>Cirrus and Anvils: European Satellite and Airborne Radiation Measurements Project (CAESAR) Dataset</description>
+</role>
+<role>
+   <name>cardington</name>
+   <description>UK Met Office Cardington dataset</description>
+</role>
+<role>
+   <name>cet</name>
+   <description>Met Office - Historical Central England Temperature Data</description>
+</role>
+<role>
+   <name>chablis</name>
+   <description>Chemistry of the Antarctic Boundary Layer and the Interface with Snow</description>
+</role>
+<role>
+   <name>charts</name>
+   <description>UKMO Charts</description>
+</role>
+<role>
+   <name>chobs</name>
+   <description>Chilbolton data (CFARR)</description>
+</role>
+<role>
+   <name>claus</name>
+   <description>CLAUS data</description>
+</role>
+<role>
+   <name>climod</name>
+   <description>Met Office HADCM2 data</description>
+</role>
+<role>
+   <name>cloudmap</name>
+   <description>Cloudmap 2 data</description>
+</role>
+<role>
+   <name>coapec</name>
+   <description>Met Office - COAPEC data</description>
+</role>
+<role>
+   <name>covex</name>
+   <description>Contrail Forecast Verification Experiment (COVEX) Dataset</description>
+</role>
+<role>
+   <name>cpdn</name>
+   <description>Simulation ensembles from the Climateprediction.net project</description>
+</role>
+<role>
+   <name>cryostat</name>
+   <description>CRYOSTAT</description>
+</role>
+<role>
+   <name>csip</name>
+   <description>Convective Storms Initation Project (CSIP)</description>
+</role>
+<role>
+   <name>csipukmo</name>
+   <description>CSIP Met Office data</description>
+</role>
+<role>
+   <name>cwave</name>
+   <description>CWAVE</description>
+</role>
+<role>
+   <name>cwvc</name>
+   <description>Cloud Water Vapour and Climate (CWVC) data</description>
+</role>
+<role>
+   <name>dabex</name>
+   <description>Dust and Biomass Experiment (DABEX) Dataset</description>
+</role>
+<role>
+   <name>eaquate</name>
+   <description>European AQUA Thermodynamic Experiment (EAQUATE)</description>
+</role>
+<role>
+   <name>ecmwfera</name>
+   <description>ECMWF - Reanalysis data</description>
+</role>
+<role>
+   <name>ecmwffor</name>
+   <description>ECMWF - Forecast data</description>
+</role>
+<role>
+   <name>ecmwfop</name>
+   <description>ECMWF - Operational data</description>
+</role>
+<role>
+   <name>ecmwfop</name>
+   <description>ECMWF Operational data - German users</description>
+</role>
+<role>
+   <name>ecmwftrj</name>
+   <description>ECMWF - Trajectories</description>
+</role>
+<role>
+   <name>envmip1b</name>
+   <description>ENVISAT MIPAS 1b data</description>
+</role>
+<role>
+   <name>envsci1b</name>
+   <description>Envisat Scimachy data</description>
+</role>
+<role>
+   <name>era</name>
+   <description>ECMWF ERA-15 and ERA-40</description>
+</role>
+<role>
+   <name>era</name>
+   <description>ECMWF ERA-40 and ERA-15 data - German users</description>
+</role>
+<role>
+   <name>era4t</name>
+   <description>ECMWF - 40 year Reanalysis</description>
+</role>
+<role>
+   <name>export</name>
+   <description>EXPORT data</description>
+</role>
+<role>
+   <name>faam_admin</name>
+   <description>FAAM general access</description>
+</role>
+<role>
+   <name>faam_core</name>
+   <description>FAAM Core data</description>
+</role>
+<role>
+   <name>fluxex</name>
+   <description>Flux Experiment (FLUXEX) Dataset</description>
+</role>
+<role>
+   <name>gmslp</name>
+   <description>Met Office - GMSLP data</description>
+</role>
+<role>
+   <name>gome</name>
+   <description>Global Ozone Monitoring Experiment (GOME) data</description>
+</role>
+<role>
+   <name>gosta</name>
+   <description>Met Office - Hadley Centre SST data</description>
+</role>
+<role>
+   <name>hadat</name>
+   <description>Met Office - HadAT Data</description>
+</role>
+<role>
+   <name>hadcm3con</name>
+   <description>HadCM3 Control Run Model Data</description>
+</role>
+<role>
+   <name>hadgem1-ctl</name>
+   <description>Met Office HadGEM1 control</description>
+</role>
+<role>
+   <name>hadisst</name>
+   <description>Met Office - HadISST data</description>
+</role>
+<role>
+   <name>hadrt</name>
+   <description>Met Office - HadRT data</description>
+</role>
+<role>
+   <name>haloel2</name>
+   <description>The Halogen Occultation Experiment L2 data</description>
+</role>
+<role>
+   <name>height</name>
+   <description>Met Office - Northern Hemisphere Geopotential Height Data</description>
+</role>
+<role>
+   <name>higem</name>
+   <description>NERC - Met Office High Resolution Earth System Model Data</description>
+</role>
+<role>
+   <name>hirdls</name>
+   <description>HIRDLS</description>
+</role>
+<role>
+   <name>hradios</name>
+   <description>Met Office - UK High resolution radiosone data</description>
+</role>
+<role>
+   <name>hyrex</name>
+   <description>Hydrological Radar Experiment data</description>
+</role>
+<role>
+   <name>iasi</name>
+   <description>Infrared Atmospheric Sounding Interferometer (IASI 1/2/3) Dataset</description>
+</role>
+<role>
+   <name>icepic</name>
+   <description>Ice and Precipitation Initiation in Cumulus (ICEPIC) Dataset</description>
+</role>
+<role>
+   <name>isamsl2</name>
+   <description>Improved Stratospheric And Mesospheric Sounder - level 2</description>
+</role>
+<role>
+   <name>itop</name>
+   <description>ITOP (Intercontinental Transport of Ozone and Precursors)</description>
+</role>
+<role>
+   <name>jet2k</name>
+   <description>JET2000 data</description>
+</role>
+<role>
+   <name>land-emiss</name>
+   <description>Land Emissivity Experiment (LAND-EMISS) Dataset</description>
+</role>
+<role>
+   <name>link</name>
+   <description>Met Office data from the Climate Impacts Link Project</description>
+</role>
+<role>
+   <name>micromix</name>
+   <description>Microwave Investigation of Mixed Phase Clouds (MICROMIX) Dataset</description>
+</role>
+<role>
+   <name>mlsl3</name>
+   <description>MLS Prototype H2O data</description>
+</role>
+<role>
+   <name>mrf</name>
+   <description>Met Office - Met. Research Flight data</description>
+</role>
+<role>
+   <name>msf</name>
+   <description>RAL Molecular Spectroscopy Facility (MSF)</description>
+</role>
+<role>
+   <name>msfmore</name>
+   <description>MSF Experiment more</description>
+</role>
+<role>
+   <name>msg</name>
+   <description>MSG images</description>
+</role>
+<role>
+   <name>mslp</name>
+   <description>Met Office - MSLP data</description>
+</role>
+<role>
+   <name>mst</name>
+   <description>MST radar facility</description>
+</role>
+<role>
+   <name>ndsc</name>
+   <description>Network for the Detection of Stratopheric Change data</description>
+</role>
+<role>
+   <name>neon</name>
+   <description>NEON Infra-red camera project</description>
+</role>
+<role>
+   <name>nimrod</name>
+   <description>Met Office - Nimrod data</description>
+</role>
+<role>
+   <name>nu-wave</name>
+   <description>Ice Nuclearisation in Wave Clouds (NU-WAVE) Dataset</description>
+</role>
+<role>
+   <name>polltro</name>
+   <description>Polluted Troposphere Programme</description>
+</role>
+<role>
+   <name>pum4_5</name>
+   <description>Met Office - Ported Unified Model (PUM) v4.5 software</description>
+</role>
+<role>
+   <name>pum5_5</name>
+   <description>Met Office - Ported Unified Model (PUM) v5.5 software</description>
+</role>
+<role>
+   <name>pum6_0</name>
+   <description>Met Office - Ported Unified Model (PUM) v6.0 software</description>
+</role>
+<role>
+   <name>pum6_1</name>
+   <description>Met Office - Ported Unified Model (PUM) v6.1 software</description>
+</role>
+<role>
+   <name>radios</name>
+   <description>Met Office - Radiosonde Data</description>
+</role>
+<role>
+   <name>rapid</name>
+   <description>RAPID Climate Change</description>
+</role>
+<role>
+   <name>raptor</name>
+   <description>Redistribution of Air Pollutants through Orographic Processes (RAPTOR) Dataset</description>
+</role>
+<role>
+   <name>rico</name>
+   <description>Rain in Cumulus over the Ocean (RICO) Dataset</description>
+</role>
+<role>
+   <name>sage2</name>
+   <description>Stratospheric Aerosol and Gas Experiment II (SAGE II)</description>
+</role>
+<role>
+   <name>sage3</name>
+   <description>Stratospheric Aerosol and Gas Experiment III (SAGE III)</description>
+</role>
+<role>
+   <name>solve2</name>
+   <description>SOLVE2 project</description>
+</role>
+<role>
+   <name>surface</name>
+   <description>Met Office - MIDAS Land Surface Station Data</description>
+</role>
+<role>
+   <name>synop</name>
+   <description>Met Office - European Synoptic Data</description>
+</role>
+<role>
+   <name>t-rex</name>
+   <description>Sierra Wave Rotor Project (T-REX) Dataset</description>
+</role>
+<role>
+   <name>tovs</name>
+   <description>Met Office - TIROS Operational Vertical Sounder</description>
+</role>
+<role>
+   <name>traj</name>
+   <description>Web Trajectory Service</description>
+</role>
+<role>
+   <name>um</name>
+   <description>Met Office - Unified Model Data</description>
+</role>
+<role>
+   <name>umfor</name>
+   <description>Met Office - Unified Model Forecast Data</description>
+</role>
+<role>
+   <name>urgent</name>
+   <description>Urban Regeneration programme (URGENT) data</description>
+</role>
+<role>
+   <name>utls</name>
+   <description>Upper Troposphere-Lower Stratosphere experiment (UTLS Ozone)</description>
+</role>
+<role>
+   <name>virtem</name>
+   <description>VIRTEM data</description>
+</role>
+<role>
+   <name>visurb</name>
+   <description>Urban Visibility in the UK (VISURB-UK) Dataset</description>
+</role>
+<role>
+   <name>windprof</name>
+   <description>Met Office - Wind Profiler Data</description>
+</role>
+<role>
+   <name>metOfficeForm</name>
+   <description>User has signed Met Office agreement</description>
+</role>
+</roleSet>

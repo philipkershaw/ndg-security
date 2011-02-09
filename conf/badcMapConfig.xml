@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+    <thisHost name="BADC">
+        <aaURI>http://aa.ceda.rl.ac.uk</aaURI>
+        <aaDN>/CN=AttributeAuthority/O=NDG/OU=BADC</aaDN>
+        <loginURI>https://ndgbeta.badc.rl.ac.uk/login</loginURI>
+        <loginServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginServerDN>
+        <loginRequestServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginRequestServerDN>
+    </thisHost>
+
+    <trusted name="BODC">
+        <aaURI>http://aa.bodc.nerc.ac.uk/</aaURI>
+        <aaDN>/O=NDG/OU=BODC/CN=AttributeAuthority</aaDN>
+        <loginURI>https://grid.bodc.nerc.ac.uk/ndg/login</loginURI>
+        <loginServerDN>/C=GB/ST=Merseyside/L=Liverpool/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginServerDN>
+        <loginRequestServerDN>/C=GB/ST=Merseyside/L=Liverpool/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginRequestServerDN>
+        <role remote="RapidMemb" local="rapid"/>
+    </trusted>
+
+    <trusted name="NEODAAS">
+         <aaURI>http://wwwdev.neodaas.ac.uk/projects/ndg/attAuthority</aaURI>
+         <loginURI>https://wwwdev.neodaas.ac.uk/projects/ndg/login</loginURI>
+         <aaDN>O=NDG/OU=NEODAAS/CN=AttributeAuthority</aaDN>
+         <loginServerDN>/O=Plymouth Marine Laboratory/OU=RSG/CN=wwwdev.neodaas.ac.uk/emailAddress=rsgweb@pml.ac.uk</loginServerDN>
+         <loginRequestServerDN>/O=Plymouth Marine Laboratory/OU=RSG/CN=wwwdev.neodaas.ac.uk/emailAddress=rsgweb@pml.ac.uk</loginRequestServerDN>
+        <!--<loginRequestServerDN>/C=GB/ST=Devon/L=Plymouth/O=Plymouth Marine Laboratory/OU=Remote Sensing Group/CN=wwwdev.neodaas.ac.uk/emailAddress=rsgweb@pml.ac.uk</loginRequestServerDN>-->
+        <role remote="rapid" local="rapid"/>
+    </trusted>
+    
+    <trusted name="NOCS">
+        <aaURI>http://ndg.noc.soton.ac.uk/AttributeAuthority</aaURI>
+        <loginURI>http://ndg.noc.soton.ac.uk/login</loginURI>
+        <aaDN>/O=NDG/OU=NOCS/CN=AttributeAuthority`</aaDN>
+        <loginServerDN/>
+        <loginRequestServerDN>/C=GB/ST=Hampshire/O=NOCS/OU=ITG/CN=ndg.noc.soton.ac.uk/emailAddress=bwd@noc.soton.ac.uk</loginRequestServerDN>
+    </trusted>
+</AAmap>
