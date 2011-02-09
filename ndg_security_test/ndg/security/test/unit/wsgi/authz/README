@@ -1,0 +1,15 @@
+WSGI Authorization Middleware Unit Tests
+========================================
+These tests call ndg.security.server.wsgi.authz.SAMLAuthorizationMiddleware 
+and ndg.security.server.wsgi.authz.NDGAuthorizationMiddleware via
+paste.fixture.  An attribute authority service needs to be running in order
+for the middleware to check user attributes,  In a separate terminal start
+this service:
+
+$ python ../../../config/attributeauthority/sitea/siteAServerApp.py
+
+Then, to run the tests:
+
+$ python test_authz.py
+
+P J Kershaw 22/05/09
