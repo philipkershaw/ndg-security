@@ -1,0 +1,28 @@
+<saml:Assertion xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ec="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion" Issuer="http://badc.nerc.ac.uk" MajorVersion="1" MinorVersion="1">
+    <saml:Conditions NotAfter="y" NotBefore="x"></saml:Conditions>
+    <saml:AuthenticationStatement AuthenticationInstant="..." AuthenticationMethod="...">
+        <saml:Subject></saml:Subject>
+    </saml:AuthenticationStatement>
+    <saml:AttributeStatement>
+        <saml:Subject></saml:Subject>
+        <saml:Attribute AttributeName="urn:mace:dir:attribute-def:eduPersonAffiliation" AttributeNamespace="urn:mace:shibboleth:1.0:attributeNamespace:uri">
+            <saml:AttributeValue>member</saml:AttributeValue>
+            <saml:AttributeValue>student</saml:AttributeValue>
+        </saml:Attribute>
+    </saml:AttributeStatement>
+<ds:Signature><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>GZG/o/5MoGs2o9ilKiLOGwvqVEU=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>NZ8aKOH/CPwa7jZ2PoL2JnLMfAtVWQjkAYg1TLT52QrnHY64JlV8TgIu5vhNQ+fEfObxhoKlBOho
+qn8g8Vs/nX4et0KQdQPM0y5AexHQzx+lq9DJEqXzuIHZf5jSQTjhcajfz59IEArnCaAzfjlJoDpX
+x6Ug0QQDJv+2cnju73EyGiGKOyug3g5uSwt5hNVh0+RvYyWDF66nl4tD5lncagkiShDBDxoS27SH
+sMAGr3iQSWNpzQ319FrNhB3QvYS6HeI4dqdQXZMCpNypfh9ffp64KLlKyBWFs8n+F5vNqynxcg2v
+fRuVNA/R7sNsHPiY7Y+F3/iVPUY8N4FYdb5ohw==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIICazCCAdSgAwIBAgICAQEwDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRHMQ0wCwYDVQQL
+EwRCQURDMRAwDgYDVQQDEwdUZXN0IENBMB4XDTA4MTIxNjE1MTE0OFoXDTEzMTIxNTE1MTE0OFow
+LDEMMAoGA1UEChMDTkRHMQ0wCwYDVQQLEwRCQURDMQ0wCwYDVQQDEwR0ZXN0MIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEArpbuNUHWVRwhjHzhTOdym+fcZdmD7HbaeoFdef2V//Wj41xM
+ieMZy9XQft2dFBDYZIHLElojVhZTHoowMkwXxsmLt7hZF8fL7j3ssU/lflM9E0Uk2dZxaAt97zXE
+ruEHJoNqHTEQlH0qMALfuUrAaZEIXHDdTQDNRJl4oXvjJWaqS8Y5Je8QREThIE5hRd9FoUlgfMNN
+nwzLyIH7s0KBci2yryeubAG/Qig5LkulbpnhxYLCcLvs3THQ3kO5qYYbB0g11YOBgshZ0SpNwEEy
+hDzHUt3Ii2XmAh25/II08BR61fhMZvSJ/tVGJY4HfWG7B4PZzYwo5vn/tYH1mk7w5QIDAQABoxUw
+EzARBglghkgBhvhCAQEEBAMCBPAwDQYJKoZIhvcNAQEEBQADgYEAPC1EgoD9A+9O60P5Us3rDChv
+R2x2f8uX/7w+3GlNBc0A7UD0ZUEEngUmnvkcm1YTOCwj3EINnvP6S6Alxj6s2X8tLWPUGTLVu2p9
+3X5y7RnYk6isSEoYjzmw/LiayQHzrm/7hNR20TAE/axEW7rS6s7cRy5wVDUV0VNMQQuJcSg=
+</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></saml:Assertion>

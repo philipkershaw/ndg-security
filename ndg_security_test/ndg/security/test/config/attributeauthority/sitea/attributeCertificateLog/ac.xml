@@ -1,0 +1,34 @@
+<attributeCertificate targetNamespace="urn:ndg:security:attributeCertificate">
+    <acInfo>
+        <version>1.0</version>
+        <holder>/O=NDG Security Test/OU=WS-Security Unittest/CN=server</holder>
+        <issuer>/O=NDG Security Test/OU=Site A/CN=AttributeAuthority</issuer>
+        <issuerName>Site A</issuerName>
+        <issuerSerialNumber>253</issuerSerialNumber> 
+        <userId>testuser</userId>
+	<validity>
+  	    <notBefore>2010 03 05 13 07 13</notBefore> 
+	    <notAfter>2010 03 05 21 07 13</notAfter> 
+	</validity>
+	<attributes>
+	    <roleSet>
+                <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:postdoc</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:staff</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:undergrad</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:coapec</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:rapid</name>
+		</role>
+	    </roleSet>
+	</attributes>
+	<provenance>original</provenance> 
+    </acInfo>
+</attributeCertificate>

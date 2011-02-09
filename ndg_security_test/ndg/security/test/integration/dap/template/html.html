@@ -1,0 +1,136 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/">
+    <dl py:def="attributes(attrs)" class="attributes">
+        <py:for each="k, v in attrs.items()">
+            <dt>${k}</dt>
+            <dd py:choose="">
+                <py:when test="isinstance(v, dict)">${attributes(v)}</py:when>
+                <py:otherwise>${v}</py:otherwise>
+            </dd>
+        </py:for>
+    </dl>
+
+    <div py:def="children(var)" class="children">
+        <fieldset py:for="child in var.walk()">
+            <legend>${child.name}</legend>
+
+            <?python
+                from pydap.model import *
+            ?>
+            <py:choose test="">
+                <p py:when="isinstance(child, SequenceType)" class="filter">
+                    <select class="var1" name="var1_${child.id}[0]" id="var1_${child.id}[0]">
+                        <option value="--" selected="selected">--</option>
+                        <option py:for="grandchild in child.walk()" value="${grandchild.id}">${grandchild.id}</option>
+                    </select>
+                    <select class="op" name="op_${child.id}[0]" id="op_${child.id}[0]">
+                        <option value="%3D" selected="selected">=</option>
+                        <option value="%21%3D">!=</option>
+                        <option value="%3C">&lt;</option>
+                        <option value="%3C%3D">&lt;=</option>
+                        <option value="%3E">&gt;</option>
+                        <option value="%3E%3D">&gt;=</option>
+                        <option value="%3D%7E">=~</option>
+                    </select>
+                    <input type="text" name="var2_${child.id}[0]" id="var2_${child.id}[0]" value="" class="var2" />
+                </p>
+                <div py:when="isinstance(child, (BaseType, GridType))">
+                    <p><input type="checkbox" name="${child.id}" id="${child.id}" /><label for="${child.id}">Retrieve this variable.</label></p>
+                    <?python 
+                        dimensions = child.dimensions or ['dim_%id' % j for j in range(len(child.shape))]
+                    ?>
+                    <div py:for="i in range(len(child.shape))">
+                        <label for="${child.id}[${i}]">${dimensions[i]}</label>:<br />
+                        <input type="text" name="${child.id}[${i}]" id="${child.id}[${i}]" value="0:1:${child.shape[i]-1}" /><br />
+                    </div>
+                </div>
+            </py:choose>
+
+            ${attributes(child.attributes)}
+            ${children(child)}
+        </fieldset>
+    </div>
+
+    <head>
+        <title>DODS Server: ${dataset.name}</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js">
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[ 
+                $(document).ready(function(){
+                    var re = /(.*)\[(\d+)\]/;
+                    $('p.filter:last > select.var1').change(function() {
+                        if (this.value != '--') {
+                            var snippet = $(this.parentNode).clone(true);
+                            // Replace ids with unique ones.
+                            snippet.find('.var1,.op,.var2').each(function() {
+                                match = re.exec(this.id);
+                                base = match[1];
+                                counter = parseInt(match[2]) + 1;
+                                this.name = this.id = base + '[' + counter + ']';
+                            });
+                            snippet.insertAfter(this.parentNode);
+                            $(this).unbind('change');
+                        }
+                    });
+                });
+            //]]> 
+        </script>
+        <link media="all, screen" href="ndg2.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div>
+            <div id="header"></div>
+            <div id="logo"><img src="NERC_Logo.gif" alt="Natural Environment Research Council"/></div>
+        </div>
+        <h1>DODS Server: ${dataset.name}</h1>
+
+        <!-- Global attributes -->
+        ${attributes(dataset.attributes)}
+
+        <hr />
+        <form id="dods_form" method="post" action="${location}">
+            <!-- Dataset variables -->
+            ${children(dataset)}
+
+            <p><input type="submit" id="submit" value="Download data" /> as 
+            <select id="response" name="response">
+                <option value="ascii" selected="selected">ASCII</option>
+                <option py:for="response in responses" value="$response">$response</option>
+            </select>
+            <br /><input type="reset" value="Reset" /></p>
+        </form>
+
+        <hr />
+        <pre><code>$dds</code></pre>
+
+        <div id="Footer">
+            
+            <center><table><tbody>
+                <tr>
+                    <td width="60%" align="left">
+                        <table><tbody>
+                            <tr>
+                                <td><span>
+                                    <a href="http://ndg.nerc.ac.uk/"><image src="ndg_logo_circle.gif" alt="NDG" title="NDG"></image></a>
+                                </span></td>
+                                <td><a href="http://pydap.org">pydap/$version</a> based OPeNDAP site for <a href="http://ndg.nerc.ac.uk">NERC DataGrid</a>.
+                                    
+                                    This site is for test purposes only and is under active development.</td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td align="right"><span>
+                        <a href="http://www.stfc.ac.uk/"><image src="stfc-circle-sm.gif" alt="Hosted by the STFC CEDA" title="Hosted by the STFC CEDA"></image></a>
+                    </span></td>
+                </tr>
+            </tbody></table></center>
+        </div>
+    </body>
+</html>
+
+<!--! vim:ft=genshi
+-->
