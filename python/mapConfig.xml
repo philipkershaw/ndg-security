@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<AAmap>
+    <trusted name="BODC">
+    	<wsdl>attAuthority.wsdl</wsdl>
+	<role remote="remoteRole" local="localRole"/>
+    </trusted>
+    <trusted name="escience">
+    	<wsdl>attAuthority.wsdl</wsdl>
+	<role remote="bodc" local="nerc"/>
+    </trusted>
+</AAmap>

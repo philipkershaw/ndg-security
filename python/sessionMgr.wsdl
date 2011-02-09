@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="sessionMgr"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="addUserRequest">
+    <part name="userName" type="xsd:string"/>
+    <part name="passPhrase" type="xsd:string"/>
+  </message>
+
+  <message name="addUserResponse">
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  <message name="connectRequest">
+    <part name="userName" type="xsd:string"/>
+    <part name="passPhrase" type="xsd:string"/>
+    <part name="rtnAsCookie" type="xsd:boolean"/>
+  </message>
+
+  <message name="connectResponse">
+    <part name="sessID" type="xsd:string"/>
+    <part name="expiry" type="xsd:string"/>
+    <part name="cookie" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  <message name="reqAuthorisationRequest">
+    <part name="aaWSDL" type="xsd:string"/>
+    <part name="sessID" type="xsd:string"/>
+    <part name="reqRole" type="xsd:string"/>
+    <part name="mapFromTrustedHosts" type="xsd:boolean"/>
+    <part name="extAttCertList" type="xsd:ArrayOf_xsd_string"/>
+    <part name="extTrustedHostList" type="xsd:ArrayOf_xsd_string"/>
+  </message>
+
+  <message name="reqAuthorisationResponse">
+    <part name="attCert" type="xsd:string"/>
+    <part name="extAttCertList" type="xsd:ArrayOf_xsd_string"/>
+    <part name="statCode" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  
+  <portType name="sessionMgr">
+    <operation name="addUser">
+      <input message="tns:addUserRequest"/>
+      <output message="tns:addUserResponse"/>
+    </operation>
+    
+    <operation name="connect">
+      <input message="tns:connectRequest"/>
+      <output message="tns:connectResponse"/>
+    </operation>
+    
+    <operation name="reqAuthorisation">
+      <input message="tns:reqAuthorisationRequest"/>
+      <output message="tns:reqAuthorisationResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="sessionMgrBinding" type="tns:sessionMgr">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addUser">
+      <soap:operation soapAction="urn:sessionMgr#addUser"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output> 
+    </operation>
+    <operation name="connect">
+      <soap:operation soapAction="urn:sessionMgr#connect"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output> 
+    </operation>
+    <operation name="reqAuthorisation">
+      <soap:operation soapAction="urn:sessionMgr#reqAuthorisation"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:sessionMgr" use="encoded"/>
+      </output> 
+    </operation>
+  </binding>
+
+  <service name="sessionMgrService">
+    <documentation>NDG Session Manager Web Service</documentation>
+    <port name="sessionMgr" binding="tns:sessionMgrBinding">
+      <soap:address location=""/>
+    </port>
+  </service>
+</definitions>

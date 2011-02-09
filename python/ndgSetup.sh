@@ -1,0 +1,60 @@
+#! /bin/bash
+#
+# Set-up script for NDG security software
+#
+# Run this script to initialise the environment for
+# NDG security
+#
+# NERC Data Grid Project
+#
+# P J Kershaw 21/10/05
+#
+# Copyright (C) 2005 CCLRC & NERC
+#
+# This software may be distributed under the terms of the Q Public License,
+# version 1.0 or later.
+#
+# $Id$
+
+# NDG Installation directory
+export NDG_DIR=<NDG location>
+
+
+# NDG bin directory
+if [ ! `echo ${PATH} | grep "${NDG_DIR}/bin"` ]; then
+
+    export PATH=${NDG_DIR}/bin:$PATH
+fi
+
+
+
+# NDG Custom Python installation
+if [ ! `echo ${PATH} | grep "${NDG_DIR}/<python location>"` ]; then
+
+    export PATH=${NDG_DIR}/<python location>:$PATH
+fi
+
+# Globus Toolkit and MyProxy Server
+export GLOBUS_LOCATION=<Globus location>
+export GPT_LOCATION=${GLOBUS_LOCATION}
+
+. ${GLOBUS_LOCATION}/etc/globus-user-env.sh
+
+export MYPROXY_SERVER=`/bin/hostname`
+
+if [ ! `echo ${PATH} | grep "${GLOBUS_LOCATION}/bin"` ]; then
+
+    export PATH=${PATH}:${GLOBUS_LOCATION}/bin
+fi
+
+if [ ! `echo ${PATH} | grep "${GLOBUS_LOCATION}/sbin/"` ]; then
+
+    export PATH=${PATH}:${GLOBUS_LOCATION}/sbin/
+fi
+
+
+# Database settings
+if [ ! `echo ${PATH} | grep "<database location>"` ]; then
+
+    export PATH=<database location>:$PATH
+fi
