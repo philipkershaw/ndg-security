@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<attributeCertificate xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" targetNamespace="urn:ndg:security:attributeCertificate">
+    <acInfo>
+        <version>1.0</version>
+        <holder>/CN=client/O=NDG Security Test/OU=WS-Security Unittest</holder>
+        <issuer>/CN=AttributeAuthority/O=NDG Security Test/OU=Site B</issuer>
+        <issuerName>Site B</issuerName>
+        <issuerSerialNumber>254</issuerSerialNumber> 
+        <userId>ndg-user</userId>
+	<validity>
+  	    <notBefore>2009 01 07 10 32 28</notBefore> 
+	    <notAfter>2009 01 07 18 32 28</notAfter> 
+	</validity>
+	<attributes>
+	    <roleSet>
+                <role>
+	    	    <name>researcher</name>
+		</role>
+	    </roleSet>
+	</attributes>
+	<provenance>mapped</provenance> 
+    </acInfo>
+<ds:Signature><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces PrefixList="ds"></ec:InclusiveNamespaces></ds:CanonicalizationMethod><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces PrefixList="xmlns"></ec:InclusiveNamespaces></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>616lMYcorqV5bCCHW3T04VvkASg=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>WSqGj8Oa7Jb9UVaZ/7ziBlnTAu7zk/5mhlappWJwTAh5WGYsXvvHUhTDmQhwHIDLnu4BhTnpAYEX
+l3TbjIqUJc1vYPeSakFsnSsKXu0qdNtvFylK6kL72YrtZdPXGJ8BE23WV5E3iuzYqvkgYKApUvDu
+bKQNUb4UVIlmgkUwBX/fBtLG0hWbqSgqHF5AA+PYrxVHtjbeD3p5nD/iwlANB76WAYuu8iMMObTz
+9H6KPtpAg8fCPzJWsZwrQaYRz0j5IVUcNwq48KMGy4/0YQQ9bULF5DVb0DnoHGY+nYmGmzdxSHH6
+T1qJdg8i11JUQcy4lDZro+FD+IaorkJHWKjwmg==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIICiTCCAfKgAwIBAgICAP4wDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRH
+MQ0wCwYDVQQLEwRCQURDMRAwDgYDVQQDEwdUZXN0IENBMB4XDTA4MTIxNjE0NDQx
+NVoXDTEzMTIxNTE0NDQxNVowSjEaMBgGA1UEChMRTkRHIFNlY3VyaXR5IFRlc3Qx
+DzANBgNVBAsTBlNpdGUgQjEbMBkGA1UEAxMSQXR0cmlidXRlQXV0aG9yaXR5MIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu6ozVAUkrwrLvDnhWjSMiPd9
+0p4tH1njtDBbYp02JPSQ3UuL9vzqsPP2cpLA9i+FzgBQbswDHEpjIGhTy1lY9S75
+0yvjkKVo7/lEJH0nUEHiH3OMKu6euL0uWdQ8hmL3iY1FDvgzT+gjjd0MWZUKIpiG
+ZaMVzxCN2gcjGBbbcDszf9kldFKtryVWyKPlpeGe2HRJ248N+VbevI2+Zx2md4zY
+GYEXHAwrt9wHauZzKeKn+Uw5ybe/teLmstN5EBK91y0gLuVjAwYAAm6igrTSrYP4
+FiY3Se8HtUHLe2NCjjQ1Esypm+Y1KLIvBP+BaaecF8o3HzAToZzmx1SOX06viQID
+AQABoxUwEzARBglghkgBhvhCAQEEBAMCBPAwDQYJKoZIhvcNAQEEBQADgYEAZ3sB
+BasEA0FP6t4e6B9DXPMe3Qu4D3NnCqQQPHdzkhyg5VCXejPaHvkDpMxxMbAA53md
+KtX6a2Gm3sB9p6JAOs0Ex1mSBdBu7hhNhkCIRGz+6yQdiZYyJkIuRBIrpurwDBef
+LY55Z+4FnEOE5StaYXIR3ZKy2EQLnQ6RjE+UKKI=</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></attributeCertificate>

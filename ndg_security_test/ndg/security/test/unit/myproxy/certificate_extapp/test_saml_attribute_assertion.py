@@ -1,0 +1,124 @@
+#!/usr/bin/env python
+"""Unit tests for NDG Security MyProxy Extensions callout for adding SAML 
+Attribute Assertions to issued X.509 Certificates
+
+NERC DataGrid Project
+"""
+__author__ = "P J Kershaw"
+__date__ = "29/10/09"
+__copyright__ = "(C) 2009 Science and Technology Facilities Council"
+__license__ = "BSD - see LICENSE file in top-level directory"
+__contact__ = "Philip.Kershaw@stfc.ac.uk"
+__revision__ = '$Id:$'
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+import os
+from string import Template
+from cStringIO import StringIO
+
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+from ndg.security.test.unit import BaseTestCase
+from ndg.security.server.myproxy.certificate_extapp.saml_attribute_assertion \
+    import CertExtApp, CertExtConsoleApp
+
+
+class CertExtAppTestCase(BaseTestCase):
+    THIS_DIR = os.path.dirname(__file__)
+    OPENID_SQL_QUERY = ("select openid from users where username = "
+                        "'${username}'") 
+    INI_FILEPATH = os.path.join(THIS_DIR, 'config.ini')
+    
+    def __init__(self, *arg, **kw):
+        super(CertExtAppTestCase, self).__init__(*arg, **kw)            
+        self.startSiteAAttributeAuthority(withSSL=True, 
+                port=CertExtAppTestCase.SITEA_SSL_ATTRIBUTEAUTHORITY_PORTNUM)
+        self.initDb()
+        
+    def test01DbQuery(self):
+        myProxyCertExtApp = CertExtApp()
+        myProxyCertExtApp.connectionString = \
+                    CertExtAppTestCase.DB_CONNECTION_STR
+                    
+        myProxyCertExtApp.openIdSqlQuery = CertExtAppTestCase.OPENID_SQL_QUERY
+        
+        openid = myProxyCertExtApp.queryOpenId(CertExtAppTestCase.USERNAME)
+        self.assert_(openid == CertExtAppTestCase.OPENID_URI)
+        
+    def test02AttributeQuery(self):
+        myProxyCertExtApp = CertExtApp()
+        myProxyCertExtApp.attributeQuery.issuerName = \
+                                        "/CN=Authorisation Service/O=Site A"
+        myProxyCertExtApp.attributeQuery.subjectID = \
+                                        CertExtAppTestCase.OPENID_URI
+                                        
+        myProxyCertExtApp.attributeQuery.sslCACertDir = \
+                                                CertExtAppTestCase.CACERT_DIR
+        myProxyCertExtApp.attributeQuery.sslCertFilePath = \
+                        os.path.join(CertExtAppTestCase.PKI_DIR, 'test.crt')
+        myProxyCertExtApp.attributeQuery.sslPriKeyFilePath = \
+                        os.path.join(CertExtAppTestCase.PKI_DIR, 'test.key')
+        myProxyCertExtApp.attributeQuery.sslValidDNs = \
+                                                CertExtAppTestCase.SSL_CERT_DN
+                                
+        response = myProxyCertExtApp.attributeQuery.send(
+                uri=CertExtAppTestCase.SITEA_SSL_ATTRIBUTEAUTHORITY_SAML_URI)
+        print(response)
+        
+    def test03End2End(self):
+        myProxyCertExtApp = CertExtApp()
+        
+        myProxyCertExtApp.connectionString = \
+                                        CertExtAppTestCase.DB_CONNECTION_STR
+                    
+        myProxyCertExtApp.openIdSqlQuery = ("select openid from users where "
+                                            "username = '%s'" %
+                                            CertExtAppTestCase.USERNAME)
+
+        myProxyCertExtApp.attributeAuthorityURI = \
+                    CertExtAppTestCase.SITEA_SSL_ATTRIBUTEAUTHORITY_SAML_URI
+        myProxyCertExtApp.attributeQuery.issuerName = \
+                            "/CN=Authorisation Service/O=Site A"
+                                        
+        myProxyCertExtApp.attributeQuery.sslCACertDir = \
+                                                CertExtAppTestCase.CACERT_DIR
+        myProxyCertExtApp.attributeQuery.sslCertFilePath = \
+                        os.path.join(CertExtAppTestCase.PKI_DIR, 'test.crt')
+        myProxyCertExtApp.attributeQuery.sslPriKeyFilePath = \
+                        os.path.join(CertExtAppTestCase.PKI_DIR, 'test.key')
+        myProxyCertExtApp.attributeQuery.sslValidDNs = \
+                                                CertExtAppTestCase.SSL_CERT_DN
+        
+        assertion = myProxyCertExtApp(CertExtAppTestCase.USERNAME)
+        self.assert_(assertion)
+        print(assertion)
+
+    def test04FromConfigFile(self):
+        myProxyCertExtApp = CertExtApp.fromConfigFile(
+                                            CertExtAppTestCase.INI_FILEPATH)
+        assertion = myProxyCertExtApp(CertExtAppTestCase.USERNAME)
+        self.assert_(assertion)
+        print(assertion)
+
+    def test05ConsoleApp(self):
+        import sys
+        sys.argv = [
+            None, 
+            "-f", CertExtAppTestCase.INI_FILEPATH, 
+            "-u", CertExtAppTestCase.USERNAME
+        ]
+        try:
+            stdOut = sys.stdout
+            sys.stdout = StringIO()
+            
+            CertExtConsoleApp.run()
+            output = sys.stdout.getvalue()
+        finally:
+            sys.stdout = stdOut
+        
+        self.assert_(output)        
+        print(output)
+        

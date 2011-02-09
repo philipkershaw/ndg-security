@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy PolicyId="pyDAP" xmlns="urn:ndg:security:authz:1.0:policy">
+    <Description>Restrict access for Authorization integration tests</Description>
+    
+    <Target>
+        <URIPattern>^/sample.*$</URIPattern>
+        <Attributes>
+            <Attribute>urn:siteA:security:authz:1.0:attr:staff</Attribute>
+        </Attributes>
+        <AttributeAuthority>
+<!--            <uri>https://localhost/AttributeAuthority</uri>
+-->
+            <uri>http://localhost:7443/AttributeAuthority</uri>
+        </AttributeAuthority>
+    </Target>
+    <Target>
+        <URIPattern>^/sresa1b_ncar_ccsm3_0_run1_200001.*$</URIPattern>
+        <Attributes>
+            <Attribute>urn:siteA:security:authz:1.0:attr:staff</Attribute>
+            <Attribute>urn:siteA:security:authz:1.0:attr:keepout</Attribute>
+        </Attributes>
+        <AttributeAuthority>
+<!--            <uri>https://localhost/AttributeAuthority</uri>
+-->            
+            <uri>http://localhost:7443/AttributeAuthority</uri>
+        </AttributeAuthority>
+    </Target>
+</Policy>
+

@@ -1,0 +1,14 @@
+Unit tests for NDG Security xmlsec.etree Module
+===============================================
+This module is used to provide Enveloped XML Signature.
+
+To run,
+
+$ python ./test_etree.py
+
+To run individual tests e.g.
+
+$ python ./test_etree.py XMLSecDocTestCase.test1Parse
+
+Settings can be altered with the configuration file etree.cfg in this
+directory.
