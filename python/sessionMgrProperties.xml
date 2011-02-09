@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sessMgrProp>
+    <caCertFile></caCertFile>
+    <certFile></certFile>
+    <keyFile></keyFile>
+    <keyPPhrase></keyPPhrase>
+    <sessMgrWSDLkey></sessMgrWSDLkey>
+    <sessMgrWSDLuri></sessMgrWSDLuri>
+    <myProxyProp>
+	<myProxyServer></myProxyServer>
+	<gridSecurityDir></gridSecurityDir>
+	<credStorageDir></credStorageDir>
+	<openSSLConfFileName></openSSLConfFileName>
+    	<tmpDir></tmpDir>
+	<path></path>
+	<proxyCertMaxLifetime></proxyCertMaxLifetime>
+	<proxyCertLifetime></proxyCertLifetime> <!-- in hours -->
+	<simpleCACltProp>
+	    <wsdl></wsdl>
+	    <xmlSigKeyFile></xmlSigKeyFile>
+            <xmlSigCertFile></xmlSigCertFile>
+            <xmlSigCertPPhrase></xmlSigCertPPhrase>
+	</simpleCACltProp>
+	<!--
+	    <certExpiryDate></certExpiryDate>
+	    <certLifetimeDays></certLifetimeDays>
+	    <certTmpDir></certTmpDir>
+	    <caCertFile></caCertFile>
+	    <signExe></signExe>
+	    <path></path>
+	</simpleCASrvProp>
+	-->
+    </myProxyProp>
+    <credReposProp>
+	<dbURI></dbURI>
+    </credReposProp>
+</sessMgrProp>
