@@ -1,0 +1,11 @@
+#
+# MANIFEST.in file to enable inclusion of unit test data files and config
+# 
+# NERC Data Grid Project
+# 
+# P J Kershaw 06/01/09
+# 
+# Copyright (C) 2009 STFC
+# 
+# BSD - See LICENCE file for details
+recursive-include ndg/security/test *.xml *.txt *.ini *.cfg *.crt *.key *.pem README Makefile *.wsgi *.wsdl *.jpg *.gif *.png *.css

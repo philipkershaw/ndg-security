@@ -1,0 +1,48 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: O=Gabriel, CN=Gabriel Test CA
+        Validity
+            Not Before: Apr 21 08:49:02 2010 GMT
+            Not After : Apr 21 08:49:02 2011 GMT
+        Subject: O=Gabriel, CN=testuser
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:ea:75:75:8d:ea:61:30:f2:8e:ec:69:cd:9f:ab:
+                    49:70:47:f1:ff:4f:68:6e:cb:33:b2:8e:85:e4:15:
+                    ab:6a:97:00:fd:de:29:e8:56:15:58:08:f7:0b:e9:
+                    02:c9:ba:9a:d2:f0:72:5b:ba:30:26:71:9f:cc:70:
+                    f2:ce:91:82:f9:c5:0a:21:03:07:54:5c:e4:0f:bd:
+                    62:18:71:eb:29:1d:6d:07:29:87:da:f3:ad:da:cc:
+                    54:f2:67:89:d1:76:9d:12:1c:5f:d0:fd:9c:ab:a3:
+                    16:ef:57:2f:b1:99:9b:bd:4a:e4:29:22:d0:8c:97:
+                    f9:04:97:9d:1e:d3:18:9d:f1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            Netscape Cert Type: 
+                SSL Client, SSL Server, S/MIME, Object Signing
+    Signature Algorithm: sha1WithRSAEncryption
+        21:7d:0b:21:9b:e1:51:60:f4:b9:00:f7:15:65:c6:7c:f8:5c:
+        82:6d:78:4e:9c:36:b3:1d:55:18:6f:9c:ea:4e:94:72:c3:49:
+        50:e8:15:c2:c2:0d:cc:34:14:91:d6:2f:01:c0:6b:0c:6a:76:
+        00:6e:d9:2d:fd:ba:1e:59:2b:a3:45:8f:e9:87:87:f3:5e:03:
+        cd:8f:b5:4a:bd:6e:f4:86:38:4d:7c:71:a3:fc:e7:59:cd:a7:
+        6a:56:86:bd:a7:9d:47:42:f1:71:17:3e:2f:78:89:2b:0b:62:
+        fd:f7:68:67:e7:a6:f8:01:45:7f:cf:da:06:5a:5b:e3:5a:ba:
+        49:00
+-----BEGIN CERTIFICATE-----
+MIIB3DCCAUWgAwIBAgIBAjANBgkqhkiG9w0BAQUFADAsMRAwDgYDVQQKEwdHYWJy
+aWVsMRgwFgYDVQQDEw9HYWJyaWVsIFRlc3QgQ0EwHhcNMTAwNDIxMDg0OTAyWhcN
+MTEwNDIxMDg0OTAyWjAlMRAwDgYDVQQKEwdHYWJyaWVsMREwDwYDVQQDEwh0ZXN0
+dXNlcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA6nV1jephMPKO7GnNn6tJ
+cEfx/09obsszso6F5BWrapcA/d4p6FYVWAj3C+kCybqa0vByW7owJnGfzHDyzpGC
++cUKIQMHVFzkD71iGHHrKR1tBymH2vOt2sxU8meJ0XadEhxf0P2cq6MW71cvsZmb
+vUrkKSLQjJf5BJedHtMYnfECAwEAAaMVMBMwEQYJYIZIAYb4QgEBBAQDAgTwMA0G
+CSqGSIb3DQEBBQUAA4GBACF9CyGb4VFg9LkA9xVlxnz4XIJteE6cNrMdVRhvnOpO
+lHLDSVDoFcLCDcw0FJHWLwHAawxqdgBu2S39uh5ZK6NFj+mHh/NeA82PtUq9bvSG
+OE18caP851nNp2pWhr2nnUdC8XEXPi94iSsLYv33aGfnpvgBRX/P2gZaW+NaukkA
+-----END CERTIFICATE-----

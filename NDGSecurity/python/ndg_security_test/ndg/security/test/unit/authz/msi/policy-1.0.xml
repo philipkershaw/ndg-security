@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy PolicyId="MSI Unit Tests" xmlns="urn:ndg:security:authz:1.0:policy">
+    <Description>Restrict access for Authorization integration tests</Description>
+    
+    <Target>
+        <URIPattern>^/test_securedURI*$</URIPattern>
+        <Attributes>
+            <Attribute>staff</Attribute>
+        </Attributes>
+        <AttributeAuthority>
+            <uri>http://localhost:7443/AttributeAuthority</uri>
+        </AttributeAuthority>
+    </Target>
+    <Target>
+        <URIPattern>^/test_accessDeniedToSecuredURI$</URIPattern>
+        <Attributes>
+            <Attribute>forbidden</Attribute>
+            <Attribute>keepout</Attribute>
+        </Attributes>
+        <AttributeAuthority>
+            <uri>http://localhost:7443/AttributeAuthority</uri>
+        </AttributeAuthority>
+    </Target>
+</Policy>

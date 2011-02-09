@@ -1,0 +1,11 @@
+MyProxy Server Utilities Package
+================================
+
+Tests
+=====
+Unit test module with test files is in myproxy/server/test/.  
+
+Documentation
+=============
+Epydoc generated documentation is available in documentation/.  run the 
+Makefile to regenerate if required.
