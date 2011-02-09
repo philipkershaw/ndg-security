@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<AAmap>
+    <trusted name="BODC">
+    	<wsdl></wsdl>
+	<role remote="academic" local="nercInst"/>
+	<role remote="academic" local="nercFunded"/>
+	<role remote="academic" local="university"/>
+	<role remote="government" local="government"/>
+	<role remote="commercial" local="commercial"/>
+	<role remote="public" local="school"/>
+	<role remote="public" local="other"/>
+	<role remote="public" local="metOfficeForm"/>
+	<role remote="metOfficeForm" local="metOfficeForm"/>
+	<role remote="public" local="bodcUser"/>
+	<role remote="public" local="badcUser"/>
+	<role remote="academic" local="acsoe"/>
+	<role remote="academic" local="rapid"/>
+	<role remote="RapidMemb" local="rapid"/>
+    </trusted>
+    <trusted name="escience">
+    	<wsdl>attAuthority.wsdl</wsdl>
+	<role remote="bodc" local="nerc"/>
+    </trusted>
+</AAmap>
