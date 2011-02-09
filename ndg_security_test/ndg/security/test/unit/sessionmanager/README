@@ -1,0 +1,41 @@
+Unit tests for NDG Security Session Manager Module
+==================================================
+These tests need some careful attention to their configuration in order to 
+correctly set up.  Test Attribute Authorities services must be 
+configured and started.
+ 
+1) Two test Attribute Authority services are required.  These can be run from 
+the config test directory.  It's path relative to this directory is 
+../../config/.  Run each service in a separate window so that the output can 
+be monitored:
+
+$ python ../../config/attributeauthority/sitea/siteAServerApp.py
+
+...and in a separate terminal:
+
+$ python ../../config/attributeauthority/siteb/siteBServerApp.py
+
+Configuration for these services is held in the files 
+
+../../config/attributeauthority/sitea/site-a.ini and
+../../config/attributeauthority/siteb/site-b.ini 
+
+respectively.
+
+2) Run the tests with the command:
+
+$ python ./test_sessionmanager.py
+
+3) To run individual tests give the test method name:
+
+$ python ./test_sessionmanager.py SessionManagerTestCase.test1Connect
+
+Finally,
+ * See sessionMgrTest.cfg sets the unittest configuration
+ * sessionMgr.cfg sets the Session Manager configuration
+
+Troubleshooting:
+ * http_proxy environment variable settings can cause connection problems to
+the Attribute Authorities.  unset http_proxy or set no_proxy:
+
+$ export no_proxy=http://localhost:5000/AttributeAuthority,http://localhost:5100/AttributeAuthority
