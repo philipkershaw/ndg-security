@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy PolicyId="MSI Units Tests" xmlns="urn:ndg:security:authz:1.1:policy">
+    <Description>Restrict access for Authorization integration tests</Description>
+    
+    <Target>
+        <URIPattern>^/test_securedURI*$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:staff</Name>
+                <AttributeAuthorityURI>http://localhost:7443/AttributeAuthority</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>        
+    </Target>
+    <Target>
+        <URIPattern>^/test_accessDeniedToSecuredURI$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:forbidden</Name>
+                <AttributeAuthorityURI>http://localhost:7443/AttributeAuthority</AttributeAuthorityURI>
+            </Attribute>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:keepout</Name>
+                <AttributeAuthorityURI>http://localhost:7443/AttributeAuthority</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+    <!-- Test inclusion of ampersand -->
+    <Target>
+        <URIPattern>^/test_securedURI[?&amp;]MyQueryParam=100</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:staff</Name>
+                <AttributeAuthorityURI>http://localhost:7443/AttributeAuthority</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>        
+    </Target>
+</Policy>

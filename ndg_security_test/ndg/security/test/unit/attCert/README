@@ -1,0 +1,11 @@
+Attribute Certificate AttCert Module Unit Tests
+===============================================
+To run:
+
+$ python ./AttCertTest.py
+
+To run individual tests e.g.
+
+$ python ./AttCertTest.py AttCertTestCase.test1AttCert4NonZero
+
+The config file, attCertTest.cfg controls settings for input / output files.

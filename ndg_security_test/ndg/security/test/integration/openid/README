@@ -1,0 +1,27 @@
+Integration Tests for OpenID Relying Party and Provider Middleware
+==================================================================
+A simple example application securedapp.py is secured with an Authentication
+handler which redirects HTTP 401 Responses to an OpenID middleware application 
+running in securityservicesapp.py.  
+
+An OpenID account with an external OpenID Provider is required in order to run
+this test.  The NDG OpenID Provider is deliberately omitted from this test for
+simplicity.  See openid/ integration test in the parent directory for a test
+deployment with OpenID Provider and Relying Party combined.
+
+To run:
+
+$ ./securityservicesapp.py
+
+and in a separate window:
+
+$ ./securedapp.py
+
+Start a browser and enter the address:
+
+http://localhost:9080
+
+You will be redirected to a page to enter your OpenID.   On return to the test site it will display a 
+message with an option to logout.  Click on the link to logout.
+
+P J Kershaw 26/02/09

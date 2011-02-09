@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy PolicyId="AuthZ Lite - Authorisation Integration Tests" xmlns="urn:ndg:security:authz:1.1:policy">
+    <Description>Restrict access for Authorization integration tests</Description>
+    
+    <Target>
+        <URIPattern>^/test_securedURI*$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:staff</Name>
+                <AttributeAuthorityURI>https://localhost:7443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+    <Target>
+        <URIPattern>^/test_accessDeniedToSecuredURI$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:forbidden</Name>
+                <AttributeAuthorityURI>https://localhost:7443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:keepout</Name>
+                <AttributeAuthorityURI>https://localhost:7443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+</Policy>
