@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<roleSet>
+    <role>
+        <name>ndgUser</name>
+        <description>a DataUser of a group on its own (group = ndg), who can access data made “world access” by administrators of other RODIN groups.</description>
+    </role>
+    <role>
+        <name>Anonymous</name>
+        <description>a Visitor of group ndg.</description>
+    </role>
+    <role>
+        <name>hydroUser</name>
+        <description>a DataUser of hydrography team. Outside NOCS, only BODC staff should be allowed to access these data. Nothing prevents the BODCstaff role to be mapped to more than one NOCS role, as datasets from new groups of interest to BODC are added.</description>
+    </role>
+    <role>
+        <name>ccoUser</name>
+        <description>a DataUser of Channel Coastal Observatory. This user needs authorization from Channel Coastal Observatory.</description>
+    </role>
+</roleSet>
