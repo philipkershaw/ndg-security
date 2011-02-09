@@ -1,0 +1,12 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header></SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <samlp:AttributeQuery xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" Version="2.0" IssueInstant="2010-03-22T16:24:17.645848Z" ID="2b06f7dd-9870-4033-87b3-cd95d5e0ea88">
+            <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Format="urn:oasis:names:tc:SAML:1.1:nameid-format:x509SubjectName">/O=NDG/OU=BADC/CN=test</saml:Issuer>
+            <saml:Subject xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">https://localhost:7443/openid/philip.kershaw</saml:NameID>
+            </saml:Subject>
+            <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:siteA:security:authz:1.0:attr" NameFormat="http://www.w3.org/2001/XMLSchema#string"></saml:Attribute>
+        </samlp:AttributeQuery>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

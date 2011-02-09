@@ -1,0 +1,31 @@
+Integration Tests to test NDG Authorisation without a Session Manager
+=====================================================================
+In the authz integration test parallel to this directory, a Session Manager is
+included in the security services paster application.  This service caches
+security credentials for efficiency.  It is queried by the 
+AuthorizationFilter's Policy Information Point in order to retrieve user
+attribute certificates.  In this configuration, the PIP contacts the 
+Attribute Authority directly to retrieving Attribute Certificates rather than
+going via the Session Manager intermediary.  This simplifies the configuration
+but with a possible performance penalty.
+
+To run,
+
+$ python securedapp.py
+
+...and in another terminal:
+
+$ python securityservicesapp.py
+
+Launch a browser and go to http://localhost:7080.  This displays a page with a
+list of links.  Each link tests out a different aspect of the authorisation
+system.  The OpenID login will be triggered if a link requires authentication,
+select go with the default URL set of, "http://localhost:7443/openid".  When
+prompted for a username and password, enter pjk/testpassword 
+respectively.
+
+The links are secured with the policy file, policy.xml.  User attributes are
+determined by the Attribute Authority configuration set in 
+ndg.security.test.config.attributeauthority.sitea.siteAUserRoles
+
+P J Kershaw 19/05/09
