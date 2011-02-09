@@ -1,0 +1,39 @@
+Unit tests for NDG Credential Wallet Module
+===========================================
+Test Attribute Authorities services must be started for *AttCert* named tests.
+ 
+1) Two test Attribute Authority services are required.  These services must be
+started before running the unit tests.  Start a terminal in this directory and 
+run:
+
+$ python ../../config/attributeauthority/sitea/siteAServerApp.py
+
+...and in a separate terminal:
+
+$ python ../../config/attributeauthority/siteb/siteBServerApp.py
+
+Configuration for these services is held in the files 
+
+../../config/attributeauthority/sitea/site-a.ini and
+../../config/attributeauthority/siteb/site-b.ini 
+
+respectively.
+
+5) Run the tests with the command:
+
+$ python ./test_credentialwallet.py
+
+6) To run individual tests give the test method name:
+
+$ python ./test_credentialwallet.py CredentialWalletTestCase.test1ReadOnlyClassVariables
+
+Finally,
+ * See credWalletTest.cfg sets the unittest configuration
+ * credWallet.cfg sets the Credential Wallet's configuration
+
+Troubleshooting:
+ * http_proxy environment variable settings can cause connection problems to
+the Attribute Authorities.  unset http_proxy or set no_proxy:
+
+$ export no_proxy=http://localhost:5000/AttributeAuthority,http://localhost:5100/AttributeAuthority
+

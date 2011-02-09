@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <title>$title</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <style type="text/css">
+            table { width: 100% }
+            th { text-align: left }
+        </style>        
+        <link media="all, screen" href="ndg2.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div>
+            <div id="header"></div>
+            <div id="logo"><img src="NERC_Logo.gif" alt="Natural Environment Research Council"/></div>
+        </div>
+        <h1>$title</h1>
+
+        <table>
+            <tr>
+                <th>Filename</th>
+                <th>size</th>
+                <th>DDS</th>
+                <th>DAS</th>
+            </tr>
+            <tr>
+                <td><a href="../">Parent directory</a></td>
+                <td colspan="3"></td>
+            </tr>
+
+            <!-- diretories -->
+            <tr py:for="dir in dirs">
+                <td><a href="${dir}/">${dir}/</a></td><td colspan="3"></td>
+            </tr>
+
+            <!-- files -->
+            <tr py:for="file in files">
+                <td py:choose="">
+                    <a py:when="file.supported" href="${file.name}.html">${file.name}</a>
+                    <py:otherwise>${file.name}</py:otherwise>
+                </td>
+
+                <td><a href="${file.name}" title="Download file">${file.size}</a></td> 
+
+                <td py:choose="">
+                    <a py:when="file.supported" href="${file.name}.dds">DDS</a>
+                    <py:otherwise></py:otherwise>
+                </td>
+
+                <td py:choose="">
+                    <a py:when="file.supported" href="${file.name}.das">DAS</a>
+                    <py:otherwise></py:otherwise>
+                </td>
+            </tr>
+        </table>
+
+        <div id="Footer">
+            
+            <center><table><tbody>
+                <tr>
+                    <td width="60%" align="left">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td><span>
+                                    <a href="http://ndg.nerc.ac.uk/"><image src="ndg_logo_circle.gif" alt="NDG" title="NDG"></image></a>
+                                </span></td>
+                                <td><a href="http://pydap.org">pydap/$version</a> based OPeNDAP site for <a href="http://ndg.nerc.ac.uk">NERC DataGrid</a>.
+                                    
+                                    This site is for test purposes only and is under active development.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td width="40%" align="center">
+                        <div id="loginStatus">
+                            <!-- 
+                                Ugly hack to derive SCRIPT_NAME from $title 
+                                in order to set the logout URI
+                            -->
+                            <py:with vars="logoutURI=title.strip('Index of ').rstrip('/')+'/logout'">
+                                <a href="$logoutURI">logout</a>
+                            </py:with>
+                        </div>
+                    </td>
+                    
+                    <td align="right"><span>
+                        <a href="http://www.stfc.ac.uk/"><image src="stfc-circle-sm.gif" alt="Hosted by the STFC CEDA" title="Hosted by the STFC CEDA"></image></a>
+                    </span></td>
+                </tr>
+            </tbody></table></center>
+        </div>
+    </body>
+</html>

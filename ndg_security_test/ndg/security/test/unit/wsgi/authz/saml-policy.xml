@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy PolicyId="SAMLAuthZUnitTests" xmlns="urn:ndg:security:authz:1.1:policy">
+    <Description>Restrict access for SAML based Authorization unit tests</Description>
+    
+    <Target>
+        <URIPattern>^/test_accessGrantedToSecuredURI$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:staff</Name>
+                <!-- Endpoint is for SOAP/SAML based ESG Interface -->
+                <AttributeAuthorityURI>https://localhost:5443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+    <Target>
+        <URIPattern>^/test_accessDeniedToSecuredURI$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:forbidden</Name>
+                <AttributeAuthorityURI>https://localhost:5443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:keepout</Name>
+                <AttributeAuthorityURI>https://localhost:5443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+    <Target>
+        <!-- 
+            Special extra target puts additional restriction in place if
+            admin query argument is set
+        -->
+        <URIPattern>^/test_accessGrantedToSecuredURI\?admin=1$</URIPattern>
+        <Attributes>
+            <Attribute>
+                <Name>urn:siteA:security:authz:1.0:attr:admin</Name>
+                <AttributeAuthorityURI>https://localhost:5443/AttributeAuthority/saml</AttributeAuthorityURI>
+            </Attribute>
+        </Attributes>
+    </Target>
+</Policy>

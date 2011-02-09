@@ -1,0 +1,27 @@
+Site A Test Attribute Authority Service
+=======================================
+This directory contains the configuration information for an Attribute 
+Authority test service used by the unit tests:
+
+ - site-aa.ini: main configuration file for the service which also contains
+   Paste config to enable running the service with paster:
+   
+   $ paster serve site-a.ini
+   
+ - siteAAttributeAuthority.cfg: example standalone Attribute Authority config
+   file without Paste configuration
+   
+ - siteAMapConfig.xml: configures trust relationships with other organisations
+   (site b for the tests)
+   
+ - siteAServerApp.py: script to invoke the service:
+ 
+   $ python ../siteAServerApp.py
+   
+   This script is used as a convenience method for running the unit tests.
+   
+ - siteAUserRoles.py: attribute interface plugin to the Attribute Authority
+   determines what attributes a given user is entitled to.  In a production
+   deployment this might link to a user database or other repository.
+   
+P J Kershaw 14/05/09
