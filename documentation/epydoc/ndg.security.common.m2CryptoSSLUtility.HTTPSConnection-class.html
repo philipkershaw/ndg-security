@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.m2CryptoSSLUtility.HTTPSConnection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.m2CryptoSSLUtility-module.html">Module&nbsp;m2CryptoSSLUtility</a> ::
+        Class&nbsp;HTTPSConnection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HTTPSConnection</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_146" name="uml_class_diagram_for_ndg_secu_146">
+<area shape="rect" href="javascript:void(0);" title="M2Crypto.httpslib.HTTPSConnection.default_port" alt="" coords="59,266,277,284"/>
+<area shape="rect" href="javascript:void(0);" title="Close the connection to the HTTP server." alt="" coords="59,287,277,306"/>
+<area shape="rect" href="javascript:void(0);" title="M2Crypto.httpslib.HTTPSConnection.get_session" alt="" coords="59,306,277,324"/>
+<area shape="rect" href="javascript:void(0);" title="M2Crypto.httpslib.HTTPSConnection.set_session" alt="" coords="59,324,277,343"/>
+<area shape="rect" href="javascript:void(0);" title="This class allows communication via SSL using M2Crypto." alt="" coords="57,248,279,344"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html#defReadTimeout" title="default timeout for read operations" alt="" coords="45,391,291,410"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html#defWriteTimeout" title="default timeout for write operations" alt="" coords="45,410,291,428"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html#__init__" title="Overload to enable setting of post connection check callback to &#160;SSL.Connection" alt="" coords="45,431,291,450"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html#connect" title="Overload M2Crypto.httpslib.HTTPSConnection to enable custom post connection check of peer certificate and socket timeout" alt="" coords="45,450,291,468"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html#putrequest" title="Overload to work around bug with unicode type URL" alt="" coords="45,468,291,487"/>
+<area shape="rect" href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection&#45;class.html" title="Modified version of M2Crypto equivalent to enable custom checks with the peer and timeout settings" alt="" coords="44,374,292,488"/>
+<area shape="rect" href="httplib.HTTPResponse&#45;class.html" title="httplib.HTTPConnection.response_class" alt="" coords="17,28,319,47"/>
+<area shape="rect" href="javascript:void(0);" title="httplib.HTTPConnection.auto_open" alt="" coords="17,47,319,66"/>
+<area shape="rect" href="javascript:void(0);" title="httplib.HTTPConnection.debuglevel" alt="" coords="17,66,319,84"/>
+<area shape="rect" href="javascript:void(0);" title="httplib.HTTPConnection.strict" alt="" coords="17,84,319,103"/>
+<area shape="rect" href="javascript:void(0);" title="httplib.HTTPConnection.set_debuglevel" alt="" coords="17,106,319,124"/>
+<area shape="rect" href="javascript:void(0);" title="Send `str&#39; to the server." alt="" coords="17,124,319,143"/>
+<area shape="rect" href="javascript:void(0);" title="Send a request header line to the server." alt="" coords="17,143,319,162"/>
+<area shape="rect" href="javascript:void(0);" title="Indicate that the last header line has been sent to the server." alt="" coords="17,162,319,180"/>
+<area shape="rect" href="javascript:void(0);" title="Send a complete request to the server." alt="" coords="17,180,319,199"/>
+<area shape="rect" href="javascript:void(0);" title="Get the response from the server." alt="" coords="17,199,319,218"/>
+<area shape="rect" href="javascript:void(0);" title="httplib.HTTPConnection" alt="" coords="16,11,320,219"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_146.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_146" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Modified version of M2Crypto equivalent to enable custom checks with 
+  the peer and timeout settings</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code><a href="httplib.HTTPResponse-class.html">response_class</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Overload to enable setting of post connection check callback to 
+      SSL.Connection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Overload M2Crypto.httpslib.HTTPSConnection to enable custom post 
+      connection check of peer certificate and socket timeout</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.connect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#putrequest" class="summary-sig-name">putrequest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">method</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Overload to work around bug with unicode type URL</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.putrequest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>M2Crypto.httpslib.HTTPSConnection</code></b>:
+      <code>close</code>,
+      <code>get_session</code>,
+      <code>set_session</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>endheaders</code>,
+      <code>getresponse</code>,
+      <code>putheader</code>,
+      <code>request</code>,
+      <code>send</code>,
+      <code>set_debuglevel</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_output</code>,
+      <code>_send_output</code>,
+      <code>_send_request</code>,
+      <code>_set_hostport</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">M2Crypto.SSL.timeout</span>
+    </td><td class="summary">
+        <a name="defReadTimeout"></a><span class="summary-name">defReadTimeout</span> = <code title="SSL.timeout(sec= 20.)">SSL.timeout(sec= 20.)</code><br />
+      default timeout for read operations
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">M2Crypto.SSL.timeout</span>
+    </td><td class="summary">
+        <a name="defWriteTimeout"></a><span class="summary-name">defWriteTimeout</span> = <code title="SSL.timeout(sec= 20.)">SSL.timeout(sec= 20.)</code><br />
+      default timeout for write operations
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>M2Crypto.httpslib.HTTPSConnection</code></b>:
+      <code>default_port</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>auto_open</code>,
+      <code>debuglevel</code>,
+      <code>strict</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_http_vsn</code>,
+      <code>_http_vsn_str</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kw</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Overload to enable setting of post connection check callback to 
+  SSL.Connection</p>
+  <p>type *args: tuple param *args: args which apply to 
+  M2Crypto.httpslib.HTTPSConnection type **kw: dict param **kw: additional 
+  keywords</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>postConnectionCheck</code></strong> (SSL.Checker.Checker derivative) - set class for checking peer</li>
+        <li><strong class="pname"><code>readTimeout</code></strong> (M2Crypto.SSL.timeout) - readTimeout - set timeout for read</li>
+        <li><strong class="pname"><code>writeTimeout</code></strong> (M2Crypto.SSL.timeout) - similar to read timeout</li>
+    </ul></dd>
+    <dt>Overrides:
+        httplib.HTTPConnection.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="connect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.connect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Overload M2Crypto.httpslib.HTTPSConnection to enable custom post 
+  connection check of peer certificate and socket timeout</p>
+  <dl class="fields">
+    <dt>Overrides:
+        httplib.HTTPConnection.connect
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="putrequest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">putrequest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">method</span>,
+        <span class="sig-arg">url</span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.m2CryptoSSLUtility-pysrc.html#HTTPSConnection.putrequest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Overload to work around bug with unicode type URL</p>
+  <dl class="fields">
+    <dt>Overrides:
+        httplib.HTTPConnection.putrequest
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:47 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

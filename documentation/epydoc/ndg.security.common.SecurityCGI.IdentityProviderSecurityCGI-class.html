@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.SecurityCGI-module.html">Module&nbsp;SecurityCGI</a> ::
+        Class&nbsp;IdentityProviderSecurityCGI
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class IdentityProviderSecurityCGI</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_50" name="uml_class_diagram_for_ndg_secu_50">
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#returnURItag" title="ndg.security.common.SecurityCGI._SecurityCGI.returnURItag" alt="" coords="432,396,701,415"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#acAllowMapping" title="ndg.security.common.SecurityCGI._SecurityCGI.acAllowMapping" alt="" coords="432,415,701,433"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#acAllowMappingWithPrompt" title="ndg.security.common.SecurityCGI._SecurityCGI.acAllowMappingWithPrompt" alt="" coords="432,433,701,452"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#acNoMapping" title="ndg.security.common.SecurityCGI._SecurityCGI.acNoMapping" alt="" coords="432,452,701,471"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#acMappingFlags" title="ndg.security.common.SecurityCGI._SecurityCGI.acMappingFlags" alt="" coords="432,471,701,489"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#acMappingFlag" title="ndg.security.common.SecurityCGI._SecurityCGI.acMappingFlag" alt="" coords="432,489,701,508"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#__call__" title="Alias to processFields method" alt="" coords="432,511,701,529"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#onAttCertGranted" title="Callback invoked by getAttCert &#45; handle case where an Attribute Authority &#160;has granted a new attribute certificate to the user." alt="" coords="432,529,701,548"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html#onAttCertDenied" title="Callback invoked by getAttCert &#45; handle case where an Attribute Authority has denied an attribute certificate to the user." alt="" coords="432,548,701,567"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI._SecurityCGI&#45;class.html" title="CGI Service Provider &#45; Identity Provider interface base class for NDG Security" alt="" coords="431,379,703,568"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI&#45;class.html#authenticateTag" title="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.authenticateTag" alt="" coords="17,615,1116,633"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI&#45;class.html#__init__" title="scriptName: &#160;&#160;&#160;&#160;&#160;&#160;&#160;Name of IdP script specified as the action for &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;HTML forms smWSDLuri: &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;URI For Session Manager WSDL used for user &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;authentication smCertFilePath: &#160;&#160;&#160;&#160;file path for Session Manager public key." alt="" coords="17,636,1116,655"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI&#45;class.html#processFields" title="Call appropriate actions according to the fields set" alt="" coords="17,655,1116,673"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI&#45;class.html#showLogin" title="Display initial NDG login form" alt="" coords="17,673,1116,692"/>
+<area shape="rect" href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI&#45;class.html" title="CGI for an NDG Identity provider." alt="" coords="16,597,1117,693"/>
+<area shape="rect" href="javascript:void(0);" title="cgi.FieldStorage.FieldStorageClass" alt="" coords="388,28,745,47"/>
+<area shape="rect" href="javascript:void(0);" title="cgi.FieldStorage.bufsize" alt="" coords="388,47,745,65"/>
+<area shape="rect" href="javascript:void(0);" title="cgi.FieldStorage.__iter__" alt="" coords="388,68,745,87"/>
+<area shape="rect" href="javascript:void(0);" title="cgi.FieldStorage.__getattr__" alt="" coords="388,87,745,105"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style indexing." alt="" coords="388,105,745,124"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style get() method, including &#39;value&#39; lookup." alt="" coords="388,124,745,143"/>
+<area shape="rect" href="javascript:void(0);" title="Return the first value received." alt="" coords="388,143,745,161"/>
+<area shape="rect" href="javascript:void(0);" title="Return list of received values." alt="" coords="388,161,745,180"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style keys() method." alt="" coords="388,180,745,199"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style has_key() method." alt="" coords="388,199,745,217"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style __contains__ method." alt="" coords="388,217,745,236"/>
+<area shape="rect" href="javascript:void(0);" title="Dictionary style len(x) support." alt="" coords="388,236,745,255"/>
+<area shape="rect" href="javascript:void(0);" title="Internal: read data in query string format." alt="" coords="388,255,745,273"/>
+<area shape="rect" href="javascript:void(0);" title="Internal: read a part that is itself multipart." alt="" coords="388,273,745,292"/>
+<area shape="rect" href="javascript:void(0);" title="Internal: read an atomic part." alt="" coords="388,292,745,311"/>
+<area shape="rect" href="javascript:void(0);" title="Overridable: return a readable &amp; writable file." alt="" coords="388,329,745,348"/>
+<area shape="rect" href="javascript:void(0);" title="Store a sequence of fields, reading multipart/form&#45;data." alt="" coords="387,11,747,349"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_50.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_50" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>CGI for an NDG Identity provider.  The IdP serves user credentials 
+  back to a requesting Service Provider.</p>
+  <p>An NDG Service Provider redirects the user's browser to an IdP login 
+  script using this class.  If the user is already logged in, then a 
+  security cookie will be present and it's content returned to the SP by 
+  http redirect.  If no cookie is present the user must login first but 
+  then similarly, the content of the new cookie is returned to the SP.  The
+  SP can them set a new security cookie it's target domain.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">scriptName</span>,
+        <span class="summary-sig-arg">smWSDLuri</span>,
+        <span class="summary-sig-arg">smCertFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">userName</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">passPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**securityCGIKwArgs</span>)</span><br />
+      scriptName:        Name of IdP script specified as the action for 
+                      HTML forms
+smWSDLuri:            URI For Session Manager WSDL used for user
+                      authentication
+smCertFilePath:     file path for Session Manager public key.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#processFields" class="summary-sig-name">processFields</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Call appropriate actions according to the fields set</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.processFields">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#_processCredsRequest" class="summary-sig-name" onclick="show_private();">_processCredsRequest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">returnURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">bAuthorise</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">sessCookie</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**returnCredsResponseKwArgs</span>)</span><br />
+      Receive request from a Service Provider for credentials.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._processCredsRequest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#_returnCredsResponse" class="summary-sig-name" onclick="show_private();">_returnCredsResponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sessCookie</span>,
+        <span class="summary-sig-arg">returnURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">pageTitle</span>=<span class="summary-sig-default">''</span>,
+        <span class="summary-sig-arg">hdrTxt</span>=<span class="summary-sig-default">''</span>,
+        <span class="summary-sig-arg">delayTime</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">redirectMsg</span>=<span class="summary-sig-default">''</span>,
+        <span class="summary-sig-arg">setCookie</span>=<span class="summary-sig-default">False</span>)</span><br />
+      User's Identity Provider returns credentials to requestor via a 
+HTTP redirect</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._returnCredsResponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#_authenticate" class="summary-sig-name" onclick="show_private();">_authenticate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">bAuthorise</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Authenticate username and passphrase input from preceeding login
+form</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._authenticate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#showLogin" class="summary-sig-name">showLogin</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">scriptName</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">returnURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">contentTypeHdr</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">htmlTag</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">pageTitle</span>=<span class="summary-sig-default">'NDG Login'</span>,
+        <span class="summary-sig-arg">hdrTxt</span>=<span class="summary-sig-default">_defStyle</span>,
+        <span class="summary-sig-arg">headTag</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">bodyTag</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">bAuthorise</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Display initial NDG login form</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.showLogin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html" onclick="show_private();">_SecurityCGI</a></code></b>:
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#__call__">__call__</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#onAttCertDenied">onAttCertDenied</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#onAttCertGranted">onAttCertGranted</a></code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html" onclick="show_private();">_SecurityCGI</a></code></b> (private):
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#_getAttCert" onclick="show_private();">_getAttCert</a></code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>cgi.FieldStorage</code></b>:
+      <code>__contains__</code>,
+      <code>__getattr__</code>,
+      <code>__getitem__</code>,
+      <code>__iter__</code>,
+      <code>__len__</code>,
+      <code>getfirst</code>,
+      <code>getlist</code>,
+      <code>getvalue</code>,
+      <code>has_key</code>,
+      <code>keys</code>,
+      <code>make_file</code>,
+      <code>read_binary</code>,
+      <code>read_lines</code>,
+      <code>read_lines_to_eof</code>,
+      <code>read_lines_to_outerboundary</code>,
+      <code>read_multi</code>,
+      <code>read_single</code>,
+      <code>read_urlencoded</code>,
+      <code>skip_lines</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="authenticateTag"></a><span class="summary-name">authenticateTag</span> = <code title="&quot;authenticate&quot;">&quot;authenticate&quot;</code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html" onclick="show_private();">_SecurityCGI</a></code></b>:
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#acAllowMapping">acAllowMapping</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#acAllowMappingWithPrompt">acAllowMappingWithPrompt</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#acMappingFlag">acMappingFlag</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#acMappingFlags">acMappingFlags</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#acNoMapping">acNoMapping</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#returnURItag">returnURItag</a></code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html" onclick="show_private();">_SecurityCGI</a></code></b> (private):
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#_httpSpecifier" onclick="show_private();">_httpSpecifier</a></code>,
+      <code><a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#_httpsSpecifier" onclick="show_private();">_httpsSpecifier</a></code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>cgi.FieldStorage</code></b>:
+      <code>FieldStorageClass</code>,
+      <code>bufsize</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">scriptName</span>,
+        <span class="sig-arg">smWSDLuri</span>,
+        <span class="sig-arg">smCertFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">userName</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">passPhrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**securityCGIKwArgs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+scriptName:        Name of IdP script specified as the action for 
+                      HTML forms
+smWSDLuri:            URI For Session Manager WSDL used for user
+                      authentication
+smCertFilePath:     file path for Session Manager public key.  If
+                      not set it will be retrieved using a 
+                      Session Manager WS call.
+userName:             normally set from user input to form in
+                      showLogin()
+passPhrase:           ditto
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        cgi.FieldStorage.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="processFields"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">processFields</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.processFields">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Call appropriate actions according to the fields set</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="ndg.security.common.SecurityCGI._SecurityCGI-class.html#processFields">_SecurityCGI.processFields</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_processCredsRequest"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_processCredsRequest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">returnURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">bAuthorise</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">sessCookie</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**returnCredsResponseKwArgs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._processCredsRequest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive request from a Service Provider for credentials.  Process and 
+  return via a redirect</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_returnCredsResponse"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_returnCredsResponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sessCookie</span>,
+        <span class="sig-arg">returnURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">pageTitle</span>=<span class="sig-default">''</span>,
+        <span class="sig-arg">hdrTxt</span>=<span class="sig-default">''</span>,
+        <span class="sig-arg">delayTime</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">redirectMsg</span>=<span class="sig-default">''</span>,
+        <span class="sig-arg">setCookie</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._returnCredsResponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+User's Identity Provider returns credentials to requestor via a 
+HTTP redirect
+
+sessCookie:   NDG Session cookie
+pageTitle:    Give the redirect page a title
+headTags:     Optionally add additional tags in &lt;head/&gt; section
+delayTime:    time in seconds before carrying out redirect - redirect
+              page will be displayed in this interval
+redirectMsg:  Message to put on redirect page.  Can be plain text or
+              formatted HTML
+setCookie:    Set to True to set the cookie in the IdP's target
+              domain.  This could be used in the case where the user
+              has just logged in but the session cookie has not been
+              set yet.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_authenticate"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_authenticate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">bAuthorise</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI._authenticate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Authenticate username and passphrase input from preceeding login
+form
+
+bAuthorise: set to True so that if an error occurs, login will be
+            recalled followed by authorisation
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="showLogin"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">showLogin</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">scriptName</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">returnURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">contentTypeHdr</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">htmlTag</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">pageTitle</span>=<span class="sig-default">'NDG Login'</span>,
+        <span class="sig-arg">hdrTxt</span>=<span class="sig-default">_defStyle</span>,
+        <span class="sig-arg">headTag</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">bodyTag</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">bAuthorise</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SecurityCGI-pysrc.html#IdentityProviderSecurityCGI.showLogin">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Display initial NDG login form</p>
+  <p>Override this method in a derived class in order to define a custom 
+  login with the required look and feel for the IdP organisation</p>
+  <p>Derived class method MUST include the form field,</p>
+  <p>IdentityProviderSecurityCGI.authenticateTag</p>
+  <p>in order to correctly call this classes' _authenticate() method 
+  e.g.</p>
+  <p>...&lt;input type=hidden name=%s value=&quot;1&quot;&gt;...' %
+  IdentityProviderSecurityCGI.authenticateTag</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:43 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

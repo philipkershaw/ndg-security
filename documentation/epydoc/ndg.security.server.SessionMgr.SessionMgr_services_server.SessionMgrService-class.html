@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        <a href="ndg.security.server.SessionMgr-module.html">Package&nbsp;SessionMgr</a> ::
+        <a href="ndg.security.server.SessionMgr.SessionMgr_services_server-module.html">Module&nbsp;SessionMgr_services_server</a> ::
+        Class&nbsp;SessionMgrService
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SessionMgrService</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_204" name="uml_class_diagram_for_ndg_secu_204">
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceInterface.wsAction" alt="" coords="32,28,259,47"/>
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceInterface.__str__" alt="" coords="32,50,259,68"/>
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceInterface.sign" alt="" coords="32,68,259,87"/>
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceInterface.verify" alt="" coords="32,87,259,106"/>
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceInterface.getPost" alt="" coords="32,106,259,124"/>
+<area shape="rect" href="javascript:void(0);" title="Returns a method of class." alt="" coords="32,124,259,143"/>
+<area shape="rect" href="javascript:void(0);" title="Returns operation name." alt="" coords="32,143,259,162"/>
+<area shape="rect" href="javascript:void(0);" title="Defines the interface for use with ServiceContainer Handlers." alt="" coords="31,11,260,163"/>
+<area shape="rect" href="javascript:void(0);" title="ZSI.ServiceContainer.ServiceSOAPBinding.__call___" alt="" coords="17,218,273,236"/>
+<area shape="rect" href="javascript:void(0);" title="Binding defines the set of wsdl:binding operations, it takes as input a ParsedSoap instance and parses it into a pyobj." alt="" coords="16,192,275,238"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soapAction" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soapAction" alt="" coords="32,284,259,303"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#root" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.root" alt="" coords="32,303,259,322"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#__init__" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__" alt="" coords="32,324,259,343"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#authorize" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.authorize" alt="" coords="32,343,259,362"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soap_getSessionStatus" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soap_getSessionStatus" alt="" coords="32,362,259,380"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soap_connect" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soap_connect" alt="" coords="32,380,259,399"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soap_disconnect" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soap_disconnect" alt="" coords="32,399,259,418"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soap_getAttCert" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soap_getAttCert" alt="" coords="32,418,259,436"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html#soap_getX509Cert" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soap_getX509Cert" alt="" coords="32,436,259,455"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService&#45;class.html" title="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService" alt="" coords="31,267,260,456"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_204.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_204" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">post</span>=<span class="summary-sig-default">''</span>,
+        <span class="summary-sig-arg">**kw</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#authorize" class="summary-sig-name">authorize</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">auth_info</span>,
+        <span class="summary-sig-arg">post</span>,
+        <span class="summary-sig-arg">action</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.authorize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="soap_getSessionStatus"></a><span class="summary-sig-name">soap_getSessionStatus</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ps</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.soap_getSessionStatus">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="soap_connect"></a><span class="summary-sig-name">soap_connect</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ps</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.soap_connect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="soap_disconnect"></a><span class="summary-sig-name">soap_disconnect</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ps</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.soap_disconnect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="soap_getAttCert"></a><span class="summary-sig-name">soap_getAttCert</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ps</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.soap_getAttCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="soap_getX509Cert"></a><span class="summary-sig-name">soap_getX509Cert</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ps</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.soap_getX509Cert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ZSI.ServiceContainer.ServiceSOAPBinding</code></b>:
+      <code>__call___</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ZSI.ServiceContainer.ServiceInterface</code></b>:
+      <code>__str__</code>,
+      <code>getOperation</code>,
+      <code>getOperationName</code>,
+      <code>getPost</code>,
+      <code>sign</code>,
+      <code>verify</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="soapAction"></a><span class="summary-name">soapAction</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="root"></a><span class="summary-name">root</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#_wsdl" class="summary-name" onclick="show_private();">_wsdl</a> = <code title="&quot;&quot;&quot;&lt;?xml version=\&quot;1.0\&quot; ?&gt;
+&lt;wsdl:definitions name=\&quot;SessionMgr\&quot; targetNamespace=\&quot;urn:ndg:securi\
+ty:sessionMgr\&quot; xmlns=\&quot;http://schemas.xmlsoap.org/wsdl/\&quot; xmlns:http=\
+\&quot;http://schemas.xmlsoap.org/wsdl/http/\&quot; xmlns:soap=\&quot;http://schemas.\
+xmlsoap.org/wsdl/soap/\&quot; xmlns:soapenc=\&quot;http://schemas.xmlsoap.org/so\
+ap/encoding/\&quot; xmlns:tns=\&quot;urn:ndg:security:sessionMgr\&quot; xmlns:wsdl=\&quot;\
+http://schemas.xmlsoap.org/wsdl/\&quot; xmlns:xsd=\&quot;http://www.w3.org/2001/\
+XMLSchema\&quot;&gt;
+...">&quot;&quot;&quot;&lt;?xml version=\&quot;1.0\&quot;<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ZSI.ServiceContainer.ServiceInterface</code></b>:
+      <code>wsAction</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">post</span>=<span class="sig-default">''</span>,
+        <span class="sig-arg">**kw</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        ZSI.ServiceContainer.ServiceInterface.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="authorize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">authorize</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">auth_info</span>,
+        <span class="sig-arg">post</span>,
+        <span class="sig-arg">action</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr.SessionMgr_services_server-pysrc.html#SessionMgrService.authorize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        ZSI.ServiceContainer.ServiceInterface.authorize
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_wsdl"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_wsdl</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;&lt;?xml version=\&quot;1.0\&quot; ?&gt;
+&lt;wsdl:definitions name=\&quot;SessionMgr\&quot; targetNamespace=\&quot;urn:ndg:securi<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ty:sessionMgr\&quot; xmlns=\&quot;http://schemas.xmlsoap.org/wsdl/\&quot; xmlns:http=<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+\&quot;http://schemas.xmlsoap.org/wsdl/http/\&quot; xmlns:soap=\&quot;http://schemas.<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+xmlsoap.org/wsdl/soap/\&quot; xmlns:soapenc=\&quot;http://schemas.xmlsoap.org/so<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ap/encoding/\&quot; xmlns:tns=\&quot;urn:ndg:security:sessionMgr\&quot; xmlns:wsdl=\&quot;<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+http://schemas.xmlsoap.org/wsdl/\&quot; xmlns:xsd=\&quot;http://www.w3.org/2001/<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+XMLSchema\&quot;&gt;
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:50 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

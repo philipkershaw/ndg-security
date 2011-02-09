@@ -1,0 +1,53 @@
+Unit tests for Session Manager Web Service Client
+=================================================
+This is the most complicated unit test suite and requires a number of services
+to be running:
+ * Test Session Manager web service run from this directory
+ * Two test Attribute Authorities run from the Attribute Authority unit test
+ directory ../attributeauthority
+ 
+It is worthwhile trying out the Attribute Authority 
+(../attributeauthorityclient) and Session Manager (../sessionmanager) unit 
+tests first.  These tests differ from the Session Manager unit tests in that 
+they test a SOAP *client* to a Session Manager web service whereas the Session 
+Manager tests just the server side code. 
+ 
+The Attribute Authorities and Session Manager accept client requests
+authenticated based on user credentials obtained in the unit test
+test01Connect.  
+
+1) Start the Session Manager test service in this directory but from a separate
+terminal:
+
+$ python ../config/sessionmanager/sessionManagerServerApp.py
+
+2) Two test Attribute Authority services are required.  These can be run from 
+the Attribute Authority Client unit test directory.  It's path relative to this 
+directory is ../attributeauthorityclient/.  Run each service in a separate 
+window so that the output can be monitored:
+
+$ python ../config/attributeauthority/sitea/siteAServerApp.py
+
+...and in a separate terminal:
+
+$ python ../config/attributeauthority/siteb/siteBServerApp.py
+
+Configuration for these services is held in the files 
+
+../config/sessionmanager/session-manager.ini
+../config/attributeauthority/sitea/site-a.ini
+../config/attributeauthority/siteb/site-b.ini 
+
+respectively.
+
+5) Run the tests with the command:
+
+$ python ./test_sessionmanagerclient.py
+
+6) To run individual tests give the test method name:
+
+$ python ./test_sessionmanagerclient.py SessionManagerClientTestCase.test01Connect
+
+Finally, see sessionMgrClientTest.cfg configuration file to change test 
+parameters.
+

@@ -1,0 +1,5 @@
+ElementTree Canonicalization Unit Tests
+=======================================
+Test Fred Lundh's beta version of ET which includes C14N support
+
+05/01/09 - PJK - Not complete - to be fixed in a future release
