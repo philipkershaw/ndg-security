@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+	<thisHost name="BADC">
+	    <aaURI>badcAttAuthorityURI</aaURI>
+	    <loginURI>badcLoginPageURI</loginURI>
+	    <aaDN/>
+	    <loginServerDN/>
+	    <loginRequestServerDN/>
+	</thisHost>
+    <trusted name="BODC">
+	    <aaURI>bodcAttAuthorityURI</aaURI>
+	    <loginURI>bodcLoginPageURI</loginURI>
+	    <aaDN/>
+	    <loginServerDN/>
+	    <loginRequestServerDN/>
+		<role remote="aBODCrole" local="aLocalRole"/>
+    </trusted>
+    <trusted name="escience">
+	    <aaURI>eScienceAttAuthorityURI</aaURI>
+	    <loginURI>eScienceLoginPageURI</loginURI>
+	    <aaDN/>
+	    <loginServerDN/>
+	    <loginRequestServerDN/>
+		<role remote="anEScienceRole" local="anotherLocalRole"/>
+    </trusted>
+</AAmap>

@@ -1,0 +1,52 @@
+<html 
+ xmlns:xi="http://www.w3.org/2001/XInclude" 
+ xmlns="http://www.w3.org/1999/xhtml" 
+ xmlns:py="http://genshi.edgewall.org/">
+	<div py:def="openIDSignin()" id="openIDSignin">
+		<form action="$c.baseURL/verify" method="post">
+			<table cellspacing="0" border="0" cellpadding="5" style="align: left">
+			    <tr align="left">
+			        <td>OpenID:</td> 
+			        <td align="left">
+			        	<input type="text" 
+			        		name="openid" 
+			        		value="$c.initialOpenID" 
+			        		class='openid-identifier' 
+			        		size="48"				        		
+			        	/>
+			        </td>
+			        <td align="right">
+			        	<input type="submit" name="authform" value="Go"/>
+			        </td>
+			    </tr>
+			    <tr>
+			        <td colspan="3">
+                        <div id="message">
+                            $$message
+                        </div>
+                    </td>
+                </tr>
+		  </table>
+		</form>
+	</div>
+	
+    <head>
+  		<style>
+			input.openid-identifier {
+			   background: url($c.baseURL/layout/openid-inputicon.gif) no-repeat;
+			   background-color: #fff;
+			   background-position: 0 50%;
+			   padding-left: 18px;
+			}
+  		</style>
+  		<xi:include href="base.html" />
+    	<replace py:replace="pagehead()"/>
+    </head>
+    <body>
+        <div id="main">
+            <div py:replace="header()"/>
+        	<replace py:replace="openIDSignin()"/>
+            <div py:replace="footer(showLoginStatus=False)"/>
+        </div>
+    </body>
+</html>

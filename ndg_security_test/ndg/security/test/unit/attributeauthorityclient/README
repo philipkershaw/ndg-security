@@ -1,0 +1,50 @@
+Unit tests for Attribute Authority Web Service Client
+=====================================================
+The test client connects to two different test Attribute Authorities
+corresponding to the fictitious Service Providers Site "A" and Site "B".  Each
+has its own respective configuration.  As they are also used in other tests,
+this configuration is held in a separate config/ directory parallel to this
+one. 
+
+These services must be started before running the unit tests.  Start a terminal
+in this directory and run:
+
+$ python ../../config/attributeauthority/sitea/siteAServerApp.py
+
+...and in a separate terminal:
+
+$ python ../../config/attributeauthority/siteb/siteBServerApp.py
+
+Configuration for these services is held in the files 
+
+../../config/attributeauthority/sitea/site-a.ini and
+../../config/attributeauthority/siteb/site-b.ini 
+
+respectively.
+
+Note however that the siteBServerApp.py is only needed for tests for getting 
+mapped attribute certificates: test07GetMappedAttCert and 
+test08GetMappedAttCertStressTest
+
+Settings for the client to these services are configured with the file
+attAuthorityClientTest.cfg.  The default values should work as set.
+
+Problems may occur due to proxy settings (Access Denied errors); no proxy 
+should be specified for the ports used by the services - i.e. use:
+
+$ unset http_proxy
+
+or set specific exceptions according to the address+port of the services used:
+
+$ export no_proxy=localhost:5100,localhost:5000
+
+Run the unit tests script test_attributeauthorityclient.py from another
+terminal:
+
+$ python ./test_attributeauthorityclient.py
+
+Tests can be run individually e.g.
+
+$ python ./test_attributeauthorityclient.py AttributeAuthorityClientTestCase.test01GetHostInfo
+
+P J Kershaw 24/12/08
