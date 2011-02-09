@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Mozilla HTML Keygen Interface</title>
+    </head>
+    <body>
+        <h1>Test Mozilla HTML Keygen Interface to MyProxy service</h1>
+        <p>Based on <a href="https://developer.mozilla.org/en/HTML/Element/keygen">Mozilla Keygen</a></p>
+        <p>Press "Apply" to apply for a new certificate from the MyProxy service:</p>
+        <form action="https://localhost:7443/logon">
+            <keygen name="certificate_request" challenge="challenge" keytype="RSA">
+            <input type="submit" value="Apply" />
+        </form>
+    </body>
+</html>
