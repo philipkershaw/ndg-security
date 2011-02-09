@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+    <trusted name="BODC">
+    	<wsdl>bodcAttAuthorityURI</wsdl>
+	<role remote="aBODCrole" local="aLocalRole"/>
+    </trusted>
+    <trusted name="escience">
+    	<wsdl>eScienceAttAuthorityURI</wsdl>
+	<role remote="anEScienceRole" local="anotherLocalRole"/>
+    </trusted>
+</AAmap>
