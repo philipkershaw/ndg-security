@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.twisted</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        Module&nbsp;twisted
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.server.twisted-module.html">Module ndg.security.server.twisted</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""WS-Security digital signature handler for Twisted framework</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">(moved from ndg.security.common.wsSecurity)</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">This is used by NDG-Security server side code ONLY</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"28/08/07"</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2007 STFC &amp; NERC"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-string">"""This software may be distributed under the terms of the Q Public </tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-string">License, version 1.0 or later."""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionCookie.__revision__=ndg.security.common.SessionCookie-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.gatekeeper.__revision__=ndg.security.common.gatekeeper-module.html#__revision__,Variable ndg.security.common.logService.__revision__=ndg.security.common.logService-module.html#__revision__,Variable ndg.security.common.logService.log_services_server.__revision__=ndg.security.common.logService.log_services_server-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.sessionCookie.__revision__=ndg.security.common.sessionCookie-module.html#__revision__,Variable ndg.security.common.wsSecurity.__revision__=ndg.security.common.wsSecurity-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.MyProxy.__revision__=ndg.security.server.MyProxy-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.certs.ca.__revision__=ndg.security.server.conf.certs.ca-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__,Variable ndg.security.test.Log.LogTest.__revision__=ndg.security.test.Log.LogTest-module.html#__revision__,Variable ndg.security.test.Log.__revision__=ndg.security.test.Log-module.html#__revision__,Variable ndg.security.test.SecurityCGItest.__revision__=ndg.security.test.SecurityCGItest-module.html#__revision__,Variable ndg.security.test.X509.X509Test.__revision__=ndg.security.test.X509.X509Test-module.html#__revision__,Variable ndg.security.test.X509.__revision__=ndg.security.test.X509-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.__revision__=ndg.security.test.XMLSecDoc-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__=ndg.security.test.XMLSecDoc.xmlSecDocTest-module.html#__revision__,Variable ndg.security.test.__revision__=ndg.security.test-module.html#__revision__,Variable ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__=ndg.security.test.attAuthority.AttAuthorityClientTest-module.html#__revision__,Variable ndg.security.test.attAuthority.__revision__=ndg.security.test.attAuthority-module.html#__revision__,Variable ndg.security.test.attAuthority.attCertLog.__revision__=ndg.security.test.attAuthority.attCertLog-module.html#__revision__,Variable ndg.security.test.attAuthority.ca.__revision__=ndg.security.test.attAuthority.ca-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAUserRoles.__revision__=ndg.security.test.attAuthority.siteAUserRoles-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBUserRoles.__revision__=ndg.security.test.attAuthority.siteBUserRoles-module.html#__revision__,Variable ndg.security.test.attCert.AttCertTest.__revision__=ndg.security.test.attCert.AttCertTest-module.html#__revision__,Variable ndg.security.test.attCert.__revision__=ndg.security.test.attCert-module.html#__revision__,Variable ndg.security.test.ca.__revision__=ndg.security.test.ca-module.html#__revision__,Variable ndg.security.test.ca.caClientTest.__revision__=ndg.security.test.ca.caClientTest-module.html#__revision__,Variable ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__=ndg.security.test.gatekeeper.TestGatekeeperResrc-module.html#__revision__,Variable ndg.security.test.gatekeeper.__revision__=ndg.security.test.gatekeeper-module.html#__revision__,Variable ndg.security.test.myProxy.MyProxyClientTest.__revision__=ndg.security.test.myProxy.MyProxyClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.__revision__=ndg.security.test.myProxy-module.html#__revision__,Variable ndg.security.test.sessionCookie.SessionCookieTest.__revision__=ndg.security.test.sessionCookie.SessionCookieTest-module.html#__revision__,Variable ndg.security.test.sessionCookie.__revision__=ndg.security.test.sessionCookie-module.html#__revision__,Variable ndg.security.test.sessionMgr.__revision__=ndg.security.test.sessionMgr-module.html#__revision__,Variable ndg.security.test.sessionMgr.ca.__revision__=ndg.security.test.sessionMgr.ca-module.html#__revision__,Variable ndg.security.test.sessionMgr.test.__revision__=ndg.security.test.sessionMgr.test-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__=ndg.security.test.sessionMgrClient.SessionMgrClientTest-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.__revision__=ndg.security.test.sessionMgrClient-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.ca.__revision__=ndg.security.test.sessionMgrClient.ca-module.html#__revision__,Variable ndg.security.test.wsSecurity.__revision__=ndg.security.test.wsSecurity-module.html#__revision__,Variable ndg.security.test.wsSecurity.client.__revision__=ndg.security.test.wsSecurity.client-module.html#__revision__,Variable ndg.security.test.wsSecurity.server.__revision__=ndg.security.test.wsSecurity.server-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionCookie.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.gatekeeper.__revision__
+ndg.security.common.logService.__revision__
+ndg.security.common.logService.log_services_server.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.sessionCookie.__revision__
+ndg.security.common.wsSecurity.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.MyProxy.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.certs.ca.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__
+ndg.security.test.Log.LogTest.__revision__
+ndg.security.test.Log.__revision__
+ndg.security.test.SecurityCGItest.__revision__
+ndg.security.test.X509.X509Test.__revision__
+ndg.security.test.X509.__revision__
+ndg.security.test.XMLSecDoc.__revision__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__
+ndg.security.test.__revision__
+ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__
+ndg.security.test.attAuthority.__revision__
+ndg.security.test.attAuthority.attCertLog.__revision__
+ndg.security.test.attAuthority.ca.__revision__
+ndg.security.test.attAuthority.siteAUserRoles.__revision__
+ndg.security.test.attAuthority.siteBUserRoles.__revision__
+ndg.security.test.attCert.AttCertTest.__revision__
+ndg.security.test.attCert.__revision__
+ndg.security.test.ca.__revision__
+ndg.security.test.ca.caClientTest.__revision__
+ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__
+ndg.security.test.gatekeeper.__revision__
+ndg.security.test.myProxy.MyProxyClientTest.__revision__
+ndg.security.test.myProxy.__revision__
+ndg.security.test.sessionCookie.SessionCookieTest.__revision__
+ndg.security.test.sessionCookie.__revision__
+ndg.security.test.sessionMgr.__revision__
+ndg.security.test.sessionMgr.ca.__revision__
+ndg.security.test.sessionMgr.test.__revision__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__
+ndg.security.test.sessionMgrClient.__revision__
+ndg.security.test.sessionMgrClient.ca.__revision__
+ndg.security.test.wsSecurity.__revision__
+ndg.security.test.wsSecurity.client.__revision__
+ndg.security.test.wsSecurity.server.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id: twisted.py 2909 2007-09-28 14:22:21Z pjkersha $'</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">zope</tt><tt class="py-op">.</tt><tt class="py-name">interface</tt> <tt class="py-keyword">import</tt> <tt class="py-name">classProvides</tt><tt class="py-op">,</tt> <tt class="py-name">implements</tt><tt class="py-op">,</tt> <tt class="py-name">Interface</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ZSI</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module ndg.security.server.twisted=ndg.security.server.twisted-module.html"><a title="ndg.security.server.twisted" class="py-name" href="#" onclick="return doclink('link-1', 'twisted', 'link-1');">twisted</a></tt><tt class="py-op">.</tt><tt class="py-name">WSresource</tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class ZSI.twisted.WSresource.DefaultHandlerChain=ZSI.twisted.WSresource.DefaultHandlerChain-class.html"><a title="ZSI.twisted.WSresource.DefaultHandlerChain" class="py-name" href="#" onclick="return doclink('link-2', 'DefaultHandlerChain', 'link-2');">DefaultHandlerChain</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-name">DefaultCallbackHandler</tt><tt class="py-op">,</tt> <tt class="py-name">HandlerChainInterface</tt><tt class="py-op">,</tt> <tt class="py-name">DataHandler</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">     </tt>
+<a name="WSSecurityHandlerChainFactory"></a><div id="WSSecurityHandlerChainFactory-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="WSSecurityHandlerChainFactory-toggle" onclick="return toggle('WSSecurityHandlerChainFactory');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.server.twisted.WSSecurityHandlerChainFactory-class.html">WSSecurityHandlerChainFactory</a><tt class="py-op">:</tt> </tt>
+</div><div id="WSSecurityHandlerChainFactory-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="WSSecurityHandlerChainFactory-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-name">protocol</tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="ZSI.twisted.WSresource.DefaultHandlerChain" class="py-name" href="#" onclick="return doclink('link-3', 'DefaultHandlerChain', 'link-2');">DefaultHandlerChain</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">     </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="WSSecurityHandlerChainFactory.newInstance"></a><div id="WSSecurityHandlerChainFactory.newInstance-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="WSSecurityHandlerChainFactory.newInstance-toggle" onclick="return toggle('WSSecurityHandlerChainFactory.newInstance');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.server.twisted.WSSecurityHandlerChainFactory-class.html#newInstance">newInstance</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="WSSecurityHandlerChainFactory.newInstance-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="WSSecurityHandlerChainFactory.newInstance-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt class="py-name">protocol</tt><tt class="py-op">(</tt><tt class="py-name">DefaultCallbackHandler</tt><tt class="py-op">,</tt>  </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">                            <tt class="py-name">DataHandler</tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                            <tt id="link-4" class="py-name" targets="Class ndg.security.server.twisted.WSSecurityHandler=ndg.security.server.twisted.WSSecurityHandler-class.html"><a title="ndg.security.server.twisted.WSSecurityHandler" class="py-name" href="#" onclick="return doclink('link-4', 'WSSecurityHandler', 'link-4');">WSSecurityHandler</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="WSSecurityHandler"></a><div id="WSSecurityHandler-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="WSSecurityHandler-toggle" onclick="return toggle('WSSecurityHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.server.twisted.WSSecurityHandler-class.html">WSSecurityHandler</a><tt class="py-op">:</tt> </tt>
+</div><div id="WSSecurityHandler-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="WSSecurityHandler-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">    <tt class="py-name">classProvides</tt><tt class="py-op">(</tt><tt class="py-name">HandlerChainInterface</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#signatureHandler,Variable ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler=ndg.security.common.SessionMgr.SessionMgrClient-class.html#signatureHandler,Variable ndg.security.common.ca.CertificateAuthorityClient.signatureHandler=ndg.security.common.ca.CertificateAuthorityClient-class.html#signatureHandler,Variable ndg.security.server.twisted.WSSecurityHandler.signatureHandler=ndg.security.server.twisted.WSSecurityHandler-class.html#signatureHandler"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-5', 'signatureHandler', 'link-5');">signatureHandler</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">     </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="WSSecurityHandler.processRequest"></a><div id="WSSecurityHandler.processRequest-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="WSSecurityHandler.processRequest-toggle" onclick="return toggle('WSSecurityHandler.processRequest');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.server.twisted.WSSecurityHandler-class.html#processRequest">processRequest</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">ps</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="WSSecurityHandler.processRequest-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="WSSecurityHandler.processRequest-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-docstring">"""Callback for verifying a signature.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring">        @param ps: instance representing SOAP request Body.</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">        @type ps: ZSI.parse.ParsedSoap</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">        @return ps: instance representing SOAP request Body</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype ps: ZSI.parse.ParsedSoap</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-6', 'signatureHandler', 'link-5');">signatureHandler</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-7', 'signatureHandler', 'link-5');">signatureHandler</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method ndg.security.common.X509.X509Cert.verify()=ndg.security.common.X509.X509Cert-class.html#verify,Method ndg.security.common.wsSecurity.SignatureHandler.verify()=ndg.security.common.wsSecurity.SignatureHandler-class.html#verify,Method ndg.security.test.wsSecurity.server.echoServer.EchoService.verify()=ndg.security.test.wsSecurity.server.echoServer.EchoService-class.html#verify"><a title="ndg.security.common.X509.X509Cert.verify
+ndg.security.common.wsSecurity.SignatureHandler.verify
+ndg.security.test.wsSecurity.server.echoServer.EchoService.verify" class="py-name" href="#" onclick="return doclink('link-8', 'verify', 'link-8');">verify</a></tt><tt class="py-op">(</tt><tt class="py-name">ps</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">             </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ps</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">     </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="WSSecurityHandler.processResponse"></a><div id="WSSecurityHandler.processResponse-def"><a name="L52"></a><tt class="py-lineno">52</tt> <a class="py-toggle" href="#" id="WSSecurityHandler.processResponse-toggle" onclick="return toggle('WSSecurityHandler.processResponse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.server.twisted.WSSecurityHandler-class.html#processResponse">processResponse</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">sw</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="WSSecurityHandler.processResponse-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="WSSecurityHandler.processResponse-expanded"><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-docstring">"""Callback for signing an outbound message.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">        @param ps: instance representing SOAP response Body.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">        @type ps: ZSI.writer.SoapWriter</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">        @return ps: instance representing SOAP response Body</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype ps: ZSI.writer.SoapWriter</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-9', 'signatureHandler', 'link-5');">signatureHandler</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">            <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-10', 'signatureHandler', 'link-5');">signatureHandler</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method ndg.security.common.wsSecurity.SignatureHandler.sign()=ndg.security.common.wsSecurity.SignatureHandler-class.html#sign,Method ndg.security.server.ca.SimpleCA.sign()=ndg.security.server.ca.SimpleCA-class.html#sign,Method ndg.security.test.wsSecurity.server.echoServer.EchoService.sign()=ndg.security.test.wsSecurity.server.echoServer.EchoService-class.html#sign"><a title="ndg.security.common.wsSecurity.SignatureHandler.sign
+ndg.security.server.ca.SimpleCA.sign
+ndg.security.test.wsSecurity.server.echoServer.EchoService.sign" class="py-name" href="#" onclick="return doclink('link-11', 'sign', 'link-11');">sign</a></tt><tt class="py-op">(</tt><tt class="py-name">sw</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">             </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">sw</tt> </tt>
+</div></div><a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:57 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

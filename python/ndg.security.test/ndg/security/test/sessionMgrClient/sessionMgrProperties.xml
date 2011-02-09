@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sessMgrProp>
+    <portNum>5700</portNum>
+    <useSSL>Yes</useSSL> <!-- leave blank to use http -->
+    <!--<useSSL>Yes</useSSL>  leave blank to use http -->
+    <sslCertFile>$NDGSEC_SMCLNT_UNITTEST_DIR/sm.crt</sslCertFile>
+    <sslKeyFile>$NDGSEC_SMCLNT_UNITTEST_DIR/sm.key</sslKeyFile>
+    <!-- 
+    Directory containing CA cert.s to verify SSL peer cert against 
+     - ignored if useSSL is blank 
+    -->
+    <sslCACertDir>$NDGSEC_SMCLNT_UNITTEST_DIR/ca</sslCACertDir>
+    <!--
+    PKI settings for WS-Security signature of outbound SOAP messages
+    -->
+    <!--
+    PKI settings for signature of outbound SOAP messages
+    -->
+    <useSignatureHandler>Yes</useSignatureHandler> <!-- leave blank for no signature -->
+    <!-- 
+    CA Certificates used to verify X.509 certs used in peer SOAP messages,
+    SSL connections and Attribute Certificates
+    -->
+    <caCertFileList>
+        <caCertFile>$NDGSEC_SMCLNT_UNITTEST_DIR/ca/ndg-test-ca.crt</caCertFile>
+        <!-- 
+        To also trust certificates issued from your MyProxy CA, replace 
+        "abcdef01.0" with the unique name for your CA certificate and uncomment
+        the following line:
+        <caCertFile>$NDGSEC_SMCLNT_UNITTEST_DIR/ca/abcdef01.0</caCertFile>
+        -->
+    </caCertFileList>
+    <certFile>$NDGSEC_SMCLNT_UNITTEST_DIR/sm.crt</certFile>
+    <keyFile>$NDGSEC_SMCLNT_UNITTEST_DIR/sm.key</keyFile>
+    <keyPwd/>
+	<!-- 
+	Inclusive namespace prefixes for reference and SignedInfo sections of
+	WS-Security digital signature
+	-->
+	<wssRefInclNS></wssRefInclNS>
+	<wssSignedInfoInclNS></wssSignedInfoInclNS>
+    <!-- 
+    Set the certificate used to verify the signature of messages from the 
+    client.  This can usually be left blank since the client is expected to 
+    include the cert with the signature in the inbound SOAP message
+    -->
+    <clntCertFile></clntCertFile>    
+    <sessMgrEncrKey>abcdef0123456789</sessMgrEncrKey>
+    <sessMgrURI>https://localhost:5700/SessionManager</sessMgrURI>
+    <cookieDomain></cookieDomain>
+	<myProxyProp>
+		<!-- 
+		Delete this element and take setting from MYPROXY_SERVER environment 
+		variable if required
+		<hostname>localhost</hostname>
+		-->
+		<!-- 
+		Delete this element to take default setting 7512 or read 
+		MYPROXY_SERVER_PORT setting
+		-->
+		<port>7512</port>
+		<!--
+		Useful if hostname and certificate CN don't match correctly.  Globus 
+		host DN is set to "host/<fqdn>".  Delete this element and set from 
+		MYPROXY_SERVER_DN environment variable if preferred
+		<serverDN>/O=NDG/OU=BADC/OU=Gabriel/CN=localhost</serverDN>
+		-->
+		<!--
+		Set "host/" prefix to host cert CN as is default with globus otherwise
+		client SSL peer cert check fails
+		-->
+		<serverCNprefix>host/</serverCNprefix>	
+		<!--
+		This directory path is used to locate the OpenSSL configuration file
+		
+		The settings are used to set up the defaults for the Distinguished Name of
+		the new proxy cert. issued 
+		
+		GLOBUS_LOCATION or GRID_SECURITY_DIR environment variables may be used
+		but the settings can be independent of any Globus installation
+		-->
+		<openSSLConfFilePath>$NDGSEC_SMCLNT_UNITTEST_DIR/openssl.conf</openSSLConfFilePath>
+		<tmpDir>/tmp</tmpDir>
+		<!-- 
+			Limit on maximum lifetime any proxy certificate can have - 
+			specified when a certificate is first created by store() method
+		-->
+		<proxyCertMaxLifetime>43200</proxyCertMaxLifetime> <!-- in seconds -->
+		<!-- 
+			Life time of a proxy certificate when issued from the Proxy Server 
+			with getDelegation() method
+		-->
+		<proxyCertLifetime>43200</proxyCertLifetime> <!-- in seconds -->
+		<caCertFile>$NDGSEC_SMCLNT_UNITTEST_DIR/ca/cacert.pem</caCertFile>
+	</myProxyProp>
+	<simpleCACltProp>
+	    <uri></uri>
+        <xmlSigKeyFile></xmlSigKeyFile>
+        <xmlSigCertFile></xmlSigCertFile>
+        <xmlSigCertPwd></xmlSigCertPwd>
+    </simpleCACltProp>
+    <credReposProp>
+	    <modFilePath></modFilePath>
+	    <modName>ndg.security.common.CredWallet</modName>
+	    <className>NullCredRepos</className>
+	    <propFile></propFile>
+    </credReposProp>
+</sessMgrProp>

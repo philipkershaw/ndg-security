@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="AttAuthority"
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="urn:ndg:security:attAuthority"
+ targetNamespace="urn:ndg:security:attAuthority">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:ndg:security:attAuthority">
+    
+      <xsd:complexType name="HostInfo">
+        <xsd:sequence>
+          <xsd:element name="hostname" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="aaURI" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="aaDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="loginURI" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="loginServerDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="loginRequestServerDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="roleList" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:element name="getAttCert">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="userCert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="userAttCert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getAttCertResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="attCert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	        <xsd:element name="msg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getHostInfo">
+        <xsd:complexType/>
+      </xsd:element>
+
+      <xsd:element name="getHostInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hostname" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="aaURI" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="aaDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="loginURI" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="loginServerDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="loginRequestServerDN" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getTrustedHostInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="role" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getTrustedHostInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="trustedHosts" type="tns:HostInfo" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getAllHostsInfo">
+        <xsd:complexType/>
+      </xsd:element>
+
+      <xsd:element name="getAllHostsInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hosts" type="tns:HostInfo" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="getX509Cert">
+        <xsd:complexType/>
+      </xsd:element>
+      
+      <xsd:element name="getX509CertResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="x509Cert" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </wsdl:types>
+ 
+  <wsdl:message name="getAttCertInputMsg">
+    <wsdl:part name="parameters" element="tns:getAttCert"/>
+  </wsdl:message>
+
+  <wsdl:message name="getAttCertOutputMsg">
+    <wsdl:part name="parameters" element="tns:getAttCertResponse"/>
+  </wsdl:message>
+  
+  <wsdl:message name="getHostInfoInputMsg">
+    <wsdl:part name="parameters" element="tns:getHostInfo"/>
+  </wsdl:message>
+
+  <wsdl:message name="getHostInfoOutputMsg">
+    <wsdl:part name="parameters" element="tns:getHostInfoResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getTrustedHostInfoInputMsg">
+    <wsdl:part name="parameters" element="tns:getTrustedHostInfo"/>
+  </wsdl:message>
+
+  <wsdl:message name="getTrustedHostInfoOutputMsg">
+    <wsdl:part name="parameters" element="tns:getTrustedHostInfoResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getAllHostsInfoInputMsg">
+    <wsdl:part name="parameters" element="tns:getAllHostsInfo"/>
+  </wsdl:message>
+
+  <wsdl:message name="getAllHostsInfoOutputMsg">
+    <wsdl:part name="parameters" element="tns:getAllHostsInfoResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getX509CertInputMsg">
+    <wsdl:part name="parameters" element="tns:getX509Cert"/>
+  </wsdl:message>
+
+  <wsdl:message name="getX509CertOutputMsg">
+    <wsdl:part name="parameters" element="tns:getX509CertResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="AttAuthority">
+    <wsdl:operation name="getAttCert">
+      <wsdl:input message="tns:getAttCertInputMsg"/>
+      <wsdl:output message="tns:getAttCertOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="getHostInfo">
+      <wsdl:input message="tns:getHostInfoInputMsg"/>
+      <wsdl:output message="tns:getHostInfoOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="getTrustedHostInfo">
+      <wsdl:input message="tns:getTrustedHostInfoInputMsg"/>
+      <wsdl:output message="tns:getTrustedHostInfoOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="getAllHostsInfo">
+      <wsdl:input message="tns:getAllHostsInfoInputMsg"/>
+      <wsdl:output message="tns:getAllHostsInfoOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="getX509Cert">
+      <wsdl:input message="tns:getX509CertInputMsg"/>
+      <wsdl:output message="tns:getX509CertOutputMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="AttAuthorityBinding" type="tns:AttAuthority">
+    <soap:binding
+     style="document"
+     transport="http://schemas.xmlsoap.org/soap/http"/>
+     
+    <wsdl:operation name="getAttCert">
+      <soap:operation soapAction="getAttCert"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="getHostInfo">
+      <soap:operation soapAction="getHostInfo"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+
+    <wsdl:operation name="getTrustedHostInfo">
+      <soap:operation soapAction="getTrustedHostInfo"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+
+    <wsdl:operation name="getAllHostsInfo">
+      <soap:operation soapAction="getAllHostsInfo"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+
+    <wsdl:operation name="getX509Cert">
+      <soap:operation soapAction="getX509Cert"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>    
+  
+  </wsdl:binding>
+
+  <wsdl:service name="AttAuthorityService">
+    <wsdl:documentation>NERC Data Grid Attribute Authority web service</wsdl:documentation>
+    <wsdl:port name="AttAuthority" binding="tns:AttAuthorityBinding">
+      <soap:address location="http://localhost:5700"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

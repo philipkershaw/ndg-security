@@ -1,0 +1,1628 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.CredWallet.CredWallet</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.CredWallet-module.html">Module&nbsp;CredWallet</a> ::
+        Class&nbsp;CredWallet
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class CredWallet</h1><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet">source&nbsp;code</a></span><br /><br />
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_30" name="uml_class_diagram_for_ndg_secu_30">
+<area shape="rect" href="ndg.security.common.CredWallet.CredWallet&#45;class.html" title="Volatile store of user credentials associated with a user session" alt="" coords="15,11,60,27"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_30.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_30" ismap="ismap" class="graph-without-title" />
+</center></center>
+<hr />
+Volatile store of user credentials associated with a user session<br /><br />
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet._MetaCredWallet-class.html" class="summary-name">__metaclass__</a><br />
+      Enable CredWallet to have read only class variables e.g.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userCert</span>,
+        <span class="summary-sig-arg">userPriKey</span>,
+        <span class="summary-sig-arg">issuingCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaPropFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">credRepos</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mapFromTrustedHosts</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">rtnExtAttCertList</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">attCertRefreshElapse</span>=<span class="summary-sig-default">7200</span>)</span><br />
+      Create store of user credentials for their current session</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setCert" class="summary-sig-name">__setCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cert</span>)</span><br />
+      filter and convert input cert to signing verifying cert set 
+      property methods.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setUserCert"></a><span class="summary-sig-name">__setUserCert</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userCert</span>)</span><br />
+      Set property method for X.509 user cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setUserCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getUserCert"></a><span class="summary-sig-name">__getUserCert</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get user cert X509Cert instance</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getUserCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setIssuingCert"></a><span class="summary-sig-name">__setIssuingCert</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuingCert</span>)</span><br />
+      Set property method for X.509 user cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setIssuingCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getIssuingCert"></a><span class="summary-sig-name">__getIssuingCert</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get user cert X509Cert instance</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getIssuingCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setUserPriKey" class="summary-sig-name">__setUserPriKey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userPriKey</span>)</span><br />
+      Set method for client private key</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setUserPriKey">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getCredentials" class="summary-sig-name">__getCredentials</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get Property method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getCredentials">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getCAcertFilePathList"></a><span class="summary-sig-name">__getCAcertFilePathList</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get CA cert or certs used to validate AC signatures and signatures
+      of peer SOAP messages.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getCAcertFilePathList">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setCAcertFilePathList" class="summary-sig-name">__setCAcertFilePathList</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>)</span><br />
+      Set CA cert or certs to validate AC signatures, signatures of 
+      Attribute Authority SOAP responses and SSL connections where AA SOAP 
+      service is run over SSL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setCAcertFilePathList">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ndg.security.common.AttAuthorityClient</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__createAAClnt" class="summary-sig-name">__createAAClnt</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaURI</span>)</span><br />
+      Set up a client to an Attribute Authority with the given URI</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__createAAClnt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setAAuri" class="summary-sig-name">__setAAuri</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaURI</span>)</span><br />
+      Set property method for Attribute Authority Web Service URI to 
+      connect to.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setAAuri">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getAAclnt" class="summary-sig-name">__getAAclnt</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get property method for Attribute Authority Web Service client 
+      instance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAAclnt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setAApropFilePath" class="summary-sig-name">__setAApropFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaPropFilePath</span>)</span><br />
+      Set property method for the properties file of a local Attribute 
+      Authority.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setAApropFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getAA" class="summary-sig-name">__getAA</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get property method for Attribute Authority Web Service client 
+      instance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAA">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#isValid" class="summary-sig-name">isValid</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**x509CertKeys</span>)</span><br />
+      Check wallet's user cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.isValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#addCredential" class="summary-sig-name">addCredential</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">attCert</span>,
+        <span class="summary-sig-arg">bUpdateCredRepos</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Add a new attribute certificate to the list of credentials 
+      held.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.addCredential">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="audit"></a><span class="summary-sig-name">audit</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check the credentials held in the wallet removing any that have 
+      expired or are otherwise invalid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.audit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#updateCredRepos" class="summary-sig-name">updateCredRepos</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">auditCred</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Copy over non-persistent credentials held by wallet into the 
+      perminent repository.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.updateCredRepos">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getAttCert" class="summary-sig-name">__getAttCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaClnt</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">extAttCert</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Wrapper to Attribute Authority attribute certificate request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAttCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#getAATrustedHostInfo" class="summary-sig-name">getAATrustedHostInfo</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userRole</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaPropFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaURI</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Wrapper to Attribute Authority getTrustedHostInfo</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.getAATrustedHostInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#getAttCert" class="summary-sig-name">getAttCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reqRole</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaPropFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">aaURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mapFromTrustedHosts</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rtnExtAttCertList</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">extAttCertList</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">extTrustedHostList</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">refreshAttCert</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">attCertRefreshElapse</span>=<span class="summary-sig-default">None</span>)</span><br />
+      For a given role, get an Attribute Certificate from an Attribute 
+Authority using a user's X.509 certificate.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.getAttCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">basestring, list, tuple or None</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#__caCertFilePathList" class="summary-name">__caCertFilePathList</a><br />
+      file path(s) to CA certificates.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ndg.security.common.CredRepos or derivative</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#__credRepos" class="summary-name">__credRepos</a><br />
+      reference to Credential Repository object.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict</span>
+    </td><td class="summary">
+        <a name="__credentials"></a><span class="summary-name">__credentials</span><br />
+      Credentials are stored as a dictionary one element per attribute 
+      certicate held and indexed by certificate issuer name
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ndg.security.common.X509.X500DN</span>
+    </td><td class="summary">
+        <a name="__dn"></a><span class="summary-name">__dn</span><br />
+      distinguished name from user certificate
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ndg.security.common.X509.X509Cert</span>
+    </td><td class="summary">
+        <a name="__issuingCert"></a><span class="summary-name">__issuingCert</span><br />
+      X.509 user certificate instance
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#__mapFromTrustedHosts" class="summary-name">__mapFromTrustedHosts</a><br />
+      if true, allow a mapped attribute certificate to obtained in a 
+      getAttCert call.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+        <a name="__rtnExtAttCertList"></a><span class="summary-name">__rtnExtAttCertList</span><br />
+      if true, return a list of external attribute certificates from 
+      getAttCert call
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ndg.security.common.X509.X509Cert</span>
+    </td><td class="summary">
+        <a name="__userCert"></a><span class="summary-name">__userCert</span><br />
+      X.509 user certificate instance
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">M2Crypto.RSA.RSA</span>
+    </td><td class="summary">
+        <a name="__userPriKey"></a><span class="summary-name">__userPriKey</span><br />
+      Private key used to sign outbound message
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#userCert" class="summary-name">userCert</a><br />
+      X.509 user certificate instance
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#issuingCert" class="summary-name">issuingCert</a><br />
+      X.509 user certificate instance
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#userPriKey" class="summary-name">userPriKey</a><br />
+      Private key used to sign outbound message
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#credentials" class="summary-name">credentials</a><br />
+      List of Attribute Certificates
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#caCertFilePathList" class="summary-name">caCertFilePathList</a><br />
+      CA Certificates - used for verification of AC and SOAP message 
+      signatures and SSL connections
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#aaURI" class="summary-name">aaURI</a><br />
+      AA URI - setting also sets up AttAuthorityClient instance!
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#aaClnt" class="summary-name">aaClnt</a><br />
+      AA web service client instance
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#aaPropFilePath" class="summary-name">aaPropFilePath</a><br />
+      AA properties file path - setting this also sets up an AA 
+      locally!
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.CredWallet.CredWallet-class.html#aa" class="summary-name">aa</a><br />
+      Attribute Authority instance
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userCert</span>,
+        <span class="sig-arg">userPriKey</span>,
+        <span class="sig-arg">issuingCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caCertFilePathList</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaPropFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">credRepos</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mapFromTrustedHosts</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">rtnExtAttCertList</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">attCertRefreshElapse</span>=<span class="sig-default">7200</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Create store of user credentials for their current session
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userCert</code></strong> (string / M2Crypto.X509.X509 / 
+          ndg.security.common.X509.X509Cert) - X.509 certificate for user</li>
+        <li><strong class="pname"><code>userPriKey</code></strong> (string / M2Crypto.RSA.RSA) - private key for user cert</li>
+        <li><strong class="pname"><code>issuingCert</code></strong> (string / ndg.security.common.X509.X509Cert) - X.509 cert for issuer of user cert</li>
+        <li><strong class="pname"><code>aaURI</code></strong> (string) - URI of Attribute Authority to make requests to. Setting this 
+          ALSO creates an AttAuthorityClient instance self.__aaClnt.  - See
+          aaURI property for details.</li>
+        <li><strong class="pname"><code>aaPropFilePath</code></strong> (string) - properties file path for an Attribute Authority to make 
+          requests to.  Setting this ALSO creates an AttAuthority instance 
+          self.__aa running locally.   - See aa property for details.  
+          aaURI takes precedence over this keyword i.e. if an aaURI has 
+          been set, then calls are made to the AA web service at this 
+          location rather to any self.__aa running locally.</li>
+        <li><strong class="pname"><code>caCertFilePathList</code></strong> (string (for single file), list or tuple) - Certificate Authority's certificates - used in validation of 
+          signed Attribute Certificates and WS-Security signatures of 
+          incoming messages.  If not set here, it must be input in call to 
+          getAttCert.</li>
+        <li><strong class="pname"><code>credRepos</code></strong> (instance of CredRepos derived class) - Credential Repository instance.  If not set, defaults to 
+          NullCredRepos type - see class below...</li>
+        <li><strong class="pname"><code>rtnExtAttCertList</code></strong> (bool) - behaviour for getAttCert().  If True, and authorisation fails 
+          with the given Attribute Authority, return a list of Attribute 
+          Certificates from other trusted AAs which could be used to obtain
+          a mapped Attribute Certificate on a subsequent authorisation 
+          attempt</li>
+        <li><strong class="pname"><code>attCertRefreshElapse</code></strong> (float / int) - used by getAttCert to determine whether to replace an existing
+          AC in the cache with a fresh one.  If the existing one has less 
+          than attCertRefreshElapse time in seconds left before expiry then
+          replace it.</li>
+    </ul></dd>
+    <dt>Overrides:
+      object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cert</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  filter and convert input cert to signing verifying cert set property 
+  methods.  For signingCert, set to None if it is not to be included in the
+  SOAP header.  For verifyingCert, set to None if this cert can be expected
+  to be retrieved from the SOAP header of the message to be verified
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><p><strong class="pname"><code>cert</code></strong> - X.509 certificate.</p>
+          @rtype ndg.security.common.X509.X509Cert @return X.509 
+          certificate object</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setUserPriKey"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setUserPriKey</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userPriKey</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setUserPriKey">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Set method for client private key</p>
+  Nb. if input is a string, userPriKeyPwd will need to be set if the key
+  is password protected.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userPriKey</code></strong> (M2Crypto.RSA.RSA / string) - private key used to sign message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getCredentials"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getCredentials</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getCredentials">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get Property method.  Credentials are read-only
+  <dl class="fields">
+    <dt>Returns: dict</dt>
+        <dd>cached ACs indesed by issuing organisation name</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setCAcertFilePathList"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setCAcertFilePathList</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caCertFilePathList</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setCAcertFilePathList">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set CA cert or certs to validate AC signatures, signatures of 
+  Attribute Authority SOAP responses and SSL connections where AA SOAP 
+  service is run over SSL.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caCertFilePathList</code></strong> (basestring, list, tuple or None) - file path(s) to CA certificates.  If None then the input is 
+          quietly ignored.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__createAAClnt"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__createAAClnt</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">aaURI</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__createAAClnt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set up a client to an Attribute Authority with the given URI
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaURI</code></strong> (string) - Attribute Authority Web Service URI.</li>
+    </ul></dd>
+    <dt>Returns: ndg.security.common.AttAuthorityClient</dt>
+        <dd>new Attribute Authority client instance</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setAAuri"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setAAuri</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">aaURI</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setAAuri">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set property method for Attribute Authority Web Service URI to connect
+  to.  This method ALSO SETS UP THE CLIENT INTERFACE
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaURI</code></strong> (string) - Attribute Authority Web Service URI.  Set to None to 
+          initialise.  Set to a URI to instantiate a new AA client</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getAAclnt"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getAAclnt</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAAclnt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get property method for Attribute Authority Web Service client 
+  instance.  Use aaURI propert to set up aaClnt
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaClnt</code></strong> (AttAuthorityClient) - Attribute Authority Web Service client instance</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setAApropFilePath"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setAApropFilePath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">aaPropFilePath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__setAApropFilePath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set property method for the properties file of a local Attribute 
+  Authority.  This method ALSO SETS UP THE LOCAL Attribute Authority object
+  to retrieve ACs from.  the property aaURI takes precedence: if an aaURI 
+  is set then it assumed that an Attribute Authority will be connected to 
+  via a web service call
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaPropFilePath</code></strong> (string) - Attribute Authority properties file.  Setting this 
+          instantiates a new AA locally</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getAA"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getAA</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAA">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get property method for Attribute Authority Web Service client 
+  instance.  Use aaURI propert to set up aaClnt
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaClnt</code></strong> (AttAuthorityClient) - Attribute Authority Web Service client instance</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValid</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**x509CertKeys</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.isValid">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check wallet's user cert.  If expired return False
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>**x509CertKeys</code></strong> (dict) - keywords applying to 
+          ndg.security.common.X509.X509Cert.isValidTime method</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addCredential"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addCredential</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">attCert</span>,
+        <span class="sig-arg">bUpdateCredRepos</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.addCredential">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Add a new attribute certificate to the list of credentials held.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>attCert</code></strong> () - new attribute Certificate to be added</li>
+        <li><strong class="pname"><code>bUpdateCredRepos</code></strong> (bool) - if set to True, and a repository exists it will be updated 
+          with the new credentials also</li>
+    </ul></dd>
+    <dt>Returns: bool</dt>
+        <dd>True if certificate was added otherwise False.  - If an 
+          existing certificate from the same issuer has a later expiry it 
+          will take precence and the new input certificate is ignored.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="updateCredRepos"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">updateCredRepos</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">auditCred</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.updateCredRepos">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Copy over non-persistent credentials held by wallet into the perminent
+  repository.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>auditCred</code></strong> (bool) - filter existing credentials in the repository removing invalid
+          ones</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getAttCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getAttCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">aaClnt</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">extAttCert</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.__getAttCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Wrapper to Attribute Authority attribute certificate request.  See 
+  getAttCert for the classes' public interface.</p>
+  <p>To call the Attribute Authority as a Web Service, specify a URI 
+  otherwise set the properties file path.</p>
+  If successful, a new attribute certificate is issued to the user and 
+  added into the wallet
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>aaClnt</code></strong> (ndg.security.common.AttAuthorityClient) - client object to Attribute Authority to make a request to.  If
+          omitted, it is set to self.__aaClnt.  This attribute may itself 
+          be None.   In this case, a local AA client will be expected set 
+          from a properties file.</li>
+        <li><strong class="pname"><code>extAttCert</code></strong> (ndg.security.common.AttCert.AttCert) - an existing Attribute Certificate which can be used to making 
+          a mapping should the user not be registered with the Attribute 
+          Authority</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAATrustedHostInfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAATrustedHostInfo</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userRole</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaPropFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaURI</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.getAATrustedHostInfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Wrapper to Attribute Authority getTrustedHostInfo</p>
+  getAATrustedHostInfo([userRole=r, ][aaPropFilePath=f|aaURI=u])
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userRole</code></strong> (string) - get hosts which have a mapping to this role</li>
+        <li><strong class="pname"><code>aaURI</code></strong> (string) - to call as a web service, specify the URI for the Attribute 
+          Authority.</li>
+        <li><strong class="pname"><code>aaPropFilePath</code></strong> (string) - Altenrative to aaURI - to run on the local machine, specify 
+          the local Attribute Authority configuration file.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAttCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAttCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">reqRole</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaPropFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">aaURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mapFromTrustedHosts</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">rtnExtAttCertList</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">extAttCertList</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">extTrustedHostList</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">refreshAttCert</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">attCertRefreshElapse</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.CredWallet-pysrc.html#CredWallet.getAttCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <pre class="literalblock">
+For a given role, get an Attribute Certificate from an Attribute 
+Authority using a user's X.509 certificate.  If this fails try to make
+a mapped Attribute Certificate by using a certificate from another 
+host which has a trust relationship to the Attribute Authority in 
+question.
+
+getAttCert([reqRole=r, ][aaPropFilePath=f|aaURI=u,]
+           [mapFromTrustedHosts=m, ]
+           [rtnExtAttCertList=e, ][extAttCertList=el, ]
+           [extTrustedHostList=et, ][refreshAttCert=ra])
+          
+The procedure is:
+
+1) Try attribute request using user certificate
+2) If the Attribute Authority (AA) doesn't recognise the certificate,
+find out any other hosts which have a trust relationship to the AA.
+3) Look for Attribute Certificates held in the wallet corresponding
+to these hosts.
+4) If no Attribute Certificates are available, call the relevant
+hosts' AAs to get certificates
+5) Finally, use these new certificates to try to obtain a mapped
+certificate from the original AA
+6) If this fails access is denied      
+            
+@type reqRole: string
+@param reqRole: the required role to get access for
+
+@type aaURI: string
+@param aaURI: to call as a web service, specify the URI for the 
+Attribute Authority.
+
+@type aaPropFilePath: string
+@param aaPropFilePath: Altenrative to aaURI - to run on the local 
+machine, specify the local Attribute Authority configuration file.
+                        
+@type mapFromTrustedHosts: bool / None     
+@param mapFromTrustedHosts: if request fails via the user's cert
+ID, then it is possible to get a mapped certificate by using 
+certificates from other AA's.  Set this flag to True, to allow this 
+second stage of generating a mapped certificate from the certificate 
+stored in the wallet credentials.
+
+If set to False, it is possible to return the list of certificates 
+available for mapping and then choose which one or ones to use for
+mapping by re-calling getAttCert with extAttCertList set to these 
+certificates.
+
+Defaults to None in which case self.__mapFromTrustedHosts is not 
+altered
+
+The list is returned via CredWalletAttributeRequestDenied exception
+If no value is set, the default value held in 
+self.__mapFromTrustedHosts is used
+
+@type rtnExtAttCertList: bool / None
+@param rtnExtAttCertList: If request fails, make a list of 
+candidate certificates from other Attribute Authorities which the user
+could use to retry and get a mapped certificate.
+                        
+If mapFromTrustedHosts is set True this flags value is overriden and 
+effectively set to True.
+
+If no value is set, the default value held in self.__rtnExtAttCertList
+is used.
+                        
+The list is returned via a CredWalletAttributeRequestDenied exception 
+object.
+                        
+@type extAttCertList: list
+@param extAttCertList: Attribute Certificate or list of certificates
+from other Attribute Authorities.  These can be used to get a mapped 
+certificate if access fails based on the user's certificate
+credentials.  They are tried out in turn until access is granted so 
+the order of the list decides the order in which they will be tried
+
+@type extTrustedHostList:
+@param extTrustedHostList: same as extAttCertList keyword, but 
+instead of providing Attribute Certificates, give a list of Attribute 
+Authority hosts.  These will be matched up to Attribute Certificates 
+held in the wallet.  Matching certificates will then be used to try to
+get a mapped Attribute Certificate.
+
+@type refreshAttCert: bool
+@param refreshAttCert: if set to True, the attribute request 
+will go ahead even if the wallet already contains an Attribute 
+Certificate from the target Attribute Authority.  The existing AC in 
+the wallet will be replaced by the new one obtained from this call.
+                        
+If set to False, this method will check to see if an AC issued by the 
+target AA already exists in the wallet.  If so, it will return this AC
+to the caller without proceeding to make a call to the AA.
+
+@type attCertRefreshElapse: float / int
+@param attCertRefreshElapse: determine whether to replace an 
+existing AC in the cache with a fresh one.  If the existing one has 
+less than attCertRefreshElapse time in seconds left before expiry then
+replace it.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__caCertFilePathList"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__caCertFilePathList</h3>
+  file path(s) to CA certificates.  If None then the input is quietly 
+  ignored.  See caCertFilePathList property
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>basestring, list, tuple or None</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__credRepos"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__credRepos</h3>
+  reference to Credential Repository object.  An optional non-volatile 
+  cache for storage of wallet info when
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>ndg.security.common.CredRepos or derivative</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__mapFromTrustedHosts"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__mapFromTrustedHosts</h3>
+  if true, allow a mapped attribute certificate to obtained in a 
+  getAttCert call.  Set false to prevent mappings.
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>bool</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="userCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">userCert</h3>
+  X.509 user certificate instance
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getUserCert" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getUserCert</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get user cert X509Cert instance
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setUserCert" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setUserCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userCert</span>)</span>
+        - Set property method for X.509 user cert.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="issuingCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issuingCert</h3>
+  X.509 user certificate instance
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getIssuingCert" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getIssuingCert</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get user cert X509Cert instance
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setIssuingCert" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setIssuingCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuingCert</span>)</span>
+        - Set property method for X.509 user cert.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="userPriKey"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">userPriKey</h3>
+  Private key used to sign outbound message
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setUserPriKey" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setUserPriKey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userPriKey</span>)</span>
+        - Set method for client private key
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="credentials"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">credentials</h3>
+  List of Attribute Certificates
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getCredentials" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getCredentials</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get Property method.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caCertFilePathList"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caCertFilePathList</h3>
+  CA Certificates - used for verification of AC and SOAP message 
+  signatures and SSL connections
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getCAcertFilePathList" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getCAcertFilePathList</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get CA cert or certs used to validate AC signatures and signatures
+      of peer SOAP messages.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setCAcertFilePathList" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setCAcertFilePathList</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>)</span>
+        - Set CA cert or certs to validate AC signatures, signatures of 
+      Attribute Authority SOAP responses and SSL connections where AA SOAP 
+      service is run over SSL.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="aaURI"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">aaURI</h3>
+  AA URI - setting also sets up AttAuthorityClient instance!
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setAAuri" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setAAuri</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaURI</span>)</span>
+        - Set property method for Attribute Authority Web Service URI to 
+      connect to.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="aaClnt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">aaClnt</h3>
+  AA web service client instance
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getAAclnt" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getAAclnt</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get property method for Attribute Authority Web Service client 
+      instance.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="aaPropFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">aaPropFilePath</h3>
+  AA properties file path - setting this also sets up an AA locally!
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__setAApropFilePath" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__setAApropFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">aaPropFilePath</span>)</span>
+        - Set property method for the properties file of a local Attribute 
+      Authority.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="aa"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">aa</h3>
+  Attribute Authority instance
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.CredWallet.CredWallet-class.html#__getAA" class="summary-sig-name">ndg.security.common.CredWallet.CredWallet.__getAA</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get property method for Attribute Authority Web Service client 
+      instance.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:43 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

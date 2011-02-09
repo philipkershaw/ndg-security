@@ -1,0 +1,26 @@
+Unit tests for Attribute Authority Web Service Client
+=====================================================
+The test client connects to two different test Attribute Authorities
+corresponding to the fictitious Service Providers Site "A" and Site "B".  Each
+has it's own respective properties file.  These services must be started before
+running the unit tests.  Start a terminal in this directory and run:
+
+$ python ./siteAServer.py
+
+...and in a separate terminal:
+
+$ python ./siteBServer.py
+
+Note however that the siteBServer is only needed for tests for getting mapped 
+certificates: test7GetMappedAttCert and test8GetMappedAttCertStressTest
+
+Settings for the client to these services are configured with 
+attAuthorityClientTest.cfg.  The default values should work as set.
+
+Run the unit tests script AttAuthorityClientTest.py from another terminal:
+
+$ python ./AttAuthorityClientTest.py
+
+Tests can be run individually e.g.
+
+$ python ./AttAuthorityClientTest.py AttAuthorityClientTestCase.test1GetX509Cert

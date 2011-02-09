@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sessMgrProp>
+    <!-- the port number the service is to run on -->
+    <portNum></portNum> 
+    <!-- 
+    Flag for SSL - set to something to stipulate http, leave blank to use
+    http 
+    -->
+    <useSSL>Yes</useSSL>
+    <!-- X.509 certificate for SSL connections - ignored if useSSL is blank--> 
+    <sslCertFile>$NDGSEC_DIR/conf/certs/hostcert.pem</sslCertFile>
+    <!-- Private key file for SSL  - ignored if useSSL is blank -->
+    <sslKeyFile>$NDGSEC_DIR/conf/certs/hostkey.pem</sslKeyFile>
+    <!-- 
+    Directory containing CA cert.s to verify SSL peer cert against 
+     - ignored if useSSL is blank -->
+    <sslCACertDir>$NDGSEC_DIR/conf/certs/ca</sslCACertDir>
+    <!--
+    PKI settings for WS-Security signature of outbound SOAP messages
+    -->
+    <useSignatureHandler>Yes</useSignatureHandler> <!-- leave blank for no signature -->
+    <!-- X.509 certificate included in SOAP header -->
+    <certFile>$NDGSEC_DIR/conf/certs/sm-cert.pem</certFile>
+    <!-- corresponding private key used to sign the SOAP message -->
+    <keyFile>$NDGSEC_DIR/conf/certs/sm-key.pem</keyFile>
+    <!-- Password protecting private key file - leave blank if none set -->
+    <keyPwd></keyPwd>
+	<wssRefInclNS></wssRefInclNS>
+	<wssSignedInfoInclNS></wssSignedInfoInclNS>
+    <!-- 
+    CA Certificates used to verify X.509 certs used in peer SOAP messages,
+    and Attribute Certificates.
+    
+    The CA certificates of other NDG trusted sites should go here.
+    -->
+    <caCertFileList>
+        <caCertFile>$NDGSEC_DIR/conf/certs/ca/cacert.pem</caCertFile>
+    </caCertFileList>
+    <!-- 
+    Set the certificate used to verify the signature of messages from the 
+    client.  This can usually be left blank since the client is expected to 
+    include the cert with the signature in the inbound SOAP message
+    -->
+    <clntCertFile></clntCertFile> 
+    <!--
+    Following two settings may be left blank.  These fields are likely to be
+    removed from a future version
+    -->   
+    <sessMgrEncrKey></sessMgrEncrKey>
+    <sessMgrURI></sessMgrURI>
+    <!-- 
+    Domain defaults to the server host - any more generic setting could be a 
+    a security risk.  Leave blank to default to the fully qualified domain
+    name of the server.
+    -->
+    <cookieDomain></cookieDomain>
+    <!-- MyProxy Client properties -->
+    <myProxyProp>
+        <!-- 
+        Delete this element and take setting from MYPROXY_SERVER environment 
+        variable if required
+        -->
+        <hostname>localhost</hostname>
+        <!-- 
+        Delete this element to take default setting 7512 or read 
+        MYPROXY_SERVER_PORT setting
+        -->
+        <port>7512</port>
+        <!--
+        Useful if hostname and certificate CN don't match correctly.  Globus 
+        host DN is set to "host/<fqdn>".  Delete this element and set from 
+        MYPROXY_SERVER_DN environment variable if prefered
+        <serverDN></serverDN>
+        -->
+        <!--
+        Set "host/" prefix to host cert CN as is default with globus
+        -->
+        <serverCNprefix>host/</serverCNprefix>    
+        <!--
+        This directory path is used to locate the OpenSSL configuration file
+        
+        The settings are used to set up the defaults for the Distinguished Name of
+        the new proxy cert. issued 
+        
+        GLOBUS_LOCATION or GRID_SECURITY_DIR environment variables may be used
+        but the settings can be independent of any Globus installation
+        -->
+        <openSSLConfFilePath>$NDGSEC_DIR/conf/openssl.conf</openSSLConfFilePath>
+        <tmpDir>/tmp</tmpDir>
+        <!-- 
+            Limit on maximum lifetime any proxy certificate can have - 
+            specified when a certificate is first created by store() method
+        -->
+        <proxyCertMaxLifetime>43200</proxyCertMaxLifetime> <!-- in seconds -->
+        <!-- 
+            Life time of a proxy certificate when issued from the Proxy Server 
+            with ndg.security.server.MyProxy.getDelegation() method
+        -->
+        <proxyCertLifetime>43200</proxyCertLifetime> <!-- in seconds -->
+        <!-- 
+        CA certificate applied to verify peer certificate against in
+        SSL connection to MyProxy server
+        -->
+        <caCertFile>$NDGSEC_DIR/conf/certs/cacert.pem</caCertFile>
+    </myProxyProp>
+    <!-- 
+    Properties for a Session Manager client to a Simple CA.
+    Not currently used and likely to be removed from a future release
+    -->
+    <simpleCACltProp>
+        <uri></uri>
+        <xmlSigKeyFile></xmlSigKeyFile>
+        <xmlSigCertFile></xmlSigCertFile>
+        <xmlSigCertPwd></xmlSigCertPwd>
+    </simpleCACltProp>
+    <!--
+    <simpleCASrvProp>
+        <certExpiryDate></certExpiryDate>
+        <certLifetimeDays></certLifetimeDays>
+        <certTmpDir></certTmpDir>
+        <caCertFile></caCertFile>
+        <signExe></signExe>
+        <path></path>
+    </simpleCASrvProp>
+    -->
+    <!--
+    Settings for Credential Repository plugin
+    -->
+    <credReposProp>
+        <!-- 
+        File path to plugin module - may be left blank if
+        module is included in the current PYTHONPATH
+        -->
+        <modFilePath></modFilePath>
+        <!--
+        Module name - the default is an empty stub
+        -->
+        <modName>ndg.security.common.CredWallet</modName>
+        <!-- Name of class in module to instantiate -->
+        <className>NullCredRepos</className>
+        <!-- 
+        Optional Properties file argument to Credential
+        Repository class.  This is include to enable custom
+        settings to be defined from an external configuration file
+        -->
+        <propFile></propFile>
+    </credReposProp>
+</sessMgrProp>

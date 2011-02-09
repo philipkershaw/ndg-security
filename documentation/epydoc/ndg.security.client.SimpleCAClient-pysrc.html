@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.client.SimpleCAClient</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.client-module.html">Package&nbsp;client</a> ::
+        Module&nbsp;SimpleCAClient
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.client.SimpleCAClient-module.html">Module ndg.security.client.SimpleCAClient</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Client to NDG SimpleCA WS</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"17/11/06"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2007 STFC &amp; NERC"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-string">"""This software may be distributed under the terms of the Q Public </tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-string">License, version 1.0 or later."""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionCookie.__revision__=ndg.security.common.SessionCookie-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.gatekeeper.__revision__=ndg.security.common.gatekeeper-module.html#__revision__,Variable ndg.security.common.logService.__revision__=ndg.security.common.logService-module.html#__revision__,Variable ndg.security.common.logService.log_services_server.__revision__=ndg.security.common.logService.log_services_server-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.sessionCookie.__revision__=ndg.security.common.sessionCookie-module.html#__revision__,Variable ndg.security.common.wsSecurity.__revision__=ndg.security.common.wsSecurity-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.MyProxy.__revision__=ndg.security.server.MyProxy-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.certs.ca.__revision__=ndg.security.server.conf.certs.ca-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__,Variable ndg.security.test.Log.LogTest.__revision__=ndg.security.test.Log.LogTest-module.html#__revision__,Variable ndg.security.test.Log.__revision__=ndg.security.test.Log-module.html#__revision__,Variable ndg.security.test.SecurityCGItest.__revision__=ndg.security.test.SecurityCGItest-module.html#__revision__,Variable ndg.security.test.X509.X509Test.__revision__=ndg.security.test.X509.X509Test-module.html#__revision__,Variable ndg.security.test.X509.__revision__=ndg.security.test.X509-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.__revision__=ndg.security.test.XMLSecDoc-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__=ndg.security.test.XMLSecDoc.xmlSecDocTest-module.html#__revision__,Variable ndg.security.test.__revision__=ndg.security.test-module.html#__revision__,Variable ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__=ndg.security.test.attAuthority.AttAuthorityClientTest-module.html#__revision__,Variable ndg.security.test.attAuthority.__revision__=ndg.security.test.attAuthority-module.html#__revision__,Variable ndg.security.test.attAuthority.attCertLog.__revision__=ndg.security.test.attAuthority.attCertLog-module.html#__revision__,Variable ndg.security.test.attAuthority.ca.__revision__=ndg.security.test.attAuthority.ca-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAUserRoles.__revision__=ndg.security.test.attAuthority.siteAUserRoles-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBUserRoles.__revision__=ndg.security.test.attAuthority.siteBUserRoles-module.html#__revision__,Variable ndg.security.test.attCert.AttCertTest.__revision__=ndg.security.test.attCert.AttCertTest-module.html#__revision__,Variable ndg.security.test.attCert.__revision__=ndg.security.test.attCert-module.html#__revision__,Variable ndg.security.test.ca.__revision__=ndg.security.test.ca-module.html#__revision__,Variable ndg.security.test.ca.caClientTest.__revision__=ndg.security.test.ca.caClientTest-module.html#__revision__,Variable ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__=ndg.security.test.gatekeeper.TestGatekeeperResrc-module.html#__revision__,Variable ndg.security.test.gatekeeper.__revision__=ndg.security.test.gatekeeper-module.html#__revision__,Variable ndg.security.test.myProxy.MyProxyClientTest.__revision__=ndg.security.test.myProxy.MyProxyClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.__revision__=ndg.security.test.myProxy-module.html#__revision__,Variable ndg.security.test.sessionCookie.SessionCookieTest.__revision__=ndg.security.test.sessionCookie.SessionCookieTest-module.html#__revision__,Variable ndg.security.test.sessionCookie.__revision__=ndg.security.test.sessionCookie-module.html#__revision__,Variable ndg.security.test.sessionMgr.__revision__=ndg.security.test.sessionMgr-module.html#__revision__,Variable ndg.security.test.sessionMgr.ca.__revision__=ndg.security.test.sessionMgr.ca-module.html#__revision__,Variable ndg.security.test.sessionMgr.test.__revision__=ndg.security.test.sessionMgr.test-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__=ndg.security.test.sessionMgrClient.SessionMgrClientTest-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.__revision__=ndg.security.test.sessionMgrClient-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.ca.__revision__=ndg.security.test.sessionMgrClient.ca-module.html#__revision__,Variable ndg.security.test.wsSecurity.__revision__=ndg.security.test.wsSecurity-module.html#__revision__,Variable ndg.security.test.wsSecurity.client.__revision__=ndg.security.test.wsSecurity.client-module.html#__revision__,Variable ndg.security.test.wsSecurity.server.__revision__=ndg.security.test.wsSecurity.server-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionCookie.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.gatekeeper.__revision__
+ndg.security.common.logService.__revision__
+ndg.security.common.logService.log_services_server.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.sessionCookie.__revision__
+ndg.security.common.wsSecurity.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.MyProxy.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.certs.ca.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__
+ndg.security.test.Log.LogTest.__revision__
+ndg.security.test.Log.__revision__
+ndg.security.test.SecurityCGItest.__revision__
+ndg.security.test.X509.X509Test.__revision__
+ndg.security.test.X509.__revision__
+ndg.security.test.XMLSecDoc.__revision__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__
+ndg.security.test.__revision__
+ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__
+ndg.security.test.attAuthority.__revision__
+ndg.security.test.attAuthority.attCertLog.__revision__
+ndg.security.test.attAuthority.ca.__revision__
+ndg.security.test.attAuthority.siteAUserRoles.__revision__
+ndg.security.test.attAuthority.siteBUserRoles.__revision__
+ndg.security.test.attCert.AttCertTest.__revision__
+ndg.security.test.attCert.__revision__
+ndg.security.test.ca.__revision__
+ndg.security.test.ca.caClientTest.__revision__
+ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__
+ndg.security.test.gatekeeper.__revision__
+ndg.security.test.myProxy.MyProxyClientTest.__revision__
+ndg.security.test.myProxy.__revision__
+ndg.security.test.sessionCookie.SessionCookieTest.__revision__
+ndg.security.test.sessionCookie.__revision__
+ndg.security.test.sessionMgr.__revision__
+ndg.security.test.sessionMgr.ca.__revision__
+ndg.security.test.sessionMgr.test.__revision__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__
+ndg.security.test.sessionMgrClient.__revision__
+ndg.security.test.sessionMgrClient.ca.__revision__
+ndg.security.test.wsSecurity.__revision__
+ndg.security.test.wsSecurity.client.__revision__
+ndg.security.test.wsSecurity.server.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id: SimpleCAClient.py 2909 2007-09-28 14:22:21Z pjkersha $'</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Variable ZSI.schema.SchemaInstanceType.types=ZSI.schema.SchemaInstanceType-class.html#types"><a title="ZSI.schema.SchemaInstanceType.types" class="py-name" href="#" onclick="return doclink('link-1', 'types', 'link-1');">types</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">cElementTree</tt> <tt class="py-keyword">as</tt> <tt class="py-name">ElementTree</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ZSI</tt> <tt class="py-keyword">import</tt> <tt class="py-name">ServiceProxy</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ZSI</tt><tt class="py-op">.</tt><tt class="py-name">wstools</tt><tt class="py-op">.</tt><tt class="py-name">Utility</tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class httplib.HTTPResponse=httplib.HTTPResponse-class.html"><a title="httplib.HTTPResponse" class="py-name" href="#" onclick="return doclink('link-2', 'HTTPResponse', 'link-2');">HTTPResponse</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">socket</tt> <tt class="py-comment"># handle socket errors from WS</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">CertReq</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________</tt> </tt>
+<a name="SimpleCAClientError"></a><div id="SimpleCAClientError-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="SimpleCAClientError-toggle" onclick="return toggle('SimpleCAClientError');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html">SimpleCAClientError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>     </tt>
+</div><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-docstring">"""Exception handling for NDG Certificate Request class."""</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">     </tt>
+<a name="SimpleCAClientError.__init__"></a><div id="SimpleCAClientError.__init__-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="SimpleCAClientError.__init__-toggle" onclick="return toggle('SimpleCAClientError.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">msg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClientError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClientError.__init__-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__msg</tt> <tt class="py-op">=</tt> <tt class="py-name">msg</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">          </tt>
+<a name="SimpleCAClientError.__str__"></a><div id="SimpleCAClientError.__str__-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="SimpleCAClientError.__str__-toggle" onclick="return toggle('SimpleCAClientError.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClientError.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClientError.__str__-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__msg</tt> </tt>
+</div></div><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">     </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________</tt> </tt>
+<a name="SimpleCAClient"></a><div id="SimpleCAClient-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="SimpleCAClient-toggle" onclick="return toggle('SimpleCAClient');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html">SimpleCAClient</a><tt class="py-op">(</tt><tt class="py-base-class">dict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SimpleCAClient-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-docstring">"""Implements ZSI client to SimpleCA WS"""</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-comment"># valid configuration property keywords</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt id="link-3" class="py-name" targets="Variable ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__validKeys,Variable ndg.security.common.SQLObject.CredRepos.__validKeys=ndg.security.common.SQLObject.CredRepos-class.html#__validKeys,Variable ndg.security.common.gatekeeper.Gatekeeper.__validKeys=ndg.security.common.gatekeeper.Gatekeeper-class.html#__validKeys,Variable ndg.security.server.AttAuthority.AttAuthority.__validKeys=ndg.security.server.AttAuthority.AttAuthority-class.html#__validKeys,Variable ndg.security.server.MyProxy.MyProxyClient.__validKeys=ndg.security.server.MyProxy.MyProxyClient-class.html#__validKeys,Variable ndg.security.server.ca.SimpleCA.__validKeys=ndg.security.server.ca.SimpleCA-class.html#__validKeys"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys
+ndg.security.common.SQLObject.CredRepos.__validKeys
+ndg.security.common.gatekeeper.Gatekeeper.__validKeys
+ndg.security.server.AttAuthority.AttAuthority.__validKeys
+ndg.security.server.MyProxy.MyProxyClient.__validKeys
+ndg.security.server.ca.SimpleCA.__validKeys" class="py-name" href="#" onclick="return doclink('link-3', '__validKeys', 'link-3');">__validKeys</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'wsdl'</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">                   <tt class="py-string">'xmlSigKeyFile'</tt><tt class="py-op">,</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">                   <tt class="py-string">'xmlSigCertFile'</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                   <tt class="py-string">'xmlSigCertPPhrase'</tt><tt class="py-op">]</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">     </tt>
+<a name="SimpleCAClient.__init__"></a><div id="SimpleCAClient.__init__-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__init__-toggle" onclick="return toggle('SimpleCAClient.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                 <tt class="py-param">propFilePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                 <tt class="py-param">propElem</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                 <tt class="py-param">bInitSrvPx</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                 <tt class="py-op">**</tt><tt class="py-param">prop</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>         </tt>
+</div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-docstring">"""Initialise WS client to SimpleCA</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath:       properties set via config file</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        bInitSrvPx:         initialise WS proxy - this can be called</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">                            separately</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        **prop:             properties can be set via input keywords.  Nb.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">                            if a properties file has been set it's properties</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">                            will override these settings"""</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">dict</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method ndg.security.client.GatekeeperClient.GatekeeperClient.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClient-class.html#__init__,Method ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClientError-class.html#__init__,Method ndg.security.client.LogClient.LogClient.__init__()=ndg.security.client.LogClient.LogClient-class.html#__init__,Method ndg.security.client.LogClient.LogClientError.__init__()=ndg.security.client.LogClient.LogClientError-class.html#__init__,Method ndg.security.client.LogClient.SOAPHandler.__init__()=ndg.security.client.LogClient.SOAPHandler-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClient.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthorityClient.__init__()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.AttCert.AttCert.__init__()=ndg.security.common.AttCert.AttCert-class.html#__init__,Method ndg.security.common.AttCert.AttCertReadOnlyDict.__init__()=ndg.security.common.AttCert.AttCertReadOnlyDict-class.html#__init__,Method ndg.security.common.CredWallet.CredRepos.__init__()=ndg.security.common.CredWallet.CredRepos-class.html#__init__,Method ndg.security.common.CredWallet.CredWallet.__init__()=ndg.security.common.CredWallet.CredWallet-class.html#__init__,Method ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__()=ndg.security.common.CredWallet.CredWalletAttributeRequestDenied-class.html#__init__,Method ndg.security.common.CredWallet.NullCredRepos.__init__()=ndg.security.common.CredWallet.NullCredRepos-class.html#__init__,Method ndg.security.common.CredWallet._CredWalletException.__init__()=ndg.security.common.CredWallet._CredWalletException-class.html#__init__,Method ndg.security.common.SQLObject.CredRepos.__init__()=ndg.security.common.SQLObject.CredRepos-class.html#__init__,Method ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI._SecurityCGI.__init__()=ndg.security.common.SecurityCGI._SecurityCGI-class.html#__init__,Method ndg.security.common.SessionCookie.SessionCookie.__init__()=ndg.security.common.SessionCookie.SessionCookie-class.html#__init__,Method ndg.security.common.SessionMgr.AttributeRequestDenied.__init__()=ndg.security.common.SessionMgr.AttributeRequestDenied-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgrClient.__init__()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__()=ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.X509.X500DN.__init__()=ndg.security.common.X509.X500DN-class.html#__init__,Method ndg.security.common.X509.X509Cert.__init__()=ndg.security.common.X509.X509Cert-class.html#__init__,Method ndg.security.common.X509.X509Stack.__init__()=ndg.security.common.X509.X509Stack-class.html#__init__,Method ndg.security.common.XMLSec.XMLSecDoc.__init__()=ndg.security.common.XMLSec.XMLSecDoc-class.html#__init__,Method ndg.security.common.ca.CertificateAuthorityClient.__init__()=ndg.security.common.ca.CertificateAuthorityClient-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__()=ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec-class.html#__init__,Method ndg.security.common.gatekeeper.Gatekeeper.__init__()=ndg.security.common.gatekeeper.Gatekeeper-class.html#__init__,Method ndg.security.common.gatekeeper.GatekeeperError.__init__()=ndg.security.common.gatekeeper.GatekeeperError-class.html#__init__,Method ndg.security.common.gatekeeper.GatekeeperResrc.__init__()=ndg.security.common.gatekeeper.GatekeeperResrc-class.html#__init__,Method ndg.security.common.gatekeeper.PullModelHandler.__init__()=ndg.security.common.gatekeeper.PullModelHandler-class.html#__init__,Method ndg.security.common.logService.log_services.debugRequest.__init__()=ndg.security.common.logService.log_services.debugRequest-class.html#__init__,Method ndg.security.common.logService.log_services.debugRequestWrapper.__init__()=ndg.security.common.logService.log_services.debugRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.debugResponse.__init__()=ndg.security.common.logService.log_services.debugResponse-class.html#__init__,Method ndg.security.common.logService.log_services.debugResponseWrapper.__init__()=ndg.security.common.logService.log_services.debugResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.errorRequest.__init__()=ndg.security.common.logService.log_services.errorRequest-class.html#__init__,Method ndg.security.common.logService.log_services.errorRequestWrapper.__init__()=ndg.security.common.logService.log_services.errorRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.errorResponse.__init__()=ndg.security.common.logService.log_services.errorResponse-class.html#__init__,Method ndg.security.common.logService.log_services.errorResponseWrapper.__init__()=ndg.security.common.logService.log_services.errorResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.infoRequest.__init__()=ndg.security.common.logService.log_services.infoRequest-class.html#__init__,Method ndg.security.common.logService.log_services.infoRequestWrapper.__init__()=ndg.security.common.logService.log_services.infoRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.infoResponse.__init__()=ndg.security.common.logService.log_services.infoResponse-class.html#__init__,Method ndg.security.common.logService.log_services.infoResponseWrapper.__init__()=ndg.security.common.logService.log_services.infoResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.logBindingSOAP.__init__()=ndg.security.common.logService.log_services.logBindingSOAP-class.html#__init__,Method ndg.security.common.logService.log_services.warningRequest.__init__()=ndg.security.common.logService.log_services.warningRequest-class.html#__init__,Method ndg.security.common.logService.log_services.warningRequestWrapper.__init__()=ndg.security.common.logService.log_services.warningRequestWrapper-class.html#__init__,Method ndg.security.common.logService.log_services.warningResponse.__init__()=ndg.security.common.logService.log_services.warningResponse-class.html#__init__,Method ndg.security.common.logService.log_services.warningResponseWrapper.__init__()=ndg.security.common.logService.log_services.warningResponseWrapper-class.html#__init__,Method ndg.security.common.logService.log_services_server.log.__init__()=ndg.security.common.logService.log_services_server.log-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__()=ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__()=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html#__init__,Method ndg.security.common.openssl.OpenSSLConfig.__init__()=ndg.security.common.openssl.OpenSSLConfig-class.html#__init__,Method ndg.security.common.sessionCookie.SessionCookie.__init__()=ndg.security.common.sessionCookie.SessionCookie-class.html#__init__,Method ndg.security.common.wsSecurity.EncryptionHandler.__init__()=ndg.security.common.wsSecurity.EncryptionHandler-class.html#__init__,Method ndg.security.common.wsSecurity.SignatureHandler.__init__()=ndg.security.common.wsSecurity.SignatureHandler-class.html#__init__,Method ndg.security.server.AttAuthority.AAUserRoles.__init__()=ndg.security.server.AttAuthority.AAUserRoles-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority.__init__()=ndg.security.server.AttAuthority.AttAuthority-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthorityError.__init__()=ndg.security.server.AttAuthority.AttAuthorityError-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__()=ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService-class.html#__init__,Method ndg.security.server.AttAuthority.AttCertLog.__init__()=ndg.security.server.AttAuthority.AttCertLog-class.html#__init__,Method ndg.security.server.Log.Log.__init__()=ndg.security.server.Log.Log-class.html#__init__,Method ndg.security.server.MyProxy.CmdLineClient.__init__()=ndg.security.server.MyProxy.CmdLineClient-class.html#__init__,Method ndg.security.server.MyProxy.MyProxyClient.__init__()=ndg.security.server.MyProxy.MyProxyClient-class.html#__init__,Method ndg.security.server.MyProxy._HostCheck.__init__()=ndg.security.server.MyProxy._HostCheck-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr.__init__()=ndg.security.server.SessionMgr.SessionMgr-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__()=ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#__init__,Method ndg.security.server.SessionMgr.UserSession.__init__()=ndg.security.server.SessionMgr.UserSession-class.html#__init__,Method ndg.security.server.SessionMgr._SessionMgrException.__init__()=ndg.security.server.SessionMgr._SessionMgrException-class.html#__init__,Method ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__()=ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService-class.html#__init__,Method ndg.security.server.ca.SimpleCA.__init__()=ndg.security.server.ca.SimpleCA-class.html#__init__,Method ndg.security.server.conf.userRoles.UserRoles.__init__()=ndg.security.server.conf.userRoles.UserRoles-class.html#__init__,Method ndg.security.test.Log.LogTest.LogTestSuite.__init__()=ndg.security.test.Log.LogTest.LogTestSuite-class.html#__init__,Method ndg.security.test.SecurityCGItest.SecurityCGItestSuite.__init__()=ndg.security.test.SecurityCGItest.SecurityCGItestSuite-class.html#__init__,Method ndg.security.test.X509.X509Test.X509TestSuite.__init__()=ndg.security.test.X509.X509Test.X509TestSuite-class.html#__init__,Method ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite.__init__()=ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite-class.html#__init__,Method ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite.__init__()=ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite-class.html#__init__,Method ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles.__init__()=ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles-class.html#__init__,Method ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles.__init__()=ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles-class.html#__init__,Method ndg.security.test.attCert.AttCertTest.AttCertTestSuite.__init__()=ndg.security.test.attCert.AttCertTest.AttCertTestSuite-class.html#__init__,Method ndg.security.test.ca.caClientTest.CAClientTestSuite.__init__()=ndg.security.test.ca.caClientTest.CAClientTestSuite-class.html#__init__,Method ndg.security.test.gatekeeper.TestGatekeeperResrc.TestGatekeeperResrc.__init__()=ndg.security.test.gatekeeper.TestGatekeeperResrc.TestGatekeeperResrc-class.html#__init__,Method ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite.__init__()=ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite-class.html#__init__,Method ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite.__init__()=ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite-class.html#__init__,Method ndg.security.test.sessionMgr.test.SessionMgrTestSuite.__init__()=ndg.security.test.sessionMgr.test.SessionMgrTestSuite-class.html#__init__,Method ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite.__init__()=ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite-class.html#__init__,Method ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP.__init__()=ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP-class.html#__init__,Method ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite.__init__()=ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP.__init__()=ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService.__init__()=ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.EchoResponse_Dec.__init__()=ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.EchoResponse_Dec-class.html#__init__,Method ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.Echo_Dec.__init__()=ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.Echo_Dec-class.html#__init__,Method ndg.security.test.wsSecurity.server.echoServer.EchoService.__init__()=ndg.security.test.wsSecurity.server.echoServer.EchoService-class.html#__init__"><a title="ndg.security.client.GatekeeperClient.GatekeeperClient.__init__
+ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__
+ndg.security.client.LogClient.LogClient.__init__
+ndg.security.client.LogClient.LogClientError.__init__
+ndg.security.client.LogClient.SOAPHandler.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClient.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__
+ndg.security.common.AttAuthority.AttAuthorityClient.__init__
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.AttCert.AttCert.__init__
+ndg.security.common.AttCert.AttCertReadOnlyDict.__init__
+ndg.security.common.CredWallet.CredRepos.__init__
+ndg.security.common.CredWallet.CredWallet.__init__
+ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__
+ndg.security.common.CredWallet.NullCredRepos.__init__
+ndg.security.common.CredWallet._CredWalletException.__init__
+ndg.security.common.SQLObject.CredRepos.__init__
+ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI._SecurityCGI.__init__
+ndg.security.common.SessionCookie.SessionCookie.__init__
+ndg.security.common.SessionMgr.AttributeRequestDenied.__init__
+ndg.security.common.SessionMgr.SessionMgrClient.__init__
+ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.X509.X500DN.__init__
+ndg.security.common.X509.X509Cert.__init__
+ndg.security.common.X509.X509Stack.__init__
+ndg.security.common.XMLSec.XMLSecDoc.__init__
+ndg.security.common.ca.CertificateAuthorityClient.__init__
+ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__
+ndg.security.common.gatekeeper.Gatekeeper.__init__
+ndg.security.common.gatekeeper.GatekeeperError.__init__
+ndg.security.common.gatekeeper.GatekeeperResrc.__init__
+ndg.security.common.gatekeeper.PullModelHandler.__init__
+ndg.security.common.logService.log_services.debugRequest.__init__
+ndg.security.common.logService.log_services.debugRequestWrapper.__init__
+ndg.security.common.logService.log_services.debugResponse.__init__
+ndg.security.common.logService.log_services.debugResponseWrapper.__init__
+ndg.security.common.logService.log_services.errorRequest.__init__
+ndg.security.common.logService.log_services.errorRequestWrapper.__init__
+ndg.security.common.logService.log_services.errorResponse.__init__
+ndg.security.common.logService.log_services.errorResponseWrapper.__init__
+ndg.security.common.logService.log_services.infoRequest.__init__
+ndg.security.common.logService.log_services.infoRequestWrapper.__init__
+ndg.security.common.logService.log_services.infoResponse.__init__
+ndg.security.common.logService.log_services.infoResponseWrapper.__init__
+ndg.security.common.logService.log_services.logBindingSOAP.__init__
+ndg.security.common.logService.log_services.warningRequest.__init__
+ndg.security.common.logService.log_services.warningRequestWrapper.__init__
+ndg.security.common.logService.log_services.warningResponse.__init__
+ndg.security.common.logService.log_services.warningResponseWrapper.__init__
+ndg.security.common.logService.log_services_server.log.__init__
+ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__
+ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__
+ndg.security.common.openssl.OpenSSLConfig.__init__
+ndg.security.common.sessionCookie.SessionCookie.__init__
+ndg.security.common.wsSecurity.EncryptionHandler.__init__
+ndg.security.common.wsSecurity.SignatureHandler.__init__
+ndg.security.server.AttAuthority.AAUserRoles.__init__
+ndg.security.server.AttAuthority.AttAuthority.__init__
+ndg.security.server.AttAuthority.AttAuthorityError.__init__
+ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__
+ndg.security.server.AttAuthority.AttCertLog.__init__
+ndg.security.server.Log.Log.__init__
+ndg.security.server.MyProxy.CmdLineClient.__init__
+ndg.security.server.MyProxy.MyProxyClient.__init__
+ndg.security.server.MyProxy._HostCheck.__init__
+ndg.security.server.SessionMgr.SessionMgr.__init__
+ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__
+ndg.security.server.SessionMgr.UserSession.__init__
+ndg.security.server.SessionMgr._SessionMgrException.__init__
+ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__
+ndg.security.server.ca.SimpleCA.__init__
+ndg.security.server.conf.userRoles.UserRoles.__init__
+ndg.security.test.Log.LogTest.LogTestSuite.__init__
+ndg.security.test.SecurityCGItest.SecurityCGItestSuite.__init__
+ndg.security.test.X509.X509Test.X509TestSuite.__init__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.XMLSecDocTestSuite.__init__
+ndg.security.test.attAuthority.AttAuthorityClientTest.AttAuthorityClientTestSuite.__init__
+ndg.security.test.attAuthority.siteAUserRoles.TestUserRoles.__init__
+ndg.security.test.attAuthority.siteBUserRoles.TestUserRoles.__init__
+ndg.security.test.attCert.AttCertTest.AttCertTestSuite.__init__
+ndg.security.test.ca.caClientTest.CAClientTestSuite.__init__
+ndg.security.test.gatekeeper.TestGatekeeperResrc.TestGatekeeperResrc.__init__
+ndg.security.test.myProxy.MyProxyClientTest.MyProxyClientTestSuite.__init__
+ndg.security.test.sessionCookie.SessionCookieTest.SessionCookieTestSuite.__init__
+ndg.security.test.sessionMgr.test.SessionMgrTestSuite.__init__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.SessionMgrClientTestSuite.__init__
+ndg.security.test.wsSecurity.client.EchoService_services.EchoBindingSOAP.__init__
+ndg.security.test.wsSecurity.client.echoClientTest.EchoClientTestSuite.__init__
+ndg.security.test.wsSecurity.server.EchoService_services.EchoBindingSOAP.__init__
+ndg.security.test.wsSecurity.server.EchoService_services_server.EchoService.__init__
+ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.EchoResponse_Dec.__init__
+ndg.security.test.wsSecurity.server.EchoService_services_types.ns0.Echo_Dec.__init__
+ndg.security.test.wsSecurity.server.echoServer.EchoService.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-4');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">         </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-comment"># Properties set via input keywords</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#setProperties,Method ndg.security.common.SQLObject.CredRepos.setProperties()=ndg.security.common.SQLObject.CredRepos-class.html#setProperties,Method ndg.security.server.MyProxy.MyProxyClient.setProperties()=ndg.security.server.MyProxy.MyProxyClient-class.html#setProperties,Method ndg.security.server.SessionMgr.SessionMgr.setProperties()=ndg.security.server.SessionMgr.SessionMgr-class.html#setProperties,Method ndg.security.server.ca.SimpleCA.setProperties()=ndg.security.server.ca.SimpleCA-class.html#setProperties"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties
+ndg.security.common.SQLObject.CredRepos.setProperties
+ndg.security.server.MyProxy.MyProxyClient.setProperties
+ndg.security.server.SessionMgr.SessionMgr.setProperties
+ndg.security.server.ca.SimpleCA.setProperties" class="py-name" href="#" onclick="return doclink('link-5', 'setProperties', 'link-5');">setProperties</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-comment"># Properties set in file override if equivalent is present in</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># properties file </tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt id="link-6" class="py-name" targets="Variable ndg.security.server.AttAuthority.AttAuthority.propFilePath=ndg.security.server.AttAuthority.AttAuthority-class.html#propFilePath,Variable ndg.security.server.SessionMgr.SessionMgr.propFilePath=ndg.security.server.SessionMgr.SessionMgr-class.html#propFilePath,Variable ndg.security.server.ca.SimpleCA.propFilePath=ndg.security.server.ca.SimpleCA-class.html#propFilePath"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-6', 'propFilePath', 'link-6');">propFilePath</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">propElem</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.readProperties()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#readProperties,Method ndg.security.common.SQLObject.CredRepos.readProperties()=ndg.security.common.SQLObject.CredRepos-class.html#readProperties,Method ndg.security.common.gatekeeper.Gatekeeper.readProperties()=ndg.security.common.gatekeeper.Gatekeeper-class.html#readProperties,Method ndg.security.server.AttAuthority.AttAuthority.readProperties()=ndg.security.server.AttAuthority.AttAuthority-class.html#readProperties,Method ndg.security.server.MyProxy.MyProxyClient.readProperties()=ndg.security.server.MyProxy.MyProxyClient-class.html#readProperties,Method ndg.security.server.SessionMgr.SessionMgr.readProperties()=ndg.security.server.SessionMgr.SessionMgr-class.html#readProperties,Method ndg.security.server.ca.SimpleCA.readProperties()=ndg.security.server.ca.SimpleCA-class.html#readProperties"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.readProperties
+ndg.security.common.SQLObject.CredRepos.readProperties
+ndg.security.common.gatekeeper.Gatekeeper.readProperties
+ndg.security.server.AttAuthority.AttAuthority.readProperties
+ndg.security.server.MyProxy.MyProxyClient.readProperties
+ndg.security.server.SessionMgr.SessionMgr.readProperties
+ndg.security.server.ca.SimpleCA.readProperties" class="py-name" href="#" onclick="return doclink('link-7', 'readProperties', 'link-7');">readProperties</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-8', 'propFilePath', 'link-6');">propFilePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">propElem</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-comment"># Set up Web Service proxy - if WSDL has been set input flag set also</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">bInitSrvPx</tt> <tt class="py-keyword">and</tt> <tt class="py-string">'wsdl'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.initSrvPx()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#initSrvPx"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.initSrvPx" class="py-name" href="#" onclick="return doclink('link-9', 'initSrvPx', 'link-9');">initSrvPx</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srvPx</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.__call__"></a><div id="SimpleCAClient.__call__-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__call__-toggle" onclick="return toggle('SimpleCAClient.__call__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__call__">__call__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__call__-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return file properties dictionary"""</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.__repr__"></a><div id="SimpleCAClient.__repr__-def"><a name="L85"></a><tt class="py-lineno"> 85</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__repr__-toggle" onclick="return toggle('SimpleCAClient.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__repr__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__repr__-expanded"><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return file properties dictionary as representation"""</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.__str__"></a><div id="SimpleCAClient.__str__-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__str__-toggle" onclick="return toggle('SimpleCAClient.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__str__-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return file properties dictionary as representation"""</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">     </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">     </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># dict derived methods ...</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">#</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># Nb. read only - no __setitem__() method</tt> </tt>
+<a name="SimpleCAClient.__delitem__"></a><div id="SimpleCAClient.__delitem__-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__delitem__-toggle" onclick="return toggle('SimpleCAClient.__delitem__');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__delitem__">__delitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__delitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__delitem__-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-docstring">"SimpleCAClient Properties keys cannot be removed"</tt>         </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-10" class="py-name" targets="Class ndg.security.server.ca.SimpleCAError=ndg.security.server.ca.SimpleCAError-class.html"><a title="ndg.security.server.ca.SimpleCAError" class="py-name" href="#" onclick="return doclink('link-10', 'SimpleCAError', 'link-10');">SimpleCAError</a></tt><tt class="py-op">(</tt><tt class="py-string">'Keys cannot be deleted from '</tt> <tt class="py-op">+</tt> \ </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.__getitem__"></a><div id="SimpleCAClient.__getitem__-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__getitem__-toggle" onclick="return toggle('SimpleCAClient.__getitem__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__getitem__">__getitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__getitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__getitem__-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt> <tt class="py-op">+</tt> <tt class="py-string">""" behaves as a data dictionary"""</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">         </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-comment"># Check input key</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-11" class="py-name" targets="Class ndg.security.client.SimpleCAClient.SimpleCAClientError=ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-11', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Property with key '%s' not found"</tt><tt class="py-op">%</tt><tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt class="py-comment"># 'in' operator</tt> </tt>
+<a name="SimpleCAClient.__contains__"></a><div id="SimpleCAClient.__contains__-def"><a name="L116"></a><tt class="py-lineno">116</tt> <a class="py-toggle" href="#" id="SimpleCAClient.__contains__-toggle" onclick="return toggle('SimpleCAClient.__contains__');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__contains__">__contains__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.__contains__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.__contains__-expanded"><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">         </tt>
+<a name="SimpleCAClient.get"></a><div id="SimpleCAClient.get-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="SimpleCAClient.get-toggle" onclick="return toggle('SimpleCAClient.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.get-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.get()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#get,Method ndg.security.common.X509.X500DN.get()=ndg.security.common.X509.X500DN-class.html#get,Method ndg.security.server.AttAuthority.AttAuthority.get()=ndg.security.server.AttAuthority.AttAuthority-class.html#get,Method ndg.security.server.SessionMgr.SessionMgr.get()=ndg.security.server.SessionMgr.SessionMgr-class.html#get,Method ndg.security.server.ca.SimpleCA.get()=ndg.security.server.ca.SimpleCA-class.html#get"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-12', 'get', 'link-12');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">kw</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.has_key"></a><div id="SimpleCAClient.has_key-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="SimpleCAClient.has_key-toggle" onclick="return toggle('SimpleCAClient.has_key');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#has_key">has_key</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.has_key-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.has_key-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.has_key()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#has_key,Method ndg.security.common.AttCert.AttCert.has_key()=ndg.security.common.AttCert.AttCert-class.html#has_key,Method ndg.security.common.X509.X500DN.has_key()=ndg.security.common.X509.X500DN-class.html#has_key,Method ndg.security.server.AttAuthority.AttAuthority.has_key()=ndg.security.server.AttAuthority.AttAuthority-class.html#has_key,Method ndg.security.server.SessionMgr.SessionMgr.has_key()=ndg.security.server.SessionMgr.SessionMgr-class.html#has_key,Method ndg.security.server.ca.SimpleCA.has_key()=ndg.security.server.ca.SimpleCA-class.html#has_key"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.has_key
+ndg.security.common.AttCert.AttCert.has_key
+ndg.security.common.X509.X500DN.has_key
+ndg.security.server.AttAuthority.AttAuthority.has_key
+ndg.security.server.SessionMgr.SessionMgr.has_key
+ndg.security.server.ca.SimpleCA.has_key" class="py-name" href="#" onclick="return doclink('link-13', 'has_key', 'link-13');">has_key</a></tt><tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">         </tt>
+<a name="SimpleCAClient.clear"></a><div id="SimpleCAClient.clear-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="SimpleCAClient.clear-toggle" onclick="return toggle('SimpleCAClient.clear');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#clear">clear</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.clear-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.clear-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-14" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-14', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Data cannot be cleared from "</tt> <tt class="py-op">+</tt> \ </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                                  <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">     </tt>
+<a name="SimpleCAClient.keys"></a><div id="SimpleCAClient.keys-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="SimpleCAClient.keys-toggle" onclick="return toggle('SimpleCAClient.keys');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#keys">keys</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.keys-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.keys-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.keys()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#keys,Method ndg.security.common.AttCert.AttCert.keys()=ndg.security.common.AttCert.AttCert-class.html#keys,Method ndg.security.common.X509.X500DN.keys()=ndg.security.common.X509.X500DN-class.html#keys,Method ndg.security.server.AttAuthority.AttAuthority.keys()=ndg.security.server.AttAuthority.AttAuthority-class.html#keys,Method ndg.security.server.SessionMgr.SessionMgr.keys()=ndg.security.server.SessionMgr.SessionMgr-class.html#keys,Method ndg.security.server.ca.SimpleCA.keys()=ndg.security.server.ca.SimpleCA-class.html#keys"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.keys
+ndg.security.common.AttCert.AttCert.keys
+ndg.security.common.X509.X500DN.keys
+ndg.security.server.AttAuthority.AttAuthority.keys
+ndg.security.server.SessionMgr.SessionMgr.keys
+ndg.security.server.ca.SimpleCA.keys" class="py-name" href="#" onclick="return doclink('link-15', 'keys', 'link-15');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.items"></a><div id="SimpleCAClient.items-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="SimpleCAClient.items-toggle" onclick="return toggle('SimpleCAClient.items');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#items">items</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.items-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.items-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.items()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#items,Method ndg.security.common.AttCert.AttCert.items()=ndg.security.common.AttCert.AttCert-class.html#items,Method ndg.security.common.X509.X500DN.items()=ndg.security.common.X509.X500DN-class.html#items,Method ndg.security.server.AttAuthority.AttAuthority.items()=ndg.security.server.AttAuthority.AttAuthority-class.html#items,Method ndg.security.server.SessionMgr.SessionMgr.items()=ndg.security.server.SessionMgr.SessionMgr-class.html#items,Method ndg.security.server.ca.SimpleCA.items()=ndg.security.server.ca.SimpleCA-class.html#items"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.items
+ndg.security.common.AttCert.AttCert.items
+ndg.security.common.X509.X500DN.items
+ndg.security.server.AttAuthority.AttAuthority.items
+ndg.security.server.SessionMgr.SessionMgr.items
+ndg.security.server.ca.SimpleCA.items" class="py-name" href="#" onclick="return doclink('link-16', 'items', 'link-16');">items</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="SimpleCAClient.values"></a><div id="SimpleCAClient.values-def"><a name="L135"></a><tt class="py-lineno">135</tt> <a class="py-toggle" href="#" id="SimpleCAClient.values-toggle" onclick="return toggle('SimpleCAClient.values');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#values">values</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.values-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.values-expanded"><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.values()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#values,Method ndg.security.common.AttCert.AttCert.values()=ndg.security.common.AttCert.AttCert-class.html#values,Method ndg.security.common.X509.X500DN.values()=ndg.security.common.X509.X500DN-class.html#values,Method ndg.security.server.AttAuthority.AttAuthority.values()=ndg.security.server.AttAuthority.AttAuthority-class.html#values,Method ndg.security.server.SessionMgr.SessionMgr.values()=ndg.security.server.SessionMgr.SessionMgr-class.html#values,Method ndg.security.server.ca.SimpleCA.values()=ndg.security.server.ca.SimpleCA-class.html#values"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.values
+ndg.security.common.AttCert.AttCert.values
+ndg.security.common.X509.X500DN.values
+ndg.security.server.AttAuthority.AttAuthority.values
+ndg.security.server.SessionMgr.SessionMgr.values
+ndg.security.server.ca.SimpleCA.values" class="py-name" href="#" onclick="return doclink('link-17', 'values', 'link-17');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt class="py-comment"># End of dict derived methods &lt;--</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="SimpleCAClient.setProperties"></a><div id="SimpleCAClient.setProperties-def"><a name="L142"></a><tt class="py-lineno">142</tt> <a class="py-toggle" href="#" id="SimpleCAClient.setProperties-toggle" onclick="return toggle('SimpleCAClient.setProperties');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#setProperties">setProperties</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">prop</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.setProperties-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.setProperties-expanded"><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-docstring">"""Update existing properties from an input dictionary</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">        Check input keys are valid names"""</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">         </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">prop</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.keys
+ndg.security.common.AttCert.AttCert.keys
+ndg.security.common.X509.X500DN.keys
+ndg.security.server.AttAuthority.AttAuthority.keys
+ndg.security.server.SessionMgr.SessionMgr.keys
+ndg.security.server.ca.SimpleCA.keys" class="py-name" href="#" onclick="return doclink('link-18', 'keys', 'link-15');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">key</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys
+ndg.security.common.SQLObject.CredRepos.__validKeys
+ndg.security.common.gatekeeper.Gatekeeper.__validKeys
+ndg.security.server.AttAuthority.AttAuthority.__validKeys
+ndg.security.server.MyProxy.MyProxyClient.__validKeys
+ndg.security.server.ca.SimpleCA.__validKeys" class="py-name" href="#" onclick="return doclink('link-19', '__validKeys', 'link-3');">__validKeys</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-20" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-20', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Property name \"%s\" is invalid"</tt> <tt class="py-op">%</tt>\ </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                                          <tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                 </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt class="py-name">update</tt><tt class="py-op">(</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="SimpleCAClient.readProperties"></a><div id="SimpleCAClient.readProperties-def"><a name="L155"></a><tt class="py-lineno">155</tt> <a class="py-toggle" href="#" id="SimpleCAClient.readProperties-toggle" onclick="return toggle('SimpleCAClient.readProperties');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#readProperties">readProperties</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">propFilePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">propElem</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.readProperties-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.readProperties-expanded"><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-docstring">"""Read XML properties from a file or cElementTree node</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath|propElem</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath: set to read from the specified file</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">        propElem:     set to read beginning from a cElementTree node"""</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-21" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-21', 'propFilePath', 'link-6');">propFilePath</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">                <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt class="py-name">ElementTree</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method ndg.security.common.AttCert.AttCert.parse()=ndg.security.common.AttCert.AttCert-class.html#parse,Method ndg.security.common.SessionCookie.SessionCookie.parse()=ndg.security.common.SessionCookie.SessionCookie-class.html#parse,Method ndg.security.common.X509.X509Cert.parse()=ndg.security.common.X509.X509Cert-class.html#parse,Method ndg.security.common.XMLSec.XMLSecDoc.parse()=ndg.security.common.XMLSec.XMLSecDoc-class.html#parse,Method ndg.security.common.gatekeeper.SecurityConfig.parse()=ndg.security.common.gatekeeper.SecurityConfig-class.html#parse,Method ndg.security.common.sessionCookie.SessionCookie.parse()=ndg.security.common.sessionCookie.SessionCookie-class.html#parse"><a title="ndg.security.common.AttCert.AttCert.parse
+ndg.security.common.SessionCookie.SessionCookie.parse
+ndg.security.common.X509.X509Cert.parse
+ndg.security.common.XMLSec.XMLSecDoc.parse
+ndg.security.common.gatekeeper.SecurityConfig.parse
+ndg.security.common.sessionCookie.SessionCookie.parse" class="py-name" href="#" onclick="return doclink('link-22', 'parse', 'link-22');">parse</a></tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-23', 'propFilePath', 'link-6');">propFilePath</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">MyProxyError</tt><tt class="py-op">(</tt>\ </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                                <tt class="py-string">"Error parsing properties file \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                                <tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">strerror</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                <tt class="py-name">propElem</tt> <tt class="py-op">=</tt> <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">getroot</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                 </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">MyProxyError</tt><tt class="py-op">(</tt><tt class="py-string">"Error parsing properties file: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">propElem</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">MyProxyError</tt><tt class="py-op">(</tt><tt class="py-string">"Root element for parsing is not defined"</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-comment"># Get properties from file as a data dictionary cutting out leading </tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># and trailing white space</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">prop</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">elem</tt> <tt class="py-keyword">in</tt> <tt class="py-name">propElem</tt><tt class="py-op">:</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-comment"># Check for environment variables in file paths</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">tagCaps</tt> <tt class="py-op">=</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Variable ndg.security.common.SessionCookie._MetaSessionCookie.tag=ndg.security.common.SessionCookie._MetaSessionCookie-class.html#tag,Variable ndg.security.common.sessionCookie._MetaSessionCookie.tag=ndg.security.common.sessionCookie._MetaSessionCookie-class.html#tag"><a title="ndg.security.common.SessionCookie._MetaSessionCookie.tag
+ndg.security.common.sessionCookie._MetaSessionCookie.tag" class="py-name" href="#" onclick="return doclink('link-24', 'tag', 'link-24');">tag</a></tt><tt class="py-op">.</tt><tt class="py-name">upper</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-string">'FILE'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt> <tt class="py-keyword">or</tt> <tt class="py-string">'PATH'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt> <tt class="py-keyword">or</tt> <tt class="py-string">'DIR'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt><tt class="py-op">:</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">                <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expandvars</tt><tt class="py-op">(</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">            <tt class="py-name">prop</tt><tt class="py-op">[</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="ndg.security.common.SessionCookie._MetaSessionCookie.tag
+ndg.security.common.sessionCookie._MetaSessionCookie.tag" class="py-name" href="#" onclick="return doclink('link-25', 'tag', 'link-24');">tag</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-comment"># Update any existing values        </tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties
+ndg.security.common.SQLObject.CredRepos.setProperties
+ndg.security.server.MyProxy.MyProxyClient.setProperties
+ndg.security.server.SessionMgr.SessionMgr.setProperties
+ndg.security.server.ca.SimpleCA.setProperties" class="py-name" href="#" onclick="return doclink('link-26', 'setProperties', 'link-5');">setProperties</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="SimpleCAClient.initSrvPx"></a><div id="SimpleCAClient.initSrvPx-def"><a name="L198"></a><tt class="py-lineno">198</tt> <a class="py-toggle" href="#" id="SimpleCAClient.initSrvPx-toggle" onclick="return toggle('SimpleCAClient.initSrvPx');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#initSrvPx">initSrvPx</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleCAClient.initSrvPx-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleCAClient.initSrvPx-expanded"><a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-docstring">"""Initialise service proxy"""</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-string">'wsdl'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-27" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-27', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Creating WS proxy: WSDL is not set"</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">         </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srvPx</tt> <tt class="py-op">=</tt> <tt class="py-name">ServiceProxy</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'wsdl'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">use_wsdl</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">             </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt id="link-28" class="py-name"><a title="httplib.HTTPResponse" class="py-name" href="#" onclick="return doclink('link-28', 'HTTPResponse', 'link-2');">HTTPResponse</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-29" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-29', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">                <tt class="py-string">"Error initialising WSDL Service Proxy for \"%s\": %s %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'wsdl'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">status</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-30" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-30', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                <tt class="py-string">"Initialising WSDL Service Proxy for \"%s\": %s %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'wsdl'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">status</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="SimpleCAClient.reqCert"></a><div id="SimpleCAClient.reqCert-def"><a name="L219"></a><tt class="py-lineno">219</tt> <a class="py-toggle" href="#" id="SimpleCAClient.reqCert-toggle" onclick="return toggle('SimpleCAClient.reqCert');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#reqCert">reqCert</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">certReqTxt</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">certReqFilePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">prop</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>         </tt>
+</div><a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-docstring">"""Request certificate from SimpleCA WS"""</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srvPx</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.initSrvPx" class="py-name" href="#" onclick="return doclink('link-31', 'initSrvPx', 'link-9');">initSrvPx</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">         </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-comment"># Add to existing properties</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties
+ndg.security.common.SQLObject.CredRepos.setProperties
+ndg.security.server.MyProxy.MyProxyClient.setProperties
+ndg.security.server.SessionMgr.SessionMgr.setProperties
+ndg.security.server.ca.SimpleCA.setProperties" class="py-name" href="#" onclick="return doclink('link-32', 'setProperties', 'link-5');">setProperties</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">                 </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">certReqTxt</tt><tt class="py-op">:</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt>                </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">certReqFilePath</tt><tt class="py-op">:</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">                <tt class="py-name">certReqTxt</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">certReqFilePath</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method ndg.security.common.AttCert.AttCert.read()=ndg.security.common.AttCert.AttCert-class.html#read,Method ndg.security.common.X509.X509Cert.read()=ndg.security.common.X509.X509Cert-class.html#read,Method ndg.security.common.XMLSec.XMLSecDoc.read()=ndg.security.common.XMLSec.XMLSecDoc-class.html#read,Method ndg.security.common.openssl.OpenSSLConfig.read()=ndg.security.common.openssl.OpenSSLConfig-class.html#read"><a title="ndg.security.common.AttCert.AttCert.read
+ndg.security.common.X509.X509Cert.read
+ndg.security.common.XMLSec.XMLSecDoc.read
+ndg.security.common.openssl.OpenSSLConfig.read" class="py-name" href="#" onclick="return doclink('link-33', 'read', 'link-33');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">"No text or file path input"</tt><tt class="py-op">)</tt>             </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">                 </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-34" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-34', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt>\ </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">                                <tt class="py-string">"Error reading certificate request: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt>   </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">            <tt class="py-name">certReq</tt> <tt class="py-op">=</tt> <tt class="py-name">CertReq</tt><tt class="py-op">(</tt><tt id="link-35" class="py-name" targets="Variable ndg.security.common.XMLSec.XMLSecDoc.signingKeyFilePath=ndg.security.common.XMLSec.XMLSecDoc-class.html#signingKeyFilePath"><a title="ndg.security.common.XMLSec.XMLSecDoc.signingKeyFilePath" class="py-name" href="#" onclick="return doclink('link-35', 'signingKeyFilePath', 'link-35');">signingKeyFilePath</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'xmlSigKeyFile'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">                              <tt id="link-36" class="py-name" targets="Variable ndg.security.common.XMLSec.XMLSecDoc.certFilePathList=ndg.security.common.XMLSec.XMLSecDoc-class.html#certFilePathList"><a title="ndg.security.common.XMLSec.XMLSecDoc.certFilePathList" class="py-name" href="#" onclick="return doclink('link-36', 'certFilePathList', 'link-36');">certFilePathList</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'xmlSigCertFile'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt>         </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">            <tt class="py-name">certReq</tt><tt class="py-op">.</tt><tt class="py-name">certReqTxt</tt> <tt class="py-op">=</tt> <tt class="py-name">certReqTxt</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">             </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">            <tt class="py-comment"># Sign certificate</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">certReq</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method ndg.security.common.wsSecurity.SignatureHandler.sign()=ndg.security.common.wsSecurity.SignatureHandler-class.html#sign,Method ndg.security.server.ca.SimpleCA.sign()=ndg.security.server.ca.SimpleCA-class.html#sign,Method ndg.security.test.wsSecurity.server.echoServer.EchoService.sign()=ndg.security.test.wsSecurity.server.echoServer.EchoService-class.html#sign"><a title="ndg.security.common.wsSecurity.SignatureHandler.sign
+ndg.security.server.ca.SimpleCA.sign
+ndg.security.test.wsSecurity.server.echoServer.EchoService.sign" class="py-name" href="#" onclick="return doclink('link-37', 'sign', 'link-37');">sign</a></tt><tt class="py-op">(</tt><tt id="link-38" class="py-name" targets="Variable ndg.security.common.XMLSec.XMLSecDoc.signingKeyPwd=ndg.security.common.XMLSec.XMLSecDoc-class.html#signingKeyPwd"><a title="ndg.security.common.XMLSec.XMLSecDoc.signingKeyPwd" class="py-name" href="#" onclick="return doclink('link-38', 'signingKeyPwd', 'link-38');">signingKeyPwd</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">[</tt><tt class="py-string">'xmlSigCertPPhrase'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">             </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-39" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-39', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt>\ </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">                            <tt class="py-string">"Certificate request XML Signature: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">         </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">         </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt>           </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">            <tt class="py-name">resp</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srvPx</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.reqCert()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#reqCert"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.reqCert" class="py-name" href="#" onclick="return doclink('link-40', 'reqCert', 'link-40');">reqCert</a></tt><tt class="py-op">(</tt><tt class="py-name">usrCertReq</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">certReq</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">resp</tt><tt class="py-op">[</tt><tt class="py-string">'errMsg'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-name">resp</tt><tt class="py-op">[</tt><tt class="py-string">'errMsg'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">resp</tt><tt class="py-op">[</tt><tt class="py-string">'usrCert'</tt><tt class="py-op">]</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">socket</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method ndg.security.client.LogClient.LogClient.error()=ndg.security.client.LogClient.LogClient-class.html#error,Method ndg.security.common.logService.log_services.logBindingSOAP.error()=ndg.security.common.logService.log_services.logBindingSOAP-class.html#error"><a title="ndg.security.client.LogClient.LogClient.error
+ndg.security.common.logService.log_services.logBindingSOAP.error" class="py-name" href="#" onclick="return doclink('link-41', 'error', 'link-41');">error</a></tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">errNum</tt><tt class="py-op">,</tt> <tt class="py-name">errMsg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-42" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-42', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt>\ </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">                <tt class="py-string">"Error making certificate request: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">errMsg</tt><tt class="py-op">)</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">             </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-43" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClientError" class="py-name" href="#" onclick="return doclink('link-43', 'SimpleCAClientError', 'link-11');">SimpleCAClientError</a></tt><tt class="py-op">(</tt>\ </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">                <tt class="py-string">"Error making certificate request: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:54 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

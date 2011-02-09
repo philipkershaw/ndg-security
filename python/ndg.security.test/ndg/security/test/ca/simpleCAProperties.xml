@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<simpleCAProp>
+	<portNum>5800</portNum>
+    <useSSL>Yes</useSSL> <!-- leave blank to use http -->
+    <sslCertFile>$NDGSEC_CA_UNITTEST_DIR/srv-cert.pem</sslCertFile>
+    <sslKeyFile>$NDGSEC_CA_UNITTEST_DIR/srv-key.pem</sslKeyFile>
+    <caCertFile>$NDGSEC_CA_UNITTEST_DIR/cacert.pem</caCertFile>
+    <certFile>$NDGSEC_CA_UNITTEST_DIR/srv-cert.pem</certFile>
+    <keyFile>$NDGSEC_CA_UNITTEST_DIR/srv-key.pem</keyFile>
+    <keyPwd/>
+    <!-- 
+    Set the certificate used to verify the signature of messages from the 
+    client.  This can usually be left blank since the client is expected to 
+    include the cert with the signature in the inbound SOAP message
+    -->
+    <clntCertFile></clntCertFile>    
+	<!-- 
+	OpenSSL configuration file - omit to use globus default
+	$HOME/.globus/simpleCA/grid-ca-ssl.conf
+	-->
+    <openSSLConfigFilePath>
+    $GRID_SECURITY_DIR/globus-user-ssl.conf
+    </openSSLConfigFilePath>
+    <certLifetimeDays>365</certLifetimeDays>
+    <!--
+    <certExpiryDate/>
+    -->
+    <!-- Directory for temporary files generated during processing -->
+    <certTmpDir>/tmp</certTmpDir>
+    <!-- Executable for checking the CA pass-phrase set -->
+    <chkCAPassphraseExe>openssl</chkCAPassphraseExe>
+    <!-- Executable for signing certificate request -->
+    <signExe>grid-ca-sign</signExe>
+    <!-- Set ':' paths for executables 
+    /usr/bin and /bin are required by grep and ? used in grid-ca-sign script 
+    -->
+    <path>$GLOBUS_LOCATION/bin:/usr/bin:/bin</path>
+</simpleCAProp>

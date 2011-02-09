@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gatekeeperProp>
+	<!-- Resource identifier e.g. a URI -->
+    <resrcID></resrcID>
+	<!-- Resource interface class -->
+    <resrcModFilePath></resrcModFilePath>
+    <resrcModName>TestGatekeeperResrc</resrcModName>
+    <resrcClassName>TestGatekeeperResrc</resrcClassName>
+    <resrcPropFile></resrcPropFile>
+	<!-- CA Certificate used in validation of Attribute Certificate XML -->
+	<caCertFilePath>$NDG_DIR/conf/certs/cacert.pem</caCertFilePath>
+</gatekeeperProp>

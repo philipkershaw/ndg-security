@@ -1,0 +1,5 @@
+Unit tests for NDG Security Log Module
+======================================
+04/01/08: The log module is not complete.  Logging is currently carried out
+by the python logging module.  A future release may add a SOAP Handler to 
+enable logging across a web service interface.

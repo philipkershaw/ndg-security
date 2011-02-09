@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<simpleCAProp>
+	<portNum/>
+    <useSSL>Yes</useSSL> <!-- leave blank to use http -->
+    <sslCertFile></sslCertFile>
+    <sslKeyFile></sslKeyFile>
+    <caCertFile></caCertFile>
+    <certFile></certFile>
+    <keyFile></keyFile>
+    <keyPwd></keyPwd>
+	<wssRefInclNS></wssRefInclNS>
+	<wssSignedInfoInclNS></wssSignedInfoInclNS>
+    <!-- 
+    Set the certificate used to verify the signature of messages from the 
+    client.  This can usually be left blank since the client is expected to 
+    include the cert with the signature in the inbound SOAP message
+    -->
+    <clntCertFile></clntCertFile>    
+	<!-- 
+	OpenSSL configuration file - omit to use globus default
+	$HOME/.globus/simpleCA/grid-ca-ssl.conf
+    <openSSLConfigFilePath/>
+	-->
+	<!--
+    certExpiryDate|certLifetimeDays may be set.  If both, then certExpiryDate 
+    takes precedence.  certExpiryDate has the format YYYY mm dd HH MM SS. 
+    Year, month, day, hour minute, second respectively.  certLifetimeDays can 
+    be entered as an expression e.g.
+    365 * 2
+
+    <certExpiryDate>2006 08 31 00 00</certExpiryDate>
+    -->
+    <certLifetimeDays>365*2<certLifetimeDays/>
+    <!-- Directory for temporary files generated during processing -->
+    <certTmpDir>/tmp<certTmpDir/>
+    <!-- Executable for checking the CA pass-phrase set -->
+    <chkCAPassphraseExe>openssl</chkCAPassphraseExe>
+    <!-- Executable for signing certificate request -->
+    <signExe>grid-ca-sign</signExe>
+    <!-- Set ':' paths for executables 
+    /usr/bin and /bin are required by grep and ? used in grid-ca-sign script 
+    -->
+    <path>$GLOBUS_LOCATION/bin:/usr/bin:/bin</path>
+</simpleCAProp>

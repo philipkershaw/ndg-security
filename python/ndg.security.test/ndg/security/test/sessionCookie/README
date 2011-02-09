@@ -1,0 +1,5 @@
+Unit tests for NDG Security Session Cookie Module
+=================================================
+04/01/08: SessionCookie class is no longer used by NDG Security.  Cookie
+management in the NDG Browse system is handled by the Pylons application
+framework.

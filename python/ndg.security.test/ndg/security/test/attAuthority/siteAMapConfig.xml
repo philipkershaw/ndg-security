@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+    <thisHost name="Site A">
+        <aaURI>http://localhost:5000/AttributeAuthority</aaURI>
+        <loginURI>https://localhost/login</loginURI>
+	    <aaDN>/O=NDG/OU=Site A/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginServerDN>
+	    <loginRequestServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginRequestServerDN>
+    </thisHost>
+    <trusted name="Site C">
+        <aaURI>http://aa.sitec.blah</aaURI>
+        <loginURI>https://www.sitec.blah/login</loginURI>
+	    <aaDN>/O=SiteC/OU=Security/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/O=SiteD/OU=D/CN=ndg.sitec.blah</loginServerDN>
+	    <loginRequestServerDN>/O=SiteD/OU=D/CN=ndg.sitec.blah</loginRequestServerDN>
+        <role remote="StaffMember" local="staff"/>
+    </trusted>
+    <trusted name="Site D">
+        <aaURI>http://aa.sited.blah</aaURI>
+        <loginURI>https://www.sited.blah/login</loginURI>
+	    <aaDN>/O=SiteD/OU=Security/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/O=SiteD/OU=D/CN=ndg.sited.blah</loginServerDN>
+	    <loginRequestServerDN>/O=SiteD/OU=D/CN=ndg.sited.blah</loginRequestServerDN>
+        <role remote="academic" local="postgrad"/>
+        <role remote="student" local="SiteDStudent"/>
+        <role remote="eoGroup" local="atsr-archive"/>
+    </trusted>
+</AAmap>
