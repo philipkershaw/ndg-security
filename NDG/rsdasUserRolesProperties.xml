@@ -1,0 +1,8 @@
+<!-- PML role mapping configuration
+ -->
+<PMLRoleMappingConfigFile>
+   <userName>ndguser</userName>
+   <dbName>rsgweb</dbName>
+   <host>pgsql.npm.ac.uk</host>
+   <passPhrase>nu-uh, this isn't it</passPhrase>
+</PMLRoleMappingConfigFile>

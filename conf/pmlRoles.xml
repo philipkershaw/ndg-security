@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Name for the data provider at PML is "RSDAS" -->
+<!-- WSDL location for attribute authority is: http://www.npm.ac.uk/rsdas/projects/ndg/security/html/attAuthority.wsdl -->
+<roleSet>
+    <role>
+        <name>nercGrant</name>
+        <description>NERC grant (research, non-student)</description>
+    </role>
+    <role>
+        <name>nercCentreSurvey</name>
+        <description>NERC centre/survey</description>
+    </role>
+    <role>
+        <name>nercPhDstudent</name>
+        <description>NERC PhD student</description>
+    </role>
+    <role>
+        <name>nercOther</name>
+        <description>NERC other</description>
+    </role>
+    <role>
+        <name>non-nercPhDstudent</name>
+        <description>Non-NERC PhD student</description>
+    </role>
+    <role>
+        <name>non-nercAcademic</name>
+        <description>Non-NERC academic</description>
+    </role>
+    <role>
+        <name>government</name>
+        <description>Government user</description>
+    </role>
+    <role>
+        <name>commercial</name>
+        <description>Commercial user</description>
+    </role>
+    <role>
+        <name>public</name>
+        <description>Public</description>
+    </role>
+    <role>
+        <name>rsdasApprovedUser</name>
+        <description>approved user (holding peer-reviewed application)</description>
+    </role>
+    <role>
+        <name>bodcUser</name>
+        <description>BODC user</description>
+    </role>
+    <role>
+        <name>badcUser</name>
+        <description>BADC user</description>
+    </role>
+    <role>
+        <name>badcMetOfficeUser</name>
+        <description>BADC user who has signed a MetOffice form</description>
+    </role>
+    <role>
+        <name>bodcMetOfficeUser</name>
+        <description>BODC user who has signed a MetOffice form</description>
+    </role>
+    <role>
+        <name>seaWiFSuser</name>
+        <description>user (NASA-authorised) allowed to view data less than five years old</description>
+    </role>
+    <role>
+        <name>acsoe</name>
+        <description>ACSOE Project</description>
+    </role>
+    <role>
+        <name>amt</name>
+        <description>AMT project</description>
+    </role>
+    <role>
+        <name>rapid</name>
+        <description>RAPID project</description>
+    </role>
+    <role>
+        <name>solas</name>
+        <description>SOLAS project</description>
+    </role>
+    <role>
+        <name>spear</name>
+        <description>SPEAR project</description>
+    </role>
+</roleSet>

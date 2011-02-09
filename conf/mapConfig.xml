@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+	<thisHost name="NEODAAS">
+        <aaURI>http://wwwdev.neodaas.ac.uk/projects/ndg/attAuthority</aaURI>
+        <loginURI>https://wwwdev.neodaas.ac.uk/projects/ndg/login</loginURI>
+        <aaDN>O=NDG/OU=NEODAAS/CN=AttributeAuthority</aaDN>
+        <loginServerDN>/O=Plymouth Marine Laboratory/OU=RSG/CN=wwwdev.neodaas.ac.uk/emailAddress=rsgweb@pml.ac.uk</loginServerDN>
+        <loginRequestServerDN>/O=Plymouth Marine Laboratory/OU=RSG/CN=wwwdev.neodaas.ac.uk/emailAddress=rsgweb@pml.ac.uk</loginRequestServerDN>
+	</thisHost>
+    <trusted name="BADC">
+        <aaURI>http://aa.ceda.rl.ac.uk</aaURI>
+        <aaDN>/CN=AttributeAuthority/O=NDG/OU=BADC</aaDN>
+        <loginURI>https://ndgbeta.badc.rl.ac.uk/login</loginURI>
+        <loginServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginServerDN>
+        <loginRequestServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginRequestServerDN>
+        <role remote="NercInst" local="nercCentreSurvey"/>
+        <role remote="NercFunded" local="nercOther"/>
+        <role remote="University" local="non-nercAcademic"/>
+        <role remote="government" local="government"/>
+        <role remote="commercial" local="commercial"/>
+        <role remote="school" local="public"/>
+        <role remote="other" local="public"/>
+        <role remote="metOfficeForm" local="badcMetOfficeUser"/>
+        <role remote="bodcUser" local="bodcUser"/>
+        <role remote="badcUser" local="badcUser"/>
+        <role remote="acsoe" local="acsoe"/>
+        <role remote="rapid" local="rapid"/>
+    </trusted>
+    <trusted name="BODC">
+        <aaURI>http://aa.bodc.nerc.ac.uk/</aaURI>
+        <loginURI>https://grid.bodc.nerc.ac.uk/ndg/login</loginURI>
+        <aaDN>/O=NDG/OU=BODC/CN=AttributeAuthority</aaDN>
+        <loginServerDN>C=GB/ST=Merseyside/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginServerDN>
+        <loginRequestServerDN>C=GB/ST=Merseyside/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginRequestServerDN>
+        <role remote="anonymous" local="public"/>
+        <role remote="public" local="public"/>
+        <role remote="commercial" local="commercial"/>
+        <role remote="government" local="government"/>
+        <role remote="academic" local="non-nercAcademic"/>
+        <role remote="BODCstaff" local="bodcUser"/>
+        <role remote="metOfficeForm" local="bodc-metOfficeUser"/>
+        <role remote="FRSAuth" local="bodcUser"/>
+        <role remote="NOCS_NERCAuth" local="bodcUser"/>
+        <role remote="ConocoPhillipsAuth" local="bodcUser"/>
+        <role remote="ESBDAuth" local="bodcUser"/>
+        <role remote="IrHydAuth" local="bodcUser"/>
+        <role remote="ShellAuth" local="bodcUser"/>
+        <role remote="BPAuth" local="bodcUser"/>
+        <role remote="TotalAuth" local="bodcUser"/>
+        <role remote="WessWAuth" local="bodcUser"/>
+        <role remote="NERPRBAuth" local="bodcUser"/>
+        <role remote="SWWAuth" local="bodcUser"/>
+        <role remote="UnivBrGeolAuth" local="bodcUser"/>
+        <role remote="UnivCambEScAuth" local="bodcUser"/>
+        <role remote="UnivEdinGeolAuth" local="bodcUser"/>
+        <role remote="UWBSOSAuth" local="bodcUser"/>
+        <role remote="WelshWAuth" local="bodcUser"/>
+        <role remote="NPAuth" local="bodcUser"/>
+        <role remote="HRAuth" local="bodcUser"/>
+        <role remote="ChevronAuth" local="bodcUser"/>
+        <role remote="SAMSAuth" local="bodcUser"/>
+        <role remote="PortErinAuth" local="bodcUser"/>
+        <role remote="CEFASAuth" local="bodcUser"/>
+        <role remote="POLAuth" local="bodcUser"/>
+        <role remote="GEOSAuth" local="bodcUser"/>
+        <role remote="MarProdMemb" local="nercGrant"/>
+        <role remote="AUIMemb" local="nercGrant"/>
+        <role remote="MFMBMemb" local="nercGrant"/>
+        <role remote="RapidMemb" local="rapid"/>
+        <role remote="MOCMemb" local="rapid"/>
+        <role remote="DeltaFlumeMemb" local="nercGrant"/>
+        <role remote="AMTMemb" local="amt"/>
+        <role remote="MarProdMemb" local="bodcUser"/>
+        <role remote="RapidMemb" local="rapid"/>
+        <role remote="MOCMemb" local="bodcUser"/>
+        <role remote="DeltaFlumeMemb" local="bodcUser"/>
+    </trusted>
+    <trusted name="NOCS">
+        <aaURI>http://nocndg.noc.soton.ac.uk/AttributeAuthority</aaURI>
+        <loginURI>https://nocndg.noc.soton.ac.uk/login</loginURI>
+        <aaDN>/O=NDG/OU=NOCS/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/C=GB/ST=Hampshire/O=NOCS/OU=ITG/CN=nocndg.noc.soton.ac.uk/emailAddress=bwd@noc.soton.ac.uk</loginServerDN>
+	    <loginRequestServerDN>/C=GB/ST=Hampshire/O=NOCS/OU=ITG/CN=nocndg.noc.soton.ac.uk/emailAddress=bwd@noc.soton.ac.uk</loginRequestServerDN>
+        <role remote="ndgUser" local="public"/>
+        <role remote="Anonymous" local="public"/>
+        <role remote="hydroUser" local="public"/>
+        <role remote="ccoUser" local="public"/>
+    </trusted>
+</AAmap>
