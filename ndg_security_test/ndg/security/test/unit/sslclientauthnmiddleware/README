@@ -1,0 +1,12 @@
+DEPRECATED - See ndg.security.test.unit.wsgi.ssl
+
+Test SSL Client Authentication WSGI Middleware.  The middleware can be run
+under paste instance - run 
+
+$ python sslclientauthnapp.py
+
+or install ndgsecurity.wsgi as a mod_wsgi app in Apache.  See this file for
+details.
+
+12/12/08: running under mod_wsgi is currently the only way the middleware will
+work because it relies on SSL_CLIENT_CERT being set in environ.

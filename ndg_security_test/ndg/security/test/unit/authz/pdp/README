@@ -1,0 +1,4 @@
+Unit Tests for ProFTP based Policy Decision Point
+=================================================
+Session Manager and Site A Attribute Authority services must be running. - See
+respective unit test directories.
