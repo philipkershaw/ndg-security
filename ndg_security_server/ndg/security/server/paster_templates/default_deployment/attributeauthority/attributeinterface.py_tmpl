@@ -1,0 +1,19 @@
+"""NDG Attribute Authority User Roles class - acts as an interface between
+the data centre's user roles configuration and the Attribute Authority
+                                                                                
+NERC DataGrid Project
+"""
+from ndg.security.server.attributeauthority import AttributeInterface
+
+
+class TestAttributeInterface(AttributeInterface):
+    """Test User Roles class dynamic import for Attribute Authority"""
+
+    def __init__(self, propertiesFilePath=None):
+        pass
+
+    def userIsRegistered(self, userId):
+        return True
+
+    def getRoles(self, userId):
+        return ['staff', 'postdoc', 'undergrad', 'coapec'] 
