@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<AAmap>
+<trusted name='BODC'>
+<ServerCertFile>D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.cert</ServerCertFile>
+<role remote='deltaflume' local='lakes'/>
+<role remote='mfmb' local='countryside survey'/>
+<role remote='BODC' local='all'/>
+<role remote='deltaflume' local='ECN'/>
+</trusted>
+<trusted name='BADC'>
+<ServerCertFile>D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.cert</ServerCertFile>
+<role remote='PhD_student' local='countryside survey'/>
+<role remote='atmospheric scientist' local='ECN'/>
+<role remote='postdoc' local='all'/>
+</trusted>
+</AAmap>

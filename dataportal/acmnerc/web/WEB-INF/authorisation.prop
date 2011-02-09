@@ -1,0 +1,24 @@
+
+#this is the name of the xml wrapper faciltiy
+facility=ACMNERC
+#server name that the access and control info is, follow by db stuff
+server=localhost
+port=3306
+db_name=test_bodc
+username=dpuser
+passwd=dp4all
+
+#algorithm used to make hash
+algorithm=SHA1withRSA
+#jks stuff
+keystore=E:\dataportal\acmnerc\web\WEB-INF\nerc.keystore
+keystore_passwd=
+keystore_alias=acm
+
+#this is for client, this is the path to the certificate associated 
+#with the private key used to sign the attribute certificate
+certificate=E:\dataportal\acmnerc\web\WEB-INF\nerc.cert
+
+#not needed
+facilities=EMAT
+cert_file=c:/cred.au

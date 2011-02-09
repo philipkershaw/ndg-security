@@ -1,0 +1,70 @@
+
+#this is the name of the xml wrapper facility
+facility=BADC
+
+#server name that the access and control info is, follow by db stuff
+server=localhost
+port=3306
+db_name=test_badc
+
+#username=dpuser
+#passwd=dp4all
+
+#algorithm used to make hash
+signature_algorithm=RSA
+
+#not needed
+canon_algorithm=badc_pootle
+digest_algorithm=SHA1
+canonicalization_URL=http://www.w3.org/TR/2001/REC-xml-c14n-20010315
+signature_URL=http://www.w3.org/2000/09/xmldsig#
+sigMethod_URL=http://www.w3.org/2000/09/xmldsig#rsa-sha1
+reference_URL=http://www.w3.org/TR/xml-stylesheet
+digest_URL=http://www.w3.org/2000/09/xmldsig#sha1
+
+#jks stuff
+keystore_type=JKS
+keystore=D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.keystore
+keystore_passwd=globus
+keystore_alias=nerc
+
+#this is for client, this is the path to the certificate associated 
+#with the private key used to sign the attribute certificate
+certificate=D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.cert
+
+#Neil's additions
+db_driver_string=jdbc:mysql:
+db_driver_class=com.mysql.jdbc.Driver
+std_roles_query="SELECT DISTINCT ROLE from USERS_ROLES a, DN b where a.EMAIL = b.MAILADDRESS AND b.DISTNAME = '"
+user_query="SELECT DISTINCT MAILADDRESS from DN where DISTNAME='"
+mapped_roles_query_pt1="SELECT DISTINCT HOME_ROLE from ROLE_MAPPINGS where EXT_ORGN='"
+mapped_roles_query_pt2="' and EXT_ROLE IN ("
+affil_orgs_query="SELECT DISTINCT EXT_ORGN FROM ROLE_MAPPINGS;"
+affil_orgs_query2="SELECT DISTINCT EXT_ORGN FROM ROLE_MAPPINGS WHERE HOME_ROLE IN ("
+
+#not needed
+pub_key_query="SELECT DISTINCT ext_pub_key FROM ROLE_MAPPINGS WHERE EXT_ORGN='"
+demo_roles_query="SELECT ROLE from USERS_ROLES a, DN b where a.EMAIL = b.MAILADDRESS AND b.DISTNAME='demo'"
+
+#start value can only be CN or C
+db_DN_start_value=CN
+db_DN_equality_string="="
+db_DN_delim_string=","
+
+BODC_db_DN_start_value=CN
+BODC_db_DN_equality_string=" = "
+BODC_db_DN_delim_string=","
+
+CEH_db_DN_start_value=C
+CEH_db_DN_equality_string=" = "
+CEH_db_DN_delim_string="/"
+
+map_file_location=D:\\badc_map_file.txt
+
+token_lifetime=00:02:01
+
+#two options: file or database
+mapping_preference=file
+
+#path to the directory where signed authorisation tokens are stored
+base_path=C:/signedTokens/

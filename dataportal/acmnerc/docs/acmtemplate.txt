@@ -1,0 +1,41 @@
+--
+-- Selected TOC Entries:
+--
+\connect - postgres
+
+--
+-- TOC Entry ID 2 (OID 33519)
+--
+-- Name: usertable Type: TABLE Owner: postgres
+--
+
+CREATE TABLE "usertable" (
+	"username" character varying(30) NOT NULL,
+	"facility" boolean,
+	"metadata" boolean,
+	"data" boolean,
+	Constraint "usertable_pkey" Primary Key ("username")
+);
+
+--
+-- Data for TOC Entry ID 3 (OID 33519)
+--
+-- Name: usertable Type: TABLE DATA Owner: postgres
+--
+
+
+COPY "usertable" FROM stdin;
+lisa	t	t	f
+glen	t	t	t
+mike	t	f	f
+mark	t	t	t
+shoaib	t	t	t
+andrew	t	t	t
+kerstin	t	t	t
+kevin	t	t	t
+guest	t	t	t
+rick	t	t	t
+ananta	f	t	t
+rja	t	t	t
+ajr45	t	t	t
+\.

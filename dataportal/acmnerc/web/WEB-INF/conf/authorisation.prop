@@ -1,0 +1,55 @@
+
+#this is the name of the xml wrapper faciltiy
+facility=BODC
+
+#server name that the access and control info is, follow by db stuff
+server=localhost
+port=3306
+db_name=test_bodc
+#username=dpuser
+#passwd=dp4all
+
+#algorithm used to make hash
+signature_algorithm=RSA
+
+#jks stuff
+keystore_type=JKS
+keystore=D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.keystore
+keystore_passwd=globus
+keystore_alias=nerc
+
+#this is for client, this is the path to the certificate associated 
+#with the private key used to sign the attribute certificate
+certificate=D:\\dataportal\\acmnerc\\web\\WEB-INF\\nerc.cert
+
+db_driver_string=jdbc:mysql:
+db_driver_class=com.mysql.jdbc.Driver
+std_roles_query="SELECT DISTINCT ROLE from USERS_ROLES a, USERS_DN b where a.EMAIL = b.EMAIL AND b.DN = '"
+user_query="SELECT DISTINCT EMAIL from users_dn where DN='"
+mapped_roles_query_pt1="SELECT DISTINCT HOME_ROLE from ROLE_MAPPINGS where EXT_ORGN='"
+mapped_roles_query_pt2="' and EXT_ROLE IN ("
+affil_orgs_query="SELECT DISTINCT EXT_ORGN FROM ROLE_MAPPINGS;"
+affil_orgs_query2="SELECT DISTINCT EXT_ORGN FROM ROLE_MAPPINGS WHERE HOME_ROLE IN ("
+
+#not needed
+pub_key_query="SELECT DISTINCT ext_pub_key FROM ROLE_MAPPINGS WHERE EXT_ORGN='"
+
+#start value can only be CN or C
+db_DN_start_value=CN
+db_DN_equality_string=" = "
+db_DN_delim_string=","
+
+BADC_db_DN_start_value=CN
+BADC_db_DN_equality_string="="
+BADC_db_DN_delim_string=","
+
+CEH_db_DN_start_value=C
+CEH_db_DN_equality_string=" = "
+CEH_db_DN_delim_string="/"
+
+map_file_location=D:\\bodc_map_file.txt
+
+token_lifetime=00:02:30
+
+#two options: file or database
+mapping_preference=database
