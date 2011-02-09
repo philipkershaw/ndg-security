@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.MyProxy.CmdLineClient</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        <a href="ndg.security.server.MyProxy-module.html">Module&nbsp;MyProxy</a> ::
+        Class&nbsp;CmdLineClient
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class CmdLineClient</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_200" name="uml_class_diagram_for_ndg_secu_200">
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#run" title="ndg.security.server.MyProxy.CmdLineClient.run" alt="" coords="17,28,188,47"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#initOpts" title="ndg.security.server.MyProxy.CmdLineClient.initOpts" alt="" coords="17,47,188,66"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#cmdUsage" title="ndg.security.server.MyProxy.CmdLineClient.cmdUsage" alt="" coords="17,66,188,84"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#usage" title="ndg.security.server.MyProxy.CmdLineClient.usage" alt="" coords="17,84,188,103"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#version" title="ndg.security.server.MyProxy.CmdLineClient.version" alt="" coords="17,103,188,122"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#__init__" title="Parse the command line and run the appropriate command" alt="" coords="17,124,188,143"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runGetDelegation" title="Call MyProxyClient.getDelegation" alt="" coords="17,143,188,162"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runLogon" title="Call MyProxyClient.logon" alt="" coords="17,162,188,180"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runChangePassphrase" title="Call MyProxyClient.changePassphrase" alt="" coords="17,180,188,199"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runInfo" title="Call MyProxyClient.info" alt="" coords="17,199,188,218"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runDestroy" title="Call MyProxyClient.destroy" alt="" coords="17,218,188,236"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html#runStore" title="ndg.security.server.MyProxy.CmdLineClient.runStore" alt="" coords="17,236,188,255"/>
+<area shape="rect" href="ndg.security.server.MyProxy.CmdLineClient&#45;class.html" title="Command line interface to MyProxyClient class." alt="" coords="16,11,189,256"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_200.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_200" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Command line interface to MyProxyClient class.  Where possible it 
+  supports the same options as the Globus myproxy-* client commands</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.CmdLineClient-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Parse the command line and run the appropriate command</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addGenericOpts"></a><span class="summary-sig-name">_addGenericOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Generic options applying to all commands</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addGenericOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addInfoOpts"></a><span class="summary-sig-name">_addInfoOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for info</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addInfoOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addLogonOpts"></a><span class="summary-sig-name">_addLogonOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for logon</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addLogonOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addGetDelegationOpts"></a><span class="summary-sig-name">_addGetDelegationOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for Get Delegation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addGetDelegationOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addDestroyOpts"></a><span class="summary-sig-name">_addDestroyOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for destroy</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addDestroyOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addChangePassphraseOpts"></a><span class="summary-sig-name">_addChangePassphraseOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for change pass-phrase</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addChangePassphraseOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_addStoreOpts"></a><span class="summary-sig-name">_addStoreOpts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Add command line options for store</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient._addStoreOpts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runGetDelegation"></a><span class="summary-sig-name">runGetDelegation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Call MyProxyClient.getDelegation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runGetDelegation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runLogon"></a><span class="summary-sig-name">runLogon</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Call MyProxyClient.logon</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runLogon">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runChangePassphrase"></a><span class="summary-sig-name">runChangePassphrase</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Call MyProxyClient.changePassphrase</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runChangePassphrase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runInfo"></a><span class="summary-sig-name">runInfo</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Call MyProxyClient.info</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runDestroy"></a><span class="summary-sig-name">runDestroy</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Call MyProxyClient.destroy</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runDestroy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runStore"></a><span class="summary-sig-name">runStore</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.runStore">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.CmdLineClient-class.html#run" class="summary-name">run</a> = <code title="{'info': 'runInfo', 'logon': 'runLogon', 'get-delegation': 'runGetDele\
+gation', 'destroy': 'runDestroy', 'change-pass': 'runChangePassphrase'\
+, 'store': 'runStore'}">{'info': 'runInfo', 'logon': 'runLogon', 'get-delegation<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.CmdLineClient-class.html#initOpts" class="summary-name">initOpts</a> = <code title="{'info': '_addInfoOpts', 'logon': '_addLogonOpts', 'get-delegation': '\
+_addGetDelegationOpts', 'destroy': '_addDestroyOpts', 'change-pass': '\
+_addChangePassphraseOpts', 'store': '_addStoreOpts'}">{'info': '_addInfoOpts', 'logon': '_addLogonOpts', <code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.CmdLineClient-class.html#cmdUsage" class="summary-name">cmdUsage</a> = <code title="{'info': &quot;usage: %prog info arg1 arg2&quot;, 'logon': &quot;usage: %prog logon a\
+rg1 arg2&quot;, 'get-delegation': &quot;usage: %prog get-delegation arg1 arg2&quot;, \
+'destroy': &quot;usage: %prog destroy arg1 arg2&quot;, 'change-pass': &quot;usage: %p\
+rog change-pass arg1 arg2&quot;, 'store': &quot;usage: %prog store arg1 arg2&quot;}">{'info': &quot;usage: %prog info arg1 arg2&quot;, 'logon': &quot;u<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="usage"></a><span class="summary-name">usage</span> = <code title="&quot;usage: %prog&quot;+ &quot; [%s] arg1 arg2&quot; % '|'.join(run.keys())">&quot;usage: %prog&quot;+ &quot; [%s] arg1 arg2&quot; % '|'.join(run.keys())</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="version"></a><span class="summary-name">version</span> = <code title="&quot;%prog 0.8.7&quot;">&quot;%prog 0.8.7&quot;</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#CmdLineClient.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Parse the command line and run the appropriate command</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="run"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">run</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'info': 'runInfo', 'logon': 'runLogon', 'get-delegation': 'runGetDele<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+gation', 'destroy': 'runDestroy', 'change-pass': 'runChangePassphrase'<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+, 'store': 'runStore'}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="initOpts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">initOpts</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'info': '_addInfoOpts', 'logon': '_addLogonOpts', 'get-delegation': '<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_addGetDelegationOpts', 'destroy': '_addDestroyOpts', 'change-pass': '<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_addChangePassphraseOpts', 'store': '_addStoreOpts'}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cmdUsage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">cmdUsage</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'info': &quot;usage: %prog info arg1 arg2&quot;, 'logon': &quot;usage: %prog logon a<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rg1 arg2&quot;, 'get-delegation': &quot;usage: %prog get-delegation arg1 arg2&quot;, <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'destroy': &quot;usage: %prog destroy arg1 arg2&quot;, 'change-pass': &quot;usage: %p<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rog change-pass arg1 arg2&quot;, 'store': &quot;usage: %prog store arg1 arg2&quot;}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Mon Sep  1 11:59:19 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

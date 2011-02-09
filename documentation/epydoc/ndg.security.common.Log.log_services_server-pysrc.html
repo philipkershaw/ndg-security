@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.Log.log_services_server</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.Log-module.html">Package&nbsp;Log</a> ::
+        Module&nbsp;log_services_server
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.common.Log.log_services_server-module.html">Module ndg.security.common.Log.log_services_server</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""NDG Logging Web service server side interface.  Generated and </tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">adapted from:</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">wsdl2dispatch -f log.wsdl</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">P J Kershaw 12/05/06</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">Copyright (C) 2006 STFC &amp; NERC</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">This software may be distributed under the terms of the Q Public License,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">version 1.0 or later.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.Log.__revision__=ndg.security.common.Log-module.html#__revision__,Variable ndg.security.common.Log.log_services_server.__revision__=ndg.security.common.Log.log_services_server-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionCookie.__revision__=ndg.security.common.SessionCookie-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.wsSecurity.__revision__=ndg.security.common.wsSecurity-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.MyProxy.__revision__=ndg.security.server.MyProxy-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.Log.__revision__
+ndg.security.common.Log.log_services_server.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionCookie.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.wsSecurity.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.MyProxy.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id: log_services_server.py 2909 2007-09-28 14:22:21Z pjkersha $'</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module ndg.security.common.Log.log_services=ndg.security.common.Log.log_services-module.html"><a title="ndg.security.common.Log.log_services" class="py-name" href="#" onclick="return doclink('link-1', 'log_services', 'link-1');">log_services</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ZSI</tt><tt class="py-op">.</tt><tt class="py-name">ServiceContainer</tt> <tt class="py-keyword">import</tt> <tt class="py-name">ServiceSOAPBinding</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Package ndg.security.common.Log=ndg.security.common.Log-module.html,Module ndg.security.server.Log=ndg.security.server.Log-module.html,Class ndg.security.server.Log.Log=ndg.security.server.Log.Log-class.html"><a title="ndg.security.common.Log
+ndg.security.server.Log
+ndg.security.server.Log.Log" class="py-name" href="#" onclick="return doclink('link-2', 'Log', 'link-2');">Log</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">LogIO</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="log"></a><div id="log-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="log-toggle" onclick="return toggle('log');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html">log</a><tt class="py-op">(</tt><tt class="py-base-class">ServiceSOAPBinding</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="log-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable ndg.security.common.Log.log_services_server.log.soapAction=ndg.security.common.Log.log_services_server.log-class.html#soapAction,Variable ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.soapAction=ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService-class.html#soapAction,Variable ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soapAction=ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#soapAction,Variable ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.soapAction=ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService-class.html#soapAction"><a title="ndg.security.common.Log.log_services_server.log.soapAction
+ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.soapAction
+ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.soapAction
+ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.soapAction" class="py-name" href="#" onclick="return doclink('link-3', 'soapAction', 'link-3');">soapAction</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-string">'urn:log#debug'</tt><tt class="py-op">:</tt> <tt class="py-string">'soap_debug'</tt><tt class="py-op">,</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-string">'urn:log#error'</tt><tt class="py-op">:</tt> <tt class="py-string">'soap_error'</tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-string">'urn:log#info'</tt><tt class="py-op">:</tt> <tt class="py-string">'soap_info'</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-string">'urn:log#warning'</tt><tt class="py-op">:</tt> <tt class="py-string">'soap_warning'</tt><tt class="py-op">,</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="log.__init__"></a><div id="log.__init__-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="log.__init__-toggle" onclick="return toggle('log.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">srv</tt><tt class="py-op">,</tt> <tt class="py-param">debug</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-param">post</tt><tt class="py-op">=</tt><tt class="py-string">'/log.wsdl'</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="log.__init__-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">ServiceSOAPBinding</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method ndg.security.client.GatekeeperClient.GatekeeperClient.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClient-class.html#__init__,Method ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__()=ndg.security.client.GatekeeperClient.GatekeeperClientError-class.html#__init__,Method ndg.security.client.LogClient.LogClient.__init__()=ndg.security.client.LogClient.LogClient-class.html#__init__,Method ndg.security.client.LogClient.LogClientError.__init__()=ndg.security.client.LogClient.LogClientError-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClient.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__init__,Method ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__()=ndg.security.client.SimpleCAClient.SimpleCAClientError-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthorityClient.__init__()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.AttCert.AttCert.__init__()=ndg.security.common.AttCert.AttCert-class.html#__init__,Method ndg.security.common.AttCert.AttCertReadOnlyDict.__init__()=ndg.security.common.AttCert.AttCertReadOnlyDict-class.html#__init__,Method ndg.security.common.CredWallet.CredRepos.__init__()=ndg.security.common.CredWallet.CredRepos-class.html#__init__,Method ndg.security.common.CredWallet.CredWallet.__init__()=ndg.security.common.CredWallet.CredWallet-class.html#__init__,Method ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__()=ndg.security.common.CredWallet.CredWalletAttributeRequestDenied-class.html#__init__,Method ndg.security.common.CredWallet.NullCredRepos.__init__()=ndg.security.common.CredWallet.NullCredRepos-class.html#__init__,Method ndg.security.common.CredWallet._CredWalletException.__init__()=ndg.security.common.CredWallet._CredWalletException-class.html#__init__,Method ndg.security.common.Log.log_services.debugRequest.__init__()=ndg.security.common.Log.log_services.debugRequest-class.html#__init__,Method ndg.security.common.Log.log_services.debugRequestWrapper.__init__()=ndg.security.common.Log.log_services.debugRequestWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.debugResponse.__init__()=ndg.security.common.Log.log_services.debugResponse-class.html#__init__,Method ndg.security.common.Log.log_services.debugResponseWrapper.__init__()=ndg.security.common.Log.log_services.debugResponseWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.errorRequest.__init__()=ndg.security.common.Log.log_services.errorRequest-class.html#__init__,Method ndg.security.common.Log.log_services.errorRequestWrapper.__init__()=ndg.security.common.Log.log_services.errorRequestWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.errorResponse.__init__()=ndg.security.common.Log.log_services.errorResponse-class.html#__init__,Method ndg.security.common.Log.log_services.errorResponseWrapper.__init__()=ndg.security.common.Log.log_services.errorResponseWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.infoRequest.__init__()=ndg.security.common.Log.log_services.infoRequest-class.html#__init__,Method ndg.security.common.Log.log_services.infoRequestWrapper.__init__()=ndg.security.common.Log.log_services.infoRequestWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.infoResponse.__init__()=ndg.security.common.Log.log_services.infoResponse-class.html#__init__,Method ndg.security.common.Log.log_services.infoResponseWrapper.__init__()=ndg.security.common.Log.log_services.infoResponseWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.logBindingSOAP.__init__()=ndg.security.common.Log.log_services.logBindingSOAP-class.html#__init__,Method ndg.security.common.Log.log_services.warningRequest.__init__()=ndg.security.common.Log.log_services.warningRequest-class.html#__init__,Method ndg.security.common.Log.log_services.warningRequestWrapper.__init__()=ndg.security.common.Log.log_services.warningRequestWrapper-class.html#__init__,Method ndg.security.common.Log.log_services.warningResponse.__init__()=ndg.security.common.Log.log_services.warningResponse-class.html#__init__,Method ndg.security.common.Log.log_services.warningResponseWrapper.__init__()=ndg.security.common.Log.log_services.warningResponseWrapper-class.html#__init__,Method ndg.security.common.Log.log_services_server.log.__init__()=ndg.security.common.Log.log_services_server.log-class.html#__init__,Method ndg.security.common.SQLObject.CredRepos.__init__()=ndg.security.common.SQLObject.CredRepos-class.html#__init__,Method ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__()=ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI-class.html#__init__,Method ndg.security.common.SecurityCGI._SecurityCGI.__init__()=ndg.security.common.SecurityCGI._SecurityCGI-class.html#__init__,Method ndg.security.common.SessionCookie.SessionCookie.__init__()=ndg.security.common.SessionCookie.SessionCookie-class.html#__init__,Method ndg.security.common.SessionMgr.AttributeRequestDenied.__init__()=ndg.security.common.SessionMgr.AttributeRequestDenied-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgrClient.__init__()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__()=ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec-class.html#__init__,Method ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__()=ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec-class.html#__init__,Method ndg.security.common.X509.X500DN.__init__()=ndg.security.common.X509.X500DN-class.html#__init__,Method ndg.security.common.X509.X509Cert.__init__()=ndg.security.common.X509.X509Cert-class.html#__init__,Method ndg.security.common.X509.X509Stack.__init__()=ndg.security.common.X509.X509Stack-class.html#__init__,Method ndg.security.common.XMLSec.XMLSecDoc.__init__()=ndg.security.common.XMLSec.XMLSecDoc-class.html#__init__,Method ndg.security.common.ca.CertificateAuthorityClient.__init__()=ndg.security.common.ca.CertificateAuthorityClient-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__()=ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec-class.html#__init__,Method ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__()=ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__()=ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html#__init__,Method ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__()=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html#__init__,Method ndg.security.common.openssl.OpenSSLConfig.__init__()=ndg.security.common.openssl.OpenSSLConfig-class.html#__init__,Method ndg.security.common.wsSecurity.EncryptionHandler.__init__()=ndg.security.common.wsSecurity.EncryptionHandler-class.html#__init__,Method ndg.security.common.wsSecurity.SignatureHandler.__init__()=ndg.security.common.wsSecurity.SignatureHandler-class.html#__init__,Method ndg.security.server.AttAuthority.AAUserRoles.__init__()=ndg.security.server.AttAuthority.AAUserRoles-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority.__init__()=ndg.security.server.AttAuthority.AttAuthority-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthorityError.__init__()=ndg.security.server.AttAuthority.AttAuthorityError-class.html#__init__,Method ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__()=ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService-class.html#__init__,Method ndg.security.server.AttAuthority.AttCertLog.__init__()=ndg.security.server.AttAuthority.AttCertLog-class.html#__init__,Method ndg.security.server.Log.Log.__init__()=ndg.security.server.Log.Log-class.html#__init__,Method ndg.security.server.MyProxy.CmdLineClient.__init__()=ndg.security.server.MyProxy.CmdLineClient-class.html#__init__,Method ndg.security.server.MyProxy.MyProxyClient.__init__()=ndg.security.server.MyProxy.MyProxyClient-class.html#__init__,Method ndg.security.server.MyProxy._HostCheck.__init__()=ndg.security.server.MyProxy._HostCheck-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr.__init__()=ndg.security.server.SessionMgr.SessionMgr-class.html#__init__,Method ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__()=ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService-class.html#__init__,Method ndg.security.server.SessionMgr.UserSession.__init__()=ndg.security.server.SessionMgr.UserSession-class.html#__init__,Method ndg.security.server.SessionMgr._SessionMgrException.__init__()=ndg.security.server.SessionMgr._SessionMgrException-class.html#__init__,Method ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__()=ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService-class.html#__init__,Method ndg.security.server.ca.SimpleCA.__init__()=ndg.security.server.ca.SimpleCA-class.html#__init__,Method ndg.security.server.conf.userRoles.UserRoles.__init__()=ndg.security.server.conf.userRoles.UserRoles-class.html#__init__"><a title="ndg.security.client.GatekeeperClient.GatekeeperClient.__init__
+ndg.security.client.GatekeeperClient.GatekeeperClientError.__init__
+ndg.security.client.LogClient.LogClient.__init__
+ndg.security.client.LogClient.LogClientError.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClient.__init__
+ndg.security.client.SimpleCAClient.SimpleCAClientError.__init__
+ndg.security.common.AttAuthority.AttAuthorityClient.__init__
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.HostInfo_Def.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAllHostsInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfoResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getTrustedHostInfo_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.AttAuthority.AttAuthority_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.AttCert.AttCert.__init__
+ndg.security.common.AttCert.AttCertReadOnlyDict.__init__
+ndg.security.common.CredWallet.CredRepos.__init__
+ndg.security.common.CredWallet.CredWallet.__init__
+ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.__init__
+ndg.security.common.CredWallet.NullCredRepos.__init__
+ndg.security.common.CredWallet._CredWalletException.__init__
+ndg.security.common.Log.log_services.debugRequest.__init__
+ndg.security.common.Log.log_services.debugRequestWrapper.__init__
+ndg.security.common.Log.log_services.debugResponse.__init__
+ndg.security.common.Log.log_services.debugResponseWrapper.__init__
+ndg.security.common.Log.log_services.errorRequest.__init__
+ndg.security.common.Log.log_services.errorRequestWrapper.__init__
+ndg.security.common.Log.log_services.errorResponse.__init__
+ndg.security.common.Log.log_services.errorResponseWrapper.__init__
+ndg.security.common.Log.log_services.infoRequest.__init__
+ndg.security.common.Log.log_services.infoRequestWrapper.__init__
+ndg.security.common.Log.log_services.infoResponse.__init__
+ndg.security.common.Log.log_services.infoResponseWrapper.__init__
+ndg.security.common.Log.log_services.logBindingSOAP.__init__
+ndg.security.common.Log.log_services.warningRequest.__init__
+ndg.security.common.Log.log_services.warningRequestWrapper.__init__
+ndg.security.common.Log.log_services.warningResponse.__init__
+ndg.security.common.Log.log_services.warningResponseWrapper.__init__
+ndg.security.common.Log.log_services_server.log.__init__
+ndg.security.common.SQLObject.CredRepos.__init__
+ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__
+ndg.security.common.SecurityCGI._SecurityCGI.__init__
+ndg.security.common.SessionCookie.SessionCookie.__init__
+ndg.security.common.SessionMgr.AttributeRequestDenied.__init__
+ndg.security.common.SessionMgr.SessionMgrClient.__init__
+ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.connect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnectResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.disconnect_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getAttCert_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatusResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getSessionStatus_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509CertResponse_Dec.__init__
+ndg.security.common.SessionMgr.SessionMgr_services_types.ns0.getX509Cert_Dec.__init__
+ndg.security.common.X509.X500DN.__init__
+ndg.security.common.X509.X509Cert.__init__
+ndg.security.common.X509.X509Stack.__init__
+ndg.security.common.XMLSec.XMLSecDoc.__init__
+ndg.security.common.ca.CertificateAuthorityClient.__init__
+ndg.security.common.ca.CertificateAuthority_services.CertificateAuthorityBindingSOAP.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRLResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.getCRL_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.issueCert_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCertResponse_Dec.__init__
+ndg.security.common.ca.CertificateAuthority_services_types.ns0.revokeCert_Dec.__init__
+ndg.security.common.m2CryptoSSLUtility.HTTPSConnection.__init__
+ndg.security.common.m2CryptoSSLUtility.HostCheck.__init__
+ndg.security.common.openssl.OpenSSLConfig.__init__
+ndg.security.common.wsSecurity.EncryptionHandler.__init__
+ndg.security.common.wsSecurity.SignatureHandler.__init__
+ndg.security.server.AttAuthority.AAUserRoles.__init__
+ndg.security.server.AttAuthority.AttAuthority.__init__
+ndg.security.server.AttAuthority.AttAuthorityError.__init__
+ndg.security.server.AttAuthority.AttAuthority_services_server.AttAuthorityService.__init__
+ndg.security.server.AttAuthority.AttCertLog.__init__
+ndg.security.server.Log.Log.__init__
+ndg.security.server.MyProxy.CmdLineClient.__init__
+ndg.security.server.MyProxy.MyProxyClient.__init__
+ndg.security.server.MyProxy._HostCheck.__init__
+ndg.security.server.SessionMgr.SessionMgr.__init__
+ndg.security.server.SessionMgr.SessionMgr_services_server.SessionMgrService.__init__
+ndg.security.server.SessionMgr.UserSession.__init__
+ndg.security.server.SessionMgr._SessionMgrException.__init__
+ndg.security.server.ca.CertificateAuthority_services_server.CertificateAuthorityService.__init__
+ndg.security.server.ca.SimpleCA.__init__
+ndg.security.server.conf.userRoles.UserRoles.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-4');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">post</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">         </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">srv</tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name"><a title="ndg.security.common.Log
+ndg.security.server.Log
+ndg.security.server.Log.Log" class="py-name" href="#" onclick="return doclink('link-5', 'Log', 'link-2');">Log</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-6" class="py-name" targets="Class ndg.security.server.Log.LogError=ndg.security.server.Log.LogError-class.html"><a title="ndg.security.server.Log.LogError" class="py-name" href="#" onclick="return doclink('link-6', 'LogError', 'link-6');">LogError</a></tt><tt class="py-op">(</tt><tt class="py-string">"Expecting NDG Log type object"</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">             </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt> <tt class="py-op">=</tt> <tt class="py-name">srv</tt>         </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__debug</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name" targets="Method ndg.security.client.LogClient.LogClient.debug()=ndg.security.client.LogClient.LogClient-class.html#debug,Method ndg.security.common.Log.log_services.logBindingSOAP.debug()=ndg.security.common.Log.log_services.logBindingSOAP-class.html#debug"><a title="ndg.security.client.LogClient.LogClient.debug
+ndg.security.common.Log.log_services.logBindingSOAP.debug" class="py-name" href="#" onclick="return doclink('link-7', 'debug', 'link-7');">debug</a></tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caCertFilePath</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expandvars</tt><tt class="py-op">(</tt>\ </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                                             <tt class="py-string">"$NDGSEC_DIR/conf/certs/cacert.pem"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">         </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="log.soap_debug"></a><div id="log.soap_debug-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="log.soap_debug-toggle" onclick="return toggle('log.soap_debug');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html#soap_debug">soap_debug</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">ps</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log.soap_debug-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="log.soap_debug-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-docstring">"""Log a debug message"""</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__debug</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">pdb</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-name">pdb</tt><tt class="py-op">.</tt><tt class="py-name">set_trace</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>         </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">         </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-comment"># input vals in request object</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">reqArgs</tt> <tt class="py-op">=</tt> <tt class="py-name">ps</tt><tt class="py-op">.</tt><tt class="py-name">Parse</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Class ndg.security.common.Log.log_services.debugRequestWrapper=ndg.security.common.Log.log_services.debugRequestWrapper-class.html"><a title="ndg.security.common.Log.log_services.debugRequestWrapper" class="py-name" href="#" onclick="return doclink('link-8', 'debugRequestWrapper', 'link-8');">debugRequestWrapper</a></tt><tt class="py-op">)</tt>         </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">req</tt> <tt class="py-op">=</tt> <tt class="py-name">DebugReq</tt><tt class="py-op">(</tt><tt class="py-name">xmlTxt</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">reqArgs</tt><tt class="py-op">.</tt><tt class="py-name">_debugReq</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>         </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-comment"># assign return values to response object</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name" targets="Class ndg.security.common.Log.log_services.debugResponseWrapper=ndg.security.common.Log.log_services.debugResponseWrapper-class.html"><a title="ndg.security.common.Log.log_services.debugResponseWrapper" class="py-name" href="#" onclick="return doclink('link-9', 'debugResponseWrapper', 'link-9');">debugResponseWrapper</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">         </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt>             </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">req</tt><tt class="py-op">.</tt><tt class="py-name">isValidSig</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caCertFilePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_debugResp</tt> <tt class="py-op">=</tt> <tt class="py-string">"Client signature is invalid"</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                 </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="ndg.security.client.LogClient.LogClient.debug
+ndg.security.common.Log.log_services.logBindingSOAP.debug" class="py-name" href="#" onclick="return doclink('link-10', 'debug', 'link-7');">debug</a></tt><tt class="py-op">(</tt><tt class="py-name">req</tt><tt class="py-op">[</tt><tt class="py-string">'msg'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_debugResp</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_debugResp</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">response</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="log.soap_error"></a><div id="log.soap_error-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="log.soap_error-toggle" onclick="return toggle('log.soap_error');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html#soap_error">soap_error</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">ps</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log.soap_error-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="log.soap_error-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-docstring">"""Log an error message"""</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">         </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__debug</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">pdb</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">pdb</tt><tt class="py-op">.</tt><tt class="py-name">set_trace</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>        </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">         </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-comment"># input vals in request object</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">reqArgs</tt> <tt class="py-op">=</tt> <tt class="py-name">ps</tt><tt class="py-op">.</tt><tt class="py-name">Parse</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name" targets="Class ndg.security.common.Log.log_services.errorRequestWrapper=ndg.security.common.Log.log_services.errorRequestWrapper-class.html"><a title="ndg.security.common.Log.log_services.errorRequestWrapper" class="py-name" href="#" onclick="return doclink('link-11', 'errorRequestWrapper', 'link-11');">errorRequestWrapper</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">req</tt> <tt class="py-op">=</tt> <tt class="py-name">ErrorReq</tt><tt class="py-op">(</tt><tt class="py-name">xmlTxt</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">reqArgs</tt><tt class="py-op">.</tt><tt class="py-name">_errorReq</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>        </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-comment"># assign return values to response object</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name" targets="Class ndg.security.common.Log.log_services.errorResponseWrapper=ndg.security.common.Log.log_services.errorResponseWrapper-class.html"><a title="ndg.security.common.Log.log_services.errorResponseWrapper" class="py-name" href="#" onclick="return doclink('link-12', 'errorResponseWrapper', 'link-12');">errorResponseWrapper</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">         </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">req</tt><tt class="py-op">.</tt><tt class="py-name">isValidSig</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caCertFilePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_errorResp</tt> <tt class="py-op">=</tt> <tt class="py-string">"Client signature is invalid"</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                 </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method ndg.security.client.LogClient.LogClient.error()=ndg.security.client.LogClient.LogClient-class.html#error,Method ndg.security.common.Log.log_services.logBindingSOAP.error()=ndg.security.common.Log.log_services.logBindingSOAP-class.html#error"><a title="ndg.security.client.LogClient.LogClient.error
+ndg.security.common.Log.log_services.logBindingSOAP.error" class="py-name" href="#" onclick="return doclink('link-13', 'error', 'link-13');">error</a></tt><tt class="py-op">(</tt><tt class="py-name">req</tt><tt class="py-op">[</tt><tt class="py-string">'msg'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_errorResp</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_errorResp</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">response</tt> </tt>
+</div><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="log.soap_info"></a><div id="log.soap_info-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="log.soap_info-toggle" onclick="return toggle('log.soap_info');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html#soap_info">soap_info</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">ps</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log.soap_info-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="log.soap_info-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-docstring">"""Log an information message"""</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__debug</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">pdb</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">pdb</tt><tt class="py-op">.</tt><tt class="py-name">set_trace</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">         </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-comment"># input vals in request object</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">reqArgs</tt> <tt class="py-op">=</tt> <tt class="py-name">ps</tt><tt class="py-op">.</tt><tt class="py-name">Parse</tt><tt class="py-op">(</tt><tt id="link-14" class="py-name" targets="Class ndg.security.common.Log.log_services.infoRequestWrapper=ndg.security.common.Log.log_services.infoRequestWrapper-class.html"><a title="ndg.security.common.Log.log_services.infoRequestWrapper" class="py-name" href="#" onclick="return doclink('link-14', 'infoRequestWrapper', 'link-14');">infoRequestWrapper</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">req</tt> <tt class="py-op">=</tt> <tt class="py-name">InfoReq</tt><tt class="py-op">(</tt><tt class="py-name">xmlTxt</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">reqArgs</tt><tt class="py-op">.</tt><tt class="py-name">_infoReq</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>        </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-comment"># assign return values to response object</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name" targets="Class ndg.security.common.Log.log_services.infoResponseWrapper=ndg.security.common.Log.log_services.infoResponseWrapper-class.html"><a title="ndg.security.common.Log.log_services.infoResponseWrapper" class="py-name" href="#" onclick="return doclink('link-15', 'infoResponseWrapper', 'link-15');">infoResponseWrapper</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">         </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">req</tt><tt class="py-op">.</tt><tt class="py-name">isValidSig</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caCertFilePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_infoResp</tt> <tt class="py-op">=</tt> <tt class="py-string">"Client signature is invalid"</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method ndg.security.client.LogClient.LogClient.info()=ndg.security.client.LogClient.LogClient-class.html#info,Method ndg.security.common.Log.log_services.logBindingSOAP.info()=ndg.security.common.Log.log_services.logBindingSOAP-class.html#info,Method ndg.security.server.MyProxy.MyProxyClient.info()=ndg.security.server.MyProxy.MyProxyClient-class.html#info"><a title="ndg.security.client.LogClient.LogClient.info
+ndg.security.common.Log.log_services.logBindingSOAP.info
+ndg.security.server.MyProxy.MyProxyClient.info" class="py-name" href="#" onclick="return doclink('link-16', 'info', 'link-16');">info</a></tt><tt class="py-op">(</tt><tt class="py-name">req</tt><tt class="py-op">[</tt><tt class="py-string">'msg'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_infoResp</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_infoResp</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">response</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="log.soap_warning"></a><div id="log.soap_warning-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="log.soap_warning-toggle" onclick="return toggle('log.soap_warning');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.Log.log_services_server.log-class.html#soap_warning">soap_warning</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">ps</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="log.soap_warning-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="log.soap_warning-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-docstring">"""Log an warning message"""</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">         </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__debug</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">pdb</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-name">pdb</tt><tt class="py-op">.</tt><tt class="py-name">set_trace</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">         </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-comment"># input vals in request object</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">reqArgs</tt> <tt class="py-op">=</tt> <tt class="py-name">ps</tt><tt class="py-op">.</tt><tt class="py-name">Parse</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name" targets="Class ndg.security.common.Log.log_services.warningRequestWrapper=ndg.security.common.Log.log_services.warningRequestWrapper-class.html"><a title="ndg.security.common.Log.log_services.warningRequestWrapper" class="py-name" href="#" onclick="return doclink('link-17', 'warningRequestWrapper', 'link-17');">warningRequestWrapper</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-name">req</tt> <tt class="py-op">=</tt> <tt class="py-name">WarningReq</tt><tt class="py-op">(</tt><tt class="py-name">xmlTxt</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">reqArgs</tt><tt class="py-op">.</tt><tt class="py-name">_warningReq</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>        </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-comment"># assign return values to response object</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name" targets="Class ndg.security.common.Log.log_services.warningResponseWrapper=ndg.security.common.Log.log_services.warningResponseWrapper-class.html"><a title="ndg.security.common.Log.log_services.warningResponseWrapper" class="py-name" href="#" onclick="return doclink('link-18', 'warningResponseWrapper', 'link-18');">warningResponseWrapper</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">         </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">req</tt><tt class="py-op">.</tt><tt class="py-name">isValidSig</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__caCertFilePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_warningResp</tt> <tt class="py-op">=</tt> <tt class="py-string">"Client signature is invalid"</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                 </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method ndg.security.client.LogClient.LogClient.warning()=ndg.security.client.LogClient.LogClient-class.html#warning,Method ndg.security.common.Log.log_services.logBindingSOAP.warning()=ndg.security.common.Log.log_services.logBindingSOAP-class.html#warning"><a title="ndg.security.client.LogClient.LogClient.warning
+ndg.security.common.Log.log_services.logBindingSOAP.warning" class="py-name" href="#" onclick="return doclink('link-19', 'warning', 'link-19');">warning</a></tt><tt class="py-op">(</tt><tt class="py-name">req</tt><tt class="py-op">[</tt><tt class="py-string">'msg'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_warningResp</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">_warningResp</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">response</tt> </tt>
+</div></div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Fri Nov 23 13:52:20 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

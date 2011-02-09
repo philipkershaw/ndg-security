@@ -1,0 +1,1384 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.SessionMgr.SessionMgr</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        <a href="ndg.security.server.SessionMgr-module.html">Package&nbsp;SessionMgr</a> ::
+        Class&nbsp;SessionMgr
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SessionMgr</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_202" name="uml_class_diagram_for_ndg_secu_202">
+<area shape="rect" href="javascript:void(0);" title="cmp(x,y)" alt="" coords="161,36,284,54"/>
+<area shape="rect" href="javascript:void(0);" title="x==y" alt="" coords="161,54,284,73"/>
+<area shape="rect" href="javascript:void(0);" title="x&gt;=y" alt="" coords="161,73,284,92"/>
+<area shape="rect" href="javascript:void(0);" title="x.__getattribute__(&#39;name&#39;) &lt;==&gt; x.name" alt="" coords="161,92,284,110"/>
+<area shape="rect" href="javascript:void(0);" title="x&gt;y" alt="" coords="161,110,284,129"/>
+<area shape="rect" href="javascript:void(0);" title="hash(x)" alt="" coords="161,129,284,148"/>
+<area shape="rect" href="javascript:void(0);" title="iter(x)" alt="" coords="161,148,284,166"/>
+<area shape="rect" href="javascript:void(0);" title="x&lt;=y" alt="" coords="161,166,284,185"/>
+<area shape="rect" href="javascript:void(0);" title="len(x)" alt="" coords="161,185,284,204"/>
+<area shape="rect" href="javascript:void(0);" title="x&lt;y" alt="" coords="161,204,284,222"/>
+<area shape="rect" href="javascript:void(0);" title="x!=y" alt="" coords="161,222,284,241"/>
+<area shape="rect" href="javascript:void(0);" title="dict.__new__" alt="" coords="161,241,284,260"/>
+<area shape="rect" href="javascript:void(0);" title="dict.copy" alt="" coords="161,260,284,278"/>
+<area shape="rect" href="javascript:void(0);" title="Update D from E and F: for k in E: D[k] = E[k] (if E has keys else: for (k, v) in E: D[k] = v) then: for k in F: D[k] = F[k]" alt="" coords="161,297,284,316"/>
+<area shape="rect" href="javascript:void(0);" title="dict() &#45;&gt; new empty dictionary." alt="" coords="160,10,285,317"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#WS_SETTINGS_KEY" title="ndg.security.server.SessionMgr.SessionMgr.WS_SETTINGS_KEY" alt="" coords="17,364,428,382"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#AUTHN_KEY_NAME" title="ndg.security.server.SessionMgr.SessionMgr.AUTHN_KEY_NAME" alt="" coords="17,382,428,401"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#CRED_REPOS_KEY_NAME" title="ndg.security.server.SessionMgr.SessionMgr.CRED_REPOS_KEY_NAME" alt="" coords="17,401,428,420"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#propFilePath" title="ndg.security.server.SessionMgr.SessionMgr.propFilePath" alt="" coords="17,420,428,438"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__init__" title="Create a new session manager to manager NDG User Sessions" alt="" coords="17,441,428,460"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__repr__" title="Return file properties dictionary as representation" alt="" coords="17,460,428,478"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__delitem__" title="Session Manager keys cannot be removed" alt="" coords="17,478,428,497"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__getitem__" title="x[y]" alt="" coords="17,497,428,516"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__setitem__" title="x[i]=y" alt="" coords="17,516,428,534"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#get" title="d defaults to None." alt="" coords="17,534,428,553"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#clear" title="Remove all items from D." alt="" coords="17,553,428,572"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#keys" title="ndg.security.server.SessionMgr.SessionMgr.keys" alt="" coords="17,572,428,590"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#items" title="ndg.security.server.SessionMgr.SessionMgr.items" alt="" coords="17,590,428,609"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#values" title="ndg.security.server.SessionMgr.SessionMgr.values" alt="" coords="17,609,428,628"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#has_key" title="ndg.security.server.SessionMgr.SessionMgr.has_key" alt="" coords="17,628,428,646"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#__contains__" title="ndg.security.server.SessionMgr.SessionMgr.__contains__" alt="" coords="17,646,428,665"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#setPropFilePath" title="Set properties file from input or based on environment variable settings" alt="" coords="17,665,428,684"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html#auditCredRepos" title="Remove expired Attribute Certificates from the Credential Repository" alt="" coords="17,702,428,721"/>
+<area shape="rect" href="ndg.security.server.SessionMgr.SessionMgr&#45;class.html" title="NDG authentication and session handling" alt="" coords="16,346,429,722"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_202.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_202" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>NDG authentication and session handling</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><pre class="literalblock">
+new empty dictionary
+
+</pre></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">credReposPPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Create a new session manager to manager NDG User Sessions</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return file properties dictionary as representation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__delitem__" class="summary-sig-name">__delitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Session Manager keys cannot be removed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__delitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__getitem__" class="summary-sig-name">__getitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      x[y]</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__setitem__" class="summary-sig-name">__setitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">item</span>)</span><br />
+      x[i]=y</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__setitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">D[k] if k in D, else d</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#get" class="summary-sig-name">get</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span><br />
+      d defaults to None.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">None</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#clear" class="summary-sig-name">clear</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove all items from D.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's keys</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#keys" class="summary-sig-name">keys</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.keys">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's (key, value) pairs, as 2-tuples</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#items" class="summary-sig-name">items</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.items">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's values</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#values" class="summary-sig-name">values</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.values">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">True if D has a key k, else False</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#has_key" class="summary-sig-name">has_key</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.has_key">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">True if D has a key k, else False</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__contains__" class="summary-sig-name">__contains__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__contains__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setPropFilePath"></a><span class="summary-sig-name">setPropFilePath</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">val</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set properties file from input or based on environment variable 
+      settings</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.setPropFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getPropFilePath"></a><span class="summary-sig-name">getPropFilePath</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.getPropFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="readProperties"></a><span class="summary-sig-name">readProperties</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Read the properties files and do some checking/converting of input 
+      values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.readProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setProperties"></a><span class="summary-sig-name">setProperties</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Update existing properties from an input dictionary Check input keys 
+      are valid names</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.setProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#getSessionStatus" class="summary-sig-name">getSessionStatus</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sessID</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">userDN</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Check the status of a given session identified by sessID or user 
+      Distinguished Name</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.getSessionStatus">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">createServerSess</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">username</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">passphrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">userCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">sessID</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Create a new user session or connect to an existing one:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.connect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__createUserSession" class="summary-sig-name" onclick="show_private();">__createUserSession</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*creds</span>)</span><br />
+      Create a new user session from input user credentials and return</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__createUserSession">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__connect2UserSession" class="summary-sig-name" onclick="show_private();">__connect2UserSession</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">sessID</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Connect to an existing session by providing a valid session ID or 
+      proxy certificate</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__connect2UserSession">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#deleteUserSession" class="summary-sig-name">deleteUserSession</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sessID</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">userCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">userSess</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Delete an existing session by providing a valid session ID or proxy 
+      certificate - use for user logout</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.deleteUserSession">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#getAttCert" class="summary-sig-name">getAttCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">sessID</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">encrSessMgrURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**credWalletKw</span>)</span><br />
+      For a given user, request Attribute Certificate from an Attribute 
+      Authority given by service URI.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.getAttCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__redirectAttCertReq" class="summary-sig-name" onclick="show_private();">__redirectAttCertReq</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userSessMgrURI</span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Handle case where User session resides on another Session Manager - 
+      forward the request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__redirectAttCertReq">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="auditCredRepos"></a><span class="summary-sig-name">auditCredRepos</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired Attribute Certificates from the Credential Repository</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.auditCredRepos">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dict</code></b>:
+      <code>__cmp__</code>,
+      <code>__eq__</code>,
+      <code>__ge__</code>,
+      <code>__getattribute__</code>,
+      <code>__gt__</code>,
+      <code>__hash__</code>,
+      <code>__iter__</code>,
+      <code>__le__</code>,
+      <code>__len__</code>,
+      <code>__lt__</code>,
+      <code>__ne__</code>,
+      <code>__new__</code>,
+      <code>copy</code>,
+      <code>fromkeys</code>,
+      <code>iteritems</code>,
+      <code>iterkeys</code>,
+      <code>itervalues</code>,
+      <code>pop</code>,
+      <code>popitem</code>,
+      <code>setdefault</code>,
+      <code>update</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="WS_SETTINGS_KEY"></a><span class="summary-name">WS_SETTINGS_KEY</span> = <code title="'WS-Security'">'WS-Security'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="AUTHN_KEY_NAME"></a><span class="summary-name">AUTHN_KEY_NAME</span> = <code title="'authNServiceProp'">'authNServiceProp'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CRED_REPOS_KEY_NAME"></a><span class="summary-name">CRED_REPOS_KEY_NAME</span> = <code title="'credReposProp'">'credReposProp'</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.SessionMgr.SessionMgr-class.html#__validElem" class="summary-name" onclick="show_private();">__validElem</a> = <code title="{'portNum': None, 'useSSL': None, 'sslCertFile': None, 'sslKeyFile': N\
+one, 'sslCACertDir': None, 'sessMgrEncrKey': None, 'sessMgrURI': None,\
+ 'cookieDomain': None, 'authNServiceProp': None, CRED_REPOS_KEY_NAME:(\
+'modFilePath', 'modName', 'className', 'propFile'), 'simpleCACltProp':\
+('uri', 'xmlSigKeyFile', 'xmlSigCertFile', 'xmlSigCertPwd')}">{'portNum': None, 'useSSL': None, 'sslCertFile':<code class="variable-ellipsis">...</code></code><br />
+      list of the valid properties file element names and sub-elements 
+      where appropriate
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__confDir"></a><span class="summary-name">__confDir</span> = <code title="&quot;conf&quot;">&quot;conf&quot;</code><br />
+      configuration directory under $NDGSEC_DIR - default location for 
+      properties file
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__propFileName"></a><span class="summary-name">__propFileName</span> = <code title="&quot;sessionMgrProperties.xml&quot;">&quot;sessionMgrProperties.xml&quot;</code><br />
+      default file name for properties file under __confDir
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.SessionMgr.SessionMgr-class.html#propFilePath" class="summary-name">propFilePath</a> = <code title="property(fset= setPropFilePath, fget= getPropFilePath, doc= &quot;Set the p\
+ath to the properties file&quot;)">property(fset= setPropFilePath, fget= getPropFi<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">credReposPPhrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**prop</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Create a new session manager to manager NDG User Sessions
+
+propFilePath:        path to properties file
+credReposPPhrase:    for credential repository if not set in
+                     properties file
+**prop:              set any other properties corresponding to the
+                     tags in the properties file
+
+</pre>
+  <dl class="fields">
+    <dt>Returns: <pre class="literalblock">
+new empty dictionary
+
+</pre></dt>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return file properties dictionary as representation</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__delitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__delitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Index deletion operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__delitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Session Manager keys cannot be removed</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dict.__delitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Indexing operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__getitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x[y]</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dict.__getitem__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>,
+        <span class="sig-arg">item</span>)</span>
+    <br /><em class="fname">(Index assignment operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__setitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x[i]=y</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dict.__setitem__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.get">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>d defaults to None.</p>
+  <dl class="fields">
+    <dt>Returns: D[k] if k in D, else d</dt>
+    <dt>Overrides:
+        dict.get
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.clear">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove all items from D.</p>
+  <dl class="fields">
+    <dt>Returns: None</dt>
+    <dt>Overrides:
+        dict.clear
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="keys"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">keys</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.keys">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's keys</dt>
+    <dt>Overrides:
+        dict.keys
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">items</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's (key, value) pairs, as 2-tuples</dt>
+    <dt>Overrides:
+        dict.items
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="values"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">values</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.values">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's values</dt>
+    <dt>Overrides:
+        dict.values
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="has_key"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">has_key</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.has_key">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: True if D has a key k, else False</dt>
+    <dt>Overrides:
+        dict.has_key
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__contains__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__contains__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(In operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__contains__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: True if D has a key k, else False</dt>
+    <dt>Overrides:
+        dict.__contains__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getSessionStatus"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getSessionStatus</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sessID</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">userDN</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.getSessionStatus">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Check the status of a given session identified by sessID or user 
+  Distinguished Name</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sessID</code></strong> (string) - session identifier as returned from a call to connect()</li>
+        <li><strong class="pname"><code>userDN</code></strong> (string) - user Distinguished Name of session to check</li>
+    </ul></dd>
+    <dt>Returns: bool</dt>
+        <dd>True if session is active, False if no session found</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="connect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">createServerSess</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">username</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">passphrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">userCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">sessID</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.connect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Create a new user session or connect to an existing one:
+
+connect([createServerSess=True/False, ]|[, username=u, passphrase=p]|
+        [, userCert=px]|[, sessID=id])
+
+@type createUserSess: bool
+@param createServerSess: If set to True, the SessionMgr will create
+and manage a session for the user.  For command line case, it's 
+possible to choose to have a client or server side session using this 
+keyword.
+
+@type username: string
+@param username: username of account to connect to
+
+@type passphrase: string
+@param passphrase: pass-phrase - user with username arg
+
+@type userCert: string
+@param userCert: connect to existing session with proxy certificate
+corresponding to user.  username/pass-phrase not required
+
+@type sessID: string
+@param sessID: connect to existing session corresponding to this ID.
+username/pass-phrase not required.
+
+@rtype: tuple
+@return user certificate, private key, issuing certificate and 
+session ID respectively.  Session ID will be none if createUserSess 
+keyword is set to False
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__createUserSession"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__createUserSession</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*creds</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__createUserSession">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a new user session from input user credentials and return</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>creds</code></strong> (tuple) - tuple containing user certificate, private key and optionally an 
+          issuing certificate.  An issuing certificate is present if user 
+          certificate is a proxy and therefore it's issuer is other than 
+          the CA.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__connect2UserSession"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__connect2UserSession</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">sessID</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__connect2UserSession">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Connect to an existing session by providing a valid session ID or 
+  proxy certificate</p>
+  <p>__connect2UserSession([userCert]|[sessID])</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userCert</code></strong> (string) - proxy certificate string corresponding to an existing session to 
+          connect to.</li>
+        <li><strong class="pname"><code>sessID</code></strong> (string) - similiarly, a web browser session ID linking to an an existing 
+          session.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="deleteUserSession"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">deleteUserSession</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sessID</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">userCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">userSess</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.deleteUserSession">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Delete an existing session by providing a valid session ID or proxy 
+  certificate - use for user logout</p>
+  <p>deleteUserSession([userCert]|[sessID]|[userSess])</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userCert</code></strong> (ndg.security.common.X509.X509Cert) - proxy certificate corresponding to an existing session to connect
+          to.</li>
+        <li><strong class="pname"><code>sessID</code></strong> (string) - similiarly, a web browser session ID linking to an an existing 
+          session.</li>
+        <li><strong class="pname"><code>userSess</code></strong> (UserSession) - user session object to be deleted</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAttCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAttCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">sessID</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">encrSessMgrURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**credWalletKw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.getAttCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>For a given user, request Attribute Certificate from an Attribute 
+  Authority given by service URI.  If sucessful, an attribute certificate 
+  is added to the user session credential wallet and also returned from 
+  this method</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userCert</code></strong> (string) - user's certificate to key into their session</li>
+        <li><strong class="pname"><code>sessID</code></strong> (string) - user's ID to key into their session</li>
+        <li><strong class="pname"><code>encrSessMgrURI</code></strong> (string) - URI for remote session manager to forward a request to.  This 
+          effectively use THIS session manager as a proxy to another.  This
+          URI is encrypted with a shared key.  The key is stored in the 
+          property file 'sessMgrEncrKey' element.  *** This functionality 
+          is redundant for NDG BETA delivery ***</li>
+        <li><strong class="pname"><code>**credWalletKw</code></strong> - keywords to CredWallet.getAttCert</li>
+        <li><strong class="pname"><code>credWalletKw</code></strong> (dict)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__redirectAttCertReq"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__redirectAttCertReq</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userSessMgrURI</span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.SessionMgr-pysrc.html#SessionMgr.__redirectAttCertReq">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Handle case where User session resides on another Session Manager - 
+  forward the request</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userSessMgrURI</code></strong> (string) - address of remote session manager where user session is held</li>
+        <li><strong class="pname"><code>**kw</code></strong> (dict) - same keywords which apply to getAttCert call</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__validElem"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__validElem</h3>
+  list of the valid properties file element names and sub-elements where 
+  appropriate
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>dict</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'portNum': None, 'useSSL': None, 'sslCertFile': None, 'sslKeyFile': N<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+one, 'sslCACertDir': None, 'sessMgrEncrKey': None, 'sessMgrURI': None,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ 'cookieDomain': None, 'authNServiceProp': None, CRED_REPOS_KEY_NAME:(<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'modFilePath', 'modName', 'className', 'propFile'), 'simpleCACltProp':<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+('uri', 'xmlSigKeyFile', 'xmlSigCertFile', 'xmlSigCertPwd')}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="propFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">propFilePath</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+property(fset= setPropFilePath, fget= getPropFilePath, doc= &quot;Set the p<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ath to the properties file&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:49 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

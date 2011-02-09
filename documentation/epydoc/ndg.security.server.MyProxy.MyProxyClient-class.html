@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.MyProxy.MyProxyClient</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        <a href="ndg.security.server.MyProxy-module.html">Module&nbsp;MyProxy</a> ::
+        Class&nbsp;MyProxyClient
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class MyProxyClient</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_203" name="uml_class_diagram_for_ndg_secu_203">
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#defProxyFile" title="ndg.security.server.MyProxy.MyProxyClient.defProxyFile" alt="" coords="17,28,900,46"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#openSSLConfig" title="ndg.security.server.MyProxy.MyProxyClient.openSSLConfig" alt="" coords="17,46,900,65"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#writeProxyFile" title="Write out proxy cert to file in the same way as myproxy&#45;logon &#45; proxy cert, private key, user cert." alt="" coords="17,68,900,86"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#readProxyFile" title="Read proxy cert file following the format used by myproxy&#45;logon &#45; proxy, &#160;cert, private key, user cert." alt="" coords="17,86,900,105"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#__init__" title="Make an initial settings for client connections to MyProxy" alt="" coords="17,105,900,124"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#setProperties" title="Update existing properties from an input dictionary Check input keys are &#160;valid names" alt="" coords="17,124,900,142"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#readProperties" title="Read XML properties from a file or cElementTree node" alt="" coords="17,142,900,161"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#info" title="return True/False whether credentials exist on the server for a given &#160;username" alt="" coords="17,161,900,180"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#changePassphrase" title="change pass&#45;phrase protecting the credentials for a given username" alt="" coords="17,180,900,198"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#destroy" title="destroy credentials from the server for a given username" alt="" coords="17,198,900,217"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#store" title="Upload credentials to the server" alt="" coords="17,217,900,236"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#logon" title="Retrieve a proxy credential from a MyProxy server" alt="" coords="17,236,900,254"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html#getDelegation" title="Retrieve proxy cert for user &#45; same as logon" alt="" coords="17,254,900,273"/>
+<area shape="rect" href="ndg.security.server.MyProxy.MyProxyClient&#45;class.html" title="MyProxy client interface" alt="" coords="16,10,901,274"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_203.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_203" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>MyProxy client interface</p>
+  <p>Based on protocol definitions in:</p>
+  <p>http://grid.ncsa.uiuc.edu/myproxy/protocol/</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Make an initial settings for client connections to MyProxy</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setProperties"></a><span class="summary-sig-name">setProperties</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Update existing properties from an input dictionary Check input keys 
+      are valid names</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.setProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#readProperties" class="summary-sig-name">readProperties</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">propElem</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read XML properties from a file or cElementTree node</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.readProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getOpenSSLConfig"></a><span class="summary-sig-name">__getOpenSSLConfig</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get OpenSSLConfig object property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.__getOpenSSLConfig">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#_initConnection" class="summary-sig-name" onclick="show_private();">_initConnection</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ownerCertFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerKeyFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerPassphrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initialise connection setting up SSL context and client and server 
+      side identity checks</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._initConnection">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#_createCertReq" class="summary-sig-name" onclick="show_private();">_createCertReq</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">CN</span>,
+        <span class="summary-sig-arg">nBitsForKey</span>=<span class="summary-sig-default">1024</span>,
+        <span class="summary-sig-arg">messageDigest</span>=<span class="summary-sig-default">&quot;md5&quot;</span>)</span><br />
+      Create a certificate request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._createCertReq">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#_deserializeResponse" class="summary-sig-name" onclick="show_private();">_deserializeResponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msg</span>,
+        <span class="summary-sig-arg">*fieldNames</span>)</span><br />
+      Deserialize a MyProxy server response</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._deserializeResponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#_deserializeCerts" class="summary-sig-name" onclick="show_private();">_deserializeCerts</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">inputDat</span>)</span><br />
+      Unpack certificates returned from a get delegation call to the server</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._deserializeCerts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#info" class="summary-sig-name">info</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">ownerCertFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerKeyFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerPassphrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      return True/False whether credentials exist on the server for a given
+      username</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.info">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#changePassphrase" class="summary-sig-name">changePassphrase</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">passphrase</span>,
+        <span class="summary-sig-arg">newPassphrase</span>,
+        <span class="summary-sig-arg">ownerCertFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerKeyFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerPassphrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      change pass-phrase protecting the credentials for a given username</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.changePassphrase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#destroy" class="summary-sig-name">destroy</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">ownerCertFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerKeyFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerPassphrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      destroy credentials from the server for a given username</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.destroy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#store" class="summary-sig-name">store</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">passphrase</span>,
+        <span class="summary-sig-arg">certFile</span>,
+        <span class="summary-sig-arg">keyFile</span>,
+        <span class="summary-sig-arg">ownerCertFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerKeyFile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ownerPassphrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">lifetime</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">force</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Upload credentials to the server</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.store">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#logon" class="summary-sig-name">logon</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">passphrase</span>,
+        <span class="summary-sig-arg">lifetime</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Retrieve a proxy credential from a MyProxy server</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.logon">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDelegation"></a><span class="summary-sig-name">getDelegation</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*arg</span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Retrieve proxy cert for user - same as logon</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.getDelegation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#writeProxyFile" class="summary-sig-name">writeProxyFile</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">proxyCert</span>,
+        <span class="summary-sig-arg">proxyPriKey</span>,
+        <span class="summary-sig-arg">userCert</span>,
+        <span class="summary-sig-arg">filePath</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write out proxy cert to file in the same way as myproxy-logon - proxy
+      cert, private key, user cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.writeProxyFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.MyProxy.MyProxyClient-class.html#readProxyFile" class="summary-sig-name">readProxyFile</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">filePath</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read proxy cert file following the format used by myproxy-logon - 
+      proxy, cert, private key, user cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.readProxyFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__getCmd" class="summary-name" onclick="show_private();">__getCmd</a> = <code title="&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=0
+USERNAME=%s
+PASSPHRASE=%s
+LIFETIME=%d&quot;&quot;&quot;">&quot;&quot;&quot;VERSION=MYPROX<code class="variable-ellipsis">...</code></code><br />
+      get command string
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__infoCmd" class="summary-name" onclick="show_private();">__infoCmd</a> = <code title="&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=2
+USERNAME=%s
+PASSPHRASE=PASSPHRASE
+LIFETIME=0&quot;&quot;&quot;">&quot;&quot;&quot;VERSION=MYPROX<code class="variable-ellipsis">...</code></code><br />
+      info command string
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__destroyCmd" class="summary-name" onclick="show_private();">__destroyCmd</a> = <code title="&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=3
+USERNAME=%s
+PASSPHRASE=PASSPHRASE
+LIFETIME=0&quot;&quot;&quot;">&quot;&quot;&quot;VERSION=MYPROX<code class="variable-ellipsis">...</code></code><br />
+      destroy command string
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__changePassphraseCmd" class="summary-name" onclick="show_private();">__changePassphraseCmd</a> = <code title="&quot;&quot;&quot;VERSION=MYPROXYv2
+ COMMAND=4
+ USERNAME=%s
+ PASSPHRASE=%s
+ NEW_PHRASE=%s
+ LIFETIME=0&quot;&quot;&quot;">&quot;&quot;&quot;VERSION=MYPROX<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__storeCmd" class="summary-name" onclick="show_private();">__storeCmd</a> = <code title="&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=5
+USERNAME=%s
+PASSPHRASE=
+LIFETIME=%d&quot;&quot;&quot;">&quot;&quot;&quot;VERSION=MYPROX<code class="variable-ellipsis">...</code></code><br />
+      store command string
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="_hostCertSubDirPath"></a><span class="summary-name">_hostCertSubDirPath</span> = <code title="'etc', 'hostcert.pem'">'etc', 'hostcert.pem'</code><br />
+      sub-directory path host certificate (as tuple)
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="_hostKeySubDirPath"></a><span class="summary-name">_hostKeySubDirPath</span> = <code title="'etc', 'hostkey.pem'">'etc', 'hostkey.pem'</code><br />
+      sub-directory path to host key (as tuple)
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#__validKeys" class="summary-name" onclick="show_private();">__validKeys</a> = <code title="'hostname', 'port', 'serverDN', 'serverCNprefix', 'gridSecurityDir', '\
+openSSLConfFilePath', 'tmpDir', 'proxyCertMaxLifetime', 'proxyCertLife\
+time', 'caCertFile'">'hostname', 'port', 'serverDN', 'serverCNprefix'<code class="variable-ellipsis">...</code></code><br />
+      sets permissable element names for MyProxy XML config file
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#defProxyFile" class="summary-name">defProxyFile</a> = <code title="sys.platform== 'win32' and 'proxy' or sys.platform in('linux2', 'darwi\
+n') and '/tmp/x509up_u%s' %(os.getuid()) or None">sys.platform== 'win32' and 'proxy' or sys.platf<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.MyProxy.MyProxyClient-class.html#openSSLConfig" class="summary-name">openSSLConfig</a> = <code title="property(fget= __getOpenSSLConfig, doc= &quot;OpenSSLConfig object&quot;)">property(fget= __getOpenSSLConfig, doc= &quot;OpenS<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__changePassphrase"></a><span class="summary-name">__changePassphrase</span><br />
+      command string to change cred pass-phrase
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="writeProxyFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">writeProxyFile</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">proxyCert</span>,
+        <span class="sig-arg">proxyPriKey</span>,
+        <span class="sig-arg">userCert</span>,
+        <span class="sig-arg">filePath</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.writeProxyFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Write out proxy cert to file in the same way as myproxy-logon - proxy 
+  cert, private key, user cert.  Nb. output from logon can be passed direct
+  into this method</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>proxyCert</code></strong> (string) - proxy certificate</li>
+        <li><strong class="pname"><code>proxyPriKey</code></strong> (string) - private key for proxy</li>
+        <li><strong class="pname"><code>userCert</code></strong> (string) - user certificate which issued the proxy</li>
+        <li><strong class="pname"><code>filePath</code></strong> (string) - set to override the default filePath</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readProxyFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readProxyFile</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">filePath</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.readProxyFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read proxy cert file following the format used by myproxy-logon - 
+  proxy, cert, private key, user cert.</p>
+  <dl class="fields">
+    <dt>Returns: tuple</dt>
+        <dd>tuple containing proxy cert, private key, user cert</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**prop</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Make an initial settings for client connections to MyProxy</p>
+  <p>Settings are held in a dictionary which can be set from **prop, a call
+  to setProperties() or by passing settings in an XML file given by 
+  propFilePath</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>propFilePath</code></strong> - set properties via a configuration file</li>
+        <li><strong class="pname"><code>**prop</code></strong> - set properties via keywords - see __validKeys class variable for 
+          a list of these</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readProperties"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readProperties</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">propElem</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.readProperties">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read XML properties from a file or cElementTree node</p>
+  <p>propFilePath|propertiesElem</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>propFilePath</code></strong> (string) - set to read from the specified file</li>
+        <li><strong class="pname"><code>propElem</code></strong> (ElementTree node) - set to read beginning from a cElementTree node</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_initConnection"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_initConnection</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ownerCertFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerKeyFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerPassphrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._initConnection">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialise connection setting up SSL context and client and server 
+  side identity checks</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ownerCertFile</code></strong> - client certificate and owner of credential to be acted on.  Can 
+          be a proxy cert + proxy's signing cert.  Cert and private key are
+          not necessary for getDelegation / logon calls</li>
+        <li><strong class="pname"><code>ownerKeyFile</code></strong> - client private key file</li>
+        <li><strong class="pname"><code>ownerPassphrase</code></strong> - pass-phrase protecting private key if set - not needed in the 
+          case of a proxy private key</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_createCertReq"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_createCertReq</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">CN</span>,
+        <span class="sig-arg">nBitsForKey</span>=<span class="sig-default">1024</span>,
+        <span class="sig-arg">messageDigest</span>=<span class="sig-default">&quot;md5&quot;</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._createCertReq">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a certificate request.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>CN</code></strong> - Common Name for certificate - effectively the same as the 
+          username for the MyProxy credential</li>
+        <li><strong class="pname"><code>nBitsForKey</code></strong> - number of bits for private key generation - default is 1024</li>
+        <li><strong class="pname"><code>messageDigest</code></strong> - message disgest type - default is MD5 @return tuple of 
+          certificate request PEM text and private key PEM text</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_deserializeResponse"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_deserializeResponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">msg</span>,
+        <span class="sig-arg">*fieldNames</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._deserializeResponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deserialize a MyProxy server response</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>msg</code></strong> - string response message from MyProxy server @*fieldNames: the 
+          content of additional fields can be returned by specifying the 
+          field name or names as additional arguments e.g. info method 
+          passes 'CRED_START_TIME', 'CRED_END_TIME' and 'CRED_OWNER' field 
+          names.  The content of fields is returned as an extra element in 
+          the tuple response.  This element is itself a dictionary indexed 
+          by field name. @return tuple of integer response and errorTxt 
+          string (if any)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_deserializeCerts"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_deserializeCerts</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">inputDat</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient._deserializeCerts">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Unpack certificates returned from a get delegation call to the 
+  server</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>inputDat</code></strong> - string containing the proxy cert and private key and signing cert
+          all in DER format
+          <p>@return list containing the equivalent to the input in PEM 
+          format</p></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">info</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">ownerCertFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerKeyFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerPassphrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.info">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>return True/False whether credentials exist on the server for a given 
+  username</p>
+  <p>Exceptions:  GetError, RetrieveError</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> (string) - username selected for credential</li>
+        <li><strong class="pname"><code>ownerCertFile</code></strong> (string) - certificate used for client authentication with the MyProxy 
+          server SSL connection.  This ID will be set as the owner of the 
+          stored credentials.  Only the owner can later remove credentials 
+          with myproxy-destroy or the destroy method.  If not set, this 
+          argument defaults to $GLOBUS_LOCATION/etc/hostcert.pem</li>
+        <li><strong class="pname"><code>ownerKeyFile</code></strong> (string) - corresponding private key file.  See explanation for 
+          ownerCertFile</li>
+        <li><strong class="pname"><code>ownerPassphrase</code></strong> (string) - passphrase for ownerKeyFile.  Omit if the private key is not 
+          password protected.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="changePassphrase"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">changePassphrase</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">passphrase</span>,
+        <span class="sig-arg">newPassphrase</span>,
+        <span class="sig-arg">ownerCertFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerKeyFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerPassphrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.changePassphrase">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>change pass-phrase protecting the credentials for a given username</p>
+  <p>Exceptions:  GetError, RetrieveError</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> - username of credential</li>
+        <li><strong class="pname"><code>passphrase</code></strong> - existing pass-phrase for credential</li>
+        <li><strong class="pname"><code>newPassphrase</code></strong> - new pass-phrase to replace the existing one.</li>
+        <li><strong class="pname"><code>ownerCertFile</code></strong> - certificate used for client authentication with the MyProxy 
+          server SSL connection.  This ID will be set as the owner of the 
+          stored credentials.  Only the owner can later remove credentials 
+          with myproxy-destroy or the destroy method.  If not set, this 
+          argument defaults to $GLOBUS_LOCATION/etc/hostcert.pem</li>
+        <li><strong class="pname"><code>ownerKeyFile</code></strong> - corresponding private key file.  See explanation for 
+          ownerCertFile</li>
+        <li><strong class="pname"><code>ownerPassphrase</code></strong> - passphrase for ownerKeyFile.  Omit if the private key is not 
+          password protected. @return none</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="destroy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">destroy</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">ownerCertFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerKeyFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerPassphrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.destroy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>destroy credentials from the server for a given username</p>
+  <p>Exceptions:  GetError, RetrieveError</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> - username selected for credential</li>
+        <li><strong class="pname"><code>ownerCertFile</code></strong> - certificate used for client authentication with the MyProxy 
+          server SSL connection.  This ID will be set as the owner of the 
+          stored credentials.  Only the owner can later remove credentials 
+          with myproxy-destroy or the destroy method.  If not set, this 
+          argument defaults to $GLOBUS_LOCATION/etc/hostcert.pem</li>
+        <li><strong class="pname"><code>ownerKeyFile</code></strong> - corresponding private key file.  See explanation for 
+          ownerCertFile</li>
+        <li><strong class="pname"><code>ownerPassphrase</code></strong> - passphrase for ownerKeyFile.  Omit if the private key is not 
+          password protected. @return none</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="store"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">store</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">passphrase</span>,
+        <span class="sig-arg">certFile</span>,
+        <span class="sig-arg">keyFile</span>,
+        <span class="sig-arg">ownerCertFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerKeyFile</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ownerPassphrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">lifetime</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">force</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.store">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Upload credentials to the server</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> (string) - username selected for new credential</li>
+        <li><strong class="pname"><code>passphrase</code></strong> (string) - pass-phrase for new credential.  This is the pass phrase which 
+          protects keyfile.</li>
+        <li><strong class="pname"><code>certFile</code></strong> (string) - user's X.509 certificate in PEM format</li>
+        <li><strong class="pname"><code>keyFile</code></strong> (string) - equivalent private key file in PEM format</li>
+        <li><strong class="pname"><code>ownerCertFile</code></strong> (string) - certificate used for client authentication with the MyProxy 
+          server SSL connection.  This ID will be set as the owner of the 
+          stored credentials.  Only the owner can later remove credentials 
+          with myproxy-destroy or the destroy method.  If not set, this 
+          argument defaults to $GLOBUS_LOCATION/etc/hostcert.pem or if this
+          is not set, certFile</li>
+        <li><strong class="pname"><code>ownerKeyFile</code></strong> (string) - corresponding private key file.  See explanation for 
+          ownerCertFile</li>
+        <li><strong class="pname"><code>ownerPassphrase</code></strong> (string) - passphrase for ownerKeyFile.  Omit if the private key is not 
+          password protected.  Nb. keyFile is expected to be passphrase 
+          protected as this will be the passphrase used for logon / 
+          getDelegation.</li>
+        <li><strong class="pname"><code>force</code></strong> - set to True to overwrite any existing creds with the same 
+          username.  If, force=False a check is made with a call to info. 
+          If creds already, exist exit without proceeding</li>
+        <li><strong class="pname"><code>Force</code></strong> (bool)</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="ndg.security.server.MyProxy.GetError-class.html">GetError</a></strong></code></li>
+        <li><code><strong class='fraise'><a href="ndg.security.server.MyProxy.RetrieveError-class.html">RetrieveError</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="logon"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">logon</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">passphrase</span>,
+        <span class="sig-arg">lifetime</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.MyProxy-pysrc.html#MyProxyClient.logon">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Retrieve a proxy credential from a MyProxy server</p>
+  <p>Exceptions:  GetError, RetrieveError</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> (basestring) - username of credential</li>
+        <li><strong class="pname"><code>passphrase</code></strong> (basestring) - pass-phrase for private key of credential held on server</li>
+        <li><strong class="pname"><code>lifetime</code></strong> (int) - lifetime for generated certificate</li>
+    </ul></dd>
+    <dt>Returns: tuple</dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__getCmd"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__getCmd</h3>
+  get command string
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>string</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=0
+USERNAME=%s
+PASSPHRASE=%s
+LIFETIME=%d&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__infoCmd"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__infoCmd</h3>
+  info command string
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>string</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=2
+USERNAME=%s
+PASSPHRASE=PASSPHRASE
+LIFETIME=0&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__destroyCmd"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__destroyCmd</h3>
+  destroy command string
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>string</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=3
+USERNAME=%s
+PASSPHRASE=PASSPHRASE
+LIFETIME=0&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__changePassphraseCmd"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__changePassphraseCmd</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;VERSION=MYPROXYv2
+ COMMAND=4
+ USERNAME=%s
+ PASSPHRASE=%s
+ NEW_PHRASE=%s
+ LIFETIME=0&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__storeCmd"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__storeCmd</h3>
+  store command string
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>string</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&quot;&quot;&quot;VERSION=MYPROXYv2
+COMMAND=5
+USERNAME=%s
+PASSPHRASE=
+LIFETIME=%d&quot;&quot;&quot;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__validKeys"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__validKeys</h3>
+  sets permissable element names for MyProxy XML config file
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>tuple</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+'hostname', 'port', 'serverDN', 'serverCNprefix', 'gridSecurityDir', '<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+openSSLConfFilePath', 'tmpDir', 'proxyCertMaxLifetime', 'proxyCertLife<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+time', 'caCertFile'
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="defProxyFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">defProxyFile</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+sys.platform== 'win32' and 'proxy' or sys.platform in('linux2', 'darwi<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+n') and '/tmp/x509up_u%s' %(os.getuid()) or None
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="openSSLConfig"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">openSSLConfig</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+property(fget= __getOpenSSLConfig, doc= &quot;OpenSSLConfig object&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Mon Sep  1 11:59:19 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

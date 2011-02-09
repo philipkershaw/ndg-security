@@ -1,0 +1,2 @@
+recursive-include container/public *
+recursive-include container/templates *
