@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ndg-security-saml
+Version: 0.1.3rc1-r6107
+Summary: NERC DataGrid SAML Implementation
+Home-page: http://proj.badc.rl.ac.uk/ndg/wiki/Security
+Author: Philip Kershaw
+Author-email: Philip.Kershaw@stfc.ac.uk
+License: BSD - See LICENCE file for details
+Description: SAML 2.0 implementation for use with NDG Attribute Interface
+Platform: UNKNOWN
