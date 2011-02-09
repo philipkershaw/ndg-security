@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>myproxy.utils.openssl.OpenSSLConfig</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="myproxy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MyProxy Client</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="myproxy-module.html">Package&nbsp;myproxy</a> ::
+        <a href="myproxy.utils-module.html">Package&nbsp;utils</a> ::
+        <a href="myproxy.utils.openssl-module.html">Module&nbsp;openssl</a> ::
+        Class&nbsp;OpenSSLConfig
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class OpenSSLConfig</h1><p class="nomargin-top"><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_myproxy__8" name="uml_class_diagram_for_myproxy__8">
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.SECTCRE" alt="" coords="53,28,269,47"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.OPTCRE" alt="" coords="53,47,269,65"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.defaults" alt="" coords="53,68,269,87"/>
+<area shape="rect" href="javascript:void(0);" title="Return a list of section names, excluding [DEFAULT]" alt="" coords="53,87,269,105"/>
+<area shape="rect" href="javascript:void(0);" title="Create a new section in the configuration." alt="" coords="53,105,269,124"/>
+<area shape="rect" href="javascript:void(0);" title="Indicate whether the named section is present in the configuration." alt="" coords="53,124,269,143"/>
+<area shape="rect" href="javascript:void(0);" title="Return a list of option names for the given section name." alt="" coords="53,143,269,161"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.getint" alt="" coords="53,161,269,180"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.getfloat" alt="" coords="53,180,269,199"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.getboolean" alt="" coords="53,199,269,217"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser.optionxform" alt="" coords="53,217,269,236"/>
+<area shape="rect" href="javascript:void(0);" title="Check for the existence of a given option in a given section." alt="" coords="53,236,269,255"/>
+<area shape="rect" href="javascript:void(0);" title="Write an .ini&#45;format representation of the configuration state." alt="" coords="53,255,269,273"/>
+<area shape="rect" href="javascript:void(0);" title="Remove an option." alt="" coords="53,273,269,292"/>
+<area shape="rect" href="javascript:void(0);" title="Remove a file section." alt="" coords="53,292,269,311"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.RawConfigParser" alt="" coords="52,11,271,312"/>
+<area shape="rect" href="javascript:void(0);" title="Get an option value for a given section." alt="" coords="17,367,305,385"/>
+<area shape="rect" href="javascript:void(0);" title="Return a list of tuples with (name, value) for each option in the section." alt="" coords="17,385,305,404"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.ConfigParser" alt="" coords="16,341,307,405"/>
+<area shape="rect" href="javascript:void(0);" title="Set an option." alt="" coords="68,460,255,479"/>
+<area shape="rect" href="javascript:void(0);" title="ConfigParser.SafeConfigParser" alt="" coords="67,435,256,480"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#filePath" title="file path for configuration file" alt="" coords="36,527,287,545"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#caDir" title="directory path for CA configuration files" alt="" coords="36,545,287,564"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#reqDN" title="Distinguished Name for certificate request" alt="" coords="36,564,287,583"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#__init__" title="Initial OpenSSL configuration optionally setting a file path to read from" alt="" coords="36,585,287,604"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#setCADir" title="Set property method" alt="" coords="36,604,287,623"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#read" title="Override base class version to avoid parsing error with the first &#39;RANDFILE = ...&#39; part of the openssl file." alt="" coords="36,623,287,641"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html#readfp" title="Set to not implemented as using a file object could be problematic given &#160;read() has to seek ahead to the first actual section to avoid parsing &#160;errors" alt="" coords="36,641,287,660"/>
+<area shape="rect" href="myproxy.utils.openssl.OpenSSLConfig&#45;class.html" title="Wrapper to OpenSSL Configuration file to allow extraction of required distinguished name used for making certificate requests" alt="" coords="35,509,288,661"/>
+</map>
+  <img src="uml_class_diagram_for_myproxy__8.gif" alt='' usemap="#uml_class_diagram_for_myproxy__8" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Wrapper to OpenSSL Configuration file to allow extraction of required 
+  distinguished name used for making certificate requests</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caDir</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initial OpenSSL configuration optionally setting a file path to read 
+      from</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_setFilePath" class="summary-sig-name" onclick="show_private();">_setFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filePath</span>)</span><br />
+      Set property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._setFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getFilePath" class="summary-sig-name" onclick="show_private();">_getFilePath</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._getFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#setCADir" class="summary-sig-name">setCADir</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caDir</span>)</span><br />
+      Set property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.setCADir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_getCADir"></a><span class="summary-sig-name">_getCADir</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._getCADir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_getReqDN"></a><span class="summary-sig-name">_getReqDN</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._getReqDN">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#read" class="summary-sig-name">read</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Override base class version to avoid parsing error with the first 
+      'RANDFILE = ...' part of the openssl file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.read">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_filtOptVal" class="summary-sig-name" onclick="show_private();">_filtOptVal</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">optVal</span>)</span><br />
+      For option value, filter out comments and substitute $dir with the CA
+      directory location</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._filtOptVal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#readfp" class="summary-sig-name">readfp</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fp</span>)</span><br />
+      Set to not implemented as using a file object could be problematic 
+      given read() has to seek ahead to the first actual section to avoid 
+      parsing errors</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.readfp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_setReqDN"></a><span class="summary-sig-name">_setReqDN</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set Required DN parameters from the configuration file returning them
+      in a dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._setReqDN">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.SafeConfigParser</code></b>:
+      <code>set</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.SafeConfigParser</code></b> (private):
+      <code>_interpolate</code>,
+      <code>_interpolate_some</code>,
+      <code>_interpvar_match</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.ConfigParser</code></b>:
+      <code>get</code>,
+      <code>items</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.ConfigParser</code></b> (private):
+      <code>_interpolation_replace</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.RawConfigParser</code></b>:
+      <code>add_section</code>,
+      <code>defaults</code>,
+      <code>getboolean</code>,
+      <code>getfloat</code>,
+      <code>getint</code>,
+      <code>has_option</code>,
+      <code>has_section</code>,
+      <code>options</code>,
+      <code>optionxform</code>,
+      <code>remove_option</code>,
+      <code>remove_section</code>,
+      <code>sections</code>,
+      <code>write</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.RawConfigParser</code></b> (private):
+      <code>_get</code>,
+      <code>_read</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+        <a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_certReqDNParamName" class="summary-name" onclick="show_private();">_certReqDNParamName</a> = <code title="['C',
+ 'serialNumber',
+ 'organizationName',
+ 'CN',
+ 'SP',
+ 'commonName',
+ 'L',
+ 'stateOrProvinceName',
+..."><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">C</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">serialNumber</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">organizationName</code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code><br />
+      permissable keys for Distinguished Name (not including CN which gets 
+      set separately).
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="_caDirPat"></a><span class="summary-name">_caDirPat</span> = <code title="re.compile(r'\$dir')">re.compile(r'\$dir')</code><br />
+      sub-directory path to CA config directory
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="_gridCASubDir"></a><span class="summary-name">_gridCASubDir</span> = <code title="'.globus/simpleCA'"><code class="variable-quote">'</code><code class="variable-string">.globus/simpleCA</code><code class="variable-quote">'</code></code><br />
+      sub-directory of globus user for CA settings
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.ConfigParser</code></b> (private):
+      <code>_KEYCRE</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.RawConfigParser</code></b>:
+      <code>OPTCRE</code>,
+      <code>SECTCRE</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>ConfigParser.RawConfigParser</code></b> (private):
+      <code>_boolean_states</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="myproxy.utils.openssl.OpenSSLConfig-class.html#filePath" class="summary-name">filePath</a><br />
+      file path for configuration file
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="myproxy.utils.openssl.OpenSSLConfig-class.html#caDir" class="summary-name">caDir</a><br />
+      directory path for CA configuration files
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="myproxy.utils.openssl.OpenSSLConfig-class.html#reqDN" class="summary-name">reqDN</a><br />
+      Distinguished Name for certificate request
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caDir</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initial OpenSSL configuration optionally setting a file path to read 
+  from</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filePath</code></strong> (string) - path to OpenSSL configuration file</li>
+        <li><strong class="pname"><code>caDir</code></strong> (string) - directory for SimpleCA.  This is substituted for $dir in OpenSSL 
+          config file where present.  caDir can be left out in which case 
+          the substitution is not done</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_setFilePath"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_setFilePath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filePath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._setFilePath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set property method</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filePath</code></strong> (string) - path for OpenSSL configuration file</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_getFilePath"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_getFilePath</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._getFilePath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get property method</p>
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>file path for OpenSSL configuration file</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setCADir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setCADir</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caDir</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.setCADir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set property method</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caDir</code></strong> (string) - path for OpenSSL configuration file</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="read"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">read</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.read">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Override base class version to avoid parsing error with the first 
+  'RANDFILE = ...' part of the openssl file.  Also, reformat _sections to 
+  allow for the style of SSL config files where section headings can have 
+  spaces either side of the brackets e.g. [ sectionName ]</p>
+  <p>and comments can occur on the same line as an option e.g. option = 
+  blah # This is option blah</p>
+  <p>Reformat _sections to</p>
+  <dl class="fields">
+    <dt>Overrides:
+        ConfigParser.RawConfigParser.read
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_filtOptVal"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_filtOptVal</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">optVal</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig._filtOptVal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>For option value, filter out comments and substitute $dir with the CA 
+  directory location</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>optVal</code></strong> (string) - option value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readfp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readfp</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fp</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="myproxy.utils.openssl-pysrc.html#OpenSSLConfig.readfp">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set to not implemented as using a file object could be problematic 
+  given read() has to seek ahead to the first actual section to avoid 
+  parsing errors</p>
+  <dl class="fields">
+    <dt>Overrides:
+        ConfigParser.RawConfigParser.readfp
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_certReqDNParamName"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_certReqDNParamName</h3>
+  permissable keys for Distinguished Name (not including CN which gets set 
+  separately).  This is used in _setReqDN to check input
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>tuple</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">C</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">serialNumber</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">organizationName</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">CN</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">SP</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">commonName</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">L</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">stateOrProvinceName</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="filePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">filePath</h3>
+  <p>file path for configuration file</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getFilePath" class="summary-sig-name" onclick="show_private();">_getFilePath</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get property method
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_setFilePath" class="summary-sig-name" onclick="show_private();">_setFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filePath</span>)</span>
+        - Set property method
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caDir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caDir</h3>
+  <p>directory path for CA configuration files</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getCADir" class="summary-sig-name" onclick="show_private();">_getCADir</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get property method
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#setCADir" class="summary-sig-name">setCADir</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caDir</span>)</span>
+        - Set property method
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="reqDN"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">reqDN</h3>
+  <p>Distinguished Name for certificate request</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="myproxy.utils.openssl.OpenSSLConfig-class.html#_getReqDN" class="summary-sig-name" onclick="show_private();">_getReqDN</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get property method
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>._setReqDN(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reqDN</span>)</span>
+        - Set property method
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="myproxy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >MyProxy Client</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Fri Feb 27 13:59:02 2009</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

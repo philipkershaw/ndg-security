@@ -1,0 +1,38 @@
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| client.py, line 212, in myproxy.client.MyProxyClient.__init__
+|   Warning: @param for unknown parameter "**prop"
+|   
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| client.py, line 600, in 
+| myproxy.client.MyProxyClient._deserializeCerts
+|   Warning: Line 606: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| client.py, line 980, in myproxy.client.MyProxyClient.logon
+|   Warning: u'return' did not expect an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| client.py, line 877, in myproxy.client.MyProxyClient.store
+|   Warning: @type for unknown parameter "Force"
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| utils/openssl.py, line 122, in 
+| myproxy.utils.openssl.OpenSSLConfig._getCADir
+|   Warning: u'rtype' did not expect an argument
+|   Warning: u'return' did not expect an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkersha/workspace/security/python/MyProxyClient/myproxy/
+| utils/openssl.py, line 133, in 
+| myproxy.utils.openssl.OpenSSLConfig._getReqDN
+|   Warning: u'rtype' did not expect an argument
+|   Warning: u'return' did not expect an argument
+|   
+  [.........................................................................]
