@@ -1,0 +1,37 @@
+MyProxyClient Unit Tests
+========================
+To set-up this test, A MyProxy server process must be running to test against.
+MyProxy is installed as part of the NDG Security installation.  See the 
+installation guide for details:
+
+http://proj.badc.rl.ac.uk/ndg/browser/TI12-security/trunk/documentation/InstallationGuide/pdf/NDGSecurityInstallationGuide.pdf?format=raw
+
+1) Start myproxy-server on it's host machine e.g. as root run,
+
+$ myproxy-server
+
+2) Edit myProxyProperties.xml and set the hostname element to the fully
+qualified domain name of the MyProxy host OR alternatively set the environment
+variable MYPROXY_SERVER to the host name.
+
+3) Run the tests with the command:
+
+$ python ./MyProxyClientTest.py
+
+4) To run individual tests give the test method name:
+
+$ python ./MyProxyClientTest.py MyProxyClientTestCase.test1Store
+
+ * Note that some tests are dependent on the output of previous tests.  
+ * test1Store adds a new credential to the repository.  Running all the tests
+   together as in 3) will ensure the credential is removed afterwards.  To
+   check the existence of the credential after the test run test3Info:
+   
+   $ python ./MyProxyClientTest.py MyProxyClientTestCase.test3Info
+   
+   or use MyProxy client commands on the MyProxy host: myproxy-info,
+   myproxy-destroy.  If these fail, the content of /var/myproxy on the 
+   target host can be checked to see if testuser credentials still exist.
+ * See myProxyClientTest.cfg configuration file to change test parameters.
+ * See the installation guide for MyProxy trouble shooting information.
+

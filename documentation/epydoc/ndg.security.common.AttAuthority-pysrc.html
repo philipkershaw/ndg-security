@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.AttAuthority</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        Package&nbsp;AttAuthority
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.common.AttAuthority-module.html">Package ndg.security.common.AttAuthority</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""NDG Security Attribute Authority client - client interface classes to the</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Attribute Authority.  These have been separated from their</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">original location in the SecurityClient since they have the </tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">unusual place of being required by both client and server</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">NDG security packages.  For the server side they are required</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">as the CredWallet invoked by the Session Manager acts as a</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">client to Attribute Authorities when negotiating the required</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">Attribute Certificate.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">Make requests for Attribute Certificates used for authorisation</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"17/11/06"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2007 STFC &amp; NERC"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-string">"""This software may be distributed under the terms of the Q Public </tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-string">License, version 1.0 or later."""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionCookie.__revision__=ndg.security.common.SessionCookie-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.gatekeeper.__revision__=ndg.security.common.gatekeeper-module.html#__revision__,Variable ndg.security.common.logService.__revision__=ndg.security.common.logService-module.html#__revision__,Variable ndg.security.common.logService.log_services_server.__revision__=ndg.security.common.logService.log_services_server-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.sessionCookie.__revision__=ndg.security.common.sessionCookie-module.html#__revision__,Variable ndg.security.common.wsSecurity.__revision__=ndg.security.common.wsSecurity-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.MyProxy.__revision__=ndg.security.server.MyProxy-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.certs.ca.__revision__=ndg.security.server.conf.certs.ca-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__,Variable ndg.security.test.Log.LogTest.__revision__=ndg.security.test.Log.LogTest-module.html#__revision__,Variable ndg.security.test.Log.__revision__=ndg.security.test.Log-module.html#__revision__,Variable ndg.security.test.SecurityCGItest.__revision__=ndg.security.test.SecurityCGItest-module.html#__revision__,Variable ndg.security.test.X509.X509Test.__revision__=ndg.security.test.X509.X509Test-module.html#__revision__,Variable ndg.security.test.X509.__revision__=ndg.security.test.X509-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.__revision__=ndg.security.test.XMLSecDoc-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__=ndg.security.test.XMLSecDoc.xmlSecDocTest-module.html#__revision__,Variable ndg.security.test.__revision__=ndg.security.test-module.html#__revision__,Variable ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__=ndg.security.test.attAuthority.AttAuthorityClientTest-module.html#__revision__,Variable ndg.security.test.attAuthority.__revision__=ndg.security.test.attAuthority-module.html#__revision__,Variable ndg.security.test.attAuthority.attCertLog.__revision__=ndg.security.test.attAuthority.attCertLog-module.html#__revision__,Variable ndg.security.test.attAuthority.ca.__revision__=ndg.security.test.attAuthority.ca-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAUserRoles.__revision__=ndg.security.test.attAuthority.siteAUserRoles-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBUserRoles.__revision__=ndg.security.test.attAuthority.siteBUserRoles-module.html#__revision__,Variable ndg.security.test.attCert.AttCertTest.__revision__=ndg.security.test.attCert.AttCertTest-module.html#__revision__,Variable ndg.security.test.attCert.__revision__=ndg.security.test.attCert-module.html#__revision__,Variable ndg.security.test.ca.__revision__=ndg.security.test.ca-module.html#__revision__,Variable ndg.security.test.ca.caClientTest.__revision__=ndg.security.test.ca.caClientTest-module.html#__revision__,Variable ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__=ndg.security.test.gatekeeper.TestGatekeeperResrc-module.html#__revision__,Variable ndg.security.test.gatekeeper.__revision__=ndg.security.test.gatekeeper-module.html#__revision__,Variable ndg.security.test.myProxy.MyProxyClientTest.__revision__=ndg.security.test.myProxy.MyProxyClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.__revision__=ndg.security.test.myProxy-module.html#__revision__,Variable ndg.security.test.sessionCookie.SessionCookieTest.__revision__=ndg.security.test.sessionCookie.SessionCookieTest-module.html#__revision__,Variable ndg.security.test.sessionCookie.__revision__=ndg.security.test.sessionCookie-module.html#__revision__,Variable ndg.security.test.sessionMgr.__revision__=ndg.security.test.sessionMgr-module.html#__revision__,Variable ndg.security.test.sessionMgr.ca.__revision__=ndg.security.test.sessionMgr.ca-module.html#__revision__,Variable ndg.security.test.sessionMgr.test.__revision__=ndg.security.test.sessionMgr.test-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__=ndg.security.test.sessionMgrClient.SessionMgrClientTest-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.__revision__=ndg.security.test.sessionMgrClient-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.ca.__revision__=ndg.security.test.sessionMgrClient.ca-module.html#__revision__,Variable ndg.security.test.wsSecurity.__revision__=ndg.security.test.wsSecurity-module.html#__revision__,Variable ndg.security.test.wsSecurity.client.__revision__=ndg.security.test.wsSecurity.client-module.html#__revision__,Variable ndg.security.test.wsSecurity.server.__revision__=ndg.security.test.wsSecurity.server-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionCookie.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.gatekeeper.__revision__
+ndg.security.common.logService.__revision__
+ndg.security.common.logService.log_services_server.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.sessionCookie.__revision__
+ndg.security.common.wsSecurity.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.MyProxy.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.certs.ca.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__
+ndg.security.test.Log.LogTest.__revision__
+ndg.security.test.Log.__revision__
+ndg.security.test.SecurityCGItest.__revision__
+ndg.security.test.X509.X509Test.__revision__
+ndg.security.test.X509.__revision__
+ndg.security.test.XMLSecDoc.__revision__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__
+ndg.security.test.__revision__
+ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__
+ndg.security.test.attAuthority.__revision__
+ndg.security.test.attAuthority.attCertLog.__revision__
+ndg.security.test.attAuthority.ca.__revision__
+ndg.security.test.attAuthority.siteAUserRoles.__revision__
+ndg.security.test.attAuthority.siteBUserRoles.__revision__
+ndg.security.test.attCert.AttCertTest.__revision__
+ndg.security.test.attCert.__revision__
+ndg.security.test.ca.__revision__
+ndg.security.test.ca.caClientTest.__revision__
+ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__
+ndg.security.test.gatekeeper.__revision__
+ndg.security.test.myProxy.MyProxyClientTest.__revision__
+ndg.security.test.myProxy.__revision__
+ndg.security.test.sessionCookie.SessionCookieTest.__revision__
+ndg.security.test.sessionCookie.__revision__
+ndg.security.test.sessionMgr.__revision__
+ndg.security.test.sessionMgr.ca.__revision__
+ndg.security.test.sessionMgr.test.__revision__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__
+ndg.security.test.sessionMgrClient.__revision__
+ndg.security.test.sessionMgrClient.ca.__revision__
+ndg.security.test.wsSecurity.__revision__
+ndg.security.test.wsSecurity.client.__revision__
+ndg.security.test.wsSecurity.server.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"$Id: __init__.py 3044 2007-11-23 13:50:10Z pjkersha $"</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-string">'AttAuthorityClient'</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-string">'AttAuthorityClientError'</tt><tt class="py-op">,</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-string">'AttributeRequestDenied'</tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-string">'NoTrustedHosts'</tt><tt class="py-op">,</tt><tt class="py-op">]</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment"># Determine https http transport</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">import</tt> <tt class="py-name">urlparse</tt><tt class="py-op">,</tt> <tt class="py-name">httplib</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">ZSI</tt><tt class="py-op">.</tt><tt class="py-name">wstools</tt><tt class="py-op">.</tt><tt class="py-name">Utility</tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class httplib.HTTPResponse=httplib.HTTPResponse-class.html"><a title="httplib.HTTPResponse" class="py-name" href="#" onclick="return doclink('link-1', 'HTTPResponse', 'link-1');">HTTPResponse</a></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module ndg.security.common.AttAuthority.AttAuthority_services=ndg.security.common.AttAuthority.AttAuthority_services-module.html"><a title="ndg.security.common.AttAuthority.AttAuthority_services" class="py-name" href="#" onclick="return doclink('link-2', 'AttAuthority_services', 'link-2');">AttAuthority_services</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator-class.html"><a title="ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator" class="py-name" href="#" onclick="return doclink('link-3', 'AttAuthorityServiceLocator', 'link-3');">AttAuthorityServiceLocator</a></tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Package ndg=ndg-module.html"><a title="ndg" class="py-name" href="#" onclick="return doclink('link-4', 'ndg', 'link-4');">ndg</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Package ndg.security=ndg.security-module.html"><a title="ndg.security" class="py-name" href="#" onclick="return doclink('link-5', 'security', 'link-5');">security</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Package ndg.security.common=ndg.security.common-module.html"><a title="ndg.security.common" class="py-name" href="#" onclick="return doclink('link-6', 'common', 'link-6');">common</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module ndg.security.common.wsSecurity=ndg.security.common.wsSecurity-module.html,Package ndg.security.test.wsSecurity=ndg.security.test.wsSecurity-module.html"><a title="ndg.security.common.wsSecurity
+ndg.security.test.wsSecurity" class="py-name" href="#" onclick="return doclink('link-7', 'wsSecurity', 'link-7');">wsSecurity</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class ndg.security.common.wsSecurity.SignatureHandler=ndg.security.common.wsSecurity.SignatureHandler-class.html"><a title="ndg.security.common.wsSecurity.SignatureHandler" class="py-name" href="#" onclick="return doclink('link-8', 'SignatureHandler', 'link-8');">SignatureHandler</a></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name"><a title="ndg" class="py-name" href="#" onclick="return doclink('link-9', 'ndg', 'link-4');">ndg</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="ndg.security" class="py-name" href="#" onclick="return doclink('link-10', 'security', 'link-5');">security</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="ndg.security.common" class="py-name" href="#" onclick="return doclink('link-11', 'common', 'link-6');">common</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Module ndg.security.common.AttCert=ndg.security.common.AttCert-module.html,Class ndg.security.common.AttCert.AttCert=ndg.security.common.AttCert.AttCert-class.html"><a title="ndg.security.common.AttCert
+ndg.security.common.AttCert.AttCert" class="py-name" href="#" onclick="return doclink('link-12', 'AttCert', 'link-12');">AttCert</a></tt> <tt class="py-keyword">import</tt> <tt id="link-13" class="py-name"><a title="ndg.security.common.AttCert
+ndg.security.common.AttCert.AttCert" class="py-name" href="#" onclick="return doclink('link-13', 'AttCert', 'link-12');">AttCert</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name" targets="Function ndg.security.common.AttCert.AttCertParse()=ndg.security.common.AttCert-module.html#AttCertParse"><a title="ndg.security.common.AttCert.AttCertParse" class="py-name" href="#" onclick="return doclink('link-14', 'AttCertParse', 'link-14');">AttCertParse</a></tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-15" class="py-name"><a title="ndg" class="py-name" href="#" onclick="return doclink('link-15', 'ndg', 'link-4');">ndg</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="ndg.security" class="py-name" href="#" onclick="return doclink('link-16', 'security', 'link-5');">security</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="ndg.security.common" class="py-name" href="#" onclick="return doclink('link-17', 'common', 'link-6');">common</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Module ndg.security.common.m2CryptoSSLUtility=ndg.security.common.m2CryptoSSLUtility-module.html"><a title="ndg.security.common.m2CryptoSSLUtility" class="py-name" href="#" onclick="return doclink('link-18', 'm2CryptoSSLUtility', 'link-18');">m2CryptoSSLUtility</a></tt> <tt class="py-keyword">import</tt> <tt id="link-19" class="py-name" targets="Class ndg.security.common.m2CryptoSSLUtility.HTTPSConnection=ndg.security.common.m2CryptoSSLUtility.HTTPSConnection-class.html"><a title="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection" class="py-name" href="#" onclick="return doclink('link-19', 'HTTPSConnection', 'link-19');">HTTPSConnection</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Class ndg.security.common.m2CryptoSSLUtility.HostCheck=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck" class="py-name" href="#" onclick="return doclink('link-20', 'HostCheck', 'link-20');">HostCheck</a></tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClientError"></a><div id="AttAuthorityClientError-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="AttAuthorityClientError-toggle" onclick="return toggle('AttAuthorityClientError');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClientError-class.html">AttAuthorityClientError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClientError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AttAuthorityClientError-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-docstring">"""Exception handling for AttributeAuthorityClient class"""</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="AttributeRequestDenied"></a><div id="AttributeRequestDenied-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="AttributeRequestDenied-toggle" onclick="return toggle('AttributeRequestDenied');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttributeRequestDenied-class.html">AttributeRequestDenied</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttributeRequestDenied-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AttributeRequestDenied-expanded"><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-docstring">"""Raise when a getAttCert call to the AA is denied"""</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="NoTrustedHosts"></a><div id="NoTrustedHosts-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="NoTrustedHosts-toggle" onclick="return toggle('NoTrustedHosts');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.NoTrustedHosts-class.html">NoTrustedHosts</a><tt class="py-op">(</tt><tt class="py-base-class">AttAuthorityClientError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoTrustedHosts-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoTrustedHosts-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-docstring">"""Raise from getTrustedHosts if there are no trusted hosts defined in</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">    the map configuration"""</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="NoMatchingRoleInTrustedHosts"></a><div id="NoMatchingRoleInTrustedHosts-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="NoMatchingRoleInTrustedHosts-toggle" onclick="return toggle('NoMatchingRoleInTrustedHosts');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.NoMatchingRoleInTrustedHosts-class.html">NoMatchingRoleInTrustedHosts</a><tt class="py-op">(</tt><tt class="py-base-class">AttAuthorityClientError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoMatchingRoleInTrustedHosts-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoMatchingRoleInTrustedHosts-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-docstring">"""Raise from getTrustedHosts if there is no mapping to any of the </tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">    trusted hosts for the given input role name"""</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient"></a><div id="AttAuthorityClient-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="AttAuthorityClient-toggle" onclick="return toggle('AttAuthorityClient');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html">AttAuthorityClient</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AttAuthorityClient-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-docstring">"""Client interface to Attribute Authority web service</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">    @type excepMap: dict</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">    @cvar excepMap: map exception strings returned from SOAP fault to client</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">    Exception class to call"""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">     </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt id="link-21" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.excepMap=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#excepMap,Variable ndg.security.common.SessionMgr.SessionMgrClient.excepMap=ndg.security.common.SessionMgr.SessionMgrClient-class.html#excepMap"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-21', 'excepMap', 'link-21');">excepMap</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-string">'AttAuthorityNoTrustedHosts'</tt><tt class="py-op">:</tt> <tt id="link-22" class="py-name" targets="Class ndg.security.common.AttAuthority.NoTrustedHosts=ndg.security.common.AttAuthority.NoTrustedHosts-class.html"><a title="ndg.security.common.AttAuthority.NoTrustedHosts" class="py-name" href="#" onclick="return doclink('link-22', 'NoTrustedHosts', 'link-22');">NoTrustedHosts</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-string">'AttAuthorityNoMatchingRoleInTrustedHosts'</tt><tt class="py-op">:</tt> <tt id="link-23" class="py-name" targets="Class ndg.security.common.AttAuthority.NoMatchingRoleInTrustedHosts=ndg.security.common.AttAuthority.NoMatchingRoleInTrustedHosts-class.html"><a title="ndg.security.common.AttAuthority.NoMatchingRoleInTrustedHosts" class="py-name" href="#" onclick="return doclink('link-23', 'NoMatchingRoleInTrustedHosts', 'link-23');">NoMatchingRoleInTrustedHosts</a></tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">     </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__init__"></a><div id="AttAuthorityClient.__init__-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__init__-toggle" onclick="return toggle('AttAuthorityClient.__init__');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt>  </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                 <tt class="py-param">uri</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt>  </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                 <tt class="py-param">tracefile</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                 <tt class="py-param">sslCACertList</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                 <tt class="py-param">sslCACertFilePathList</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                 <tt class="py-param">sslPeerCertCN</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt>  </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                 <tt class="py-param">setSignatureHandler</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                 <tt class="py-op">**</tt><tt class="py-param">signatureHandlerKw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__init__-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        @type uri: string</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        @param uri: URI for Attribute Authority WS.  Setting it will also</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">        initialise the Service Proxy</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">                                         </tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">        @param tracefile: set to file object such as sys.stderr to give </tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        extra WS debug information</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        @type sslCACertList: list</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">        @param sslCACertList: This keyword is for use with SSL connections </tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">        only.  Set a list of one ore more CA certificates.  The peer cert.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        must verify against at least one of these otherwise the connection</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        is dropped.</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        @type sslCACertFilePathList: list</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">        @param sslCACertFilePathList: the same as the above except CA certs</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">        can be passed as a list of file paths to read from</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        @type sslPeerCertCN: string</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        @param sslPeerCertCN: set an alternate CommonName to match with peer</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">        cert.  This keyword is for use with SSL connections only.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">                     </tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        @type setSignatureHandler: bool</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        @param setSignatureHandler: flag to determine whether to apply</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        WS-Security Signature Handler or not</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">        @type signatureHandlerKw: dict</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">        @param signatureHandlerKw: keywords to configure signature handler"""</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt>         </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">         </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-24" class="py-name" targets="Variable ndg.security.client.LogClient.LogClient.uri=ndg.security.client.LogClient.LogClient-class.html#uri,Variable ndg.security.common.AttAuthority.AttAuthorityClient.uri=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#uri,Variable ndg.security.common.SessionMgr.SessionMgrClient.uri=ndg.security.common.SessionMgr.SessionMgrClient-class.html#uri,Variable ndg.security.common.ca.CertificateAuthorityClient.uri=ndg.security.common.ca.CertificateAuthorityClient-class.html#uri"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-24', 'uri', 'link-24');">uri</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__setURI()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setURI,Method ndg.security.common.SessionMgr.SessionMgrClient.__setURI()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__setURI,Method ndg.security.common.ca.CertificateAuthorityClient.__setURI()=ndg.security.common.ca.CertificateAuthorityClient-class.html#__setURI"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setURI
+ndg.security.common.SessionMgr.SessionMgrClient.__setURI
+ndg.security.common.ca.CertificateAuthorityClient.__setURI" class="py-name" href="#" onclick="return doclink('link-25', '__setURI', 'link-25');">__setURI</a></tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-26', 'uri', 'link-24');">uri</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-27" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.sslPeerCertCN=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#sslPeerCertCN,Variable ndg.security.common.SessionMgr.SessionMgrClient.sslPeerCertCN=ndg.security.common.SessionMgr.SessionMgrClient-class.html#sslPeerCertCN"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslPeerCertCN
+ndg.security.common.SessionMgr.SessionMgrClient.sslPeerCertCN" class="py-name" href="#" onclick="return doclink('link-27', 'sslPeerCertCN', 'link-27');">sslPeerCertCN</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLPeerCertCN()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLPeerCertCN,Method ndg.security.common.SessionMgr.SessionMgrClient.__setSSLPeerCertCN()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__setSSLPeerCertCN"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLPeerCertCN
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLPeerCertCN" class="py-name" href="#" onclick="return doclink('link-28', '__setSSLPeerCertCN', 'link-28');">__setSSLPeerCertCN</a></tt><tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslPeerCertCN
+ndg.security.common.SessionMgr.SessionMgrClient.sslPeerCertCN" class="py-name" href="#" onclick="return doclink('link-29', 'sslPeerCertCN', 'link-27');">sslPeerCertCN</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">         </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-30" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertList=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#sslCACertList,Variable ndg.security.common.SessionMgr.SessionMgrClient.sslCACertList=ndg.security.common.SessionMgr.SessionMgrClient-class.html#sslCACertList"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertList" class="py-name" href="#" onclick="return doclink('link-30', 'sslCACertList', 'link-30');">sslCACertList</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertList()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLCACertList,Method ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertList()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__setSSLCACertList"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertList
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertList" class="py-name" href="#" onclick="return doclink('link-31', '__setSSLCACertList', 'link-31');">__setSSLCACertList</a></tt><tt class="py-op">(</tt><tt id="link-32" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertList" class="py-name" href="#" onclick="return doclink('link-32', 'sslCACertList', 'link-30');">sslCACertList</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt id="link-33" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertFilePathList=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#sslCACertFilePathList,Variable ndg.security.common.SessionMgr.SessionMgrClient.sslCACertFilePathList=ndg.security.common.SessionMgr.SessionMgrClient-class.html#sslCACertFilePathList"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertFilePathList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertFilePathList" class="py-name" href="#" onclick="return doclink('link-33', 'sslCACertFilePathList', 'link-33');">sslCACertFilePathList</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertFilePathList()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLCACertFilePathList,Method ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertFilePathList()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__setSSLCACertFilePathList"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertFilePathList
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertFilePathList" class="py-name" href="#" onclick="return doclink('link-34', '__setSSLCACertFilePathList', 'link-34');">__setSSLCACertFilePathList</a></tt><tt class="py-op">(</tt><tt id="link-35" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertFilePathList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertFilePathList" class="py-name" href="#" onclick="return doclink('link-35', 'sslCACertFilePathList', 'link-33');">sslCACertFilePathList</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">         </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-comment"># WS-Security Signature handler - set only if any of the keywords were</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># set</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">setSignatureHandler</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__signatureHandler</tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="ndg.security.common.wsSecurity.SignatureHandler" class="py-name" href="#" onclick="return doclink('link-36', 'SignatureHandler', 'link-8');">SignatureHandler</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">signatureHandlerKw</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__signatureHandler</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__tracefile</tt> <tt class="py-op">=</tt> <tt class="py-name">tracefile</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">         </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-comment"># Instantiate Attribute Authority WS proxy</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.initService()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#initService,Method ndg.security.common.SessionMgr.SessionMgrClient.initService()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#initService,Method ndg.security.common.ca.CertificateAuthorityClient.initService()=ndg.security.common.ca.CertificateAuthorityClient-class.html#initService"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.initService
+ndg.security.common.SessionMgr.SessionMgrClient.initService
+ndg.security.common.ca.CertificateAuthorityClient.initService" class="py-name" href="#" onclick="return doclink('link-37', 'initService', 'link-37');">initService</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">         </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__setURI"></a><div id="AttAuthorityClient.__setURI-def"><a name="L137"></a><tt class="py-lineno">137</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__setURI-toggle" onclick="return toggle('AttAuthorityClient.__setURI');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setURI">__setURI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__setURI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__setURI-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set URI for service</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">        @type uri: string</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">        @param uri: URI for service to connect to"""</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-38" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-38', 'uri', 'link-24');">uri</a></tt><tt class="py-op">,</tt> <tt class="py-name">basestring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-39" class="py-name" targets="Class ndg.security.common.AttAuthority.AttAuthorityClientError=ndg.security.common.AttAuthority.AttAuthorityClientError-class.html"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-39', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                        <tt class="py-string">"Attribute Authority WSDL URI must be a valid string"</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">         </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt> <tt class="py-op">=</tt> <tt id="link-40" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-40', 'uri', 'link-24');">uri</a></tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-name">scheme</tt> <tt class="py-op">=</tt> <tt class="py-name">urlparse</tt><tt class="py-op">.</tt><tt class="py-name">urlparse</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">TypeError</tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeAuthorityClientError</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                <tt class="py-string">"Error parsing transport type from URI"</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                 </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">scheme</tt> <tt class="py-op">==</tt> <tt class="py-string">"https"</tt><tt class="py-op">:</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection" class="py-name" href="#" onclick="return doclink('link-41', 'HTTPSConnection', 'link-19');">HTTPSConnection</a></tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__getURI"></a><div id="AttAuthorityClient.__getURI-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__getURI-toggle" onclick="return toggle('AttAuthorityClient.__getURI');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__getURI">__getURI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__getURI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__getURI-expanded"><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get URI for service</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">        @return: uri for service to be invoked"""</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt> </tt>
+</div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">             </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt id="link-42" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-42', 'uri', 'link-24');">uri</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setURI
+ndg.security.common.SessionMgr.SessionMgrClient.__setURI
+ndg.security.common.ca.CertificateAuthorityClient.__setURI" class="py-name" href="#" onclick="return doclink('link-43', '__setURI', 'link-25');">__setURI</a></tt><tt class="py-op">,</tt> <tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-44" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__getURI()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__getURI,Method ndg.security.common.SessionMgr.SessionMgrClient.__getURI()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__getURI"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__getURI
+ndg.security.common.SessionMgr.SessionMgrClient.__getURI" class="py-name" href="#" onclick="return doclink('link-44', '__getURI', 'link-44');">__getURI</a></tt><tt class="py-op">,</tt><tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"Attribute Authority URI"</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__setSSLPeerCertCN"></a><div id="AttAuthorityClient.__setSSLPeerCertCN-def"><a name="L169"></a><tt class="py-lineno">169</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__setSSLPeerCertCN-toggle" onclick="return toggle('AttAuthorityClient.__setSSLPeerCertCN');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLPeerCertCN">__setSSLPeerCertCN</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">cn</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__setSSLPeerCertCN-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__setSSLPeerCertCN-expanded"><a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-docstring">"""For use with HTTPS connections only.  Specify the Common</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">        Name to match with Common Name of the peer certificate.  This is not</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">        needed if the peer cert CN = peer hostname"""</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt> <tt class="py-op">!=</tt> <tt id="link-45" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection" class="py-name" href="#" onclick="return doclink('link-45', 'HTTPSConnection', 'link-19');">HTTPSConnection</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">         </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.get()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#get,Method ndg.security.common.X509.X500DN.get()=ndg.security.common.X509.X500DN-class.html#get,Method ndg.security.server.AttAuthority.AttAuthority.get()=ndg.security.server.AttAuthority.AttAuthority-class.html#get,Method ndg.security.server.SessionMgr.SessionMgr.get()=ndg.security.server.SessionMgr.SessionMgr-class.html#get,Method ndg.security.server.ca.SimpleCA.get()=ndg.security.server.ca.SimpleCA-class.html#get"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-46', 'get', 'link-46');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">peerCertCN</tt> <tt class="py-op">=</tt> <tt class="py-name">cn</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-47" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck" class="py-name" href="#" onclick="return doclink('link-47', 'HostCheck', 'link-20');">HostCheck</a></tt><tt class="py-op">(</tt><tt class="py-name">peerCertCN</tt><tt class="py-op">=</tt><tt class="py-name">cn</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">    <tt id="link-48" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslPeerCertCN
+ndg.security.common.SessionMgr.SessionMgrClient.sslPeerCertCN" class="py-name" href="#" onclick="return doclink('link-48', 'sslPeerCertCN', 'link-27');">sslPeerCertCN</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-49" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLPeerCertCN
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLPeerCertCN" class="py-name" href="#" onclick="return doclink('link-49', '__setSSLPeerCertCN', 'link-28');">__setSSLPeerCertCN</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"for https connections, set CN of peer cert if other than peer hostname"</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__setSSLCACertList"></a><div id="AttAuthorityClient.__setSSLCACertList-def"><a name="L186"></a><tt class="py-lineno">186</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__setSSLCACertList-toggle" onclick="return toggle('AttAuthorityClient.__setSSLCACertList');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLCACertList">__setSSLCACertList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">caCertList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__setSSLCACertList-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__setSSLCACertList-expanded"><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-docstring">"""For use with HTTPS connections only.  Specify CA certs to one of </tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring">        which the peer cert must verify its signature against"""</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt> <tt class="py-op">!=</tt> <tt id="link-50" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection" class="py-name" href="#" onclick="return doclink('link-50', 'HTTPSConnection', 'link-19');">HTTPSConnection</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">         </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-51', 'get', 'link-46');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Variable ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertList=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html#caCertList"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertList" class="py-name" href="#" onclick="return doclink('link-52', 'caCertList', 'link-52');">caCertList</a></tt> <tt class="py-op">=</tt> <tt id="link-53" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertList" class="py-name" href="#" onclick="return doclink('link-53', 'caCertList', 'link-52');">caCertList</a></tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">                                            <tt id="link-54" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck" class="py-name" href="#" onclick="return doclink('link-54', 'HostCheck', 'link-20');">HostCheck</a></tt><tt class="py-op">(</tt><tt id="link-55" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertList" class="py-name" href="#" onclick="return doclink('link-55', 'caCertList', 'link-52');">caCertList</a></tt><tt class="py-op">=</tt><tt id="link-56" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertList" class="py-name" href="#" onclick="return doclink('link-56', 'caCertList', 'link-52');">caCertList</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">    <tt id="link-57" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertList" class="py-name" href="#" onclick="return doclink('link-57', 'sslCACertList', 'link-30');">sslCACertList</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-58" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertList
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertList" class="py-name" href="#" onclick="return doclink('link-58', '__setSSLCACertList', 'link-31');">__setSSLCACertList</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"for https connections, set list of CA certs from which to verify peer cert"</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__setSSLCACertFilePathList"></a><div id="AttAuthorityClient.__setSSLCACertFilePathList-def"><a name="L203"></a><tt class="py-lineno">203</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__setSSLCACertFilePathList-toggle" onclick="return toggle('AttAuthorityClient.__setSSLCACertFilePathList');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSSLCACertFilePathList">__setSSLCACertFilePathList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">caCertFilePathList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__setSSLCACertFilePathList-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__setSSLCACertFilePathList-expanded"><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-docstring">"""For use with HTTPS connections only.  Specify CA certs to one of </tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">        which the peer cert must verify its signature against"""</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt> <tt class="py-op">!=</tt> <tt id="link-59" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HTTPSConnection" class="py-name" href="#" onclick="return doclink('link-59', 'HTTPSConnection', 'link-19');">HTTPSConnection</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">         </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.get
+ndg.security.common.X509.X500DN.get
+ndg.security.server.AttAuthority.AttAuthority.get
+ndg.security.server.SessionMgr.SessionMgr.get
+ndg.security.server.ca.SimpleCA.get" class="py-name" href="#" onclick="return doclink('link-60', 'get', 'link-46');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name" targets="Variable ndg.security.common.CredWallet.CredWallet.caCertFilePathList=ndg.security.common.CredWallet.CredWallet-class.html#caCertFilePathList,Variable ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertFilePathList=ndg.security.common.m2CryptoSSLUtility.HostCheck-class.html#caCertFilePathList,Variable ndg.security.common.wsSecurity.SignatureHandler.caCertFilePathList=ndg.security.common.wsSecurity.SignatureHandler-class.html#caCertFilePathList"><a title="ndg.security.common.CredWallet.CredWallet.caCertFilePathList
+ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertFilePathList
+ndg.security.common.wsSecurity.SignatureHandler.caCertFilePathList" class="py-name" href="#" onclick="return doclink('link-61', 'caCertFilePathList', 'link-61');">caCertFilePathList</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">                                                            <tt id="link-62" class="py-name"><a title="ndg.security.common.CredWallet.CredWallet.caCertFilePathList
+ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertFilePathList
+ndg.security.common.wsSecurity.SignatureHandler.caCertFilePathList" class="py-name" href="#" onclick="return doclink('link-62', 'caCertFilePathList', 'link-61');">caCertFilePathList</a></tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">[</tt><tt class="py-string">'postConnectionCheck'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                            <tt id="link-63" class="py-name"><a title="ndg.security.common.m2CryptoSSLUtility.HostCheck" class="py-name" href="#" onclick="return doclink('link-63', 'HostCheck', 'link-20');">HostCheck</a></tt><tt class="py-op">(</tt><tt id="link-64" class="py-name"><a title="ndg.security.common.CredWallet.CredWallet.caCertFilePathList
+ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertFilePathList
+ndg.security.common.wsSecurity.SignatureHandler.caCertFilePathList" class="py-name" href="#" onclick="return doclink('link-64', 'caCertFilePathList', 'link-61');">caCertFilePathList</a></tt><tt class="py-op">=</tt><tt id="link-65" class="py-name"><a title="ndg.security.common.CredWallet.CredWallet.caCertFilePathList
+ndg.security.common.m2CryptoSSLUtility.HostCheck.caCertFilePathList
+ndg.security.common.wsSecurity.SignatureHandler.caCertFilePathList" class="py-name" href="#" onclick="return doclink('link-65', 'caCertFilePathList', 'link-61');">caCertFilePathList</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">    <tt id="link-66" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.sslCACertFilePathList
+ndg.security.common.SessionMgr.SessionMgrClient.sslCACertFilePathList" class="py-name" href="#" onclick="return doclink('link-66', 'sslCACertFilePathList', 'link-33');">sslCACertFilePathList</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-67" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSSLCACertFilePathList
+ndg.security.common.SessionMgr.SessionMgrClient.__setSSLCACertFilePathList" class="py-name" href="#" onclick="return doclink('link-67', '__setSSLCACertFilePathList', 'link-34');">__setSSLCACertFilePathList</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"for https connections, set list of CA cert files from which to verify peer cert"</tt><tt class="py-op">)</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">     </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__setSignatureHandler"></a><div id="AttAuthorityClient.__setSignatureHandler-def"><a name="L221"></a><tt class="py-lineno">221</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__setSignatureHandler-toggle" onclick="return toggle('AttAuthorityClient.__setSignatureHandler');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSignatureHandler">__setSignatureHandler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">signatureHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__setSignatureHandler-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__setSignatureHandler-expanded"><a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set SignatureHandler object property method - set to None to for no</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"><tt class="py-docstring">        digital signature and verification"""</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-68" class="py-name" targets="Variable ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#signatureHandler,Variable ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler=ndg.security.common.SessionMgr.SessionMgrClient-class.html#signatureHandler,Variable ndg.security.common.ca.CertificateAuthorityClient.signatureHandler=ndg.security.common.ca.CertificateAuthorityClient-class.html#signatureHandler,Variable ndg.security.server.twisted.WSSecurityHandler.signatureHandler=ndg.security.server.twisted.WSSecurityHandler-class.html#signatureHandler"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-68', 'signatureHandler', 'link-68');">signatureHandler</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt> <tt class="py-keyword">and</tt> \ </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">           <tt class="py-keyword">not</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt id="link-69" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-69', 'signatureHandler', 'link-68');">signatureHandler</a></tt><tt class="py-op">,</tt> <tt id="link-70" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-70', 'signatureHandler', 'link-68');">signatureHandler</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">    <tt class="py-string">"Signature Handler must be %s type or None for no message security"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">        <tt class="py-string">"ndg.security.common.wsSecurity.SignatureHandler"</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">                             </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__signatureHandler</tt> <tt class="py-op">=</tt> <tt id="link-71" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-71', 'signatureHandler', 'link-68');">signatureHandler</a></tt> </tt>
+</div><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">     </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.__getSignatureHandler"></a><div id="AttAuthorityClient.__getSignatureHandler-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.__getSignatureHandler-toggle" onclick="return toggle('AttAuthorityClient.__getSignatureHandler');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__getSignatureHandler">__getSignatureHandler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.__getSignatureHandler-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.__getSignatureHandler-expanded"><a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-docstring">"Get SignatureHandler object property method"</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__signatureHandler</tt> </tt>
+</div><a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">     </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">    <tt id="link-72" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.signatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.signatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.signatureHandler
+ndg.security.server.twisted.WSSecurityHandler.signatureHandler" class="py-name" href="#" onclick="return doclink('link-72', 'signatureHandler', 'link-68');">signatureHandler</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt><tt class="py-name">fget</tt><tt class="py-op">=</tt><tt id="link-73" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__getSignatureHandler()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__getSignatureHandler,Method ndg.security.common.SessionMgr.SessionMgrClient.__getSignatureHandler()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__getSignatureHandler,Method ndg.security.common.ca.CertificateAuthorityClient.__getSignatureHandler()=ndg.security.common.ca.CertificateAuthorityClient-class.html#__getSignatureHandler"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__getSignatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.__getSignatureHandler
+ndg.security.common.ca.CertificateAuthorityClient.__getSignatureHandler" class="py-name" href="#" onclick="return doclink('link-73', '__getSignatureHandler', 'link-73');">__getSignatureHandler</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">                                <tt class="py-name">fset</tt><tt class="py-op">=</tt><tt id="link-74" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.__setSignatureHandler()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#__setSignatureHandler,Method ndg.security.common.SessionMgr.SessionMgrClient.__setSignatureHandler()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#__setSignatureHandler"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setSignatureHandler
+ndg.security.common.SessionMgr.SessionMgrClient.__setSignatureHandler" class="py-name" href="#" onclick="return doclink('link-74', '__setSignatureHandler', 'link-74');">__setSignatureHandler</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">                                <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"SignatureHandler object"</tt><tt class="py-op">)</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">     </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">         </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.initService"></a><div id="AttAuthorityClient.initService-def"><a name="L244"></a><tt class="py-lineno">244</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.initService-toggle" onclick="return toggle('AttAuthorityClient.initService');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#initService">initService</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">uri</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.initService-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.initService-expanded"><a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the WS proxy for the Attribute Authority</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"><tt class="py-docstring">        @type uri: string</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"><tt class="py-docstring">        @param uri: URI for service to invoke"""</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">         </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-75" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-75', 'uri', 'link-24');">uri</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.__setURI
+ndg.security.common.SessionMgr.SessionMgrClient.__setURI
+ndg.security.common.ca.CertificateAuthorityClient.__setURI" class="py-name" href="#" onclick="return doclink('link-76', '__setURI', 'link-25');">__setURI</a></tt><tt class="py-op">(</tt><tt id="link-77" class="py-name"><a title="ndg.security.client.LogClient.LogClient.uri
+ndg.security.common.AttAuthority.AttAuthorityClient.uri
+ndg.security.common.SessionMgr.SessionMgrClient.uri
+ndg.security.common.ca.CertificateAuthorityClient.uri" class="py-name" href="#" onclick="return doclink('link-77', 'uri', 'link-24');">uri</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line"> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-comment"># WS-Security Signature handler object is passed to binding</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">            <tt class="py-name">locator</tt> <tt class="py-op">=</tt> <tt id="link-78" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator" class="py-name" href="#" onclick="return doclink('link-78', 'AttAuthorityServiceLocator', 'link-3');">AttAuthorityServiceLocator</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt> <tt class="py-op">=</tt> <tt class="py-name">locator</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator.getAttAuthority()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator-class.html#getAttAuthority"><a title="ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityServiceLocator.getAttAuthority" class="py-name" href="#" onclick="return doclink('link-79', 'getAttAuthority', 'link-79');">getAttAuthority</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt><tt class="py-op">,</tt>  </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">                                         <tt class="py-name">sig_handler</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__signatureHandler</tt><tt class="py-op">,</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">                                         <tt class="py-name">tracefile</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__tracefile</tt><tt class="py-op">,</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">                                         <tt class="py-name">transport</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transport</tt><tt class="py-op">,</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">                                         <tt class="py-name">transdict</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_transdict</tt><tt class="py-op">)</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt id="link-80" class="py-name"><a title="httplib.HTTPResponse" class="py-name" href="#" onclick="return doclink('link-80', 'HTTPResponse', 'link-1');">HTTPResponse</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-81" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-81', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">                <tt class="py-string">"Error initialising service for \"%s\": %s %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">status</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">                                     </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.getHostInfo"></a><div id="AttAuthorityClient.getHostInfo-def"><a name="L268"></a><tt class="py-lineno">268</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.getHostInfo-toggle" onclick="return toggle('AttAuthorityClient.getHostInfo');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getHostInfo">getHostInfo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.getHostInfo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.getHostInfo-expanded"><a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get host information for the data provider which the </tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"><tt class="py-docstring">        Attribute Authority represents</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: dict</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line"><tt class="py-docstring">        @return: dictionary of host information derived from the Attribute</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"><tt class="py-docstring">        Authority's map configuration</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">            <tt class="py-comment"># Convert return tuple into list to enable use of pop() later</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">list</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-82" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.getHostInfo()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getHostInfo,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getHostInfo()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#getHostInfo"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.getHostInfo
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getHostInfo" class="py-name" href="#" onclick="return doclink('link-82', 'getHostInfo', 'link-82');">getHostInfo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">httplib</tt><tt class="py-op">.</tt><tt class="py-name">BadStatusLine</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-83" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-83', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"HTTP bad status line: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">            <tt class="py-comment"># Try to detect exception type from SOAP fault message</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">errMsg</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-84" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-84', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">errMsg</tt><tt class="py-op">:</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-85" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-85', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">[</tt><tt class="py-name">excep</tt><tt class="py-op">]</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">                 </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">            <tt class="py-comment"># Catch all    </tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">        <tt class="py-comment"># Unpack response into dict</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">hostInfoKw</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'aaURI'</tt><tt class="py-op">,</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">                      <tt class="py-string">'aaDN'</tt><tt class="py-op">,</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">                      <tt class="py-string">'loginURI'</tt><tt class="py-op">,</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">                      <tt class="py-string">'loginServerDN'</tt><tt class="py-op">,</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">                      <tt class="py-string">'loginRequestServerDN'</tt><tt class="py-op">]</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-name">hostInfoKw</tt><tt class="py-op">.</tt><tt class="py-name">reverse</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">        <tt id="link-86" class="py-name" targets="Variable ndg.security.server.AttAuthority.AttAuthority.hostInfo=ndg.security.server.AttAuthority.AttAuthority-class.html#hostInfo"><a title="ndg.security.server.AttAuthority.AttAuthority.hostInfo" class="py-name" href="#" onclick="return doclink('link-86', 'hostInfo', 'link-86');">hostInfo</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt id="link-87" class="py-name" targets="Method ndg.security.common.X509.X509Stack.pop()=ndg.security.common.X509.X509Stack-class.html#pop"><a title="ndg.security.common.X509.X509Stack.pop" class="py-name" href="#" onclick="return doclink('link-87', 'pop', 'link-87');">pop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> \ </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">                    <tt class="py-name">dict</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt id="link-88" class="py-name"><a title="ndg.security.common.X509.X509Stack.pop" class="py-name" href="#" onclick="return doclink('link-88', 'pop', 'link-87');">pop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">k</tt> <tt class="py-keyword">in</tt> <tt class="py-name">hostInfoKw</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">}</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-89" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.hostInfo" class="py-name" href="#" onclick="return doclink('link-89', 'hostInfo', 'link-86');">hostInfo</a></tt> </tt>
+</div><a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">                                     </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.getTrustedHostInfo"></a><div id="AttAuthorityClient.getTrustedHostInfo-def"><a name="L307"></a><tt class="py-lineno">307</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.getTrustedHostInfo-toggle" onclick="return toggle('AttAuthorityClient.getTrustedHostInfo');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getTrustedHostInfo">getTrustedHostInfo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">role</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.getTrustedHostInfo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.getTrustedHostInfo-expanded"><a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get list of trusted hosts for an Attribute Authority</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"><tt class="py-docstring">        @type role: string</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line"><tt class="py-docstring">        @param role: get information for trusted hosts that have a mapping to</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line"><tt class="py-docstring">        this role</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: dict</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line"><tt class="py-docstring">        @return: dictionary of host information indexed by hostname derived </tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line"><tt class="py-docstring">        from the map configuration"""</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">             </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line">            <tt class="py-name">trustedHosts</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.getTrustedHostInfo()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getTrustedHostInfo,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getTrustedHostInfo()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#getTrustedHostInfo,Method ndg.security.server.AttAuthority.AttAuthority.getTrustedHostInfo()=ndg.security.server.AttAuthority.AttAuthority-class.html#getTrustedHostInfo"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.getTrustedHostInfo
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getTrustedHostInfo
+ndg.security.server.AttAuthority.AttAuthority.getTrustedHostInfo" class="py-name" href="#" onclick="return doclink('link-90', 'getTrustedHostInfo', 'link-90');">getTrustedHostInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">role</tt><tt class="py-op">)</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">httplib</tt><tt class="py-op">.</tt><tt class="py-name">BadStatusLine</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-91" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-91', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"HTTP bad status line: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">            <tt class="py-comment"># Try to detect exception type from SOAP fault message</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">errMsg</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-92" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-92', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">errMsg</tt><tt class="py-op">:</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-93', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">[</tt><tt class="py-name">excep</tt><tt class="py-op">]</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">                 </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">            <tt class="py-comment"># Catch all    </tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line">        <tt class="py-comment"># Convert into dictionary form as used by AttAuthority class</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-94" class="py-name" targets="Variable ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.trustedHostInfo=ndg.security.common.CredWallet.CredWalletAttributeRequestDenied-class.html#trustedHostInfo"><a title="ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.trustedHostInfo" class="py-name" href="#" onclick="return doclink('link-94', 'trustedHostInfo', 'link-94');">trustedHostInfo</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">host</tt> <tt class="py-keyword">in</tt> <tt class="py-name">trustedHosts</tt><tt class="py-op">:</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line">            <tt class="py-name">hostname</tt> <tt class="py-op">=</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">get_element_hostname</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">             </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line">            <tt id="link-95" class="py-name"><a title="ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.trustedHostInfo" class="py-name" href="#" onclick="return doclink('link-95', 'trustedHostInfo', 'link-94');">trustedHostInfo</a></tt><tt class="py-op">[</tt><tt class="py-name">hostname</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">            <tt class="py-op">{</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">                <tt class="py-string">'aaURI'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">AaURI</tt><tt class="py-op">,</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">                <tt class="py-string">'aaDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">AaDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">                <tt class="py-string">'loginURI'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginURI</tt><tt class="py-op">,</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">                <tt class="py-string">'loginServerDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginServerDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">                <tt class="py-string">'loginRequestServerDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginRequestServerDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">                <tt class="py-string">'role'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">RoleList</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">             </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-96" class="py-name"><a title="ndg.security.common.CredWallet.CredWalletAttributeRequestDenied.trustedHostInfo" class="py-name" href="#" onclick="return doclink('link-96', 'trustedHostInfo', 'link-94');">trustedHostInfo</a></tt> </tt>
+</div><a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">                                     </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.getAllHostsInfo"></a><div id="AttAuthorityClient.getAllHostsInfo-def"><a name="L353"></a><tt class="py-lineno">353</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.getAllHostsInfo-toggle" onclick="return toggle('AttAuthorityClient.getAllHostsInfo');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getAllHostsInfo">getAllHostsInfo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.getAllHostsInfo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.getAllHostsInfo-expanded"><a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get list of all hosts for an Attribute Authority i.e. itself and</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">        all the hosts it trusts</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: dict</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-docstring">        @return: dictionary of host information indexed by hostname derived </tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"><tt class="py-docstring">        from the map configuration"""</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">             </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">            <tt class="py-name">hosts</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-97" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.getAllHostsInfo()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getAllHostsInfo,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getAllHostsInfo()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#getAllHostsInfo"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.getAllHostsInfo
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getAllHostsInfo" class="py-name" href="#" onclick="return doclink('link-97', 'getAllHostsInfo', 'link-97');">getAllHostsInfo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">httplib</tt><tt class="py-op">.</tt><tt class="py-name">BadStatusLine</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-98" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-98', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"HTTP bad status line: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line">            <tt class="py-comment"># Try to detect exception type from SOAP fault message</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">errMsg</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-99" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-99', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">errMsg</tt><tt class="py-op">:</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-100', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">[</tt><tt class="py-name">excep</tt><tt class="py-op">]</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line">                 </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">            <tt class="py-comment"># Catch all    </tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line"> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">        <tt class="py-comment"># Convert into dictionary form as used by AttAuthority class</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">allHostInfo</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">host</tt> <tt class="py-keyword">in</tt> <tt class="py-name">hosts</tt><tt class="py-op">:</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">            <tt class="py-name">hostname</tt> <tt class="py-op">=</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">Hostname</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">            <tt class="py-name">allHostInfo</tt><tt class="py-op">[</tt><tt class="py-name">hostname</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">            <tt class="py-op">{</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">                <tt class="py-string">'aaURI'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">AaURI</tt><tt class="py-op">,</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">                <tt class="py-string">'aaDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">AaDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">                <tt class="py-string">'loginURI'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginURI</tt><tt class="py-op">,</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">                <tt class="py-string">'loginServerDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginServerDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">                <tt class="py-string">'loginRequestServerDN'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">LoginRequestServerDN</tt><tt class="py-op">,</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">                <tt class="py-string">'role'</tt><tt class="py-op">:</tt> <tt class="py-name">host</tt><tt class="py-op">.</tt><tt class="py-name">RoleList</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">allHostInfo</tt>    </tt>
+</div><a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line"> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.getAttCert"></a><div id="AttAuthorityClient.getAttCert-def"><a name="L395"></a><tt class="py-lineno">395</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.getAttCert-toggle" onclick="return toggle('AttAuthorityClient.getAttCert');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getAttCert">getAttCert</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">userId</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">userCert</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">userAttCert</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.getAttCert-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.getAttCert-expanded"><a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">        <tt class="py-docstring">"""Request attribute certificate from NDG Attribute Authority Web </tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line"><tt class="py-docstring">        Service.</tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line"><tt class="py-docstring">        @type userId: string</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line"><tt class="py-docstring">        @param userId: DN of the X.509 certificate used in SOAP digital </tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line"><tt class="py-docstring">        signature corresponds to the *holder* of the Attribute Certificate</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line"><tt class="py-docstring">        that is issued.  Set this additional field to specify an alternate</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"><tt class="py-docstring">        user ID to associate with the AC.  This is useful in the case where,</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line"><tt class="py-docstring">        as in the DEWS project, the holder will be a server cert. rather than</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line"><tt class="py-docstring">        a user proxy cert.</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line"><tt class="py-docstring">        If this keword is omitted, userId in the AC will default to the same</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line"><tt class="py-docstring">        value as the holder DN.</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"><tt class="py-docstring">        @type userCert: string</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"><tt class="py-docstring">        @param userCert: certificate corresponding to proxy private key and</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"><tt class="py-docstring">        proxy cert used to sign the request.  Enables server to establish</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"><tt class="py-docstring">        chain of trust proxy -&gt; user cert -&gt; CA cert.  If a standard </tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line"><tt class="py-docstring">        private key is used to sign the request, this argument is not </tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"><tt class="py-docstring">        needed.</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line"><tt class="py-docstring">        @type userAttCert: string / AttCert</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line"><tt class="py-docstring">        @param userAttCert: user attribute certificate from which to make a </tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line"><tt class="py-docstring">        mapped certificate at the target attribute authority.  userAttCert</tt> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line"><tt class="py-docstring">        must have been issued from a trusted host to the target.  This is not </tt> </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line"><tt class="py-docstring">        necessary if the user is registered at the target Attribute Authority.</tt> </tt>
+<a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype ndg.security.common.AttCert.AttCert</tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line"><tt class="py-docstring">        @return attribute certificate for user.  iIf access is refused, </tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line"><tt class="py-docstring">        AttributeRequestDenied is raised"""</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line"> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line">        <tt class="py-comment"># Ensure cert is serialized before passing over web service interface</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">userAttCert</tt><tt class="py-op">,</tt> <tt id="link-101" class="py-name"><a title="ndg.security.common.AttCert
+ndg.security.common.AttCert.AttCert" class="py-name" href="#" onclick="return doclink('link-101', 'AttCert', 'link-12');">AttCert</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">            <tt class="py-name">userAttCert</tt> <tt class="py-op">=</tt> <tt class="py-name">userAttCert</tt><tt class="py-op">.</tt><tt id="link-102" class="py-name" targets="Method ndg.security.common.AttCert.AttCert.toString()=ndg.security.common.AttCert.AttCert-class.html#toString,Method ndg.security.common.X509.X509Cert.toString()=ndg.security.common.X509.X509Cert-class.html#toString,Method ndg.security.common.XMLSec.XMLSecDoc.toString()=ndg.security.common.XMLSec.XMLSecDoc-class.html#toString"><a title="ndg.security.common.AttCert.AttCert.toString
+ndg.security.common.X509.X509Cert.toString
+ndg.security.common.XMLSec.XMLSecDoc.toString" class="py-name" href="#" onclick="return doclink('link-102', 'toString', 'link-102');">toString</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line"> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">            <tt class="py-name">sAttCert</tt><tt class="py-op">,</tt> <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-103" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.getAttCert()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getAttCert,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getAttCert()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#getAttCert,Method ndg.security.common.CredWallet.CredWallet.getAttCert()=ndg.security.common.CredWallet.CredWallet-class.html#getAttCert,Method ndg.security.common.SessionMgr.SessionMgrClient.getAttCert()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#getAttCert,Method ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.getAttCert()=ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP-class.html#getAttCert,Method ndg.security.server.AttAuthority.AttAuthority.getAttCert()=ndg.security.server.AttAuthority.AttAuthority-class.html#getAttCert,Method ndg.security.server.SessionMgr.SessionMgr.getAttCert()=ndg.security.server.SessionMgr.SessionMgr-class.html#getAttCert"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.getAttCert
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getAttCert
+ndg.security.common.CredWallet.CredWallet.getAttCert
+ndg.security.common.SessionMgr.SessionMgrClient.getAttCert
+ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.getAttCert
+ndg.security.server.AttAuthority.AttAuthority.getAttCert
+ndg.security.server.SessionMgr.SessionMgr.getAttCert" class="py-name" href="#" onclick="return doclink('link-103', 'getAttCert', 'link-103');">getAttCert</a></tt><tt class="py-op">(</tt><tt id="link-104" class="py-name" targets="Variable ndg.security.common.AttCert.AttCert.userId=ndg.security.common.AttCert.AttCert-class.html#userId"><a title="ndg.security.common.AttCert.AttCert.userId" class="py-name" href="#" onclick="return doclink('link-104', 'userId', 'link-104');">userId</a></tt><tt class="py-op">,</tt><tt id="link-105" class="py-name" targets="Variable ndg.security.common.CredWallet.CredWallet.userCert=ndg.security.common.CredWallet.CredWallet-class.html#userCert"><a title="ndg.security.common.CredWallet.CredWallet.userCert" class="py-name" href="#" onclick="return doclink('link-105', 'userCert', 'link-105');">userCert</a></tt><tt class="py-op">,</tt><tt class="py-name">userAttCert</tt><tt class="py-op">)</tt>   </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">httplib</tt><tt class="py-op">.</tt><tt class="py-name">BadStatusLine</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-106" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-106', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">                <tt class="py-string">'Calling "%s" HTTP bad status line: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__uri</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line"> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">            <tt class="py-comment"># Try to detect exception type from SOAP fault message</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">errMsg</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-107" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-107', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">excep</tt> <tt class="py-keyword">in</tt> <tt class="py-name">errMsg</tt><tt class="py-op">:</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-108" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.excepMap
+ndg.security.common.SessionMgr.SessionMgrClient.excepMap" class="py-name" href="#" onclick="return doclink('link-108', 'excepMap', 'link-21');">excepMap</a></tt><tt class="py-op">[</tt><tt class="py-name">excep</tt><tt class="py-op">]</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line">                 </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">            <tt class="py-comment"># Catch all    </tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line">         </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">sAttCert</tt><tt class="py-op">:</tt> </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-109" class="py-name"><a title="ndg.security.common.AttCert.AttCertParse" class="py-name" href="#" onclick="return doclink('link-109', 'AttCertParse', 'link-14');">AttCertParse</a></tt><tt class="py-op">(</tt><tt class="py-name">sAttCert</tt><tt class="py-op">)</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-110" class="py-name" targets="Class ndg.security.common.AttAuthority.AttributeRequestDenied=ndg.security.common.AttAuthority.AttributeRequestDenied-class.html,Class ndg.security.common.SessionMgr.AttributeRequestDenied=ndg.security.common.SessionMgr.AttributeRequestDenied-class.html"><a title="ndg.security.common.AttAuthority.AttributeRequestDenied
+ndg.security.common.SessionMgr.AttributeRequestDenied" class="py-name" href="#" onclick="return doclink('link-110', 'AttributeRequestDenied', 'link-110');">AttributeRequestDenied</a></tt><tt class="py-op">,</tt> <tt class="py-name">msg</tt> </tt>
+</div><a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line"> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">                                     </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="AttAuthorityClient.getX509Cert"></a><div id="AttAuthorityClient.getX509Cert-def"><a name="L454"></a><tt class="py-lineno">454</tt> <a class="py-toggle" href="#" id="AttAuthorityClient.getX509Cert-toggle" onclick="return toggle('AttAuthorityClient.getX509Cert');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getX509Cert">getX509Cert</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttAuthorityClient.getX509Cert-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AttAuthorityClient.getX509Cert-expanded"><a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">        <tt class="py-docstring">"""Retrieve the X.509 certificate of the Attribute Authority</tt> </tt>
+<a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line"><tt class="py-docstring">        @return X.509 certificate for Attribute Authority"""</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line">         </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__srv</tt><tt class="py-op">.</tt><tt id="link-111" class="py-name" targets="Method ndg.security.common.AttAuthority.AttAuthorityClient.getX509Cert()=ndg.security.common.AttAuthority.AttAuthorityClient-class.html#getX509Cert,Method ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getX509Cert()=ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP-class.html#getX509Cert,Method ndg.security.common.SessionMgr.SessionMgrClient.getX509Cert()=ndg.security.common.SessionMgr.SessionMgrClient-class.html#getX509Cert,Method ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.getX509Cert()=ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP-class.html#getX509Cert"><a title="ndg.security.common.AttAuthority.AttAuthorityClient.getX509Cert
+ndg.security.common.AttAuthority.AttAuthority_services.AttAuthorityBindingSOAP.getX509Cert
+ndg.security.common.SessionMgr.SessionMgrClient.getX509Cert
+ndg.security.common.SessionMgr.SessionMgr_services.SessionMgrBindingSOAP.getX509Cert" class="py-name" href="#" onclick="return doclink('link-111', 'getX509Cert', 'link-111');">getX509Cert</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt>                 </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">httplib</tt><tt class="py-op">.</tt><tt class="py-name">BadStatusLine</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-112" class="py-name"><a title="ndg.security.common.AttAuthority.AttAuthorityClientError" class="py-name" href="#" onclick="return doclink('link-112', 'AttAuthorityClientError', 'link-39');">AttAuthorityClientError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"HTTP bad status line: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+</div></div><a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:58 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

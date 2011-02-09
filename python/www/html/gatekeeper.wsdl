@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<definitions name="gatekeeper"
+  targetNamespace="http://wsdl2py.client.pycon.org/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:tns="http://wsdl2py.client.pycon.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="readAccessRequest">
+    <part name="attCert" type="xsd:string"/>
+  </message>
+
+  <message name="readAccessResponse">
+    <part name="matchingRole" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  <message name="writeAccessRequest">
+    <part name="attCert" type="xsd:string"/>
+  </message>
+
+  <message name="writeAccessResponse">
+    <part name="matchingRole" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+
+  <message name="executeAccessRequest">
+    <part name="attCert" type="xsd:string"/>
+  </message>
+
+  <message name="executeAccessResponse">
+    <part name="matchingRole" type="xsd:string"/>
+    <part name="errMsg" type="xsd:string"/>
+  </message>
+ 
+  <portType name="gatekeeper">
+    <operation name="readAccess">
+      <input message="tns:readAccessRequest"/>
+      <output message="tns:readAccessResponse"/>
+    </operation>
+    
+    <operation name="writeAccess">
+      <input message="tns:writeAccessRequest"/>
+      <output message="tns:writeAccessResponse"/>
+    </operation>
+    
+    <operation name="executeAccess">
+      <input message="tns:executeAccessRequest"/>
+      <output message="tns:executeAccessResponse"/>
+    </operation>
+
+  </portType>
+
+  <binding name="gatekeeperBinding" type="tns:gatekeeper">
+    <soap:binding style="rpc" 
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+                      
+    <operation name="readAccess">
+      <soap:operation soapAction="urn:gatekeeper#readAccess"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </output> 
+    </operation>
+    
+    <operation name="writeAccess">
+      <soap:operation soapAction="urn:gatekeeper#writeAccess"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </output> 
+    </operation>
+    
+    <operation name="executeAccess">
+      <soap:operation soapAction="urn:gatekeeper#executeAccess"/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="urn:gatekeeper" use="encoded"/>
+      </output> 
+    </operation>
+  </binding>
+
+  <service name="gatekeeperService">
+    <documentation>NDG Gatekeeper Web Service</documentation>
+    <port name="gatekeeper" binding="tns:gatekeeperBinding">
+      <soap:address location="http://localhost:5200"/>
+    </port>
+  </service>
+</definitions>

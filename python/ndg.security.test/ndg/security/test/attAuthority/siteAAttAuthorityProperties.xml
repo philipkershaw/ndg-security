@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAprop>
+    <name>Site A</name>
+    <portNum>5000</portNum>
+    <useSSL></useSSL> <!-- leave blank to use http -->
+    <sslCertFile>$NDGSEC_AACLNT_UNITTEST_DIR/siteA-aa.crt</sslCertFile>
+    <sslKeyFile>$NDGSEC_AACLNT_UNITTEST_DIR/siteA-aa.key</sslKeyFile>
+    <sslKeyPwd></sslKeyPwd>
+    <!-- 
+    Directory containing CA cert.s to verify SSL peer cert against 
+     - ignored if useSSL is blank
+    -->
+    <sslCACertDir>$NDGSEC_AACLNT_UNITTEST_DIR/ca</sslCACertDir>
+    <!-- 
+	WS-Security settings leave 'useSignatureHandler' blank for no 
+	signature 
+	-->
+    <useSignatureHandler>Yes</useSignatureHandler> 
+    <certFile>$NDGSEC_AACLNT_UNITTEST_DIR/siteA-aa.crt</certFile>
+    <keyFile>$NDGSEC_AACLNT_UNITTEST_DIR/siteA-aa.key</keyFile>
+    <keyPwd></keyPwd>
+	<wssRefInclNS></wssRefInclNS>
+	<wssSignedInfoInclNS></wssSignedInfoInclNS>
+    <caCertFileList>
+        <caCertFile>$NDGSEC_AACLNT_UNITTEST_DIR/ca/ndg-test-ca.crt</caCertFile>
+        <!-- 
+        To also trust certificates issued from your MyProxy CA, replace 
+        "abcdef01.0" with the unique name for your CA certificate and uncomment
+        the following line:
+        <caCertFile>/etc/grid-security/certificates/abcdef01.0</caCertFile>
+        -->
+    </caCertFileList>
+    <!-- 
+    Set the certificate used to verify the signature of messages from the 
+    client.  This can usually be left blank since the client is expected to 
+    include the cert with the signature in the inbound SOAP message
+    -->
+    <clntCertFile></clntCertFile>    
+    <attCertLifetime>28800</attCertLifetime>
+    <attCertNotBeforeOff>0</attCertNotBeforeOff>
+    <attCertFileName>ac.xml</attCertFileName>
+    <attCertFileLogCnt>16</attCertFileLogCnt>
+    <mapConfigFile>$NDGSEC_AACLNT_UNITTEST_DIR/siteAMapConfig.xml</mapConfigFile>
+    <attCertDir>$NDGSEC_AACLNT_UNITTEST_DIR/attCertLog</attCertDir>
+    <dnSeparator>/</dnSeparator>
+    <userRolesModFilePath>$NDGSEC_AACLNT_UNITTEST_DIR</userRolesModFilePath>
+    <userRolesModName>siteAUserRoles</userRolesModName>
+    <userRolesClassName>TestUserRoles</userRolesClassName>
+    <userRolesPropFile></userRolesPropFile>
+</AAprop>

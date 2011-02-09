@@ -1,0 +1,8 @@
+Client Web Service stubs AttAuthority_services.py and 
+AttAuthority_services_types.py generated with,
+
+$ wsdl2py -be -f ../../../../../www/html/attAuthority.wsdl
+
+Run make to execute this command:
+
+$ make

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.SQLObject</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        Module&nbsp;SQLObject
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ndg.security.common.SQLObject-module.html">Module ndg.security.common.SQLObject</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""SQLObject Object Relational Mapper database interface for NDG Security</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">CredentialRepository</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">NERC Data Grid Project</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P J Kershaw"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-name">__date__</tt> <tt class="py-op">=</tt> <tt class="py-string">"03/10/06"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt> <tt class="py-op">=</tt> <tt class="py-string">"(C) 2007 STFC &amp; NERC"</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-string">"""This software may be distributed under the terms of the Q Public </tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-string">License, version 1.0 or later."""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-name">__contact__</tt> <tt class="py-op">=</tt> <tt class="py-string">"P.J.Kershaw@rl.ac.uk"</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ndg.__revision__=ndg-module.html#__revision__,Variable ndg.security.__revision__=ndg.security-module.html#__revision__,Variable ndg.security.client.LogClient.__revision__=ndg.security.client.LogClient-module.html#__revision__,Variable ndg.security.client.SimpleCAClient.__revision__=ndg.security.client.SimpleCAClient-module.html#__revision__,Variable ndg.security.client.__revision__=ndg.security.client-module.html#__revision__,Variable ndg.security.client.ndgSessionClient.__revision__=ndg.security.client.ndgSessionClient-module.html#__revision__,Variable ndg.security.common.AttAuthority.__revision__=ndg.security.common.AttAuthority-module.html#__revision__,Variable ndg.security.common.AttCert.__revision__=ndg.security.common.AttCert-module.html#__revision__,Variable ndg.security.common.CredWallet.__revision__=ndg.security.common.CredWallet-module.html#__revision__,Variable ndg.security.common.SQLObject.__revision__=ndg.security.common.SQLObject-module.html#__revision__,Variable ndg.security.common.SecurityCGI.__revision__=ndg.security.common.SecurityCGI-module.html#__revision__,Variable ndg.security.common.SessionCookie.__revision__=ndg.security.common.SessionCookie-module.html#__revision__,Variable ndg.security.common.SessionMgr.__revision__=ndg.security.common.SessionMgr-module.html#__revision__,Variable ndg.security.common.X509.__revision__=ndg.security.common.X509-module.html#__revision__,Variable ndg.security.common.XMLSec.__revision__=ndg.security.common.XMLSec-module.html#__revision__,Variable ndg.security.common.__revision__=ndg.security.common-module.html#__revision__,Variable ndg.security.common.ca.__revision__=ndg.security.common.ca-module.html#__revision__,Variable ndg.security.common.gatekeeper.__revision__=ndg.security.common.gatekeeper-module.html#__revision__,Variable ndg.security.common.logService.__revision__=ndg.security.common.logService-module.html#__revision__,Variable ndg.security.common.logService.log_services_server.__revision__=ndg.security.common.logService.log_services_server-module.html#__revision__,Variable ndg.security.common.m2CryptoSSLUtility.__revision__=ndg.security.common.m2CryptoSSLUtility-module.html#__revision__,Variable ndg.security.common.openssl.__revision__=ndg.security.common.openssl-module.html#__revision__,Variable ndg.security.common.sessionCookie.__revision__=ndg.security.common.sessionCookie-module.html#__revision__,Variable ndg.security.common.wsSecurity.__revision__=ndg.security.common.wsSecurity-module.html#__revision__,Variable ndg.security.server.AttAuthority.__revision__=ndg.security.server.AttAuthority-module.html#__revision__,Variable ndg.security.server.Log.__revision__=ndg.security.server.Log-module.html#__revision__,Variable ndg.security.server.MyProxy.__revision__=ndg.security.server.MyProxy-module.html#__revision__,Variable ndg.security.server.SessionMgr.__revision__=ndg.security.server.SessionMgr-module.html#__revision__,Variable ndg.security.server.__revision__=ndg.security.server-module.html#__revision__,Variable ndg.security.server.ca.__revision__=ndg.security.server.ca-module.html#__revision__,Variable ndg.security.server.conf.__revision__=ndg.security.server.conf-module.html#__revision__,Variable ndg.security.server.conf.attCertLog.__revision__=ndg.security.server.conf.attCertLog-module.html#__revision__,Variable ndg.security.server.conf.certs.__revision__=ndg.security.server.conf.certs-module.html#__revision__,Variable ndg.security.server.conf.certs.ca.__revision__=ndg.security.server.conf.certs.ca-module.html#__revision__,Variable ndg.security.server.conf.userRoles.__revision__=ndg.security.server.conf.userRoles-module.html#__revision__,Variable ndg.security.server.initCredReposDb.__revision__=ndg.security.server.initCredReposDb-module.html#__revision__,Variable ndg.security.server.log.__revision__=ndg.security.server.log-module.html#__revision__,Variable ndg.security.server.share.__revision__=ndg.security.server.share-module.html#__revision__,Variable ndg.security.server.twisted.__revision__=ndg.security.server.twisted-module.html#__revision__,Variable ndg.security.test.Log.LogTest.__revision__=ndg.security.test.Log.LogTest-module.html#__revision__,Variable ndg.security.test.Log.__revision__=ndg.security.test.Log-module.html#__revision__,Variable ndg.security.test.SecurityCGItest.__revision__=ndg.security.test.SecurityCGItest-module.html#__revision__,Variable ndg.security.test.X509.X509Test.__revision__=ndg.security.test.X509.X509Test-module.html#__revision__,Variable ndg.security.test.X509.__revision__=ndg.security.test.X509-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.__revision__=ndg.security.test.XMLSecDoc-module.html#__revision__,Variable ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__=ndg.security.test.XMLSecDoc.xmlSecDocTest-module.html#__revision__,Variable ndg.security.test.__revision__=ndg.security.test-module.html#__revision__,Variable ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__=ndg.security.test.attAuthority.AttAuthorityClientTest-module.html#__revision__,Variable ndg.security.test.attAuthority.__revision__=ndg.security.test.attAuthority-module.html#__revision__,Variable ndg.security.test.attAuthority.attCertLog.__revision__=ndg.security.test.attAuthority.attCertLog-module.html#__revision__,Variable ndg.security.test.attAuthority.ca.__revision__=ndg.security.test.attAuthority.ca-module.html#__revision__,Variable ndg.security.test.attAuthority.siteAUserRoles.__revision__=ndg.security.test.attAuthority.siteAUserRoles-module.html#__revision__,Variable ndg.security.test.attAuthority.siteBUserRoles.__revision__=ndg.security.test.attAuthority.siteBUserRoles-module.html#__revision__,Variable ndg.security.test.attCert.AttCertTest.__revision__=ndg.security.test.attCert.AttCertTest-module.html#__revision__,Variable ndg.security.test.attCert.__revision__=ndg.security.test.attCert-module.html#__revision__,Variable ndg.security.test.ca.__revision__=ndg.security.test.ca-module.html#__revision__,Variable ndg.security.test.ca.caClientTest.__revision__=ndg.security.test.ca.caClientTest-module.html#__revision__,Variable ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__=ndg.security.test.gatekeeper.TestGatekeeperResrc-module.html#__revision__,Variable ndg.security.test.gatekeeper.__revision__=ndg.security.test.gatekeeper-module.html#__revision__,Variable ndg.security.test.myProxy.MyProxyClientTest.__revision__=ndg.security.test.myProxy.MyProxyClientTest-module.html#__revision__,Variable ndg.security.test.myProxy.__revision__=ndg.security.test.myProxy-module.html#__revision__,Variable ndg.security.test.sessionCookie.SessionCookieTest.__revision__=ndg.security.test.sessionCookie.SessionCookieTest-module.html#__revision__,Variable ndg.security.test.sessionCookie.__revision__=ndg.security.test.sessionCookie-module.html#__revision__,Variable ndg.security.test.sessionMgr.__revision__=ndg.security.test.sessionMgr-module.html#__revision__,Variable ndg.security.test.sessionMgr.ca.__revision__=ndg.security.test.sessionMgr.ca-module.html#__revision__,Variable ndg.security.test.sessionMgr.test.__revision__=ndg.security.test.sessionMgr.test-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__=ndg.security.test.sessionMgrClient.SessionMgrClientTest-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.__revision__=ndg.security.test.sessionMgrClient-module.html#__revision__,Variable ndg.security.test.sessionMgrClient.ca.__revision__=ndg.security.test.sessionMgrClient.ca-module.html#__revision__,Variable ndg.security.test.wsSecurity.__revision__=ndg.security.test.wsSecurity-module.html#__revision__,Variable ndg.security.test.wsSecurity.client.__revision__=ndg.security.test.wsSecurity.client-module.html#__revision__,Variable ndg.security.test.wsSecurity.server.__revision__=ndg.security.test.wsSecurity.server-module.html#__revision__"><a title="ndg.__revision__
+ndg.security.__revision__
+ndg.security.client.LogClient.__revision__
+ndg.security.client.SimpleCAClient.__revision__
+ndg.security.client.__revision__
+ndg.security.client.ndgSessionClient.__revision__
+ndg.security.common.AttAuthority.__revision__
+ndg.security.common.AttCert.__revision__
+ndg.security.common.CredWallet.__revision__
+ndg.security.common.SQLObject.__revision__
+ndg.security.common.SecurityCGI.__revision__
+ndg.security.common.SessionCookie.__revision__
+ndg.security.common.SessionMgr.__revision__
+ndg.security.common.X509.__revision__
+ndg.security.common.XMLSec.__revision__
+ndg.security.common.__revision__
+ndg.security.common.ca.__revision__
+ndg.security.common.gatekeeper.__revision__
+ndg.security.common.logService.__revision__
+ndg.security.common.logService.log_services_server.__revision__
+ndg.security.common.m2CryptoSSLUtility.__revision__
+ndg.security.common.openssl.__revision__
+ndg.security.common.sessionCookie.__revision__
+ndg.security.common.wsSecurity.__revision__
+ndg.security.server.AttAuthority.__revision__
+ndg.security.server.Log.__revision__
+ndg.security.server.MyProxy.__revision__
+ndg.security.server.SessionMgr.__revision__
+ndg.security.server.__revision__
+ndg.security.server.ca.__revision__
+ndg.security.server.conf.__revision__
+ndg.security.server.conf.attCertLog.__revision__
+ndg.security.server.conf.certs.__revision__
+ndg.security.server.conf.certs.ca.__revision__
+ndg.security.server.conf.userRoles.__revision__
+ndg.security.server.initCredReposDb.__revision__
+ndg.security.server.log.__revision__
+ndg.security.server.share.__revision__
+ndg.security.server.twisted.__revision__
+ndg.security.test.Log.LogTest.__revision__
+ndg.security.test.Log.__revision__
+ndg.security.test.SecurityCGItest.__revision__
+ndg.security.test.X509.X509Test.__revision__
+ndg.security.test.X509.__revision__
+ndg.security.test.XMLSecDoc.__revision__
+ndg.security.test.XMLSecDoc.xmlSecDocTest.__revision__
+ndg.security.test.__revision__
+ndg.security.test.attAuthority.AttAuthorityClientTest.__revision__
+ndg.security.test.attAuthority.__revision__
+ndg.security.test.attAuthority.attCertLog.__revision__
+ndg.security.test.attAuthority.ca.__revision__
+ndg.security.test.attAuthority.siteAUserRoles.__revision__
+ndg.security.test.attAuthority.siteBUserRoles.__revision__
+ndg.security.test.attCert.AttCertTest.__revision__
+ndg.security.test.attCert.__revision__
+ndg.security.test.ca.__revision__
+ndg.security.test.ca.caClientTest.__revision__
+ndg.security.test.gatekeeper.TestGatekeeperResrc.__revision__
+ndg.security.test.gatekeeper.__revision__
+ndg.security.test.myProxy.MyProxyClientTest.__revision__
+ndg.security.test.myProxy.__revision__
+ndg.security.test.sessionCookie.SessionCookieTest.__revision__
+ndg.security.test.sessionCookie.__revision__
+ndg.security.test.sessionMgr.__revision__
+ndg.security.test.sessionMgr.ca.__revision__
+ndg.security.test.sessionMgr.test.__revision__
+ndg.security.test.sessionMgrClient.SessionMgrClientTest.__revision__
+ndg.security.test.sessionMgrClient.__revision__
+ndg.security.test.sessionMgrClient.ca.__revision__
+ndg.security.test.wsSecurity.__revision__
+ndg.security.test.wsSecurity.client.__revision__
+ndg.security.test.wsSecurity.server.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'$Id: SQLObject.py 2909 2007-09-28 14:22:21Z pjkersha $'</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># SQLObject Database interface</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt class="py-name">sqlobject</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># For parsing of properties files</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment"># For parsing of properties file</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">try</tt><tt class="py-op">:</tt> <tt class="py-comment"># python 2.5</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">etree</tt> <tt class="py-keyword">import</tt> <tt class="py-name">cElementTree</tt> <tt class="py-keyword">as</tt> <tt class="py-name">ElementTree</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-comment"># if you've installed it yourself it comes this way</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">import</tt> <tt class="py-name">cElementTree</tt> <tt class="py-keyword">as</tt> <tt class="py-name">ElementTree</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module ndg.security.common.CredWallet=ndg.security.common.CredWallet-module.html,Class ndg.security.common.CredWallet.CredWallet=ndg.security.common.CredWallet.CredWallet-class.html"><a title="ndg.security.common.CredWallet
+ndg.security.common.CredWallet.CredWallet" class="py-name" href="#" onclick="return doclink('link-1', 'CredWallet', 'link-1');">CredWallet</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class ndg.security.common.CredWallet.CredRepos=ndg.security.common.CredWallet.CredRepos-class.html,Class ndg.security.common.SQLObject.CredRepos=ndg.security.common.SQLObject.CredRepos-class.html"><a title="ndg.security.common.CredWallet.CredRepos
+ndg.security.common.SQLObject.CredRepos" class="py-name" href="#" onclick="return doclink('link-2', 'CredRepos', 'link-2');">CredRepos</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">CredReposBase</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="ndg.security.common.CredWallet
+ndg.security.common.CredWallet.CredWallet" class="py-name" href="#" onclick="return doclink('link-3', 'CredWallet', 'link-1');">CredWallet</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class ndg.security.common.CredWallet.CredReposError=ndg.security.common.CredWallet.CredReposError-class.html"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-4', 'CredReposError', 'link-4');">CredReposError</a></tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-comment">#_____________________________________________________________________________</tt> </tt>
+<a name="CredRepos"></a><div id="CredRepos-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="CredRepos-toggle" onclick="return toggle('CredRepos');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html">CredRepos</a><tt class="py-op">(</tt><tt class="py-base-class">CredReposBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CredRepos-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-docstring">"""Interface to Credential Repository Database</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    Nb. inherits from CredWallet.CredRepos to ensure correct interface</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">    to the wallet"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-comment"># valid configuration property keywords</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt id="link-5" class="py-name" targets="Variable ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#__validKeys,Variable ndg.security.common.SQLObject.CredRepos.__validKeys=ndg.security.common.SQLObject.CredRepos-class.html#__validKeys,Variable ndg.security.common.gatekeeper.Gatekeeper.__validKeys=ndg.security.common.gatekeeper.Gatekeeper-class.html#__validKeys,Variable ndg.security.server.AttAuthority.AttAuthority.__validKeys=ndg.security.server.AttAuthority.AttAuthority-class.html#__validKeys,Variable ndg.security.server.MyProxy.MyProxyClient.__validKeys=ndg.security.server.MyProxy.MyProxyClient-class.html#__validKeys,Variable ndg.security.server.ca.SimpleCA.__validKeys=ndg.security.server.ca.SimpleCA-class.html#__validKeys"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys
+ndg.security.common.SQLObject.CredRepos.__validKeys
+ndg.security.common.gatekeeper.Gatekeeper.__validKeys
+ndg.security.server.AttAuthority.AttAuthority.__validKeys
+ndg.security.server.MyProxy.MyProxyClient.__validKeys
+ndg.security.server.ca.SimpleCA.__validKeys" class="py-name" href="#" onclick="return doclink('link-5', '__validKeys', 'link-5');">__validKeys</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'dbURI'</tt><tt class="py-op">]</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">     </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">     </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.__init__"></a><div id="CredRepos.__init__-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="CredRepos.__init__-toggle" onclick="return toggle('CredRepos.__init__');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">propFilePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">prop</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.__init__-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-docstring">"""Initialise Credentials Repository Database object.</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">        If the connection string or properties file is set a connection</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">        will be made</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        dbURI:              &lt;db type&gt;://&lt;username&gt;:&lt;passwd&gt;@&lt;hostname&gt;/dbname</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath: file path to properties file</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        Nb. propFilePath setting overrides input dbURI</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">             </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__con</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-6" class="py-name" targets="Variable ndg.security.server.AttAuthority.AttAuthority.propFilePath=ndg.security.server.AttAuthority.AttAuthority-class.html#propFilePath,Variable ndg.security.server.SessionMgr.SessionMgr.propFilePath=ndg.security.server.SessionMgr.SessionMgr-class.html#propFilePath,Variable ndg.security.server.ca.SimpleCA.propFilePath=ndg.security.server.ca.SimpleCA-class.html#propFilePath"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-6', 'propFilePath', 'link-6');">propFilePath</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">             </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-comment"># Read database URI set in file</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.readProperties()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#readProperties,Method ndg.security.common.SQLObject.CredRepos.readProperties()=ndg.security.common.SQLObject.CredRepos-class.html#readProperties,Method ndg.security.common.gatekeeper.Gatekeeper.readProperties()=ndg.security.common.gatekeeper.Gatekeeper-class.html#readProperties,Method ndg.security.server.AttAuthority.AttAuthority.readProperties()=ndg.security.server.AttAuthority.AttAuthority-class.html#readProperties,Method ndg.security.server.MyProxy.MyProxyClient.readProperties()=ndg.security.server.MyProxy.MyProxyClient-class.html#readProperties,Method ndg.security.server.SessionMgr.SessionMgr.readProperties()=ndg.security.server.SessionMgr.SessionMgr-class.html#readProperties,Method ndg.security.server.ca.SimpleCA.readProperties()=ndg.security.server.ca.SimpleCA-class.html#readProperties"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.readProperties
+ndg.security.common.SQLObject.CredRepos.readProperties
+ndg.security.common.gatekeeper.Gatekeeper.readProperties
+ndg.security.server.AttAuthority.AttAuthority.readProperties
+ndg.security.server.MyProxy.MyProxyClient.readProperties
+ndg.security.server.SessionMgr.SessionMgr.readProperties
+ndg.security.server.ca.SimpleCA.readProperties" class="py-name" href="#" onclick="return doclink('link-7', 'readProperties', 'link-7');">readProperties</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-8', 'propFilePath', 'link-6');">propFilePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">             </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">prop</tt> <tt class="py-op">!=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">             </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-comment"># Database URI may have been set as an input keyword argument</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#setProperties,Method ndg.security.common.SQLObject.CredRepos.setProperties()=ndg.security.common.SQLObject.CredRepos-class.html#setProperties,Method ndg.security.server.MyProxy.MyProxyClient.setProperties()=ndg.security.server.MyProxy.MyProxyClient-class.html#setProperties,Method ndg.security.server.SessionMgr.SessionMgr.setProperties()=ndg.security.server.SessionMgr.SessionMgr-class.html#setProperties,Method ndg.security.server.ca.SimpleCA.setProperties()=ndg.security.server.ca.SimpleCA-class.html#setProperties"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties
+ndg.security.common.SQLObject.CredRepos.setProperties
+ndg.security.server.MyProxy.MyProxyClient.setProperties
+ndg.security.server.SessionMgr.SessionMgr.setProperties
+ndg.security.server.ca.SimpleCA.setProperties" class="py-name" href="#" onclick="return doclink('link-9', 'setProperties', 'link-9');">setProperties</a></tt><tt class="py-op">(</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.__setConnection"></a><div id="CredRepos.__setConnection-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="CredRepos.__setConnection-toggle" onclick="return toggle('CredRepos.__setConnection');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#__setConnection">__setConnection</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                        <tt class="py-param">dbType</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                        <tt class="py-param">dbUserName</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                        <tt class="py-param">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                        <tt class="py-param">dbHostname</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                        <tt class="py-param">dbName</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                        <tt class="py-param">dbURI</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                        <tt class="py-param">chkConnection</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.__setConnection-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.__setConnection-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-docstring">"""Establish a database connection from a database URI</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        pass a URI OR the parameters to construct the URI</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">            </tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">        dbURI: "&lt;db type&gt;://&lt;username&gt;:&lt;passwd&gt;:&lt;hostname&gt;/dbname"</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        or</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        dbURI: "&lt;db type&gt;://&lt;username&gt;:%PPHRASE%:&lt;hostname&gt;/dbname"</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">        + passPhrase</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        - %PPHRASE% is substituted with the input passPhrase keyword</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">        or</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">        dbType:         database type e.g. 'mysql'</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">        dbUserName:     username</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        dbPPhrase:      pass-phrase</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        dbHostname:     name of host where database resides</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        dbName:         name of the database</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        chkConnection:  check that the URI is able to connect to the </tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">dbURI</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                <tt class="py-comment"># Check for pass-phrase variable set in URI '%PPHRASE%'</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">dbURIspl</tt> <tt class="py-op">=</tt> <tt class="py-name">dbURI</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'%'</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">dbURIspl</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                     </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">dbPPhrase</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt id="link-10" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-10', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"No database pass-phrase set"</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                     </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                    <tt class="py-name">dbURI</tt> <tt class="py-op">=</tt> <tt class="py-name">dbURIspl</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-name">dbPPhrase</tt> <tt class="py-op">+</tt> <tt class="py-name">dbURIspl</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                 </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-comment"># Construct URI from individual inputs</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">dbURI</tt> <tt class="py-op">=</tt> <tt class="py-name">dbType</tt> <tt class="py-op">+</tt> <tt class="py-string">'://'</tt> <tt class="py-op">+</tt> <tt class="py-name">dbUserName</tt> <tt class="py-op">+</tt> <tt class="py-string">':'</tt> <tt class="py-op">+</tt> <tt class="py-name">dbPPhrase</tt> <tt class="py-op">+</tt> \ </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                        <tt class="py-string">':'</tt> <tt class="py-op">+</tt> <tt class="py-name">dbHostname</tt> <tt class="py-op">+</tt> <tt class="py-string">'/'</tt> <tt class="py-op">+</tt> <tt class="py-name">dbName</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-comment"># Checking form missing keywords</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">raise</tt> <tt id="link-11" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-11', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Error creating database URI: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__con</tt> <tt class="py-op">=</tt> <tt class="py-name">connectionForURI</tt><tt class="py-op">(</tt><tt class="py-name">dbURI</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-12" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-12', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Error creating database connection: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">chkConnection</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__con</tt><tt class="py-op">.</tt><tt class="py-name">makeConnection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                 </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-13" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-13', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                        <tt class="py-string">"Error connecting to Credential Repository: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">             </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-comment"># Copy the connection object into the table classes</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-14" class="py-name"><a title="ndg.security.common.CredWallet.CredRepos
+ndg.security.common.SQLObject.CredRepos" class="py-name" href="#" onclick="return doclink('link-14', 'CredRepos', 'link-2');">CredRepos</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Class ndg.security.common.SQLObject.CredRepos.UserID=ndg.security.common.SQLObject.CredRepos.UserID-class.html"><a title="ndg.security.common.SQLObject.CredRepos.UserID" class="py-name" href="#" onclick="return doclink('link-15', 'UserID', 'link-15');">UserID</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Variable ndg.security.common.SQLObject.CredRepos.UserCredential._connection=ndg.security.common.SQLObject.CredRepos.UserCredential-class.html#_connection,Variable ndg.security.common.SQLObject.CredRepos.UserID._connection=ndg.security.common.SQLObject.CredRepos.UserID-class.html#_connection"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._connection
+ndg.security.common.SQLObject.CredRepos.UserID._connection" class="py-name" href="#" onclick="return doclink('link-16', '_connection', 'link-16');">_connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__con</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt id="link-17" class="py-name"><a title="ndg.security.common.CredWallet.CredRepos
+ndg.security.common.SQLObject.CredRepos" class="py-name" href="#" onclick="return doclink('link-17', 'CredRepos', 'link-2');">CredRepos</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Class ndg.security.common.SQLObject.CredRepos.UserCredential=ndg.security.common.SQLObject.CredRepos.UserCredential-class.html"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-18', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._connection
+ndg.security.common.SQLObject.CredRepos.UserID._connection" class="py-name" href="#" onclick="return doclink('link-19', '_connection', 'link-16');">_connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__con</tt> </tt>
+</div><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">           </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.setProperties"></a><div id="CredRepos.setProperties-def"><a name="L142"></a><tt class="py-lineno">142</tt> <a class="py-toggle" href="#" id="CredRepos.setProperties-toggle" onclick="return toggle('CredRepos.setProperties');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#setProperties">setProperties</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">prop</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.setProperties-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.setProperties-expanded"><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-docstring">"""Update existing properties from an input dictionary</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">        Check input keys are valid names"""</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">         </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">prop</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method ndg.security.client.SimpleCAClient.SimpleCAClient.keys()=ndg.security.client.SimpleCAClient.SimpleCAClient-class.html#keys,Method ndg.security.common.AttCert.AttCert.keys()=ndg.security.common.AttCert.AttCert-class.html#keys,Method ndg.security.common.X509.X500DN.keys()=ndg.security.common.X509.X500DN-class.html#keys,Method ndg.security.server.AttAuthority.AttAuthority.keys()=ndg.security.server.AttAuthority.AttAuthority-class.html#keys,Method ndg.security.server.SessionMgr.SessionMgr.keys()=ndg.security.server.SessionMgr.SessionMgr-class.html#keys,Method ndg.security.server.ca.SimpleCA.keys()=ndg.security.server.ca.SimpleCA-class.html#keys"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.keys
+ndg.security.common.AttCert.AttCert.keys
+ndg.security.common.X509.X500DN.keys
+ndg.security.server.AttAuthority.AttAuthority.keys
+ndg.security.server.SessionMgr.SessionMgr.keys
+ndg.security.server.ca.SimpleCA.keys" class="py-name" href="#" onclick="return doclink('link-20', 'keys', 'link-20');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">key</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.__validKeys
+ndg.security.common.SQLObject.CredRepos.__validKeys
+ndg.security.common.gatekeeper.Gatekeeper.__validKeys
+ndg.security.server.AttAuthority.AttAuthority.__validKeys
+ndg.security.server.MyProxy.MyProxyClient.__validKeys
+ndg.security.server.ca.SimpleCA.__validKeys" class="py-name" href="#" onclick="return doclink('link-21', '__validKeys', 'link-5');">__validKeys</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-22" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-22', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Property name \"%s\" is invalid"</tt> <tt class="py-op">%</tt> <tt class="py-name">key</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                 </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__prop</tt><tt class="py-op">.</tt><tt class="py-name">update</tt><tt class="py-op">(</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-comment"># Update connection setting</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-string">'dbURI'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">prop</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method ndg.security.common.SQLObject.CredRepos.__setConnection()=ndg.security.common.SQLObject.CredRepos-class.html#__setConnection"><a title="ndg.security.common.SQLObject.CredRepos.__setConnection" class="py-name" href="#" onclick="return doclink('link-23', '__setConnection', 'link-23');">__setConnection</a></tt><tt class="py-op">(</tt><tt class="py-name">dbURI</tt><tt class="py-op">=</tt><tt class="py-name">prop</tt><tt class="py-op">[</tt><tt class="py-string">'dbURI'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.readProperties"></a><div id="CredRepos.readProperties-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="CredRepos.readProperties-toggle" onclick="return toggle('CredRepos.readProperties');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#readProperties">readProperties</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                       <tt class="py-param">propFilePath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                       <tt class="py-param">propElem</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                       <tt class="py-param">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.readProperties-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.readProperties-expanded"><a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-docstring">"""Read the configuration properties for the CredentialRepository</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath|propElem</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">        propFilePath: set to read from the specified file</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">        propElem:     set to read beginning from a cElementTree node"""</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-24" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-24', 'propFilePath', 'link-6');">propFilePath</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt class="py-name">ElementTree</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method ndg.security.common.AttCert.AttCert.parse()=ndg.security.common.AttCert.AttCert-class.html#parse,Method ndg.security.common.SessionCookie.SessionCookie.parse()=ndg.security.common.SessionCookie.SessionCookie-class.html#parse,Method ndg.security.common.X509.X509Cert.parse()=ndg.security.common.X509.X509Cert-class.html#parse,Method ndg.security.common.XMLSec.XMLSecDoc.parse()=ndg.security.common.XMLSec.XMLSecDoc-class.html#parse,Method ndg.security.common.gatekeeper.SecurityConfig.parse()=ndg.security.common.gatekeeper.SecurityConfig-class.html#parse,Method ndg.security.common.sessionCookie.SessionCookie.parse()=ndg.security.common.sessionCookie.SessionCookie-class.html#parse"><a title="ndg.security.common.AttCert.AttCert.parse
+ndg.security.common.SessionCookie.SessionCookie.parse
+ndg.security.common.X509.X509Cert.parse
+ndg.security.common.XMLSec.XMLSecDoc.parse
+ndg.security.common.gatekeeper.SecurityConfig.parse
+ndg.security.common.sessionCookie.SessionCookie.parse" class="py-name" href="#" onclick="return doclink('link-25', 'parse', 'link-25');">parse</a></tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-26', 'propFilePath', 'link-6');">propFilePath</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                <tt class="py-name">propElem</tt> <tt class="py-op">=</tt> <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">getroot</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                 </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-27" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-27', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                                <tt class="py-string">"Error parsing properties file \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">                                <tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">strerror</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-28" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-28', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">                                <tt class="py-string">"Error parsing properties file \"%s\": %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">                                <tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-29', 'propFilePath', 'link-6');">propFilePath</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">propElem</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-30" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-30', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">    <tt class="py-string">"Error parsing properties file \"%s\": root element is not defined"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">                                <tt id="link-31" class="py-name"><a title="ndg.security.server.AttAuthority.AttAuthority.propFilePath
+ndg.security.server.SessionMgr.SessionMgr.propFilePath
+ndg.security.server.ca.SimpleCA.propFilePath" class="py-name" href="#" onclick="return doclink('link-31', 'propFilePath', 'link-6');">propFilePath</a></tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-comment"># Read properties into a dictionary</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">prop</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">elem</tt> <tt class="py-keyword">in</tt> <tt class="py-name">propElem</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">                     </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">            <tt class="py-comment"># Check for environment variables in file paths</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">tagCaps</tt> <tt class="py-op">=</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Variable ndg.security.common.SessionCookie._MetaSessionCookie.tag=ndg.security.common.SessionCookie._MetaSessionCookie-class.html#tag,Variable ndg.security.common.sessionCookie._MetaSessionCookie.tag=ndg.security.common.sessionCookie._MetaSessionCookie-class.html#tag"><a title="ndg.security.common.SessionCookie._MetaSessionCookie.tag
+ndg.security.common.sessionCookie._MetaSessionCookie.tag" class="py-name" href="#" onclick="return doclink('link-32', 'tag', 'link-32');">tag</a></tt><tt class="py-op">.</tt><tt class="py-name">upper</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-string">'FILE'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt> <tt class="py-keyword">or</tt> <tt class="py-string">'PATH'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt> <tt class="py-keyword">or</tt> <tt class="py-string">'DIR'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tagCaps</tt><tt class="py-op">:</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">                <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expandvars</tt><tt class="py-op">(</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">            <tt class="py-name">prop</tt><tt class="py-op">[</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="ndg.security.common.SessionCookie._MetaSessionCookie.tag
+ndg.security.common.sessionCookie._MetaSessionCookie.tag" class="py-name" href="#" onclick="return doclink('link-33', 'tag', 'link-32');">tag</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">text</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">             </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="ndg.security.client.SimpleCAClient.SimpleCAClient.setProperties
+ndg.security.common.SQLObject.CredRepos.setProperties
+ndg.security.server.MyProxy.MyProxyClient.setProperties
+ndg.security.server.SessionMgr.SessionMgr.setProperties
+ndg.security.server.ca.SimpleCA.setProperties" class="py-name" href="#" onclick="return doclink('link-34', 'setProperties', 'link-9');">setProperties</a></tt><tt class="py-op">(</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">=</tt><tt class="py-name">dbPPhrase</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">prop</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">             </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.addUser"></a><div id="CredRepos.addUser-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="CredRepos.addUser-toggle" onclick="return toggle('CredRepos.addUser');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#addUser">addUser</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">userName</tt><tt class="py-op">,</tt> <tt class="py-param">dn</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.addUser-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.addUser-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-docstring">"""A new user to Credentials Repository"""</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID" class="py-name" href="#" onclick="return doclink('link-35', 'UserID', 'link-15');">UserID</a></tt><tt class="py-op">(</tt><tt id="link-36" class="py-name" targets="Variable ndg.security.common.SQLObject.CredRepos.UserID.userName=ndg.security.common.SQLObject.CredRepos.UserID-class.html#userName"><a title="ndg.security.common.SQLObject.CredRepos.UserID.userName" class="py-name" href="#" onclick="return doclink('link-36', 'userName', 'link-36');">userName</a></tt><tt class="py-op">=</tt><tt id="link-37" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID.userName" class="py-name" href="#" onclick="return doclink('link-37', 'userName', 'link-36');">userName</a></tt><tt class="py-op">,</tt> <tt id="link-38" class="py-name" targets="Variable ndg.security.common.SQLObject.CredRepos.UserCredential.dn=ndg.security.common.SQLObject.CredRepos.UserCredential-class.html#dn,Variable ndg.security.common.SQLObject.CredRepos.UserID.dn=ndg.security.common.SQLObject.CredRepos.UserID-class.html#dn,Variable ndg.security.common.X509.X509Cert.dn=ndg.security.common.X509.X509Cert-class.html#dn"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-38', 'dn', 'link-38');">dn</a></tt><tt class="py-op">=</tt><tt id="link-39" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-39', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-40" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-40', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Error adding new user '%s': %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                                                                <tt class="py-op">(</tt><tt id="link-41" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID.userName" class="py-name" href="#" onclick="return doclink('link-41', 'userName', 'link-36');">userName</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.auditCredentials"></a><div id="CredRepos.auditCredentials-def"><a name="L218"></a><tt class="py-lineno">218</tt> <a class="py-toggle" href="#" id="CredRepos.auditCredentials-toggle" onclick="return toggle('CredRepos.auditCredentials');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#auditCredentials">auditCredentials</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dn</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">attCertValidKeys</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.auditCredentials-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.auditCredentials-expanded"><a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-docstring">"""Check the attribute certificates held in the repository and delete</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring">        any that have expired</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"><tt class="py-docstring">        dn:                Only audit for the given user distinguished Name.</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"><tt class="py-docstring">                           if not set, all records are audited</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"><tt class="py-docstring">        attCertValidKeys:  keywords which set how to check the Attribute</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"><tt class="py-docstring">                           Certificate e.g. check validity time, XML</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"><tt class="py-docstring">                           signature, version etc.  Default is check</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-docstring">                           validity time only"""</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">attCertValidKeys</tt> <tt class="py-op">==</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">            <tt class="py-comment"># Default to check only the validity time</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">attCertValidKeys</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt>    <tt class="py-string">'chkTime'</tt><tt class="py-op">:</tt>          <tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">                                    <tt class="py-string">'chkVersion'</tt><tt class="py-op">:</tt>       <tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">                                    <tt class="py-string">'chkProvenance'</tt><tt class="py-op">:</tt>    <tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">                                    <tt class="py-string">'chkSig'</tt><tt class="py-op">:</tt>           <tt class="py-name">False</tt> <tt class="py-op">}</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">             </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-42" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-42', 'dn', 'link-38');">dn</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">                <tt class="py-comment"># Only audit for the given user distinguished Name</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">credList</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-43', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt class="py-name">selectBy</tt><tt class="py-op">(</tt><tt id="link-44" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-44', 'dn', 'link-38');">dn</a></tt><tt class="py-op">=</tt><tt id="link-45" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-45', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">                <tt class="py-comment"># Audit all credentials</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">credList</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-46', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">             </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-47" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-47', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt><tt class="py-string">"Selecting credentials from repository: "</tt> <tt class="py-op">+</tt> \ </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">                                 <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">        <tt class="py-comment"># Iterate through list of credentials deleting records where the</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># certificate is invalid</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">cred</tt> <tt class="py-keyword">in</tt> <tt class="py-name">credList</tt><tt class="py-op">:</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">                <tt id="link-48" class="py-name" targets="Variable ndg.security.common.SQLObject.CredRepos.UserCredential.attCert=ndg.security.common.SQLObject.CredRepos.UserCredential-class.html#attCert,Package ndg.security.test.attCert=ndg.security.test.attCert-module.html"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-48', 'attCert', 'link-48');">attCert</a></tt> <tt class="py-op">=</tt> <tt id="link-49" class="py-name" targets="Function ndg.security.common.AttCert.AttCertParse()=ndg.security.common.AttCert-module.html#AttCertParse"><a title="ndg.security.common.AttCert.AttCertParse" class="py-name" href="#" onclick="return doclink('link-49', 'AttCertParse', 'link-49');">AttCertParse</a></tt><tt class="py-op">(</tt><tt class="py-name">cred</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-50', 'attCert', 'link-48');">attCert</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">                 </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-51" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-51', 'attCert', 'link-48');">attCert</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Method ndg.security.common.AttCert.AttCert.isValid()=ndg.security.common.AttCert.AttCert-class.html#isValid,Method ndg.security.common.CredWallet.CredWallet.isValid()=ndg.security.common.CredWallet.CredWallet-class.html#isValid,Class Method ndg.security.common.SessionCookie.SessionCookie.isValid()=ndg.security.common.SessionCookie.SessionCookie-class.html#isValid,Class Method ndg.security.common.sessionCookie.SessionCookie.isValid()=ndg.security.common.sessionCookie.SessionCookie-class.html#isValid"><a title="ndg.security.common.AttCert.AttCert.isValid
+ndg.security.common.CredWallet.CredWallet.isValid
+ndg.security.common.SessionCookie.SessionCookie.isValid
+ndg.security.common.sessionCookie.SessionCookie.isValid" class="py-name" href="#" onclick="return doclink('link-52', 'isValid', 'link-52');">isValid</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">attCertValidKeys</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-53', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt class="py-name">delete</tt><tt class="py-op">(</tt><tt class="py-name">cred</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">                     </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-54" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-54', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Deleting credentials for '%s': %s"</tt> <tt class="py-op">%</tt> \ </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">                                                       <tt class="py-op">(</tt><tt class="py-name">cred</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-55', 'dn', 'link-38');">dn</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-56" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-56', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Deleting credentials: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">e</tt> </tt>
+</div><a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.getCredentials"></a><div id="CredRepos.getCredentials-def"><a name="L266"></a><tt class="py-lineno">266</tt> <a class="py-toggle" href="#" id="CredRepos.getCredentials-toggle" onclick="return toggle('CredRepos.getCredentials');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#getCredentials">getCredentials</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dn</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.getCredentials-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.getCredentials-expanded"><a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get the list of credentials for a given user's DN"""</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-57', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt class="py-name">selectBy</tt><tt class="py-op">(</tt><tt id="link-58" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-58', 'dn', 'link-38');">dn</a></tt><tt class="py-op">=</tt><tt id="link-59" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-59', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">             </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-60" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-60', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Selecting credentials for %s: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-61" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-61', 'dn', 'link-38');">dn</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos.addCredentials"></a><div id="CredRepos.addCredentials-def"><a name="L277"></a><tt class="py-lineno">277</tt> <a class="py-toggle" href="#" id="CredRepos.addCredentials-toggle" onclick="return toggle('CredRepos.addCredentials');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#addCredentials">addCredentials</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dn</tt><tt class="py-op">,</tt> <tt class="py-param">attCertList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.addCredentials-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.addCredentials-expanded"><a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add new attribute certificates for a user.  The user must have</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line"><tt class="py-docstring">        been previously registered in the repository</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"><tt class="py-docstring">        dn:             users Distinguished name</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-docstring">        attCertList:   list of attribute certificates"""</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">         </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">            <tt class="py-name">userCred</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID" class="py-name" href="#" onclick="return doclink('link-62', 'UserID', 'link-15');">UserID</a></tt><tt class="py-op">.</tt><tt class="py-name">selectBy</tt><tt class="py-op">(</tt><tt id="link-63" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-63', 'dn', 'link-38');">dn</a></tt><tt class="py-op">=</tt><tt id="link-64" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-64', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">             </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">userCred</tt><tt class="py-op">.</tt><tt class="py-name">count</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">                <tt class="py-comment"># Add a new user record HERE instead of at user registration</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># time.  This decouples CredentialRepository from MyProxy and</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># user registration process. Previously, a user not recognised</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># exception would have been raised here.  'userName' field</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># of UserID table is now perhaps superfluous.</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment">#</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># P J Kershaw 26/04/06 </tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name" targets="Method ndg.security.common.CredWallet.CredRepos.addUser()=ndg.security.common.CredWallet.CredRepos-class.html#addUser,Method ndg.security.common.CredWallet.NullCredRepos.addUser()=ndg.security.common.CredWallet.NullCredRepos-class.html#addUser,Method ndg.security.common.SQLObject.CredRepos.addUser()=ndg.security.common.SQLObject.CredRepos-class.html#addUser,Method ndg.security.server.SessionMgr.SessionMgr.addUser()=ndg.security.server.SessionMgr.SessionMgr-class.html#addUser"><a title="ndg.security.common.CredWallet.CredRepos.addUser
+ndg.security.common.CredWallet.NullCredRepos.addUser
+ndg.security.common.SQLObject.CredRepos.addUser
+ndg.security.server.SessionMgr.SessionMgr.addUser" class="py-name" href="#" onclick="return doclink('link-65', 'addUser', 'link-65');">addUser</a></tt><tt class="py-op">(</tt><tt id="link-66" class="py-name" targets="Class ndg.security.common.X509.X500DN=ndg.security.common.X509.X500DN-class.html"><a title="ndg.security.common.X509.X500DN" class="py-name" href="#" onclick="return doclink('link-66', 'X500DN', 'link-66');">X500DN</a></tt><tt class="py-op">(</tt><tt id="link-67" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-67', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-string">'CN'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-68" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-68', 'dn', 'link-38');">dn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line"> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-69" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-69', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Checking for user \"%s\": %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-70" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-70', 'dn', 'link-38');">dn</a></tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line"> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">         </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">        <tt class="py-comment"># Carry out check? - filter out certs in db where a new cert</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># supercedes it - i.e. expires later and has the same roles</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># assigned - May be too complicated to implement</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#uniqAttCertList = [attCert for attCert in attCertList \</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#    if min([attCert == cred.attCert for cred in userCred])]</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-comment"></tt>         </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line">                 </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">        <tt class="py-comment"># Update database with new entries</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt id="link-71" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-71', 'attCert', 'link-48');">attCert</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">attCertList</tt><tt class="py-op">:</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-72', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">(</tt><tt id="link-73" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-73', 'dn', 'link-38');">dn</a></tt><tt class="py-op">=</tt><tt id="link-74" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-74', 'dn', 'link-38');">dn</a></tt><tt class="py-op">,</tt> <tt id="link-75" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-75', 'attCert', 'link-48');">attCert</a></tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-76" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-76', 'attCert', 'link-48');">attCert</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line"> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-77" class="py-name"><a title="ndg.security.common.CredWallet.CredReposError" class="py-name" href="#" onclick="return doclink('link-77', 'CredReposError', 'link-4');">CredReposError</a></tt><tt class="py-op">,</tt> <tt class="py-string">"Adding new user credentials for "</tt> <tt class="py-op">+</tt> \ </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">                                  <tt class="py-string">"user %s: %s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-78" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-78', 'dn', 'link-38');">dn</a></tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line"> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line"> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________    </tt> </tt>
+<a name="CredRepos._initTables"></a><div id="CredRepos._initTables-def"><a name="L319"></a><tt class="py-lineno">319</tt> <a class="py-toggle" href="#" id="CredRepos._initTables-toggle" onclick="return toggle('CredRepos._initTables');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos-class.html#_initTables">_initTables</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">prompt</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos._initTables-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos._initTables-expanded"><a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">        <tt class="py-docstring">"""Use with EXTREME caution - this method will initialise the database</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring">        tables removing any previous records entered"""</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">  </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">prompt</tt><tt class="py-op">:</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">            <tt class="py-name">resp</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_input</tt><tt class="py-op">(</tt>\ </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">        <tt class="py-string">"Are you sure you want to initialise the database tables? (yes/no) "</tt><tt class="py-op">)</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">     </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">resp</tt><tt class="py-op">.</tt><tt class="py-name">upper</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-string">"YES"</tt><tt class="py-op">:</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"Tables unchanged"</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">         </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID" class="py-name" href="#" onclick="return doclink('link-79', 'UserID', 'link-15');">UserID</a></tt><tt class="py-op">.</tt><tt class="py-name">createTable</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-80" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential" class="py-name" href="#" onclick="return doclink('link-80', 'UserCredential', 'link-18');">UserCredential</a></tt><tt class="py-op">.</tt><tt class="py-name">createTable</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Tables created"</tt> </tt>
+</div><a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">             </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">    <tt class="py-comment">#_________________________________________________________________________</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># Database tables defined using SQLObject derived classes</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># Nb. These are class variables of the CredRepos class</tt> </tt>
+<a name="CredRepos.UserID"></a><div id="CredRepos.UserID-def"><a name="L339"></a><tt class="py-lineno">339</tt> <a class="py-toggle" href="#" id="CredRepos.UserID-toggle" onclick="return toggle('CredRepos.UserID');">-</a><tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos.UserID-class.html">UserID</a><tt class="py-op">(</tt><tt class="py-base-class">SQLObject</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.UserID-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.UserID-expanded"><a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-docstring">"""SQLObject derived class to define Credentials Repository db table</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"><tt class="py-docstring">        to store user information"""</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line"> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">        <tt class="py-comment"># to be assigned to connectionForURI(&lt;db URI&gt;)</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-81" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._connection
+ndg.security.common.SQLObject.CredRepos.UserID._connection" class="py-name" href="#" onclick="return doclink('link-81', '_connection', 'link-16');">_connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">        <tt class="py-comment"># Force table name</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-82" class="py-name" targets="Variable ndg.security.common.SQLObject.CredRepos.UserCredential._table=ndg.security.common.SQLObject.CredRepos.UserCredential-class.html#_table,Variable ndg.security.common.SQLObject.CredRepos.UserID._table=ndg.security.common.SQLObject.CredRepos.UserID-class.html#_table"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._table
+ndg.security.common.SQLObject.CredRepos.UserID._table" class="py-name" href="#" onclick="return doclink('link-82', '_table', 'link-82');">_table</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"UserID"</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">        <tt id="link-83" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserID.userName" class="py-name" href="#" onclick="return doclink('link-83', 'userName', 'link-36');">userName</a></tt> <tt class="py-op">=</tt> <tt class="py-name">StringCol</tt><tt class="py-op">(</tt><tt class="py-name">dbName</tt><tt class="py-op">=</tt><tt class="py-string">'userName'</tt><tt class="py-op">,</tt> <tt class="py-name">length</tt><tt class="py-op">=</tt><tt class="py-number">30</tt><tt class="py-op">)</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line">        <tt id="link-84" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-84', 'dn', 'link-38');">dn</a></tt> <tt class="py-op">=</tt> <tt class="py-name">StringCol</tt><tt class="py-op">(</tt><tt class="py-name">dbName</tt><tt class="py-op">=</tt><tt class="py-string">'dn'</tt><tt class="py-op">,</tt> <tt class="py-name">length</tt><tt class="py-op">=</tt><tt class="py-number">128</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line"> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"> </tt>
+<a name="CredRepos.UserCredential"></a><div id="CredRepos.UserCredential-def"><a name="L353"></a><tt class="py-lineno">353</tt> <a class="py-toggle" href="#" id="CredRepos.UserCredential-toggle" onclick="return toggle('CredRepos.UserCredential');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="ndg.security.common.SQLObject.CredRepos.UserCredential-class.html">UserCredential</a><tt class="py-op">(</tt><tt class="py-base-class">SQLObject</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CredRepos.UserCredential-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CredRepos.UserCredential-expanded"><a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">        <tt class="py-docstring">"""SQLObject derived class to define Credentials Repository db table</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">        to store user credentials information"""</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">        <tt class="py-comment"># to be assigned to connectionForURI(&lt;db URI&gt;)</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-85" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._connection
+ndg.security.common.SQLObject.CredRepos.UserID._connection" class="py-name" href="#" onclick="return doclink('link-85', '_connection', 'link-16');">_connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">        <tt class="py-comment"># Force table name</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-86" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential._table
+ndg.security.common.SQLObject.CredRepos.UserID._table" class="py-name" href="#" onclick="return doclink('link-86', '_table', 'link-82');">_table</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"UserCredential"</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line"> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line">         </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line">        <tt class="py-comment"># User name field binds with UserCredential table</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-87" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.dn
+ndg.security.common.SQLObject.CredRepos.UserID.dn
+ndg.security.common.X509.X509Cert.dn" class="py-name" href="#" onclick="return doclink('link-87', 'dn', 'link-38');">dn</a></tt> <tt class="py-op">=</tt> <tt class="py-name">StringCol</tt><tt class="py-op">(</tt><tt class="py-name">dbName</tt><tt class="py-op">=</tt><tt class="py-string">'dn'</tt><tt class="py-op">,</tt> <tt class="py-name">length</tt><tt class="py-op">=</tt><tt class="py-number">128</tt><tt class="py-op">)</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">        <tt class="py-comment"># Store complete attribute certificate text</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt id="link-88" class="py-name"><a title="ndg.security.common.SQLObject.CredRepos.UserCredential.attCert
+ndg.security.test.attCert" class="py-name" href="#" onclick="return doclink('link-88', 'attCert', 'link-48');">attCert</a></tt> <tt class="py-op">=</tt> <tt class="py-name">StringCol</tt><tt class="py-op">(</tt><tt class="py-name">dbName</tt><tt class="py-op">=</tt><tt class="py-string">'attCert'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:49 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

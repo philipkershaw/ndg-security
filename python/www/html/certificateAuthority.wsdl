@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="CertificateAuthority"
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="urn:ndg:security:ca"
+ targetNamespace="urn:ndg:security:ca">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:ndg:security:ca">
+    
+      <xsd:element name="issueCert">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="x509CertReq" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="issueCertResponse">
+        <xsd:complexType>
+		  <xsd:sequence>
+	        <xsd:element name="x509Cert" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		  </xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="revokeCert">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="x509Cert" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="revokeCertResponse">
+        <xsd:complexType/>
+      </xsd:element>
+    
+      <xsd:element name="getCRL">
+        <xsd:complexType/>
+      </xsd:element>
+      
+      <xsd:element name="getCRLResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="crl" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="issueCertInputMsg">
+    <wsdl:part name="parameters" element="tns:issueCert"/>
+  </wsdl:message>
+
+  <wsdl:message name="issueCertOutputMsg">
+    <wsdl:part name="parameters" element="tns:issueCertResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="revokeCertInputMsg">
+    <wsdl:part name="parameters" element="tns:revokeCert"/>
+  </wsdl:message>
+
+  <wsdl:message name="revokeCertOutputMsg">
+    <wsdl:part name="parameters" element="tns:revokeCertResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getCRLInputMsg">
+    <wsdl:part name="parameters" element="tns:getCRL"/>
+  </wsdl:message>
+
+  <wsdl:message name="getCRLOutputMsg">
+    <wsdl:part name="parameters" element="tns:getCRLResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="CertificateAuthority">
+    <wsdl:operation name="issueCert">
+      <wsdl:input message="tns:issueCertInputMsg"/>
+      <wsdl:output message="tns:issueCertOutputMsg"/>     
+    </wsdl:operation>
+    
+    <wsdl:operation name="revokeCert">
+      <wsdl:input message="tns:revokeCertInputMsg"/>
+      <wsdl:output message="tns:revokeCertOutputMsg"/>
+    </wsdl:operation>
+    
+    <wsdl:operation name="getCRL">
+      <wsdl:input message="tns:getCRLInputMsg"/>
+      <wsdl:output message="tns:getCRLOutputMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="CertificateAuthorityBinding" type="tns:CertificateAuthority">
+    <soap:binding
+     style="document"
+     transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="issueCert">
+      <soap:operation soapAction="issueCert"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="revokeCert">
+      <soap:operation soapAction="revokeCert"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+    <wsdl:operation name="getCRL">
+      <soap:operation soapAction="getCRL"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="CertificateAuthorityService">
+    <wsdl:documentation>NDG Certificate Authority web service</wsdl:documentation>
+    <wsdl:port name="CertificateAuthority" binding="tns:CertificateAuthorityBinding">
+      <soap:address location="http://localhost:5001"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,10 @@
+Unit tests for Certificate Authority Web Service Client
+=======================================================
+04/01/08: this unit test is defunct.  CA requests for new users are handled
+directly by MyProxy.
+
+Before running the tests start the Certificate Authority web service:
+
+$ ./server.sh
+
+Run the unit test script caClientTest.py from a separate terminal.

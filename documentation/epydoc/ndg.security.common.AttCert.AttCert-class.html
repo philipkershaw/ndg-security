@@ -1,0 +1,2805 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.AttCert.AttCert</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.AttCert-module.html">Module&nbsp;AttCert</a> ::
+        Class&nbsp;AttCert
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AttCert</h1><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert">source&nbsp;code</a></span><br /><br />
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_24" name="uml_class_diagram_for_ndg_secu_24">
+<area shape="rect" href="javascript: void(0);" title="dict() &#45;&gt; new empty dictionary." alt="" coords="15,11,60,27"/>
+<area shape="rect" href="ndg.security.common.AttCert.AttCert&#45;class.html" title="NDG Attribute Certificate (Authorisation or Access Token)." alt="" coords="62,56,106,72"/>
+<area shape="rect" href="ndg.security.common.XMLSec.XMLSecDoc&#45;class.html" title="Implements XML Signature and XML Encryption for a Document." alt="" coords="108,11,153,27"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_24.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_24" ismap="ismap" class="graph-without-title" />
+</center></center>
+<hr />
+NDG Attribute Certificate (Authorisation or Access Token).<br /><br />
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert._MetaAttCert-class.html" class="summary-name">__metaclass__</a><br />
+      Enable AttCert to have read only class variables e.g.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">provenance</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">original</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">lifetime</span>=<span class="summary-sig-default">28800</span>,
+        <span class="summary-sig-arg">**xmlSecDocKw</span>)</span><br />
+      Initialisation - Attribute Certificate file path may be 
+      specified.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Override default behaviour to return internal dictionary 
+      content</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Override XMLSec.XMLSecDoc equivalent</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__str__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#toString" class="summary-sig-name">toString</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kw</span>)</span><br />
+      Return certificate file content as a string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.toString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__delitem__" class="summary-sig-name">__delitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Attribute Certificate keys cannot be removed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__delitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getitem__" class="summary-sig-name">__getitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Get an item from the __dat, __dat['validity'] or 
+      __dat['attributes'] dictionaries.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setitem__" class="summary-sig-name">__setitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">item</span>)</span><br />
+      Set an item from the __dat dictionary.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__eq__" class="summary-sig-name">__eq__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">attCert</span>)</span><br />
+      Return true if all elements are the same</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__eq__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__nonzero__"></a><span class="summary-sig-name">__nonzero__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Ensure if &lt;attCertInstance&gt; test yields True</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__nonzero__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#clear" class="summary-sig-name">clear</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove all items from D.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#copy" class="summary-sig-name">copy</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+a shallow copy of D</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.copy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#keys" class="summary-sig-name">keys</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+list of D's keys</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.keys">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#items" class="summary-sig-name">items</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+list of D's (key, value) pairs, as 2-tuples</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.items">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#values" class="summary-sig-name">values</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+list of D's values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.values">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#has_key" class="summary-sig-name">has_key</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Returns:
+True if D has a key k, else False</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.has_key">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__contains__" class="summary-sig-name">__contains__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Returns:
+True if D has a key k, else False</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__contains__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setVersion"></a><span class="summary-sig-name">__setVersion</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Set the version number to be written to file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setVersion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getVersion"></a><span class="summary-sig-name">__getVersion</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get version number as set in file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getVersion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setHolder"></a><span class="summary-sig-name">__setHolder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">holder</span>)</span><br />
+      Set holder's Distinguished Name string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setHolder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getHolder"></a><span class="summary-sig-name">__getHolder</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get holder's Distinguished Name string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getHolder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getHolderDN"></a><span class="summary-sig-name">__getHolderDN</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the holder's Distinguished Name as an X500DN instance</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getHolderDN">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setIssuer"></a><span class="summary-sig-name">__setIssuer</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuer</span>)</span><br />
+      Set issuer's Distinguished Name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setIssuer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getIssuer"></a><span class="summary-sig-name">__getIssuer</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the issuer's Distinguished Name string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getIssuerDN"></a><span class="summary-sig-name">__getIssuerDN</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the issuer's Distinguished Name as an X500DN instance</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuerDN">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setIssuerName"></a><span class="summary-sig-name">__setIssuerName</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuerName</span>)</span><br />
+      Set the name of the issuer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setIssuerName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuerName" class="summary-sig-name">__getIssuerName</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      the name of the issuer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuerName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setIssuerSerialNumber" class="summary-sig-name">__setIssuerSerialNumber</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">serialNumber</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setIssuerSerialNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuerSerialNumber" class="summary-sig-name">__getIssuerSerialNumber</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      the issuer serial number</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuerSerialNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setUserId" class="summary-sig-name">__setUserId</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userId</span>)</span><br />
+      Set the name of the userId</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setUserId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getUserId" class="summary-sig-name">__getUserId</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      the user idenitifier</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getUserId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string/datetime</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#getValidityNotBefore" class="summary-sig-name">getValidityNotBefore</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">asDatetime</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Get the validity Not Before date/time string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.getValidityNotBefore">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string/datetime</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#getValidityNotAfter" class="summary-sig-name">getValidityNotAfter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">asDatetime</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Get the validity Not After date/time string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.getValidityNotAfter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of dict type</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getRoleSet" class="summary-sig-name">__getRoleSet</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      the roleSet as a list of role dictionaries.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getRoleSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getRoles" class="summary-sig-name">__getRoles</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return roles as a list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getRoles">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setProvenance" class="summary-sig-name">__setProvenance</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">provenance</span>)</span><br />
+      Set the provenance for the certificate: 'original' or 
+      'mapped'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setProvenance">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getProvenance" class="summary-sig-name">__getProvenance</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the provenance for the certificate.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getProvenance">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isValidProvenance" class="summary-sig-name">isValidProvenance</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">provenance</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Check provenance is set correctly - to 'original'/'mapped'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidProvenance">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isOriginal" class="summary-sig-name">isOriginal</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check for original provenance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isOriginal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isMapped" class="summary-sig-name">isMapped</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check for mapped provenance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isMapped">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#addRoles" class="summary-sig-name">addRoles</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">roleName</span>)</span><br />
+      Add new roles to the roleSet in attributes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.addRoles">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">ElementTree root element</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#parse" class="summary-sig-name">parse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">xmlTxt</span>,
+        <span class="summary-sig-arg">rtnRootElem</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Parse an Attribute Certificate content contained in string 
+      input</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.parse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#read" class="summary-sig-name">read</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**xmlSecDocKw</span>)</span><br />
+      Read an Attribute Certificate from file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.read">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__parse" class="summary-sig-name">__parse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">rootElem</span>)</span><br />
+      Private XML parsing method accepts a ElementTree.Element type as 
+      input</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__parse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#createXML" class="summary-sig-name">createXML</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Create XML for Attribute Token from current data settings and 
+      return as a string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.createXML">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#applyEnvelopedSignature" class="summary-sig-name">applyEnvelopedSignature</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**xmlSecDocKw</span>)</span><br />
+      Override super class version to ensure settings have been parsed 
+      into a DOM object ready for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.applyEnvelopedSignature">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#setValidityTime" class="summary-sig-name">setValidityTime</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtNotBefore</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dtNotAfter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">lifetime</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">notBeforeOffset</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the notBefore and notAfter times which determine the window 
+      for which the Attribute Certificate is valid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.setValidityTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#datetime2timeStr" class="summary-sig-name">datetime2timeStr</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtVal</span>)</span><br />
+      Convert a datetime object to a notBefore/notAfter time string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.datetime2timeStr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">datetime</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#timeStr2datetime" class="summary-sig-name">timeStr2datetime</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sTime</span>)</span><br />
+      Convert a notBefore/notAfter time string to a datetime object</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.timeStr2datetime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isValidTime" class="summary-sig-name">isValidTime</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtNow</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">raiseExcep</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Check Attribute Certificate for expiry.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isValidVersion" class="summary-sig-name">isValidVersion</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check Attribute Certificate XML file version</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidVersion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#isValid" class="summary-sig-name">isValid</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">raiseExcep</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">chkTime</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">chkVersion</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">chkProvenance</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">chkSig</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">**xmlSecDocKw</span>)</span><br />
+      Check Attribute Certificate is valid:
+
+- Time validity is OK
+- XML file version is OK
+- valid provenance setting
+- Signature is valid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dict</code></b>:
+      <code>__cmp__</code>,
+      <code>__ge__</code>,
+      <code>__getattribute__</code>,
+      <code>__gt__</code>,
+      <code>__hash__</code>,
+      <code>__iter__</code>,
+      <code>__le__</code>,
+      <code>__len__</code>,
+      <code>__lt__</code>,
+      <code>__ne__</code>,
+      <code>__new__</code>,
+      <code>fromkeys</code>,
+      <code>get</code>,
+      <code>iteritems</code>,
+      <code>iterkeys</code>,
+      <code>itervalues</code>,
+      <code>pop</code>,
+      <code>popitem</code>,
+      <code>setdefault</code>,
+      <code>update</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html">XMLSec.XMLSecDoc</a></code></b>:
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#decrypt">decrypt</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#encrypt">encrypt</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#verifyEnvelopedSignature">verifyEnvelopedSignature</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#write">write</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+        <a name="__validProvenanceSettings"></a><span class="summary-name">__validProvenanceSettings</span> = <code title="('original', 'mapped')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">original</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">mapped</code><code class="variable-quote">'</code><code class="variable-group">)</code></code><br />
+      string constants for allowable certificate provenance settings
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="namespace"></a><span class="summary-name">namespace</span> = <code title="'urn:ndg:security:attributeCertificate'"><code class="variable-quote">'</code><code class="variable-string">urn:ndg:security:attributeCertificate</code><code class="variable-quote">'</code></code><br />
+      namespace for Attribute Certificate
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#__dat" class="summary-name">__dat</a><br />
+      Data dictionary version of xml
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__issuerDN"></a><span class="summary-name">__issuerDN</span><br />
+      Holder X500DN object - instantiated in read method
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__holderDN"></a><span class="summary-name">__holderDN</span><br />
+      issuer X500DN object - instantiated in read method
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__lifetime"></a><span class="summary-name">__lifetime</span><br />
+      Certificate life time interval in seconds
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__dtNotBefore"></a><span class="summary-name">__dtNotBefore</span><br />
+      Certificate not before time as datetime type
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__dtNotAfter"></a><span class="summary-name">__dtNotAfter</span><br />
+      Certificate not after time as a datetime type
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#version" class="summary-name">version</a><br />
+      Attribute Certificate version
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#holder" class="summary-name">holder</a><br />
+      Attribute Certificate holder DN
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#holderDN" class="summary-name">holderDN</a><br />
+      Attribute Certificate holder DN as X500DN type
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#issuer" class="summary-name">issuer</a><br />
+      Certificate Issuer DN
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#issuerDN" class="summary-name">issuerDN</a><br />
+      Attribute Certificate issuer DN as X500DN type
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#issuerName" class="summary-name">issuerName</a><br />
+      Certificate Issuer name
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#issuerSerialNumber" class="summary-name">issuerSerialNumber</a><br />
+      Certificate Issuer Serial Number
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#userId" class="summary-name">userId</a><br />
+      Certificate user identifier
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#validityNotBefore" class="summary-name">validityNotBefore</a><br />
+      Validity not before time as a string
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#validityNotAfter" class="summary-name">validityNotAfter</a><br />
+      Validity not after time as a string
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#roleSet" class="summary-name">roleSet</a><br />
+      Role set dictionary
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#roles" class="summary-name">roles</a><br />
+      List of roles in Attribute Certificate
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.AttCert.AttCert-class.html#provenance" class="summary-name">provenance</a><br />
+      Provenance of the cert.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html">XMLSec.XMLSecDoc</a></code></b>:
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#certFilePathList">certFilePathList</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#docNode">docNode</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#encrCertFilePath">encrCertFilePath</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#encrPriKeyFilePath">encrPriKeyFilePath</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#filePath">filePath</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#signingKeyFilePath">signingKeyFilePath</a></code>,
+      <code><a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#signingKeyPwd">signingKeyPwd</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">provenance</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">original</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">lifetime</span>=<span class="sig-default">28800</span>,
+        <span class="sig-arg">**xmlSecDocKw</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Initialisation - Attribute Certificate file path may be specified. 
+  Also, holder and issuer details and signing authority key and 
+  certificate.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>lifetime</code></strong> (int) - set the lifetime for the certificate in seconds. Defaults to 8
+          hours.</li>
+        <li><strong class="pname"><code>**xmlSecDocKw</code></strong> (dict) - see XMLSec.XMLSec class for an explanation. Keywords include, 
+          filePath for the cert. for reading/writing and cert./private key 
+          settings for digital signature and verification.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+new empty dictionary
+
+</pre></dd>
+    <dt>Overrides:
+      dict.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Override default behaviour to return internal dictionary content
+  <dl class="fields">
+    <dt>Overrides:
+      dict.__repr__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Override XMLSec.XMLSecDoc equivalent
+  <dl class="fields">
+    <dt>Overrides:
+      <a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#__str__">XMLSec.XMLSecDoc.__str__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="toString"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">toString</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.toString">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Return certificate file content as a string
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>**kw</code></strong> - keywords to XMLSec.XMLSecDoc.toString()</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>content of document</dd>
+    <dt>Overrides:
+      <a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#toString">XMLSec.XMLSecDoc.toString</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__delitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__delitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Index deletion operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__delitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Attribute Certificate keys cannot be removed
+  <dl class="fields">
+    <dt>Overrides:
+      dict.__delitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Indexing operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get an item from the __dat, __dat['validity'] or __dat['attributes'] 
+  dictionaries.  This class behaves as data dictionary of Attribute 
+  Certificate properties
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> - name of key - key can be specified belonging to validity or 
+          the attributes sub dictionaries</li>
+        <li><strong class="pname"><code>item</code></strong> - value to set dictionary item to</li>
+    </ul></dd>
+    <dt>Overrides:
+      dict.__getitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>,
+        <span class="sig-arg">item</span>)</span>
+    <br /><em class="fname">(Index assignment operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set an item from the __dat dictionary.  This class behaves as data 
+  dictionary of Attribute Certificate properties
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> (string) - name of key - key can be specified belonging to validity or 
+          the attributes sub dictionaries</li>
+        <li><strong class="pname"><code>item</code></strong> (string / int) - value to set dictionary item to</li>
+    </ul></dd>
+    <dt>Overrides:
+      dict.__setitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__eq__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__eq__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">attCert</span>)</span>
+    <br /><em class="fname">(Equality operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__eq__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Return true if all elements are the same
+  <dl class="fields">
+    <dt>Overrides:
+      dict.__eq__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.clear">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Remove all items from D.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+None
+
+</pre></dd>
+    <dt>Overrides:
+      dict.clear
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="copy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">copy</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.copy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+a shallow copy of D
+
+</pre></dd>
+    <dt>Overrides:
+      dict.copy
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="keys"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">keys</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.keys">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+list of D's keys
+
+</pre></dd>
+    <dt>Overrides:
+      dict.keys
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">items</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+list of D's (key, value) pairs, as 2-tuples
+
+</pre></dd>
+    <dt>Overrides:
+      dict.items
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="values"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">values</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.values">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+list of D's values
+
+</pre></dd>
+    <dt>Overrides:
+      dict.values
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="has_key"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">has_key</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.has_key">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+True if D has a key k, else False
+
+</pre></dd>
+    <dt>Overrides:
+      dict.has_key
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__contains__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__contains__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(In operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__contains__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd><pre class="literalblock">
+True if D has a key k, else False
+
+</pre></dd>
+    <dt>Overrides:
+      dict.__contains__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getIssuerName"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getIssuerName</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuerName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>the name of the issuer</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setIssuerSerialNumber"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setIssuerSerialNumber</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">serialNumber</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setIssuerSerialNumber">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>serialNumber</code></strong> - the issuer serial number</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getIssuerSerialNumber"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getIssuerSerialNumber</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getIssuerSerialNumber">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>the issuer serial number</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setUserId"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setUserId</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userId</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setUserId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set the name of the userId
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>userId</code></strong> (string) - user identifier</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getUserId"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getUserId</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getUserId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>the user idenitifier</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getValidityNotBefore"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getValidityNotBefore</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">asDatetime</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.getValidityNotBefore">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get the validity Not Before date/time string
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>asDatetime</code></strong> - boolean to True to return as a datetime type Nb. time may not 
+          have been set - if so it will be set to None</li>
+    </ul></dd>
+    <dt>Returns: string/datetime</dt>
+        <dd>the not before time</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getValidityNotAfter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getValidityNotAfter</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">asDatetime</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.getValidityNotAfter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get the validity Not After date/time string
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>asDatetime</code></strong> - boolean set to True to return as a datetime type Nb. time may 
+          not have been set - if so it will be set to None</li>
+    </ul></dd>
+    <dt>Returns: string/datetime</dt>
+        <dd>the not after time</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getRoleSet"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getRoleSet</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getRoleSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of dict type</dt>
+        <dd>the roleSet as a list of role dictionaries.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getRoles"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getRoles</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getRoles">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Return roles as a list
+  <dl class="fields">
+    <dt>Returns: list</dt>
+        <dd>list of roles contained in the certificate</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setProvenance"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setProvenance</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">provenance</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__setProvenance">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set the provenance for the certificate: 'original' or 'mapped'.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>provenance</code></strong> - string provenance setting</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getProvenance"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getProvenance</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__getProvenance">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Get the provenance for the certificate.
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>provenance of certificate mapped or original</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValidProvenance"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValidProvenance</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">provenance</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidProvenance">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Check provenance is set correctly - to 'original'/'mapped'.</p>
+  If no provenance argument is provided, test against the setting in the
+  current instance.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>provenance</code></strong> - by default the current provenance setting is checked i.e. 
+          self.__dat['provenance'].  Set this keyword to override and check
+          against an alternate provenance setting.</li>
+    </ul></dd>
+    <dt>Returns: bool</dt>
+        <dd>True if certificate has a valid provenance setting</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isOriginal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isOriginal</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isOriginal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check for original provenance.
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>True if certificate has original roles</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isMapped"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isMapped</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isMapped">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check for mapped provenance.
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>True if certificate contain roles mapped from another</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addRoles"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addRoles</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">roleName</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.addRoles">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Add new roles to the roleSet in attributes.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>roleName</code></strong> - role name or list of role names to add to certificate</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="parse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">xmlTxt</span>,
+        <span class="sig-arg">rtnRootElem</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.parse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Parse an Attribute Certificate content contained in string input
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>xmlTxt</code></strong> - Attribute Certificate XML content as string</li>
+        <li><strong class="pname"><code>rtnRootElem</code></strong> - boolean set to True to return the ElementTree root element</li>
+    </ul></dd>
+    <dt>Returns: ElementTree root element</dt>
+        <dd>root element if rtnRootElem keyword is set to True</dd>
+    <dt>Overrides:
+      <a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#parse">XMLSec.XMLSecDoc.parse</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="read"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">read</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**xmlSecDocKw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.read">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Read an Attribute Certificate from file
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filePath</code></strong> - file to be read, if omitted XMLSecDoc.__filePath member 
+          variable is used instead</li>
+    </ul></dd>
+    <dt>Overrides:
+      <a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#read">XMLSec.XMLSecDoc.read</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__parse"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__parse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">rootElem</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.__parse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Private XML parsing method accepts a ElementTree.Element type as 
+  input
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>rootElem</code></strong> - root element of doc - ElementTree.Element type</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="createXML"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">createXML</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.createXML">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Create XML for Attribute Token from current data settings and return 
+  as a string.  The XML created is MINUS the digital signature. To obtain 
+  the signed version, run the applyEnvelopedSignature method (inherited 
+  from XMLSecDoc) and pass the attCert object reference into str()
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>formatted XML for certificate as a string</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="applyEnvelopedSignature"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">applyEnvelopedSignature</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**xmlSecDocKw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.applyEnvelopedSignature">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Override super class version to ensure settings have been parsed into 
+  a DOM object ready for signature
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>**xmlSecDocKw</code></strong> - keywords applying to XMLSecDoc.applyEnvelopedSignature()</li>
+    </ul></dd>
+    <dt>Overrides:
+      <a href="ndg.security.common.XMLSec.XMLSecDoc-class.html#applyEnvelopedSignature">XMLSec.XMLSecDoc.applyEnvelopedSignature</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setValidityTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setValidityTime</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dtNotBefore</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dtNotAfter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">lifetime</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">notBeforeOffset</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.setValidityTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Set the notBefore and notAfter times which determine the window for 
+  which the Attribute Certificate is valid.  These times are set as 
+  datetime types and also the correct string format settings are made ready
+  for output.</p>
+  Nb. use UTC time.  lifetime and notBeforeOffset are in seconds
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dtNotBefore</code></strong> - not before time as datetime type.  If omitted, it defaults to 
+          the current time</li>
+        <li><strong class="pname"><code>dtNotAfter</code></strong> - not after time as datetime type.  Defaults to 
+          self.__dtNotBefore + self.__lifetime.  If dtNotAfter is set it 
+          will reset self.__lifetime to self.__dtNotAfter - 
+          self.dtNotBefore</li>
+        <li><strong class="pname"><code>lifetime</code></strong> - lifetime for certificate in seconds i.e. not after time - not 
+          before time.  If dtNotAfter is set then this keyword will be 
+          ignored.</li>
+        <li><strong class="pname"><code>notBeforeOffset</code></strong> - skew the not before time by some offset.  This is useful in 
+          cases where system clocks are not correctly synchronized between 
+          different hosts.  Set a negative value to skew the offset 
+          backward in time.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="datetime2timeStr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">datetime2timeStr</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dtVal</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.datetime2timeStr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Convert a datetime object to a notBefore/notAfter time string
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dtVal</code></strong> - input datetime</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>datetime converted into correct string format for AttCert</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="timeStr2datetime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">timeStr2datetime</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sTime</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.timeStr2datetime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Convert a notBefore/notAfter time string to a datetime object
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sTime</code></strong> - time in string format as used by AttCert</li>
+    </ul></dd>
+    <dt>Returns: datetime</dt>
+        <dd>datetime type equivalent of string input</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValidTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValidTime</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dtNow</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">raiseExcep</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check Attribute Certificate for expiry.  Set raiseExcep to True to 
+  raise an exception with a message indicating the nature of the time 
+  error
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dtNow</code></strong> - the time to test against in datetime format.  This time must 
+          be within the range of the not before and not after times in 
+          order for the certificate to be valid.  Defaults to the current 
+          system time</li>
+        <li><strong class="pname"><code>raiseExcep</code></strong> - boolean set to True to raise an exception if the time is 
+          invalid.  Defaults to False in which case no exception is raised 
+          if the time is invalid, instead False is returned</li>
+    </ul></dd>
+    <dt>Returns: bool</dt>
+        <dd>boolean True if time is valid, False if invalid.  Also see 
+          raiseExcep keyword above.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValidVersion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValidVersion</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValidVersion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check Attribute Certificate XML file version
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>boolean True if certificate version matches the expected one, 
+          False otherwise.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isValid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isValid</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">raiseExcep</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">chkTime</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">chkVersion</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">chkProvenance</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">chkSig</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">**xmlSecDocKw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.AttCert-pysrc.html#AttCert.isValid">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <pre class="literalblock">
+Check Attribute Certificate is valid:
+
+- Time validity is OK
+- XML file version is OK
+- valid provenance setting
+- Signature is valid.
+
+@param chkTime: set to True to do time validity check (default is 
+True)
+
+@param chkVersion: set to True to Attribute Certificate file
+version (default is True)
+
+@param chkProvenanceset to True to check provenance value is valid
+(default is True)
+
+@param chkSig: set to True to check digital signature - for
+this certFilePathList must contain the root certificate of the X.509 
+certificate used to sign the AttCert.  Alternatively, certFilePathList
+can be set via __init__ (default chkSig value is True)
+                        
+@param raiseExcep: set to true to raise an exception if invalid 
+instead of returning False.  Default is to set this flag to False.
+
+@param **xmlSecDocKw: Also accepts keyword arguments corresponding to 
+XMLSecDoc.verifyEnvelopedSignature().
+
+@rtype: bool
+@return: boolean True if certificate is valid, False otherwise.  Also
+see explanation for raiseExcep keyword.                         
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__dat"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__dat</h3>
+  <p>Data dictionary version of xml</p>
+  Nb. RoleSet is an empty list - it will be filled role dictionary items
+  [{'role': {'name': '&lt;Name&gt;'}}, ... ]
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="version"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">version</h3>
+  Attribute Certificate version
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getVersion" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getVersion</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get version number as set in file.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setVersion" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setVersion</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">version</span>)</span>
+        - Set the version number to be written to file.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="holder"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">holder</h3>
+  Attribute Certificate holder DN
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getHolder" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getHolder</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get holder's Distinguished Name string.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setHolder" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setHolder</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">holder</span>)</span>
+        - Set holder's Distinguished Name string.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="holderDN"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">holderDN</h3>
+  Attribute Certificate holder DN as X500DN type
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getHolderDN" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getHolderDN</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get the holder's Distinguished Name as an X500DN instance
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="issuer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issuer</h3>
+  Certificate Issuer DN
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuer" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getIssuer</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get the issuer's Distinguished Name string
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setIssuer" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setIssuer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuer</span>)</span>
+        - Set issuer's Distinguished Name.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="issuerDN"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issuerDN</h3>
+  Attribute Certificate issuer DN as X500DN type
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuerDN" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getIssuerDN</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get the issuer's Distinguished Name as an X500DN instance
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="issuerName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issuerName</h3>
+  Certificate Issuer name
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuerName" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getIssuerName</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Returns:
+      the name of the issuer
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setIssuerName" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setIssuerName</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">issuerName</span>)</span>
+        - Set the name of the issuer
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="issuerSerialNumber"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issuerSerialNumber</h3>
+  Certificate Issuer Serial Number
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getIssuerSerialNumber" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getIssuerSerialNumber</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Returns:
+      the issuer serial number
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setIssuerSerialNumber" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setIssuerSerialNumber</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">serialNumber</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="userId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">userId</h3>
+  Certificate user identifier
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getUserId" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getUserId</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Returns:
+      the user idenitifier
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setUserId" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setUserId</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userId</span>)</span>
+        - Set the name of the userId
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="validityNotBefore"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">validityNotBefore</h3>
+  Validity not before time as a string
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#getValidityNotBefore" class="summary-sig-name">ndg.security.common.AttCert.AttCert.getValidityNotBefore</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">asDatetime</span>=<span class="summary-sig-default">False</span>)</span>
+        - Get the validity Not Before date/time string
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="validityNotAfter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">validityNotAfter</h3>
+  Validity not after time as a string
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#getValidityNotAfter" class="summary-sig-name">ndg.security.common.AttCert.AttCert.getValidityNotAfter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">asDatetime</span>=<span class="summary-sig-default">False</span>)</span>
+        - Get the validity Not After date/time string
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="roleSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">roleSet</h3>
+  Role set dictionary
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getRoleSet" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getRoleSet</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Returns:
+      the roleSet as a list of role dictionaries.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="roles"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">roles</h3>
+  List of roles in Attribute Certificate
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getRoles" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getRoles</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Return roles as a list
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="provenance"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">provenance</h3>
+  Provenance of the cert. - original or mapped
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__getProvenance" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__getProvenance</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get the provenance for the certificate.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.AttCert.AttCert-class.html#__setProvenance" class="summary-sig-name">ndg.security.common.AttCert.AttCert.__setProvenance</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">provenance</span>)</span>
+        - Set the provenance for the certificate: 'original' or 
+      'mapped'.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:43 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

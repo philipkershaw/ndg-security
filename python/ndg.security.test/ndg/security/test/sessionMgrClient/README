@@ -1,0 +1,102 @@
+Unit tests for Session Manager Web Service Client
+=================================================
+This is the most complicated unit test suite and requires a number of services
+to be running:
+ * Test Session Manager web service run from this directory
+ * MyProxy server
+ * Two test Attribute Authorities run from the Attribute Authority unit test
+ directory ../attAuthority
+ 
+It is worthwhile trying out the Attribute Authority (../attAuthority) and 
+Session Manager (../sessionMgr) unit tests first.  These tests differ from
+the Session Manager unit tests in that they test a SOAP *client* to a 
+Session Manager web service whereas the Session Manager tests just the server
+side code. 
+
+MyProxy is installed as part of the NDG Security installation.  See the 
+installation guide for details:
+
+http://proj.badc.rl.ac.uk/ndg/browser/TI12-security/trunk/documentation/InstallationGuide/pdf/NDGSecurityInstallationGuide.pdf?format=raw
+
+1) Ensure MyProxy is running on it's host machine.  Depending on how you have
+configured it it may be running as SysV init script or with xinetd or inetd.
+Check with the Installation guide.  To start myproxy-server manually as root 
+run,
+
+$ myproxy-server
+
+2) Edit sessionMgrProperties.xml in this directory and set the hostname element
+to the fully qualified domain name (FQDN) of the MyProxy host OR alternatively 
+set the environment variable MYPROXY_SERVER to the FQDN e.g.
+
+export MYPROXY_SERVER=myproxyhost.somewhere.uk
+
+If you use the environment variable it must be set in the shell in which you
+run the test Session Manager service - see step 4).
+
+3) Edit sessionMgrClientTest.cfg and set the username for the MyProxy account 
+you wish to test: NDG Security uses MyProxy with a PAM plugin to enable
+authentication against an external source such as a user database or a UNIX
+system account.  The passphrase field can also be filled, or alternatively if
+omitted from the file or commented out it will be prompted for from the
+command line.  Both test1Connect and test3ConnectNoCreateServerSess fields
+should be set.
+ 
+3) Two test Attribute Authority services are required.  These can be run from 
+the Attribute Authority unit test directory.  It's path relative to this 
+directory is ../attAuthority.  
+
+The Attribute Authorities and Session Manager accept client requests
+authenticated based on the MyProxy user credentials obtained in the unit test
+test1Connect.  In order to accept these, these services must be configured to 
+trust the MyProxy CA.  This can be done by including the MyProxy CA certificate
+in the list of trusted CA files in the respective Session Manager and Attribute
+Authority configuration files:
+ i) Copy the CA certificate from your MyProxy host computer to the ca/ sub-
+ directory under THIS directory.
+ 
+ The file will be located on the MyProxy server as e.g.
+ 
+ /etc/grid-security/certificates/abcdef01.0
+ 
+ The exact name of the CA certificate file will be unique to your installation.
+ In the above, it is "abcdef01.0".   
+ 
+ ii) edit 'caCertFileList' element in sessionManagerProperties.xml and add a 
+ new entry for the MyProxy CA:
+
+ -8<---------------------------------------------------------------------------
+    <caCertFileList>
+        <caCertFile>$NDGSEC_AACLNT_UNITTEST_DIR/ca/ndg-test-ca.crt</caCertFile>
+-->     <caCertFile>$NDGSEC_AACLNT_UNITTEST_DIR/ca/abcdef01.0</caCertFile>
+    </caCertFileList>
+ -8<---------------------------------------------------------------------------
+Ammend to the correct setting.  Edit 
+ ../attAuthority/siteAAttAuthorityProperties.xml and 
+ ../attAuthority/siteBAttAuthorityProperties.xml in the same way add a new 
+ entry for the MyProxy CA certificate.
+ 
+ Nb. You can check the MyProxy certificate file independently with OpenSSL:
+ 
+ $ openssl x509 -in  /etc/grid-security/certificates/abcdef01.0 -text
+
+4) Start the Session Manager test service in this directory but from a separate
+terminal:
+
+$ python ./server.py
+
+Nb. If you've specified the MyProxy server host with the MYPROXY_SERVER 
+environment variable, make sure it's set in this shell.
+
+5) Run the tests with the command:
+
+$ python ./SessionMgrClientTest.py
+
+6) To run individual tests give the test method name:
+
+$ python ./SessionMgrClientTest.py SessionMgrClientTestCase.test1Connect
+
+Finally,
+ * See sessionMgrClientTest.cfg configuration file to change test parameters.
+ * See the installation guide for MyProxy trouble shooting information.
+

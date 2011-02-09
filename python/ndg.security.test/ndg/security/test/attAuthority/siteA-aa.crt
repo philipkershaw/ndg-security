@@ -1,0 +1,49 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 54 (0x36)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: O=NDG, OU=BADC, CN=Test CA
+        Validity
+            Not Before: Dec 12 13:52:16 2007 GMT
+            Not After : Dec 11 13:52:16 2008 GMT
+        Subject: O=NDG Security Test, OU=Site A, CN=AttributeAuthority
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:a7:b5:ff:a1:53:11:4a:5f:1f:ca:63:72:d7:cb:
+                    f4:58:73:fc:aa:85:f2:0b:33:c8:7d:e5:cd:78:9f:
+                    f5:9d:4a:a8:7c:ac:ad:d5:c6:45:2e:e6:0b:a3:94:
+                    48:02:1d:a7:c8:d8:08:cd:64:96:6a:25:f2:86:ed:
+                    9b:9c:62:64:5c:9d:76:c2:5f:5a:8f:20:62:9a:f9:
+                    39:65:6c:85:9d:b1:ae:72:fc:81:7f:0e:8d:80:a0:
+                    f3:09:9d:33:49:d9:4d:48:05:f3:d0:5d:b3:b9:49:
+                    de:3d:3a:f7:d3:8b:80:a5:76:4f:3d:f3:bd:91:22:
+                    ec:cf:98:b2:03:70:5c:9d:81
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            Netscape Cert Type:
+                SSL Client, SSL Server, S/MIME, Object Signing
+    Signature Algorithm: md5WithRSAEncryption
+        9e:3d:25:d5:5c:13:b8:ea:8f:f5:8a:79:fc:3d:ab:5f:51:3b:
+        48:78:eb:a5:3e:34:3f:48:ee:8c:ad:4a:4e:b6:1d:f7:c1:0b:
+        21:de:46:ea:d4:76:0e:03:95:da:47:ec:4a:f4:10:b8:74:5d:
+        2c:7d:4b:19:a8:c0:a8:c4:ac:81:5e:3a:a4:64:e3:c9:2b:d6:
+        03:77:cc:bb:6a:99:85:90:fe:f8:da:2f:29:37:ab:ac:a7:b3:
+        5f:99:2a:52:54:3d:a7:cd:1b:a7:2f:28:e3:e0:91:51:a4:37:
+        51:d9:32:ac:3d:cc:17:73:e6:be:f3:4c:d9:77:8e:f1:25:85:
+        ed:7c
+-----BEGIN CERTIFICATE-----
+MIICBDCCAW2gAwIBAgIBNjANBgkqhkiG9w0BAQQFADAvMQwwCgYDVQQKEwNOREcx
+DTALBgNVBAsTBEJBREMxEDAOBgNVBAMTB1Rlc3QgQ0EwHhcNMDcxMjEyMTM1MjE2
+WhcNMDgxMjExMTM1MjE2WjBKMRowGAYDVQQKExFOREcgU2VjdXJpdHkgVGVzdDEP
+MA0GA1UECxMGU2l0ZSBBMRswGQYDVQQDExJBdHRyaWJ1dGVBdXRob3JpdHkwgZ8w
+DQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKe1/6FTEUpfH8pjctfL9Fhz/KqF8gsz
+yH3lzXif9Z1KqHysrdXGRS7mC6OUSAIdp8jYCM1klmol8obtm5xiZFyddsJfWo8g
+Ypr5OWVshZ2xrnL8gX8OjYCg8wmdM0nZTUgF89Bds7lJ3j0699OLgKV2Tz3zvZEi
+7M+YsgNwXJ2BAgMBAAGjFTATMBEGCWCGSAGG+EIBAQQEAwIE8DANBgkqhkiG9w0B
+AQQFAAOBgQCePSXVXBO46o/1inn8PatfUTtIeOulPjQ/SO6MrUpOth33wQsh3kbq
+1HYOA5XaR+xK9BC4dF0sfUsZqMCoxKyBXjqkZOPJK9YDd8y7apmFkP742i8pN6us
+p7NfmSpSVD2nzRunLyjj4JFRpDdR2TKsPcwXc+a+80zZd47xJYXtfA==
+-----END CERTIFICATE-----
