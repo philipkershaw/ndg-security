@@ -1,0 +1,143 @@
+A typical SOAP message is as follows:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ZSI="http://www.zolera.com/schemas/ZSI/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><SOAP-ENV:Header xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsse11="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:Security SOAP-ENV:mustUnderstand="1"><wsse:BinarySecurityToken EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" wsu:Id="binaryToken" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509">MIICizCCAfSgAwIBAgICAPMwDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRHMQ0wCwYDVQQL
+EwRCQURDMRAwDgYDVQQDEwdUZXN0IENBMB4XDTA3MTIxODExNDI0MVoXDTA4MTIxNzExNDI0MVow
+TDEaMBgGA1UEChMRTkRHIFNlY3VyaXR5IFRlc3QxHTAbBgNVBAsTFFdTLVNlY3VyaXR5IFVuaXR0
+ZXN0MQ8wDQYDVQQDEwZjbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCY7CFf
+5GAGGJEY38Vukj0UNfb/Q78yCucsJ0aQLKb+ItHvURqU2X/WEmiNLa90VQ4BBFoYiuFYtAyqxubn
+p1m1XM97iJrUwo85Cw7/FKvM0gRkLbvbPrYDVcy7EHvjrB9O2mhEFoz6svqdtdmasmOG1JEagdmf
+JrQLuiG5hrsPxCA/8ucLxH4FnmcMh5kRo0MwlXlva582RzWRWKgO2vDOmtvitXt9HJwdCZbPmPyx
+s6STvFHMZru1mY5dj1YWT8PBT5Svmpo/EEiL+TZctcXESRRSVxu99yRBJ0f9Nd8IPxtuyyIVX4+x
+fgOLrNoVQuIV5vKTCZh5RrWjpbk/0eqNAgMBAAGjFTATMBEGCWCGSAGG+EIBAQQEAwIE8DANBgkq
+hkiG9w0BAQQFAAOBgQDBKxEOw/4+8ofuSOXxKZwfo9jr+TrUr3XHtDngsoNe7nF8/Chz++RifpZ7
+8cO3pJS190GkMmoWS4xgNgzBeWJRqnn6Hoygglgoxs/am3nrOvO/4kqOwvNVP7nGDlXqqXmePNLR
+B2yBkC+pVLpKfjzwfIbF4LNxpUiod+ODtkhteA==
+</wsse:BinarySecurityToken><wsu:Timestamp wsu:Id="timestamp"><wsu:Created>2008-07-17T10:50:27.907837Z</wsu:Created><wsu:Expires>2008-07-17T10:55:27.907837Z</wsu:Expires></wsu:Timestamp><ds:Signature><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:CanonicalizationMethod><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod><ds:Reference URI="#binaryToken"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>3cTLHmLl7SWPuGIk55D0QXJVSQE=</ds:DigestValue></ds:Reference><ds:Reference URI="#timestamp"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>buiHmynkxL5T3c3ySxR4U3G6v8Y=</ds:DigestValue></ds:Reference><ds:Reference URI="#body"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>oyxxnXryBlWE/kf+VTUgtyazD1o=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>jDJHMgxTaKf/Pd0LsokCwkDII52p3tYEaCDDaxja783W986QPyAcRL/CHUBlG61kUHFL+x/hCBQE
+6TbX9+ix3ky02cgtsGRt1hYADO4hAsRItbeEbKhNMnS8kno2t3U/z3P8YONYBu76O4CuixsLvUMk
+TYwQvws1+e7JVvZ+J65CxQZp1nuHjbtAlbCk4DmI/jUCgeUvTKqWbfYGv7ZHZ4LgSmDNh/3Wopms
+pNOaInWTPLDwPYNDaHoWFtomawEnhLCiJV9jOF1wrGlfdVESM8uX+xKDpZhD+hHL3ss9sOv4KBnt
+rwlKILlQUmJwMk7Zk9RzXqsCDrdBndW10wGO9Q==</ds:SignatureValue><ds:KeyInfo><wsse:SecurityTokenReference><wsse:Reference URI="#binaryToken"></wsse:Reference></wsse:SecurityTokenReference></ds:KeyInfo></ds:Signature></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body xmlns:ns1="urn:ndg:security:test:wssecurity" wsu:Id="body" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><ns1:Echo><ns1:EchoIn>Hello from client</ns1:EchoIn></ns1:Echo></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+This tidies into:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ZSI="http://www.zolera.com/schemas/ZSI/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<SOAP-ENV:Header xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsse11="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+		<wsse:Security SOAP-ENV:mustUnderstand="1">
+			<wsse:BinarySecurityToken EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" wsu:Id="binaryToken" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509">
+				MIICizCCAfSgAwIBAgICAPMwDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRHMQ0wCwYDVQQL
+EwRCQURDMRAwDgYDVQQDEwdUZXN0IENBMB4XDTA3MTIxODExNDI0MVoXDTA4MTIxNzExNDI0MVow
+TDEaMBgGA1UEChMRTkRHIFNlY3VyaXR5IFRlc3QxHTAbBgNVBAsTFFdTLVNlY3VyaXR5IFVuaXR0
+ZXN0MQ8wDQYDVQQDEwZjbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCY7CFf
+5GAGGJEY38Vukj0UNfb/Q78yCucsJ0aQLKb+ItHvURqU2X/WEmiNLa90VQ4BBFoYiuFYtAyqxubn
+p1m1XM97iJrUwo85Cw7/FKvM0gRkLbvbPrYDVcy7EHvjrB9O2mhEFoz6svqdtdmasmOG1JEagdmf
+JrQLuiG5hrsPxCA/8ucLxH4FnmcMh5kRo0MwlXlva582RzWRWKgO2vDOmtvitXt9HJwdCZbPmPyx
+s6STvFHMZru1mY5dj1YWT8PBT5Svmpo/EEiL+TZctcXESRRSVxu99yRBJ0f9Nd8IPxtuyyIVX4+x
+fgOLrNoVQuIV5vKTCZh5RrWjpbk/0eqNAgMBAAGjFTATMBEGCWCGSAGG+EIBAQQEAwIE8DANBgkq
+hkiG9w0BAQQFAAOBgQDBKxEOw/4+8ofuSOXxKZwfo9jr+TrUr3XHtDngsoNe7nF8/Chz++RifpZ7
+8cO3pJS190GkMmoWS4xgNgzBeWJRqnn6Hoygglgoxs/am3nrOvO/4kqOwvNVP7nGDlXqqXmePNLR
+B2yBkC+pVLpKfjzwfIbF4LNxpUiod+ODtkhteA==
+			</wsse:BinarySecurityToken>
+			<wsu:Timestamp wsu:Id="timestamp">
+				<wsu:Created>2008-07-17T10:50:27.907837Z</wsu:Created>
+				<wsu:Expires>2008-07-17T10:55:27.907837Z</wsu:Expires>
+			</wsu:Timestamp>
+			<ds:Signature>
+				<ds:SignedInfo>
+					<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+					</ds:CanonicalizationMethod>
+					<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1">
+					</ds:SignatureMethod>
+					<ds:Reference URI="#binaryToken">
+						<ds:Transforms>
+							<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+						</ds:Transforms>
+						<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+						<ds:DigestValue>3cTLHmLl7SWPuGIk55D0QXJVSQE=</ds:DigestValue>
+					</ds:Reference>
+					<ds:Reference URI="#timestamp">
+						<ds:Transforms>
+							<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+						</ds:Transforms>
+						<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+						<ds:DigestValue>buiHmynkxL5T3c3ySxR4U3G6v8Y=</ds:DigestValue>
+					</ds:Reference>
+					<ds:Reference URI="#body">
+						<ds:Transforms>
+							<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+						</ds:Transforms>
+						<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+						<ds:DigestValue>oyxxnXryBlWE/kf+VTUgtyazD1o=</ds:DigestValue>
+					</ds:Reference>
+				</ds:SignedInfo>
+				<ds:SignatureValue>
+					jDJHMgxTaKf/Pd0LsokCwkDII52p3tYEaCDDaxja783W986QPyAcRL/CHUBlG61kUHFL+x/hCBQE
+6TbX9+ix3ky02cgtsGRt1hYADO4hAsRItbeEbKhNMnS8kno2t3U/z3P8YONYBu76O4CuixsLvUMk
+TYwQvws1+e7JVvZ+J65CxQZp1nuHjbtAlbCk4DmI/jUCgeUvTKqWbfYGv7ZHZ4LgSmDNh/3Wopms
+pNOaInWTPLDwPYNDaHoWFtomawEnhLCiJV9jOF1wrGlfdVESM8uX+xKDpZhD+hHL3ss9sOv4KBnt
+rwlKILlQUmJwMk7Zk9RzXqsCDrdBndW10wGO9Q==
+				</ds:SignatureValue>
+				<ds:KeyInfo>
+					<wsse:SecurityTokenReference>
+						<wsse:Reference URI="#binaryToken"></wsse:Reference>
+					</wsse:SecurityTokenReference>
+				</ds:KeyInfo>
+			</ds:Signature>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body xmlns:ns1="urn:ndg:security:test:wssecurity" wsu:Id="body" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+	<ns1:Echo>
+		<ns1:EchoIn>Hello from client</ns1:EchoIn>
+	</ns1:Echo>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+- which is simplified (removing namespaces + security content) to:
+
+<SOAP-ENV:Envelope>
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="1">
+			<wsse:BinarySecurityToken EncodingType="http://...#Base64Binary" wsu:Id="binaryToken" ValueType="http://...#X509">
+				MIICizCCAfSgAwIBAgICAPMwDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRHMQ0wCwYDVQQL
+				...
+			</wsse:BinarySecurityToken>
+			<wsu:Timestamp wsu:Id="timestamp">
+				<wsu:Created>2008-07-17T10:50:27.907837Z</wsu:Created>
+				<wsu:Expires>2008-07-17T10:55:27.907837Z</wsu:Expires>
+			</wsu:Timestamp>
+			<ds:Signature>
+				<ds:SignedInfo>
+					<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+					</ds:CanonicalizationMethod>
+					<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1">
+					</ds:SignatureMethod>
+					<ds:Reference URI="#binaryToken">
+						<ds:Transforms>
+							<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+						</ds:Transforms>
+						<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+						<ds:DigestValue>3cTLHmLl7SWPuGIk55D0QXJVSQE=</ds:DigestValue>
+					</ds:Reference>
+					... repeat for #timestamp + #body
+				</ds:SignedInfo>
+				<ds:SignatureValue>
+					jDJHMgxTaKf/Pd0LsokCwkDII52p3tYEaCDDaxja783W986QPyAcRL/CHUBlG61kUHFL+x/hCBQE
+					....
+				</ds:SignatureValue>
+				<ds:KeyInfo>
+					<wsse:SecurityTokenReference>
+						<wsse:Reference URI="#binaryToken"></wsse:Reference>
+					</wsse:SecurityTokenReference>
+				</ds:KeyInfo>
+			</ds:Signature>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body wsu:Id="body" >
+		<ns1:Echo>
+			<ns1:EchoIn>Hello from client</ns1:EchoIn>
+		</ns1:Echo>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+- NB, essentially there are three signed info parts (binaryToken, timestamp + body) - which canonicalise the data in the referenced SOAP section and produce a digest
++ there is a binaryToken which is used as the security token for the message (unsure how this is produced).

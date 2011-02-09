@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<attributeCertificate xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" targetNamespace="urn:ndg:security:attributeCertificate">
+    <acInfo>
+        <version>1.0</version>
+        <holder>/CN=server/O=NDG Security Test/OU=WS-Security Unittest</holder>
+        <issuer>/CN=AttributeAuthority/O=NDG Security Test/OU=Site A</issuer>
+        <issuerName>Site A</issuerName>
+        <issuerSerialNumber>253</issuerSerialNumber> 
+        <userId>testuser</userId>
+	<validity>
+  	    <notBefore>2010 06 04 13 03 17</notBefore> 
+	    <notAfter>2010 06 04 21 03 17</notAfter> 
+	</validity>
+	<attributes>
+	    <roleSet>
+                <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:postdoc</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:staff</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:undergrad</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:coapec</name>
+		</role>
+	        <role>
+	    	    <name>urn:siteA:security:authz:1.0:attr:rapid</name>
+		</role>
+	    </roleSet>
+	</attributes>
+	<provenance>original</provenance> 
+    </acInfo>
+<ds:Signature><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces PrefixList="ds"></ec:InclusiveNamespaces></ds:CanonicalizationMethod><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces PrefixList="xmlns"></ec:InclusiveNamespaces></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>ToYvzkyBm444g5x/rwlYFsFxZKw=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>Q+pNKo9G3BgJzjPZzosd9t0x/6ht6lAiqTEBdOD9dwn/oYvkSjlWXdOCfiGtaCyNdFnAST2+K78N
+FJavOon4I1KqRnYMPLKUt3rMarGx3BaBvHLIq7y56+xCmwztU18EgakomGP6qLURcWk2DRRW7qwh
+cdsmYE1HZPv3reTFHlg=</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIICBTCCAW6gAwIBAgICAP0wDQYJKoZIhvcNAQEEBQAwLzEMMAoGA1UEChMDTkRH
+MQ0wCwYDVQQLEwRCQURDMRAwDgYDVQQDEwdUZXN0IENBMB4XDTA4MTIxNTE2MzUy
+NFoXDTEzMTIxNDE2MzUyNFowSjEaMBgGA1UEChMRTkRHIFNlY3VyaXR5IFRlc3Qx
+DzANBgNVBAsTBlNpdGUgQTEbMBkGA1UEAxMSQXR0cmlidXRlQXV0aG9yaXR5MIGf
+MA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCntf+hUxFKXx/KY3LXy/RYc/yqhfIL
+M8h95c14n/WdSqh8rK3VxkUu5gujlEgCHafI2AjNZJZqJfKG7ZucYmRcnXbCX1qP
+IGKa+TllbIWdsa5y/IF/Do2AoPMJnTNJ2U1IBfPQXbO5Sd49OvfTi4Cldk89872R
+IuzPmLIDcFydgQIDAQABoxUwEzARBglghkgBhvhCAQEEBAMCBPAwDQYJKoZIhvcN
+AQEEBQADgYEAWD04scBB91kWT8qXKZyN2EZ5nBFqs6REXtI+ddOaZt7VtiaHYMXA
+mcRW/kCw8YgS+Ull+mZpAwpWUU9kR/A5dbiIDDRbxlz4BJCeMgkO/OxU31zmvqqa
+23UyGXPhtaTuo8DG2uSr5XDk6GnJ5sb0WB3UgsRh7V4ryWkStImCSGY=</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></attributeCertificate>

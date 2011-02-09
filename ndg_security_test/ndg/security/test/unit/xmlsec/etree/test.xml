@@ -1,0 +1,13 @@
+<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion" Issuer="http://badc.nerc.ac.uk" MajorVersion="1" MinorVersion="1">
+    <saml:Conditions NotAfter="y" NotBefore="x"></saml:Conditions>
+    <saml:AuthenticationStatement AuthenticationInstant="..." AuthenticationMethod="...">
+        <saml:Subject></saml:Subject>
+    </saml:AuthenticationStatement>
+    <saml:AttributeStatement>
+        <saml:Subject></saml:Subject>
+        <saml:Attribute AttributeName="urn:mace:dir:attribute-def:eduPersonAffiliation" AttributeNamespace="urn:mace:shibboleth:1.0:attributeNamespace:uri">
+            <saml:AttributeValue>member</saml:AttributeValue>
+            <saml:AttributeValue>student</saml:AttributeValue>
+        </saml:Attribute>
+    </saml:AttributeStatement>
+</saml:Assertion>
