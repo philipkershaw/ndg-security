@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<myProxyProp>
+	<!-- 
+	Nb. MYPROXY_SERVER environment variable if set, overrides this setting
+	-->
+	<myProxyServer>localhost</myProxyServer>
+	<!--
+	Nb. GRID_SECURITY_DIR environment variable if set, overrides this setting
+	
+	This directory path is used to locate the OpenSSL configuration file
+	-->
+	<gridSecurityDir>$GLOBUS_LOCATION/etc</gridSecurityDir>
+	<credStorageDir></credStorageDir>
+	<!-- Open SSL Configuration settings -->
+	<openSSLConfFileName>globus-user-ssl.conf</openSSLConfFileName>
+	<tmpDir>/tmp</tmpDir>
+	<path>$GLOBUS_LOCATION/bin:$GLOBUS_LOCATION/sbin:/usr/bin:/bin</path>
+	<!-- 
+		Limit on maximum lifetime any proxy certificate can have - specified when
+	        a certificate is first created by addUser() method
+		-->
+	<proxyCertMaxLifetime></proxyCertMaxLifetime> <!-- in hours -->
+	<!-- 
+		Life time of a proxy certificate when issued from the Proxy Server with
+	        getDelegation() method
+		-->
+	<proxyCertLifetime></proxyCertLifetime> <!-- in hours -->
+	<simpleCACltProp>
+	    <wsdl></wsdl>
+	    <xmlSigKeyFile></xmlSigKeyFile>
+	    <xmlSigCertFile></xmlSigCertFile>
+	    <xmlSigCertPPhrase></xmlSigCertPPhrase>
+	</simpleCACltProp>
+</myProxyProp>

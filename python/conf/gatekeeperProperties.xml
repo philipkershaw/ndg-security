@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gatekeeperProp>
+	<!-- Resource identifier e.g. a URI -->
+    <resrcID></resrcID>
+	<!-- Resource interface class -->
+    <resrcModFilePath></resrcModFilePath>
+    <resrcModName></resrcModName>
+    <resrcClassName></resrcClassName>
+    <resrcPropFile></resrcPropFile>
+	<!-- CA Certificate used in validation of Attribute Certificate XML 
+	singature -->
+	<caCertFilePath></caCertFilePath>
+</gatekeeperProp>
