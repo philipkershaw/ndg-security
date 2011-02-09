@@ -1,0 +1,205 @@
+#!/bin/bash
+#
+# SysV init script for NDG Security Session Manager
+#
+# P J Kershaw
+#
+# 13/06/06
+#
+# Copyright (C) 2006 CCLRC & NERC
+# 
+# This software may be distributed under the terms of the Q Public License,
+# version 1.0 or later.
+#
+# chkconfig: 2345 99 01
+# description: NERC Data Grid Security Session Manager Web Service
+#
+
+# Edit these variables as required
+user="globus"
+ndgSetupFilePath="/usr/local/NDG/ndgSetup.sh"
+
+# Command line args e.g. set alternative port number or configuration file
+# path.  Note security consideration that these args will appear in a ps 
+# process listing
+args=-wn
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+serviceName=${0##*/}
+prog=SessionMgrServer.py
+RETVAL=0
+
+
+start()
+{
+    echo -n "Starting ${serviceName}: "
+
+    # Source NDG Environment
+    if [ -f ${ndgSetupFilePath} ]; then
+         . ${ndgSetupFilePath}
+    else
+        failure $"Set-up of NDG environment" 
+        return
+    fi
+    
+    cmd="${NDG_DIR}/bin/${prog} ${args}"
+    
+    # See if it's already running. Look *only* at the pid file.
+    local pid=
+    if [ -f /var/run/${serviceName}.pid ]; then
+        local line p
+        read line < /var/run/${serviceName}.pid
+        for p in $line ; do
+            [ -z "${p//[0-9]/}" -a -d "/proc/$p" ] && pid="$pid $p"
+        done
+    fi
+
+    [ -n "${pid:-}" ] && return
+
+    # Make sure it doesn't core dump anywhere; while this could mask
+    # problems with the daemon, it also closes some security problems
+    ulimit -S -c 0 >/dev/null 2>&1
+
+    # Echo daemon
+    [ "${BOOTUP:-}" = "verbose" -a -z "$LSB" ] && echo -n " ${serviceName}"
+
+    # And start it up.
+    initlog $INITLOG_ARGS -c "su - ${user} -c \"${cmd}\""
+    RETVAL=$?
+    
+    if [ $RETVAL = 0 ]; then
+        # Get the process ID
+        pid=(`ps --no-headers -u ${user} -o pid,cmd --sort=-pid|grep "$prog"`)
+        echo ${pid} > /var/run/${serviceName}.pid
+        touch /var/lock/subsys/${serviceName}        
+        success $"${serviceName} startup"
+    else
+        failure $"${serviceName} startup"
+    fi
+    
+    echo
+}
+
+
+stop()
+{
+    echo -n "Shutting down ${serviceName}: "
+    
+    # Find pid
+    pid=
+    if [ -f /var/run/${serviceName}.pid ]; then
+        local line p
+        read line < /var/run/${serviceName}.pid
+        for p in $line ; do
+            [ -z "${p//[0-9]/}" -a -d "/proc/$p" ] && pid="$pid $p"
+        done
+    fi
+
+    if [ -z "$pid" ]; then
+        failure $"${serviceName} stop - no process found from PID file"
+        return
+    fi
+
+    # Kill it.
+    if [ -n "${pid:-}" ] ; then
+        [ "$BOOTUP" = "verbose" -a -z "$LSB" ] && echo -n "${serviceName} "
+            
+        if checkpid $pid 2>&1; then
+            # TERM first, then KILL if not dead
+            kill -TERM $pid
+            usleep 100000
+            if checkpid $pid && sleep 1 &&
+               checkpid $pid && sleep 3 &&
+               checkpid $pid ; then
+                kill -KILL $pid
+                usleep 100000
+            fi
+            checkpid $pid
+            RC=$?
+            [ "$RC" -eq 0 ] && failure $"${serviceName} shutdown" || \
+                success $"${serviceName} shutdown"
+            RC=$((! $RC))
+        fi    
+    else
+        failure $"${serviceName} shutdown"
+        RC=1
+    fi
+
+    # Remove pid file if any.
+    rm -f /var/run/${serviceName}.pid
+
+    echo
+}
+
+
+restart()
+{
+    stop
+    start
+}
+
+
+status()
+{
+    local pid=
+    local pidFilePath=/var/run/${serviceName}.pid
+    
+    # Get pid from "/var/run/*.pid" file
+    if [ -f $pidFilePath ] ; then
+        read pid < $pidFilePath
+        if [ -z "$pid" ]; then
+            echo $"Can't get pid from pid file $pidFilePath"
+            return
+        fi
+    else
+        echo $"No pid file $pidFilePath found"
+        return
+    fi
+
+    # look for pid in listing
+    local pidFound=
+    for i in `pidof -o $$ -o $PPID -o %PPID -x "python"`; do
+         [[ $i = $pid ]] && pidFound=Yes && break;
+    done
+    
+    if [ -n "$pidFound" ]; then
+        echo $"$prog (pid $pid) is running..."
+        return
+        
+    elif [ -f /var/lock/subsys/${serviceName} ]; then
+        echo $"$prog dead but subsys locked and pid file $pidFilePath exists"
+        return
+    else
+        echo $"$prog dead but pid file $pidFilePath exists"   
+    fi
+}
+
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    status)
+        # Use status defined in functions file
+        status
+    ;;
+    restart)
+        restart ${serviceName}
+    ;;
+    condrestart)
+    if [ -f /var/run/${serviceName}.pid ] ; then
+        stop
+        start
+    fi
+    ;;
+    *)
+        echo \
+        "Usage: ${serviceName} {start|stop|restart|condrestart|status}"
+        exit 1
+    ;;
+esac

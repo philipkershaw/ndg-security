@@ -1,0 +1,6 @@
+NDG Security 0.72 Post-Alpha Release (version development 24/07/06)
+___________________________________________________________________
+
+To install:
+
+$ <path to NDG python> setup.py install

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+	<thisHost name="BADC">
+	    <wsdl>badcAttAuthorityURI</wsdl>
+	    <loginURI>badcLoginPageURI</loginURI>
+	</thisHost>
+    <trusted name="BODC">
+	    <wsdl>bodcAttAuthorityURI</wsdl>
+	    <loginURI>bodcLoginPageURI</loginURI>
+		<role remote="aBODCrole" local="aLocalRole"/>
+    </trusted>
+    <trusted name="escience">
+	    <wsdl>eScienceAttAuthorityURI</wsdl>
+		<role remote="anEScienceRole" local="anotherLocalRole"/>
+    </trusted>
+</AAmap>
