@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<AAmap>
+<trusted name='bodc'>
+<signatureFile>filename</signatureFile>
+<role remote='nerc' local='nerc'/>
+<role remote='ashoe' local='ashoe'/>
+<role remote='rapid' local='rapid'/>
+<role remote='staff' local='nerc'/>
+</trusted>
+<trusted name='escience'>
+<signatureFile>filename</signatureFile>
+<role remote='bodc' local='nerc'/>
+</trusted>
+</AAmap>
