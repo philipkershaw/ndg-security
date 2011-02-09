@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AAmap>
+	<thisHost name="Site B">
+	    <aaURI>http://localhost:5100/AttributeAuthority</aaURI>
+        <loginURI>https://localhost/login</loginURI>
+	    <aaDN>/O=NDG/OU=Site B/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginServerDN>
+	    <loginRequestServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginRequestServerDN>
+	</thisHost>
+    <trusted name="Site A">
+	    <aaURI>http://localhost:5000/AttributeAuthority</aaURI>
+	    <aaURI>http://localhost:5000/AttributeAuthority</aaURI>
+        <loginURI>https://localhost/login</loginURI>
+	    <aaDN>/O=NDG/OU=Site A/CN=AttributeAuthority</aaDN>
+	    <loginServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginServerDN>
+	    <loginRequestServerDN>/C=UK/ST=Oxfordshire/O=STFC/OU=BADC/CN=localhost</loginRequestServerDN>
+		<role remote="postdoc" local="researcher"/>
+    </trusted>
+</AAmap>

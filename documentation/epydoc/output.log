@@ -1,0 +1,2555 @@
+  [
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.server/ndg/security/
+| server/twistedHandlers.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.server/ndg/security/server/
+|            twistedHandlers.pyc
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/GatekeeperClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.AttCert (line 20)
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/SimpleCAClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named CertReq (line 19)
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/LogClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named LogIO (line 20)
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/ndgSessionClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named SecurityClient (line 24)
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/zsiM2CryptoHttpsConnection.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.common/ndg/security/common/
+|            zsiM2CryptoHttpsConnection.pyc
+|   
+  [.
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SecurityCGI.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.SecurityClient (line 25)
+|   
+  [..
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SQLObject.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named sqlobject (line 17)
+|   
+  [...
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.server/ndg/security/
+| server/twistedHandlers.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.server/ndg/security/server/
+|            twistedHandlers.pyc
+|   
+  [....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/GatekeeperClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.AttCert (line 20)
+|   
+  [....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/SimpleCAClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named CertReq (line 19)
+|   
+  [....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/LogClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named LogIO (line 20)
+|   
+  [....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/ndgSessionClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named SecurityClient (line 24)
+|   
+  [.....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/zsiM2CryptoHttpsConnection.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.common/ndg/security/common/
+|            zsiM2CryptoHttpsConnection.pyc
+|   
+  [.....
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SecurityCGI.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.SecurityClient (line 25)
+|   
+  [......
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SQLObject.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named sqlobject (line 17)
+|   
+  [.......
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.server/ndg/security/
+| server/twistedHandlers.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.server/ndg/security/server/
+|            twistedHandlers.pyc
+|   
+  [.........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/GatekeeperClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.AttCert (line 20)
+|   
+  [.........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/SimpleCAClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named CertReq (line 19)
+|   
+  [.........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/LogClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named LogIO (line 20)
+|   
+  [.........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.client/ndg/security/
+| client/ndgSessionClient.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named SecurityClient (line 24)
+|   
+  [...........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/zsiM2CryptoHttpsConnection.pyc:
+| No documentation available!
+|     Error: Import failed:
+|            ImportError: Bad magic number in /home/pjkershaw/
+|            security/python/ndg.security.common/ndg/security/common/
+|            zsiM2CryptoHttpsConnection.pyc
+|   
+  [...........
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SecurityCGI.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named NDG.SecurityClient (line 25)
+|   
+  [............
++---------------------------------------------------------------------
+| In /home/pjkershaw/security/python/ndg.security.common/ndg/security/
+| common/SQLObject.py:
+| Import failed (but source code parsing was successful).
+|     Error: ImportError: No module named sqlobject (line 17)
+|   
+  [...............
+  Error: Two of the specified items, '/home/pjkershaw/security/python/
+         ndg.security.client/ndg' and '/home/pjkershaw/security/
+         python/ndg.security.common/ndg', have the same canonical name
+         ("ndg").  This may mean that you specified two different 
+         files that both use the same module name.  Ignoring the 
+         second item ('/home/pjkershaw/security/python/
+         ndg.security.client/ndg')
+  [...............
+  Error: Two of the specified items, '/home/pjkershaw/security/python/
+         ndg.security.client/ndg' and '/home/pjkershaw/security/
+         python/ndg.security.server/ndg', have the same canonical name
+         ("ndg").  This may mean that you specified two different 
+         files that both use the same module name.  Ignoring the 
+         second item ('/home/pjkershaw/security/python/
+         ndg.security.client/ndg')
+  [...............
+  Error: Two of the specified items, '/home/pjkershaw/security/python/
+         ndg.security.client/ndg' and '/home/pjkershaw/security/
+         python/ndg.security.test/ndg', have the same canonical name 
+         ("ndg").  This may mean that you specified two different 
+         files that both use the same module name.  Ignoring the 
+         second item ('/home/pjkershaw/security/python/
+         ndg.security.client/ndg')
+  [....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/ServiceContainer.py, line 156, in 
+| ZSI.ServiceContainer.ServiceInterface
+|   Warning: Lines 159, 160, 165, 166, 168: Improper paragraph 
+|            indentation.
+|   
+  [....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 69, in ZSI.TC.TypeCode.__init__
+|   Warning: Lines 71, 73, 74: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 47, in ZSI.TC.TypeCode
+|   Warning: Lines 49, 51, 54, 56, 57, 58, 59, 60: Improper paragraph 
+|            indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 141, in ZSI.TC.TypeCode.SimpleHREF
+|   Warning: Line 143: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 171, in ZSI.TC.TypeCode.checkname
+|   Warning: Line 174: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 200, in ZSI.TC.TypeCode.checktype
+|   Warning: Line 203: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 375, in ZSI.TC.TypeCode.get_name
+|   Warning: Line 377: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 228, in ZSI.TC.TypeCode.name_match
+|   Warning: Line 230: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 236, in ZSI.TC.TypeCode.nilled
+|   Warning: Line 238: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 107, in ZSI.TC.TypeCode.parse
+|   Warning: Line 109: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 272, in ZSI.TC.TypeCode.parse_attributes
+|   Warning: Line 276: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 115, in ZSI.TC.TypeCode.serialize
+|   Warning: Line 117: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 134, in ZSI.TC.TypeCode.serialize_as_nil
+|   Warning: Line 136: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 358, in ZSI.TC.TypeCode.set_attribute_href
+|   Warning: Line 360: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 366, in ZSI.TC.TypeCode.set_attribute_id
+|   Warning: Line 368: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 347, in ZSI.TC.TypeCode.set_attribute_xsi_type
+|   Warning: Line 349: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 298, in ZSI.TC.TypeCode.set_attributes
+|   Warning: Line 303: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 248, in ZSI.TC.TypeCode.simple_value
+|   Warning: Line 250: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/TC.py, line 125, in ZSI.TC.TypeCode.text_to_data
+|   Warning: Line 127: Improper paragraph indentation.
+|   
+  [.....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/schema.py, line 55, in ZSI.schema.SchemaInstanceType
+|   Warning: Lines 60, 61, 62, 63, 64, 65: Improper paragraph 
+|            indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/schema.py, line 117, in 
+| ZSI.schema.SchemaInstanceType.getElementDeclaration
+|   Warning: Line 123: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/schema.py, line 103, in 
+| ZSI.schema.SchemaInstanceType.getTypeDefinition
+|   Warning: Line 107: Improper paragraph indentation.
+|   
+  [.....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/ZSI-2.0_rc3-py2.5.egg/
+| ZSI/schema.py, line 170, in 
+| ZSI.schema.TypeDefinition.getSubstituteType
+|   Warning: Line 176: Improper paragraph indentation.
+|   
+  [.....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/cgi.py, line 427, in 
+| cgi.FieldStorage.__init__
+|   Warning: Lines 432, 435, 438, 443, 450: Improper paragraph 
+|            indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/cgi.py, line 384, in cgi.FieldStorage
+|   Warning: Lines 396, 400, 403, 408, 415: Improper paragraph 
+|            indentation.
+|   
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/cgi.py, line 766, in 
+| cgi.FieldStorage.make_file
+|   Warning: Line 769: Lists must be indented.
+|   
+  [.....................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/httplib.py, line 731, in 
+| httplib.HTTPConnection.putrequest
+|   Warning: Line 737: Improper paragraph indentation.
+|   
+  [......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.client/ndg/
+| security/client/GatekeeperClient.py, line 38, in 
+| ndg.security.client.GatekeeperClient.GatekeeperClient.__init__
+|   Warning: Lines 40, 42: Improper paragraph indentation.
+|   
+  [......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.client/ndg/
+| security/client/LogClient.py, line 42, in 
+| ndg.security.client.LogClient.LogClient.__init__
+|   Warning: Lines 44, 46: Improper paragraph indentation.
+|   
+  [......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.client/ndg/
+| security/client/SimpleCAClient.py, line 50, in 
+| ndg.security.client.SimpleCAClient.SimpleCAClient.__init__
+|   Warning: Lines 54, 56: Improper paragraph indentation.
+|   
+  [......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttAuthority/__init__.py, line 2, in 
+| ndg.security.common.AttAuthority
+|   Warning: Lines 15, 17, 19: Possible mal-formatted field item.
+|   
+  [......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttAuthority/__init__.py, line 340, in 
+| ndg.security.common.AttAuthority.AttAuthorityClient.getAttCert
+|   Warning: Lines 367, 368: Possible mal-formatted field item.
+|   
+  [.......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 1, in ndg.security.common.AttCert
+|   Warning: Lines 5, 7, 9: Possible mal-formatted field item.
+|   
+  [.......................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 105, in 
+| ndg.security.common.AttCert.AttCert.__init__
+|   Warning: @param for unknown parameter "**xmlSecDocKw"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 88, in 
+| ndg.security.common.AttCert.AttCert
+|   Warning: u'cvar' expected an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 421, in 
+| ndg.security.common.AttCert.AttCert.__getIssuerName
+|   Warning: Line 421: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 438, in 
+| ndg.security.common.AttCert.AttCert.__getIssuerSerialNumber
+|   Warning: Line 438: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 544, in 
+| ndg.security.common.AttCert.AttCert.__getProvenance
+|   Warning: Line 546: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 515, in 
+| ndg.security.common.AttCert.AttCert.__getRoles
+|   Warning: Line 517: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 187, in 
+| ndg.security.common.AttCert.AttCert.__getitem__
+|   Warning: @param for unknown parameter "item"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 805, in 
+| ndg.security.common.AttCert.AttCert.applyEnvelopedSignature
+|   Warning: @param for unknown parameter "**xmlSecDocKw"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 750, in 
+| ndg.security.common.AttCert.AttCert.createXML
+|   Warning: u'return' did not expect an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 489, in 
+| ndg.security.common.AttCert.AttCert.getValidityNotAfter
+|   Warning: Line 494: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 472, in 
+| ndg.security.common.AttCert.AttCert.getValidityNotBefore
+|   Warning: Line 477: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 582, in 
+| ndg.security.common.AttCert.AttCert.isMapped
+|   Warning: Line 583: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 575, in 
+| ndg.security.common.AttCert.AttCert.isOriginal
+|   Warning: Line 576: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 1011, in 
+| ndg.security.common.AttCert.AttCert.isValid
+|   Warning: Line 1013: Lists must be indented.
+|   Warning: Lines 1024, 1038: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 942, in 
+| ndg.security.common.AttCert.AttCert.isValidTime
+|   Warning: Line 955: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 995, in 
+| ndg.security.common.AttCert.AttCert.isValidVersion
+|   Warning: Line 997: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/AttCert.py, line 166, in 
+| ndg.security.common.AttCert.AttCert.toString
+|   Warning: @param for unknown parameter "**kw"
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 1, in 
+| ndg.security.common.CredWallet
+|   Warning: Lines 5, 7, 9: Possible mal-formatted field item.
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 1116, in 
+| ndg.security.common.CredWallet.CredRepos.__init__
+|   Warning: @param for unknown parameter "**prop"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 1150, in 
+| ndg.security.common.CredWallet.CredRepos.auditCredentials
+|   Warning: Line 1156: Improper paragraph indentation.
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 507, in 
+| ndg.security.common.CredWallet.CredWallet.__getAA
+|   Warning: @param for unknown parameter "aaClnt"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 473, in 
+| ndg.security.common.CredWallet.CredWallet.__getAAclnt
+|   Warning: @param for unknown parameter "aaClnt"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 310, in 
+| ndg.security.common.CredWallet.CredWallet.__setCert
+|   Warning: Lines 320, 321: Possible mal-formatted field item.
+|   Warning: u'type' expected a single argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 785, in 
+| ndg.security.common.CredWallet.CredWallet.getAttCert
+|   Warning: Line 792: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/CredWallet.py, line 519, in 
+| ndg.security.common.CredWallet.CredWallet.isValid
+|   Warning: @param for unknown parameter "**x509CertKeys"
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SQLObject.py, line 79, in 
+| ndg.security.common.SQLObject.CredRepos.__setConnection
+|   Warning: Line 90: Lists must be indented.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SQLObject.py, line 220, in 
+| ndg.security.common.SQLObject.CredRepos.auditCredentials
+|   Warning: Lines 224, 226: Improper paragraph indentation.
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 705, in 
+| ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI.__init__
+|   Warning: Lines 706, 708, 710, 713: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 892, in 
+| ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI._authenticate
+|   Warning: Line 896: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 813, in 
+| ndg.security.common.SecurityCGI.IdentityProviderSecurityCGI._returnCredsResponse
+|   Warning: Lines 820, 822, 824: Improper paragraph indentation.
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 340, in 
+| ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.__init__
+|   Warning: Lines 341, 345, 349, 351, 354, 357, 360, 362: Improper 
+|            paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 629, in 
+| ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI._requestCreds
+|   Warning: Lines 632, 636, 638: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 518, in 
+| ndg.security.common.SecurityCGI.ServiceProviderSecurityCGI.onCredsSet
+|   Warning: Line 542: Improper paragraph indentation.
+|   
+  [........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 91, in 
+| ndg.security.common.SecurityCGI._SecurityCGI.__init__
+|   Warning: Lines 92, 94, 100, 102: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 58, in 
+| ndg.security.common.SecurityCGI._SecurityCGI
+|   Warning: Line 63: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 167, in 
+| ndg.security.common.SecurityCGI._SecurityCGI._getAttCert
+|   Warning: Line 172: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SecurityCGI.py, line 249, in 
+| ndg.security.common.SecurityCGI._SecurityCGI.onAttCertDenied
+|   Warning: Lines 254, 263: Improper paragraph indentation.
+|   
+  [.........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SessionCookie.py, line 86, in 
+| ndg.security.common.SessionCookie.SessionCookie.__setCert
+|   Warning: Lines 92, 93: Possible mal-formatted field item.
+|   Warning: u'type' expected a single argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SessionCookie.py, line 224, in 
+| ndg.security.common.SessionCookie.SessionCookie.parse
+|   Warning: Lines 226, 227: Possible mal-formatted field item.
+|   
+  [.........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/SessionMgr/__init__.py, line 320, in 
+| ndg.security.common.SessionMgr.SessionMgrClient.addUser
+|   Warning: Lines 325, 327: Improper paragraph indentation.
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/X509.py, line 540, in 
+| ndg.security.common.X509.X500DN.__init__
+|   Warning: Line 545: Improper paragraph indentation.
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/X509.py, line 321, in 
+| ndg.security.common.X509.X509Cert.verify
+|   Warning: @param for unknown parameter "**kw"
+|   Warning: u'type' expected a single argument
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/XMLSec.py, line 1, in ndg.security.common.XMLSec
+|   Warning: Lines 5, 10, 12: Possible mal-formatted field item.
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/XMLSec.py, line 75, in 
+| ndg.security.common.XMLSec.XMLSecDoc
+|   Warning: @param for unknown parameter "__beginCert"
+|   Warning: u'cvar' expected an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/XMLSec.py, line 355, in 
+| ndg.security.common.XMLSec.XMLSecDoc.applyEnvelopedSignature
+|   Warning: Lines 366, 366: Lists must be indented.
+|   Warning: Line 370: Improper paragraph indentation.
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/ca/__init__.py, line 2, in ndg.security.common.ca
+|   Warning: Lines 7, 9, 11: Possible mal-formatted field item.
+|   
+  [..........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/ca/__init__.py, line 52, in 
+| ndg.security.common.ca.CertificateAuthorityClient.__init__
+|   Warning: @param for unknown parameter "**signatureHandlerKw"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/ca/__init__.py, line 38, in 
+| ndg.security.common.ca.CertificateAuthorityClient
+|   Warning: Unknown field tag u'ctype'
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/ca/__init__.py, line 314, in 
+| ndg.security.common.ca.CertificateAuthorityClient.getCRL
+|   Warning: Lines 316, 317: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/ca/__init__.py, line 256, in 
+| ndg.security.common.ca.CertificateAuthorityClient.issueCert
+|   Warning: @param for unknown parameter "**createCertReqKw"
+|   
+  [...........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/openssl.py, line 1, in ndg.security.common.openssl
+|   Warning: Lines 6, 8, 10: Possible mal-formatted field item.
+|   
+  [...........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/openssl.py, line 130, in 
+| ndg.security.common.openssl.OpenSSLConfig.__getCADir
+|   Warning: u'rtype' did not expect an argument
+|   Warning: u'return' did not expect an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/openssl.py, line 141, in 
+| ndg.security.common.openssl.OpenSSLConfig.__getReqDN
+|   Warning: u'rtype' did not expect an argument
+|   Warning: u'return' did not expect an argument
+|   
+  [...........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/wsSecurity.py, line 2, in 
+| ndg.security.common.wsSecurity
+|   Warning: Lines 6, 8, 10: Possible mal-formatted field item.
+|   
+  [...........................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/wsSecurity.py, line 151, in 
+| ndg.security.common.wsSecurity.SignatureHandler.__init__
+|   Warning: Unknown field tag u'reqbinsectokvaltype'
+|   Warning: @type for unknown parameter "binSecTokValType"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/wsSecurity.py, line 96, in 
+| ndg.security.common.wsSecurity.SignatureHandler
+|   Warning: @param for unknown parameter "__beginCert"
+|   Warning: u'cvar' expected an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/wsSecurity.py, line 384, in 
+| ndg.security.common.wsSecurity.SignatureHandler.__getVerifyingCert
+|   Warning: Line 387: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.common/ndg/
+| security/common/wsSecurity.py, line 352, in 
+| ndg.security.common.wsSecurity.SignatureHandler.__setCert
+|   Warning: Lines 362, 363: Possible mal-formatted field item.
+|   Warning: u'type' expected a single argument
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/AttAuthority/__init__.py, line 1, in 
+| ndg.security.server.AttAuthority
+|   Warning: Lines 5, 7, 9: Possible mal-formatted field item.
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/AttAuthority/__init__.py, line 341, in 
+| ndg.security.server.AttAuthority.AttAuthority.getAttCert
+|   Warning: Line 344: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/AttAuthority/__init__.py, line 855, in 
+| ndg.security.server.AttAuthority.AttAuthority.getRoles
+|   Warning: @param for unknown parameter "dn"
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/Log.py, line 1, in ndg.security.server.Log
+|   Warning: Lines 5, 7, 9: Possible mal-formatted field item.
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/MyProxy.py, line 1, in ndg.security.server.MyProxy
+|   Warning: Lines 5, 23, 25: Possible mal-formatted field item.
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/MyProxy.py, line 179, in 
+| ndg.security.server.MyProxy.MyProxyClient.__init__
+|   Warning: @param for unknown parameter "**prop"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/MyProxy.py, line 451, in 
+| ndg.security.server.MyProxy.MyProxyClient._deserializeCerts
+|   Warning: Line 457: Possible mal-formatted field item.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/MyProxy.py, line 766, in 
+| ndg.security.server.MyProxy.MyProxyClient.logon
+|   Warning: u'return' did not expect an argument
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 1, in 
+| ndg.security.server.SessionMgr
+|   Warning: Lines 6, 8, 10: Possible mal-formatted field item.
+|   
+  [............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 372, in 
+| ndg.security.server.SessionMgr.SessionMgr.__init__
+|   Warning: Lines 376, 378: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 1144, in 
+| ndg.security.server.SessionMgr.SessionMgr.__redirectAttCertReq
+|   Warning: @param for unknown parameter "**kw"
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 722, in 
+| ndg.security.server.SessionMgr.SessionMgr.addUser
+|   Warning: Lines 725, 730, 735, 741: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 770, in 
+| ndg.security.server.SessionMgr.SessionMgr.connect
+|   Warning: Line 773: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/SessionMgr/__init__.py, line 1072, in 
+| ndg.security.server.SessionMgr.SessionMgr.getAttCert
+|   Warning: @param for unknown parameter "**credWalletKw"
+|   
+  [.............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/ca/__init__.py, line 105, in 
+| ndg.security.server.ca.SimpleCA.__init__
+|   Warning: Line 108: Improper paragraph indentation.
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/ca/__init__.py, line 525, in 
+| ndg.security.server.ca.SimpleCA.sign
+|   Warning: @param for unknown parameter "**createCertReqKw"
+|   
+  [.............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/conf/userRoles.py, line 1, in 
+| ndg.security.server.conf.userRoles
+|   Warning: Lines 6, 8: Possible mal-formatted field item.
+|   Warning: Unknown field tag u'licence'
+|   
+  [.............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/twisted.py, line 2, in ndg.security.server.twisted
+|   Warning: Lines 10, 12, 14: Possible mal-formatted field item.
+|   
+  [.............................
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/twisted.py, line 41, in 
+| ndg.security.server.twisted.WSSecurityHandler.processRequest
+|   Warning: u'return' did not expect an argument
+|   Warning: u'rtype' did not expect an argument
+|   
++---------------------------------------------------------------------
+| File /home/pjkershaw/security/python/ndg.security.server/ndg/
+| security/server/twisted.py, line 55, in 
+| ndg.security.server.twisted.WSSecurityHandler.processResponse
+|   Warning: @param for unknown parameter "ps"
+|   Warning: u'return' did not expect an argument
+|   Warning: u'rtype' did not expect an argument
+|   
+  [..............................
++---------------------------------------------------------------------
+| File /usr/local/lib/python2.5/site-packages/
+| PyXML-0.8.4-py2.5-linux-i686.egg/_xmlplus/ns.py, line 92, in 
+| xml.ns.ENCRYPTION
+|   Warning: Line 96: Improper paragraph indentation.
+|   
+  [..........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node1
+         in label of node node0
+         Warning: node node1, port body unrecognized
+         Warning: node node0, port body unrecognized
+
+  [..........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node2
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node4
+         in label of node node5
+         in label of node node3
+         Warning: node node4, port body unrecognized
+         Warning: node node3, port body unrecognized
+         Warning: node node5, port body unrecognized
+         Warning: node node4, port body unrecognized
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node6
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node8
+         in label of node node9
+         in label of node node7
+         Warning: node node8, port body unrecognized
+         Warning: node node7, port body unrecognized
+         Warning: node node9, port body unrecognized
+         Warning: node node8, port body unrecognized
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node11
+         in label of node node10
+         Warning: node node11, port body unrecognized
+         Warning: node node10, port body unrecognized
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node13
+         in label of node node14
+         in label of node node12
+         Warning: node node13, port body unrecognized
+         Warning: node node12, port body unrecognized
+         Warning: node node14, port body unrecognized
+         Warning: node node13, port body unrecognized
+
+  [...........................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node15
+
+  [............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node20
+         in label of node node17
+         in label of node node18
+         in label of node node16
+         in label of node node19
+         Warning: node node17, port body unrecognized
+         Warning: node node16, port body unrecognized
+         Warning: node node18, port body unrecognized
+         Warning: node node17, port body unrecognized
+         Warning: node node16, port body unrecognized
+         Warning: node node20, port body unrecognized
+         Warning: node node16, port body unrecognized
+         Warning: node node19, port body unrecognized
+
+  [............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node22
+         in label of node node23
+         in label of node node21
+         in label of node node24
+         Warning: node node22, port body unrecognized
+         Warning: node node21, port body unrecognized
+         Warning: node node23, port body unrecognized
+         Warning: node node22, port body unrecognized
+         Warning: node node24, port body unrecognized
+         Warning: node node21, port body unrecognized
+
+  [............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node28
+         in label of node node26
+         in label of node node27
+         in label of node node25
+         Warning: node node28, port body unrecognized
+         Warning: node node25, port body unrecognized
+         Warning: node node26, port body unrecognized
+         Warning: node node25, port body unrecognized
+         Warning: node node27, port body unrecognized
+         Warning: node node26, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node32
+         in label of node node30
+         in label of node node31
+         in label of node node29
+         Warning: node node32, port body unrecognized
+         Warning: node node29, port body unrecognized
+         Warning: node node30, port body unrecognized
+         Warning: node node29, port body unrecognized
+         Warning: node node31, port body unrecognized
+         Warning: node node30, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node36
+         in label of node node34
+         in label of node node35
+         in label of node node33
+         Warning: node node36, port body unrecognized
+         Warning: node node33, port body unrecognized
+         Warning: node node34, port body unrecognized
+         Warning: node node33, port body unrecognized
+         Warning: node node35, port body unrecognized
+         Warning: node node34, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node40
+         in label of node node38
+         in label of node node39
+         in label of node node37
+         Warning: node node40, port body unrecognized
+         Warning: node node37, port body unrecognized
+         Warning: node node38, port body unrecognized
+         Warning: node node37, port body unrecognized
+         Warning: node node39, port body unrecognized
+         Warning: node node38, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node44
+         in label of node node42
+         in label of node node43
+         in label of node node41
+         Warning: node node44, port body unrecognized
+         Warning: node node41, port body unrecognized
+         Warning: node node42, port body unrecognized
+         Warning: node node41, port body unrecognized
+         Warning: node node43, port body unrecognized
+         Warning: node node42, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node48
+         in label of node node46
+         in label of node node47
+         in label of node node45
+         Warning: node node48, port body unrecognized
+         Warning: node node45, port body unrecognized
+         Warning: node node46, port body unrecognized
+         Warning: node node45, port body unrecognized
+         Warning: node node47, port body unrecognized
+         Warning: node node46, port body unrecognized
+
+  [.............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node52
+         in label of node node50
+         in label of node node51
+         in label of node node49
+         Warning: node node52, port body unrecognized
+         Warning: node node49, port body unrecognized
+         Warning: node node50, port body unrecognized
+         Warning: node node49, port body unrecognized
+         Warning: node node51, port body unrecognized
+         Warning: node node50, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node56
+         in label of node node54
+         in label of node node55
+         in label of node node53
+         Warning: node node56, port body unrecognized
+         Warning: node node53, port body unrecognized
+         Warning: node node54, port body unrecognized
+         Warning: node node53, port body unrecognized
+         Warning: node node55, port body unrecognized
+         Warning: node node54, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node58
+         in label of node node59
+         in label of node node57
+         Warning: node node58, port body unrecognized
+         Warning: node node57, port body unrecognized
+         Warning: node node59, port body unrecognized
+         Warning: node node58, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node61
+         in label of node node63
+         in label of node node60
+         in label of node node62
+         Warning: node node61, port body unrecognized
+         Warning: node node60, port body unrecognized
+         Warning: node node63, port body unrecognized
+         Warning: node node62, port body unrecognized
+         Warning: node node62, port body unrecognized
+         Warning: node node61, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node65
+         in label of node node67
+         in label of node node64
+         in label of node node66
+         Warning: node node65, port body unrecognized
+         Warning: node node64, port body unrecognized
+         Warning: node node67, port body unrecognized
+         Warning: node node66, port body unrecognized
+         Warning: node node66, port body unrecognized
+         Warning: node node65, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node69
+         in label of node node68
+         in label of node node70
+         Warning: node node69, port body unrecognized
+         Warning: node node68, port body unrecognized
+         Warning: node node70, port body unrecognized
+         Warning: node node68, port body unrecognized
+
+  [..............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node72
+         in label of node node73
+         in label of node node71
+         Warning: node node72, port body unrecognized
+         Warning: node node71, port body unrecognized
+         Warning: node node73, port body unrecognized
+         Warning: node node72, port body unrecognized
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node75
+         in label of node node74
+         Warning: node node75, port body unrecognized
+         Warning: node node74, port body unrecognized
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node77
+         in label of node node76
+         Warning: node node77, port body unrecognized
+         Warning: node node76, port body unrecognized
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node79
+         in label of node node78
+         Warning: node node78, port body unrecognized
+         Warning: node node79, port body unrecognized
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node81
+         in label of node node83
+         in label of node node80
+         in label of node node82
+         Warning: node node81, port body unrecognized
+         Warning: node node80, port body unrecognized
+         Warning: node node83, port body unrecognized
+         Warning: node node82, port body unrecognized
+         Warning: node node82, port body unrecognized
+         Warning: node node81, port body unrecognized
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node84
+
+  [...............................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node87
+         in label of node node86
+         in label of node node89
+         in label of node node85
+         in label of node node88
+         Warning: node node87, port body unrecognized
+         Warning: node node86, port body unrecognized
+         Warning: node node86, port body unrecognized
+         Warning: node node85, port body unrecognized
+         Warning: node node89, port body unrecognized
+         Warning: node node88, port body unrecognized
+         Warning: node node88, port body unrecognized
+         Warning: node node87, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node91
+         in label of node node93
+         in label of node node90
+         in label of node node92
+         in label of node node94
+         Warning: node node91, port body unrecognized
+         Warning: node node90, port body unrecognized
+         Warning: node node93, port body unrecognized
+         Warning: node node92, port body unrecognized
+         Warning: node node90, port body unrecognized
+         Warning: node node94, port body unrecognized
+         Warning: node node92, port body unrecognized
+         Warning: node node91, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node96
+         in label of node node95
+         Warning: node node96, port body unrecognized
+         Warning: node node95, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node102
+         in label of node node97
+         in label of node node99
+         in label of node node98
+         in label of node node100
+         in label of node node101
+         Warning: node node97, port body unrecognized
+         Warning: node node100, port body unrecognized
+         Warning: node node97, port body unrecognized
+         Warning: node node101, port body unrecognized
+         Warning: node node99, port body unrecognized
+         Warning: node node98, port body unrecognized
+         Warning: node node98, port body unrecognized
+         Warning: node node97, port body unrecognized
+         Warning: node node101, port body unrecognized
+         Warning: node node102, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node104
+         in label of node node103
+         Warning: node node104, port body unrecognized
+         Warning: node node103, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node106
+         in label of node node105
+         Warning: node node106, port body unrecognized
+         Warning: node node105, port body unrecognized
+
+  [................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node108
+         in label of node node107
+         Warning: node node108, port body unrecognized
+         Warning: node node107, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node110
+         in label of node node109
+         Warning: node node110, port body unrecognized
+         Warning: node node109, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node112
+         in label of node node113
+         in label of node node111
+         Warning: node node112, port body unrecognized
+         Warning: node node111, port body unrecognized
+         Warning: node node113, port body unrecognized
+         Warning: node node112, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node115
+         in label of node node116
+         in label of node node114
+         Warning: node node115, port body unrecognized
+         Warning: node node114, port body unrecognized
+         Warning: node node116, port body unrecognized
+         Warning: node node115, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node118
+         in label of node node119
+         in label of node node117
+         Warning: node node118, port body unrecognized
+         Warning: node node117, port body unrecognized
+         Warning: node node119, port body unrecognized
+         Warning: node node118, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node121
+         in label of node node120
+         Warning: node node121, port body unrecognized
+         Warning: node node120, port body unrecognized
+
+  [.................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node122
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node124
+         in label of node node125
+         in label of node node123
+         Warning: node node124, port body unrecognized
+         Warning: node node123, port body unrecognized
+         Warning: node node125, port body unrecognized
+         Warning: node node124, port body unrecognized
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node127
+         in label of node node126
+         Warning: node node127, port body unrecognized
+         Warning: node node126, port body unrecognized
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node129
+         in label of node node131
+         in label of node node128
+         in label of node node130
+         Warning: node node129, port body unrecognized
+         Warning: node node128, port body unrecognized
+         Warning: node node131, port body unrecognized
+         Warning: node node130, port body unrecognized
+         Warning: node node130, port body unrecognized
+         Warning: node node129, port body unrecognized
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node133
+         in label of node node135
+         in label of node node132
+         in label of node node134
+         Warning: node node133, port body unrecognized
+         Warning: node node132, port body unrecognized
+         Warning: node node135, port body unrecognized
+         Warning: node node134, port body unrecognized
+         Warning: node node134, port body unrecognized
+         Warning: node node133, port body unrecognized
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node137
+         in label of node node139
+         in label of node node136
+         in label of node node138
+         Warning: node node137, port body unrecognized
+         Warning: node node136, port body unrecognized
+         Warning: node node139, port body unrecognized
+         Warning: node node138, port body unrecognized
+         Warning: node node138, port body unrecognized
+         Warning: node node137, port body unrecognized
+
+  [..................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node141
+         in label of node node143
+         in label of node node140
+         in label of node node142
+         Warning: node node141, port body unrecognized
+         Warning: node node140, port body unrecognized
+         Warning: node node143, port body unrecognized
+         Warning: node node142, port body unrecognized
+         Warning: node node142, port body unrecognized
+         Warning: node node141, port body unrecognized
+
+  [...................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node144
+
+  [...................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node151
+         in label of node node145
+         in label of node node146
+         in label of node node152
+         in label of node node148
+         in label of node node149
+         in label of node node150
+         in label of node node147
+         Warning: node node145, port body unrecognized
+         Warning: node node151, port body unrecognized
+         Warning: node node145, port body unrecognized
+         Warning: node node152, port body unrecognized
+         Warning: node node145, port body unrecognized
+         Warning: node node148, port body unrecognized
+         Warning: node node145, port body unrecognized
+         Warning: node node149, port body unrecognized
+         Warning: node node145, port body unrecognized
+         Warning: node node150, port body unrecognized
+         Warning: node node146, port body unrecognized
+         Warning: node node145, port body unrecognized
+         Warning: node node147, port body unrecognized
+         Warning: node node146, port body unrecognized
+
+  [...................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node156
+         in label of node node154
+         in label of node node155
+         in label of node node153
+         Warning: node node156, port body unrecognized
+         Warning: node node153, port body unrecognized
+         Warning: node node154, port body unrecognized
+         Warning: node node153, port body unrecognized
+         Warning: node node155, port body unrecognized
+         Warning: node node154, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node160
+         in label of node node158
+         in label of node node159
+         in label of node node157
+         Warning: node node160, port body unrecognized
+         Warning: node node157, port body unrecognized
+         Warning: node node158, port body unrecognized
+         Warning: node node157, port body unrecognized
+         Warning: node node159, port body unrecognized
+         Warning: node node158, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node164
+         in label of node node162
+         in label of node node163
+         in label of node node161
+         Warning: node node164, port body unrecognized
+         Warning: node node161, port body unrecognized
+         Warning: node node162, port body unrecognized
+         Warning: node node161, port body unrecognized
+         Warning: node node163, port body unrecognized
+         Warning: node node162, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node168
+         in label of node node166
+         in label of node node167
+         in label of node node165
+         Warning: node node168, port body unrecognized
+         Warning: node node165, port body unrecognized
+         Warning: node node166, port body unrecognized
+         Warning: node node165, port body unrecognized
+         Warning: node node167, port body unrecognized
+         Warning: node node166, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node172
+         in label of node node170
+         in label of node node171
+         in label of node node169
+         Warning: node node172, port body unrecognized
+         Warning: node node169, port body unrecognized
+         Warning: node node170, port body unrecognized
+         Warning: node node169, port body unrecognized
+         Warning: node node171, port body unrecognized
+         Warning: node node170, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node176
+         in label of node node174
+         in label of node node175
+         in label of node node173
+         Warning: node node176, port body unrecognized
+         Warning: node node173, port body unrecognized
+         Warning: node node174, port body unrecognized
+         Warning: node node173, port body unrecognized
+         Warning: node node175, port body unrecognized
+         Warning: node node174, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node180
+         in label of node node178
+         in label of node node179
+         in label of node node177
+         Warning: node node180, port body unrecognized
+         Warning: node node177, port body unrecognized
+         Warning: node node178, port body unrecognized
+         Warning: node node177, port body unrecognized
+         Warning: node node179, port body unrecognized
+         Warning: node node178, port body unrecognized
+
+  [....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node184
+         in label of node node182
+         in label of node node183
+         in label of node node181
+         Warning: node node184, port body unrecognized
+         Warning: node node181, port body unrecognized
+         Warning: node node182, port body unrecognized
+         Warning: node node181, port body unrecognized
+         Warning: node node183, port body unrecognized
+         Warning: node node182, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node188
+         in label of node node186
+         in label of node node187
+         in label of node node185
+         Warning: node node188, port body unrecognized
+         Warning: node node185, port body unrecognized
+         Warning: node node186, port body unrecognized
+         Warning: node node185, port body unrecognized
+         Warning: node node187, port body unrecognized
+         Warning: node node186, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node192
+         in label of node node190
+         in label of node node191
+         in label of node node189
+         Warning: node node192, port body unrecognized
+         Warning: node node189, port body unrecognized
+         Warning: node node190, port body unrecognized
+         Warning: node node189, port body unrecognized
+         Warning: node node191, port body unrecognized
+         Warning: node node190, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node194
+         in label of node node196
+         in label of node node193
+         in label of node node195
+         Warning: node node194, port body unrecognized
+         Warning: node node193, port body unrecognized
+         Warning: node node196, port body unrecognized
+         Warning: node node195, port body unrecognized
+         Warning: node node195, port body unrecognized
+         Warning: node node194, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node198
+         in label of node node197
+         Warning: node node198, port body unrecognized
+         Warning: node node197, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node200
+         in label of node node201
+         in label of node node199
+         Warning: node node200, port body unrecognized
+         Warning: node node199, port body unrecognized
+         Warning: node node201, port body unrecognized
+         Warning: node node200, port body unrecognized
+
+  [.....................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node202
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node204
+         in label of node node207
+         in label of node node205
+         in label of node node203
+         in label of node node206
+         Warning: node node204, port body unrecognized
+         Warning: node node203, port body unrecognized
+         Warning: node node205, port body unrecognized
+         Warning: node node204, port body unrecognized
+         Warning: node node203, port body unrecognized
+         Warning: node node207, port body unrecognized
+         Warning: node node203, port body unrecognized
+         Warning: node node206, port body unrecognized
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node209
+         in label of node node211
+         in label of node node208
+         in label of node node210
+         Warning: node node209, port body unrecognized
+         Warning: node node208, port body unrecognized
+         Warning: node node211, port body unrecognized
+         Warning: node node210, port body unrecognized
+         Warning: node node210, port body unrecognized
+         Warning: node node209, port body unrecognized
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node213
+         in label of node node215
+         in label of node node212
+         in label of node node214
+         Warning: node node213, port body unrecognized
+         Warning: node node212, port body unrecognized
+         Warning: node node215, port body unrecognized
+         Warning: node node214, port body unrecognized
+         Warning: node node214, port body unrecognized
+         Warning: node node213, port body unrecognized
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node216
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node218
+         in label of node node219
+         in label of node node217
+         Warning: node node218, port body unrecognized
+         Warning: node node217, port body unrecognized
+         Warning: node node219, port body unrecognized
+         Warning: node node218, port body unrecognized
+
+  [......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node221
+         in label of node node222
+         in label of node node220
+         Warning: node node221, port body unrecognized
+         Warning: node node220, port body unrecognized
+         Warning: node node222, port body unrecognized
+         Warning: node node221, port body unrecognized
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node224
+         in label of node node225
+         in label of node node223
+         Warning: node node224, port body unrecognized
+         Warning: node node223, port body unrecognized
+         Warning: node node225, port body unrecognized
+         Warning: node node224, port body unrecognized
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node227
+         in label of node node228
+         in label of node node226
+         Warning: node node227, port body unrecognized
+         Warning: node node226, port body unrecognized
+         Warning: node node228, port body unrecognized
+         Warning: node node227, port body unrecognized
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node230
+         in label of node node229
+         Warning: node node229, port body unrecognized
+         Warning: node node230, port body unrecognized
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node232
+         in label of node node233
+         in label of node node231
+         Warning: node node232, port body unrecognized
+         Warning: node node231, port body unrecognized
+         Warning: node node233, port body unrecognized
+         Warning: node node232, port body unrecognized
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node234
+
+  [.......................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node236
+         in label of node node237
+         in label of node node235
+         Warning: node node236, port body unrecognized
+         Warning: node node235, port body unrecognized
+         Warning: node node237, port body unrecognized
+         Warning: node node236, port body unrecognized
+
+  [........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node241
+         in label of node node239
+         in label of node node240
+         in label of node node238
+         Warning: node node241, port body unrecognized
+         Warning: node node238, port body unrecognized
+         Warning: node node239, port body unrecognized
+         Warning: node node238, port body unrecognized
+         Warning: node node240, port body unrecognized
+         Warning: node node239, port body unrecognized
+
+  [........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node245
+         in label of node node243
+         in label of node node244
+         in label of node node242
+         Warning: node node245, port body unrecognized
+         Warning: node node242, port body unrecognized
+         Warning: node node243, port body unrecognized
+         Warning: node node242, port body unrecognized
+         Warning: node node244, port body unrecognized
+         Warning: node node243, port body unrecognized
+
+  [........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node249
+         in label of node node247
+         in label of node node248
+         in label of node node246
+         Warning: node node249, port body unrecognized
+         Warning: node node246, port body unrecognized
+         Warning: node node247, port body unrecognized
+         Warning: node node246, port body unrecognized
+         Warning: node node248, port body unrecognized
+         Warning: node node247, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node253
+         in label of node node251
+         in label of node node252
+         in label of node node250
+         Warning: node node253, port body unrecognized
+         Warning: node node250, port body unrecognized
+         Warning: node node251, port body unrecognized
+         Warning: node node250, port body unrecognized
+         Warning: node node252, port body unrecognized
+         Warning: node node251, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node257
+         in label of node node255
+         in label of node node256
+         in label of node node254
+         Warning: node node257, port body unrecognized
+         Warning: node node254, port body unrecognized
+         Warning: node node255, port body unrecognized
+         Warning: node node254, port body unrecognized
+         Warning: node node256, port body unrecognized
+         Warning: node node255, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node261
+         in label of node node259
+         in label of node node260
+         in label of node node258
+         Warning: node node261, port body unrecognized
+         Warning: node node258, port body unrecognized
+         Warning: node node259, port body unrecognized
+         Warning: node node258, port body unrecognized
+         Warning: node node260, port body unrecognized
+         Warning: node node259, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node263
+         in label of node node262
+         in label of node node264
+         Warning: node node263, port body unrecognized
+         Warning: node node262, port body unrecognized
+         Warning: node node264, port body unrecognized
+         Warning: node node263, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node266
+         in label of node node265
+         Warning: node node266, port body unrecognized
+         Warning: node node265, port body unrecognized
+
+  [.........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node268
+         in label of node node270
+         in label of node node267
+         in label of node node269
+         Warning: node node268, port body unrecognized
+         Warning: node node267, port body unrecognized
+         Warning: node node270, port body unrecognized
+         Warning: node node269, port body unrecognized
+         Warning: node node269, port body unrecognized
+         Warning: node node268, port body unrecognized
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node272
+         in label of node node271
+         in label of node node273
+         in label of node node274
+         Warning: node node272, port body unrecognized
+         Warning: node node271, port body unrecognized
+         Warning: node node273, port body unrecognized
+         Warning: node node272, port body unrecognized
+         Warning: node node274, port body unrecognized
+         Warning: node node273, port body unrecognized
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node276
+         in label of node node277
+         in label of node node275
+         Warning: node node276, port body unrecognized
+         Warning: node node275, port body unrecognized
+         Warning: node node277, port body unrecognized
+         Warning: node node276, port body unrecognized
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node279
+         in label of node node280
+         in label of node node278
+         Warning: node node279, port body unrecognized
+         Warning: node node278, port body unrecognized
+         Warning: node node280, port body unrecognized
+         Warning: node node279, port body unrecognized
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node282
+         in label of node node283
+         in label of node node281
+         Warning: node node282, port body unrecognized
+         Warning: node node281, port body unrecognized
+         Warning: node node283, port body unrecognized
+         Warning: node node282, port body unrecognized
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node284
+
+  [..........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node286
+         in label of node node287
+         in label of node node285
+         Warning: node node286, port body unrecognized
+         Warning: node node285, port body unrecognized
+         Warning: node node287, port body unrecognized
+         Warning: node node286, port body unrecognized
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node289
+         in label of node node290
+         in label of node node288
+         Warning: node node289, port body unrecognized
+         Warning: node node288, port body unrecognized
+         Warning: node node290, port body unrecognized
+         Warning: node node289, port body unrecognized
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node292
+         in label of node node293
+         in label of node node291
+         Warning: node node292, port body unrecognized
+         Warning: node node291, port body unrecognized
+         Warning: node node293, port body unrecognized
+         Warning: node node292, port body unrecognized
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node294
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node296
+         in label of node node297
+         in label of node node295
+         Warning: node node296, port body unrecognized
+         Warning: node node295, port body unrecognized
+         Warning: node node297, port body unrecognized
+         Warning: node node296, port body unrecognized
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node299
+         in label of node node300
+         in label of node node298
+         Warning: node node299, port body unrecognized
+         Warning: node node298, port body unrecognized
+         Warning: node node300, port body unrecognized
+         Warning: node node299, port body unrecognized
+
+  [...........................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node302
+         in label of node node301
+         Warning: node node302, port body unrecognized
+         Warning: node node301, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node304
+         in label of node node303
+         Warning: node node304, port body unrecognized
+         Warning: node node303, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node306
+         in label of node node305
+         Warning: node node305, port body unrecognized
+         Warning: node node306, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node308
+         in label of node node309
+         in label of node node307
+         Warning: node node308, port body unrecognized
+         Warning: node node307, port body unrecognized
+         Warning: node node309, port body unrecognized
+         Warning: node node308, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node311
+         in label of node node310
+         Warning: node node311, port body unrecognized
+         Warning: node node310, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node313
+         in label of node node315
+         in label of node node312
+         in label of node node314
+         Warning: node node313, port body unrecognized
+         Warning: node node312, port body unrecognized
+         Warning: node node315, port body unrecognized
+         Warning: node node314, port body unrecognized
+         Warning: node node314, port body unrecognized
+         Warning: node node313, port body unrecognized
+
+  [............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node316
+         in label of node node321
+         in label of node node317
+         in label of node node320
+         in label of node node319
+         in label of node node318
+         Warning: node node316, port body unrecognized
+         Warning: node node321, port body unrecognized
+         Warning: node node316, port body unrecognized
+         Warning: node node320, port body unrecognized
+         Warning: node node316, port body unrecognized
+         Warning: node node319, port body unrecognized
+         Warning: node node317, port body unrecognized
+         Warning: node node316, port body unrecognized
+         Warning: node node318, port body unrecognized
+         Warning: node node317, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node323
+         in label of node node325
+         in label of node node322
+         in label of node node324
+         Warning: node node323, port body unrecognized
+         Warning: node node322, port body unrecognized
+         Warning: node node325, port body unrecognized
+         Warning: node node324, port body unrecognized
+         Warning: node node324, port body unrecognized
+         Warning: node node323, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node327
+         in label of node node329
+         in label of node node326
+         in label of node node328
+         Warning: node node327, port body unrecognized
+         Warning: node node326, port body unrecognized
+         Warning: node node329, port body unrecognized
+         Warning: node node328, port body unrecognized
+         Warning: node node328, port body unrecognized
+         Warning: node node327, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node332
+         in label of node node331
+         in label of node node330
+         Warning: node node332, port body unrecognized
+         Warning: node node331, port body unrecognized
+         Warning: node node331, port body unrecognized
+         Warning: node node330, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node334
+         in label of node node335
+         in label of node node333
+         in label of node node336
+         Warning: node node334, port body unrecognized
+         Warning: node node333, port body unrecognized
+         Warning: node node335, port body unrecognized
+         Warning: node node334, port body unrecognized
+         Warning: node node336, port body unrecognized
+         Warning: node node335, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node338
+         in label of node node340
+         in label of node node337
+         in label of node node339
+         Warning: node node338, port body unrecognized
+         Warning: node node337, port body unrecognized
+         Warning: node node337, port body unrecognized
+         Warning: node node340, port body unrecognized
+         Warning: node node339, port body unrecognized
+         Warning: node node338, port body unrecognized
+
+  [.............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node342
+         in label of node node343
+         in label of node node341
+         Warning: node node342, port body unrecognized
+         Warning: node node341, port body unrecognized
+         Warning: node node343, port body unrecognized
+         Warning: node node342, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node345
+         in label of node node346
+         in label of node node344
+         Warning: node node345, port body unrecognized
+         Warning: node node344, port body unrecognized
+         Warning: node node346, port body unrecognized
+         Warning: node node345, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node347
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node349
+         in label of node node350
+         in label of node node348
+         Warning: node node349, port body unrecognized
+         Warning: node node348, port body unrecognized
+         Warning: node node350, port body unrecognized
+         Warning: node node349, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node352
+         in label of node node353
+         in label of node node351
+         Warning: node node352, port body unrecognized
+         Warning: node node351, port body unrecognized
+         Warning: node node353, port body unrecognized
+         Warning: node node352, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node355
+         in label of node node354
+         Warning: node node355, port body unrecognized
+         Warning: node node354, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node357
+         in label of node node358
+         in label of node node356
+         in label of node node359
+         in label of node node360
+         Warning: node node357, port body unrecognized
+         Warning: node node356, port body unrecognized
+         Warning: node node358, port body unrecognized
+         Warning: node node357, port body unrecognized
+         Warning: node node359, port body unrecognized
+         Warning: node node358, port body unrecognized
+         Warning: node node360, port body unrecognized
+         Warning: node node359, port body unrecognized
+
+  [..............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node362
+         in label of node node361
+         Warning: node node362, port body unrecognized
+         Warning: node node361, port body unrecognized
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node364
+         in label of node node366
+         in label of node node363
+         in label of node node365
+         in label of node node367
+         Warning: node node364, port body unrecognized
+         Warning: node node363, port body unrecognized
+         Warning: node node366, port body unrecognized
+         Warning: node node365, port body unrecognized
+         Warning: node node363, port body unrecognized
+         Warning: node node367, port body unrecognized
+         Warning: node node365, port body unrecognized
+         Warning: node node364, port body unrecognized
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node370
+         in label of node node369
+         in label of node node368
+         Warning: node node370, port body unrecognized
+         Warning: node node369, port body unrecognized
+         Warning: node node369, port body unrecognized
+         Warning: node node368, port body unrecognized
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node372
+         in label of node node373
+         in label of node node371
+         in label of node node374
+         in label of node node375
+         Warning: node node372, port body unrecognized
+         Warning: node node371, port body unrecognized
+         Warning: node node373, port body unrecognized
+         Warning: node node372, port body unrecognized
+         Warning: node node374, port body unrecognized
+         Warning: node node373, port body unrecognized
+         Warning: node node375, port body unrecognized
+         Warning: node node374, port body unrecognized
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node376
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node377
+         in label of node node382
+         in label of node node378
+         in label of node node381
+         in label of node node379
+         in label of node node383
+         in label of node node380
+         Warning: node node377, port body unrecognized
+         Warning: node node382, port body unrecognized
+         Warning: node node377, port body unrecognized
+         Warning: node node381, port body unrecognized
+         Warning: node node377, port body unrecognized
+         Warning: node node383, port body unrecognized
+         Warning: node node378, port body unrecognized
+         Warning: node node377, port body unrecognized
+         Warning: node node379, port body unrecognized
+         Warning: node node378, port body unrecognized
+         Warning: node node380, port body unrecognized
+         Warning: node node379, port body unrecognized
+
+  [...............................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node385
+         in label of node node386
+         in label of node node384
+         in label of node node387
+         in label of node node388
+         Warning: node node385, port body unrecognized
+         Warning: node node384, port body unrecognized
+         Warning: node node386, port body unrecognized
+         Warning: node node385, port body unrecognized
+         Warning: node node387, port body unrecognized
+         Warning: node node386, port body unrecognized
+         Warning: node node388, port body unrecognized
+         Warning: node node387, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node390
+         in label of node node391
+         in label of node node389
+         in label of node node392
+         in label of node node393
+         Warning: node node390, port body unrecognized
+         Warning: node node389, port body unrecognized
+         Warning: node node391, port body unrecognized
+         Warning: node node390, port body unrecognized
+         Warning: node node392, port body unrecognized
+         Warning: node node391, port body unrecognized
+         Warning: node node393, port body unrecognized
+         Warning: node node392, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node401
+         in label of node node397
+         in label of node node398
+         in label of node node395
+         in label of node node399
+         in label of node node394
+         in label of node node400
+         in label of node node396
+         in label of node node402
+         Warning: node node397, port body unrecognized
+         Warning: node node401, port body unrecognized
+         Warning: node node397, port body unrecognized
+         Warning: node node399, port body unrecognized
+         Warning: node node397, port body unrecognized
+         Warning: node node400, port body unrecognized
+         Warning: node node398, port body unrecognized
+         Warning: node node402, port body unrecognized
+         Warning: node node395, port body unrecognized
+         Warning: node node394, port body unrecognized
+         Warning: node node394, port body unrecognized
+         Warning: node node397, port body unrecognized
+         Warning: node node394, port body unrecognized
+         Warning: node node398, port body unrecognized
+         Warning: node node396, port body unrecognized
+         Warning: node node395, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node405
+         in label of node node404
+         in label of node node403
+         Warning: node node405, port body unrecognized
+         Warning: node node404, port body unrecognized
+         Warning: node node404, port body unrecognized
+         Warning: node node403, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node407
+         in label of node node406
+         Warning: node node407, port body unrecognized
+         Warning: node node406, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node409
+         in label of node node410
+         in label of node node408
+         in label of node node411
+         Warning: node node409, port body unrecognized
+         Warning: node node408, port body unrecognized
+         Warning: node node410, port body unrecognized
+         Warning: node node409, port body unrecognized
+         Warning: node node408, port body unrecognized
+         Warning: node node411, port body unrecognized
+
+  [................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node413
+         in label of node node415
+         in label of node node412
+         in label of node node414
+         Warning: node node413, port body unrecognized
+         Warning: node node412, port body unrecognized
+         Warning: node node415, port body unrecognized
+         Warning: node node414, port body unrecognized
+         Warning: node node414, port body unrecognized
+         Warning: node node413, port body unrecognized
+
+  [.................................................................
+Warning: Graphviz dot warning(s):
+         Warning: Not built with libexpat. Table formatting is not 
+         available.
+         in label of node node417
+         in label of node node416
+         Warning: node node417, port body unrecognized
+         Warning: node node416, port body unrecognized
+
+  [.........................................................................]

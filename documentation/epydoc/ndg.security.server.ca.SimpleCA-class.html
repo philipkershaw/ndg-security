@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.server.ca.SimpleCA</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.server-module.html">Package&nbsp;server</a> ::
+        <a href="ndg.security.server.ca-module.html">Package&nbsp;ca</a> ::
+        Class&nbsp;SimpleCA
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SimpleCA</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_220" name="uml_class_diagram_for_ndg_secu_220">
+<area shape="rect" href="javascript:void(0);" title="cmp(x,y)" alt="" coords="228,36,351,55"/>
+<area shape="rect" href="javascript:void(0);" title="x==y" alt="" coords="228,55,351,74"/>
+<area shape="rect" href="javascript:void(0);" title="x&gt;=y" alt="" coords="228,74,351,92"/>
+<area shape="rect" href="javascript:void(0);" title="x.__getattribute__(&#39;name&#39;) &lt;==&gt; x.name" alt="" coords="228,92,351,111"/>
+<area shape="rect" href="javascript:void(0);" title="x&gt;y" alt="" coords="228,111,351,130"/>
+<area shape="rect" href="javascript:void(0);" title="hash(x)" alt="" coords="228,130,351,148"/>
+<area shape="rect" href="javascript:void(0);" title="iter(x)" alt="" coords="228,148,351,167"/>
+<area shape="rect" href="javascript:void(0);" title="x&lt;=y" alt="" coords="228,167,351,186"/>
+<area shape="rect" href="javascript:void(0);" title="len(x)" alt="" coords="228,186,351,204"/>
+<area shape="rect" href="javascript:void(0);" title="x&lt;y" alt="" coords="228,204,351,223"/>
+<area shape="rect" href="javascript:void(0);" title="x!=y" alt="" coords="228,223,351,242"/>
+<area shape="rect" href="javascript:void(0);" title="dict.__new__" alt="" coords="228,242,351,260"/>
+<area shape="rect" href="javascript:void(0);" title="x[i]=y" alt="" coords="228,260,351,279"/>
+<area shape="rect" href="javascript:void(0);" title="Update D from E and F: for k in E: D[k] = E[k] (if E has keys else: for (k, v) in E: D[k] = v) then: for k in F: D[k] = F[k]" alt="" coords="228,298,351,316"/>
+<area shape="rect" href="javascript:void(0);" title="dict() &#45;&gt; new empty dictionary." alt="" coords="227,11,352,318"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#caPassphrase" title="ndg.security.server.ca.SimpleCA.caPassphrase" alt="" coords="17,364,561,383"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#openSSLConfig" title="ndg.security.server.ca.SimpleCA.openSSLConfig" alt="" coords="17,383,561,402"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#propFilePath" title="ndg.security.server.ca.SimpleCA.propFilePath" alt="" coords="17,402,561,420"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__init__" title="Initialise environment for calling SimpleCA executables" alt="" coords="17,423,561,442"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__call__" title="Return file properties dictionary" alt="" coords="17,442,561,460"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__repr__" title="Return file properties dictionary as representation" alt="" coords="17,460,561,479"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__delitem__" title="SimpleCA Properties keys cannot be removed" alt="" coords="17,479,561,498"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__getitem__" title="x[y]" alt="" coords="17,498,561,516"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#get" title="d defaults to None." alt="" coords="17,516,561,535"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#clear" title="Remove all items from D." alt="" coords="17,535,561,554"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#keys" title="ndg.security.server.ca.SimpleCA.keys" alt="" coords="17,554,561,572"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#items" title="ndg.security.server.ca.SimpleCA.items" alt="" coords="17,572,561,591"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#values" title="ndg.security.server.ca.SimpleCA.values" alt="" coords="17,591,561,610"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#has_key" title="ndg.security.server.ca.SimpleCA.has_key" alt="" coords="17,610,561,628"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#__contains__" title="ndg.security.server.ca.SimpleCA.__contains__" alt="" coords="17,628,561,647"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#setPropFilePath" title="Set properties file from input or based on environment variable settings" alt="" coords="17,647,561,666"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html#genCRL" title="Generate a Certificate Revocation List" alt="" coords="17,684,561,703"/>
+<area shape="rect" href="ndg.security.server.ca.SimpleCA&#45;class.html" title="Wrapper to Globus SimpleCA &#45; administer NDG user X.509 Certificates" alt="" coords="16,347,563,704"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_220.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_220" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Wrapper to Globus SimpleCA - administer NDG user X.509 
+  Certificates</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><pre class="literalblock">
+new empty dictionary
+
+</pre></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">passphraseFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caPassphrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Initialise environment for calling SimpleCA executables</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__call__"></a><span class="summary-sig-name">__call__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return file properties dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__call__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return file properties dictionary as representation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#__delitem__" class="summary-sig-name">__delitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      SimpleCA Properties keys cannot be removed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__delitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#__getitem__" class="summary-sig-name">__getitem__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      x[y]</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">D[k] if k in D, else d</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#get" class="summary-sig-name">get</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      d defaults to None.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">None</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#clear" class="summary-sig-name">clear</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove all items from D.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's keys</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#keys" class="summary-sig-name">keys</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.keys">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's (key, value) pairs, as 2-tuples</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#items" class="summary-sig-name">items</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.items">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of D's values</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#values" class="summary-sig-name">values</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.values">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">True if D has a key k, else False</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#has_key" class="summary-sig-name">has_key</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.has_key">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">True if D has a key k, else False</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#__contains__" class="summary-sig-name">__contains__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__contains__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setCAPassphrase"></a><span class="summary-sig-name">__setCAPassphrase</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caPassphrase</span>)</span><br />
+      Give this instance the pass-phrase for the SimpleCA</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__setCAPassphrase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getOpenSSLConfig"></a><span class="summary-sig-name">__getOpenSSLConfig</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get OpenSSLConfig object property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__getOpenSSLConfig">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setPropFilePath"></a><span class="summary-sig-name">setPropFilePath</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">val</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set properties file from input or based on environment variable 
+      settings</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.setPropFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setProperties"></a><span class="summary-sig-name">setProperties</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Update existing properties from an input dictionary Check input keys 
+      are valid names</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.setProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#readProperties" class="summary-sig-name">readProperties</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propElem</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read the configuration properties for the Certificate Authority</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.readProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="chkCAPassphrase"></a><span class="summary-sig-name">chkCAPassphrase</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caPassphrase</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.chkCAPassphrase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#OldchkCAPassphrase" class="summary-sig-name">OldchkCAPassphrase</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caPassphrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Check given pass-phrase is correct for CA private key</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.OldchkCAPassphrase">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#_createCertReq" class="summary-sig-name" onclick="show_private();">_createCertReq</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">CN</span>,
+        <span class="summary-sig-arg">nBitsForKey</span>=<span class="summary-sig-default">1024</span>,
+        <span class="summary-sig-arg">messageDigest</span>=<span class="summary-sig-default">&quot;md5&quot;</span>)</span><br />
+      Create a certificate request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA._createCertReq">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.server.ca.SimpleCA-class.html#sign" class="summary-sig-name">sign</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">passphraseFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caPassphrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">certReq</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">certReqFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">CN</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**createCertReqKw</span>)</span><br />
+      Sign a certificate request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.sign">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="revokeCert"></a><span class="summary-sig-name">revokeCert</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Revoke an existing certificate</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.revokeCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="genCRL"></a><span class="summary-sig-name">genCRL</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Generate a Certificate Revocation List</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.genCRL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>dict</code></b>:
+      <code>__cmp__</code>,
+      <code>__eq__</code>,
+      <code>__ge__</code>,
+      <code>__getattribute__</code>,
+      <code>__gt__</code>,
+      <code>__hash__</code>,
+      <code>__iter__</code>,
+      <code>__le__</code>,
+      <code>__len__</code>,
+      <code>__lt__</code>,
+      <code>__ne__</code>,
+      <code>__new__</code>,
+      <code>__setitem__</code>,
+      <code>copy</code>,
+      <code>fromkeys</code>,
+      <code>iteritems</code>,
+      <code>iterkeys</code>,
+      <code>itervalues</code>,
+      <code>pop</code>,
+      <code>popitem</code>,
+      <code>setdefault</code>,
+      <code>update</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__filtTxt"></a><span class="summary-sig-name">__filtTxt</span>(<span class="summary-sig-arg">tag</span>,
+        <span class="summary-sig-arg">txt</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__filtTxt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">tuple</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.ca.SimpleCA-class.html#__validKeys" class="summary-name" onclick="show_private();">__validKeys</a> = <code title="'portNum', 'useSSL', 'sslCertFile', 'sslKeyFile', 'openSSLConfigFilePa\
+th', 'certLifetimeDays', 'certExpiryDate', 'certTmpDir', 'caCertFile',\
+ 'chkCAPassphraseExe', 'signExe', 'path'">'portNum', 'useSSL', 'sslCertFile', 'sslKeyFile'<code class="variable-ellipsis">...</code></code><br />
+      valid configuration property keywords used in file and keyword input 
+      to __init__ and setProperties()
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__gridCASubDir"></a><span class="summary-name">__gridCASubDir</span> = <code title="os.path.join(&quot;.globus&quot;, &quot;simpleCA&quot;)">os.path.join(&quot;.globus&quot;, &quot;simpleCA&quot;)</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__gridCAConfigFile"></a><span class="summary-name">__gridCAConfigFile</span> = <code title="&quot;grid-ca-ssl.conf&quot;">&quot;grid-ca-ssl.conf&quot;</code><br />
+      name of file containing SSL configuration settings for CA
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__confDir"></a><span class="summary-name">__confDir</span> = <code title="&quot;conf&quot;">&quot;conf&quot;</code><br />
+      configuration directory under $NDGSEC_DIR - default location for 
+      properties file
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="__propFileName"></a><span class="summary-name">__propFileName</span> = <code title="&quot;simpleCAProperties.xml&quot;">&quot;simpleCAProperties.xml&quot;</code><br />
+      default file name for properties file under __confDir
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.ca.SimpleCA-class.html#caPassphrase" class="summary-name">caPassphrase</a> = <code title="property(fset= __setCAPassphrase, doc= &quot;Enter pass-phrase for Simple C\
+A&quot;)">property(fset= __setCAPassphrase, doc= &quot;Enter p<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.ca.SimpleCA-class.html#openSSLConfig" class="summary-name">openSSLConfig</a> = <code title="property(fget= __getOpenSSLConfig, doc= &quot;OpenSSLConfig object&quot;)">property(fget= __getOpenSSLConfig, doc= &quot;OpenS<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.server.ca.SimpleCA-class.html#propFilePath" class="summary-name">propFilePath</a> = <code title="property(fset= setPropFilePath, doc= &quot;Set the path to the properties f\
+ile&quot;)">property(fset= setPropFilePath, doc= &quot;Set the p<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">passphraseFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caPassphrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**prop</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Initialise environment for calling SimpleCA executables
+
+SimpleCA([propFilePath=p, ][passphraseFilePath=pp|caPassphrase=cp, ]
+         [ ... ])
+ 
+@type propFilePath: string       
+@param propFilePath: XML file containing SimpleCA settings.
+   
+@type caPassphrase: string
+@param caPassphrase: pass-phrase for SimpleCA's private key.
+
+@type passphraseFilePath: string
+@param passphraseFilePath: alternative to caPassphrase, Set 
+pass-phrase from a file.
+                                
+**prop: optional keywords for SimpleCA settings.  These correspond 
+exactly to the tags in properties file (SimpleCA.__validKeys).  If 
+propFilePath is set, its settings will override those set by these 
+keywords
+
+</pre>
+  <dl class="fields">
+    <dt>Returns: <pre class="literalblock">
+new empty dictionary
+
+</pre></dt>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return file properties dictionary as representation</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__delitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__delitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Index deletion operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__delitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>SimpleCA Properties keys cannot be removed</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dict.__delitem__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getitem__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getitem__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(Indexing operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__getitem__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x[y]</p>
+  <dl class="fields">
+    <dt>Overrides:
+        dict.__getitem__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.get">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>d defaults to None.</p>
+  <dl class="fields">
+    <dt>Returns: D[k] if k in D, else d</dt>
+    <dt>Overrides:
+        dict.get
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.clear">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove all items from D.</p>
+  <dl class="fields">
+    <dt>Returns: None</dt>
+    <dt>Overrides:
+        dict.clear
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="keys"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">keys</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.keys">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's keys</dt>
+    <dt>Overrides:
+        dict.keys
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">items</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's (key, value) pairs, as 2-tuples</dt>
+    <dt>Overrides:
+        dict.items
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="values"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">values</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.values">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: list of D's values</dt>
+    <dt>Overrides:
+        dict.values
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="has_key"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">has_key</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.has_key">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: True if D has a key k, else False</dt>
+    <dt>Overrides:
+        dict.has_key
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__contains__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__contains__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+    <br /><em class="fname">(In operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.__contains__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: True if D has a key k, else False</dt>
+    <dt>Overrides:
+        dict.__contains__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="readProperties"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readProperties</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propElem</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.readProperties">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read the configuration properties for the Certificate Authority</p>
+  <p>readProperties([propElem=p])</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>propElem</code></strong> (ElementTree node) - set to read beginning from a ElementTree node. If not set, file 
+          self.__propFilePath will be read</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="OldchkCAPassphrase"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OldchkCAPassphrase</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caPassphrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.OldchkCAPassphrase">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Check given pass-phrase is correct for CA private key</p>
+  <p>This method allows checking of the pass-phrase without having to call 
+  sign() to sign a new certificate.  It makes use of an openssl call where 
+  the pass-phrase is required - creation of a CRL (Certificate Revokation 
+  List)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_createCertReq"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_createCertReq</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">CN</span>,
+        <span class="sig-arg">nBitsForKey</span>=<span class="sig-default">1024</span>,
+        <span class="sig-arg">messageDigest</span>=<span class="sig-default">&quot;md5&quot;</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA._createCertReq">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a certificate request.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>CN</code></strong> - Common Name for certificate - effectively the same as the 
+          username for the MyProxy credential</li>
+        <li><strong class="pname"><code>nBitsForKey</code></strong> - number of bits for private key generation - default is 1024</li>
+        <li><strong class="pname"><code>messageDigest</code></strong> - message disgest type - default is MD5 @return tuple of 
+          certificate request PEM text and private key PEM text</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sign"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sign</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">passphraseFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caPassphrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">certReq</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">certReqFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">CN</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**createCertReqKw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.server.ca-pysrc.html#SimpleCA.sign">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sign a certificate request</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caPassphrase</code></strong> (string) - pass-phrase for SimpleCA's private key.</li>
+        <li><strong class="pname"><code>passphraseFilePath</code></strong> (string) - alternative to caPassphrase, Set pass-phrase from a file.</li>
+        <li><strong class="pname"><code>CN</code></strong> (string) - common name component of Distinguished Name for new cert.  This 
+          keyword is ignored if certReq keyword is set.</li>
+        <li><strong class="pname"><code>certReq</code></strong> (M2Crypto.X509.Request) - certificate request</li>
+        <li><strong class="pname"><code>**createCertReqKw</code></strong> (dict) - keywords to call to _createCertReq - only applies if certReq is 
+          not set.</li>
+    </ul></dd>
+    <dt>Returns: tuple</dt>
+        <dd>signed certificate and private key.  Private key will be None if 
+          certReq keyword was passed in</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__validKeys"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__validKeys</h3>
+  valid configuration property keywords used in file and keyword input to 
+  __init__ and setProperties()
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>tuple</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+'portNum', 'useSSL', 'sslCertFile', 'sslKeyFile', 'openSSLConfigFilePa<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+th', 'certLifetimeDays', 'certExpiryDate', 'certTmpDir', 'caCertFile',<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ 'chkCAPassphraseExe', 'signExe', 'path'
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caPassphrase"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caPassphrase</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+property(fset= __setCAPassphrase, doc= &quot;Enter pass-phrase for Simple C<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+A&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="openSSLConfig"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">openSSLConfig</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+property(fget= __getOpenSSLConfig, doc= &quot;OpenSSLConfig object&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="propFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">propFilePath</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+property(fset= setPropFilePath, doc= &quot;Set the path to the properties f<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ile&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:50 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

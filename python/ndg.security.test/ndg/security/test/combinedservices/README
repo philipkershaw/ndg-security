@@ -1,0 +1,20 @@
+Combined Session Manager and Attribute Authority Deployment
+===========================================================
+Test a configuration running Session Manager and Attribute Authority WSGIs 
+under the same Paste instance.
+
+1) Start the Paste test service in this directory but from a separate
+terminal:
+
+$ python ./serverapp.py
+
+2) Run the tests with the command:
+
+$ python ./test_combinedservices.py
+
+6) To run individual tests give the test method name:
+
+$ python ./test_combinedservices.py combinedServicesTestCase.test01Connect
+
+
+P J Kershaw 20/11/09

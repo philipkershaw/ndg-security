@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.wsSecurity.SignatureHandler</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.wsSecurity-module.html">Module&nbsp;wsSecurity</a> ::
+        Class&nbsp;SignatureHandler
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SignatureHandler</h1><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler">source&nbsp;code</a></span><br /><br />
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_127" name="uml_class_diagram_for_ndg_secu_127">
+<area shape="rect" href="ndg.security.common.wsSecurity.SignatureHandler&#45;class.html" title="Class to handle signature and verification of signature with WS&#45;Security" alt="" coords="15,11,67,27"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_127.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_127" ismap="ismap" class="graph-without-title" />
+</center></center>
+<hr />
+Class to handle signature and verification of signature with 
+  WS-Security<br /><br />
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reqBinSecTokValType</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">X509v3</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">verifyingCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">verifyingCertFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingCert</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingCertFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingCertChain</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingPriKey</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingPriKeyFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">signingPriKeyPwd</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caCertDirPath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">refC14nKw</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">unsuppressedPrefixes</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">xmlns</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsi</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsd</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">SOAP-ENV</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></span>,
+        <span class="summary-sig-arg">signedInfoC14nKw</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">unsuppressedPrefixes</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">xsi</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsd</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">SOAP-ENV</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ds</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">wss</code><code class="variable-ellipsis">...</code></span>)</span><br />
+      x.__init__(...) initializes x; see x.__class__.__doc__ for 
+      signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setReqBinSecTokValType" class="summary-sig-name">__setReqBinSecTokValType</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Set ValueType attribute for BinarySecurityToken used in a 
+      request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setReqBinSecTokValType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__checkC14nKw" class="summary-sig-name">__checkC14nKw</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span><br />
+      Check keywords for canonicalization in signing process - generic 
+      method for setting keywords for reference element and SignedInfo 
+      element c14n</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__checkC14nKw">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setRefC14nKw"></a><span class="summary-sig-name">__setRefC14nKw</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span><br />
+      Set keywords for canonicalization of reference elements in the 
+      signing process</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setRefC14nKw">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setSignedInfoC14nKw"></a><span class="summary-sig-name">__setSignedInfoC14nKw</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span><br />
+      Set keywords for canonicalization of SignedInfo element in the 
+      signing process</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSignedInfoC14nKw">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__refC14nIsExcl"></a><span class="summary-sig-name">__refC14nIsExcl</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__refC14nIsExcl">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__signedInfoC14nIsExcl"></a><span class="summary-sig-name">__signedInfoC14nIsExcl</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__signedInfoC14nIsExcl">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setCert" class="summary-sig-name">__setCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cert</span>)</span><br />
+      filter and convert input cert to signing verifying cert set 
+      property methods.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__getVerifyingCert" class="summary-sig-name">__getVerifyingCert</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return X.509 cert object corresponding to cert used to verify the ...</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__getVerifyingCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setVerifyingCert" class="summary-sig-name">__setVerifyingCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">verifyingCert</span>)</span><br />
+      Set property method for X.509 cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setVerifyingCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setVerifyingCertFilePath" class="summary-sig-name">__setVerifyingCertFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">verifyingCertFilePath</span>)</span><br />
+      Set method for Service X.509 cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setVerifyingCertFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningCert" class="summary-sig-name">__setSigningCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCert</span>)</span><br />
+      Set property method for X.509 cert.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningCert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setSigningCertFilePath"></a><span class="summary-sig-name">__setSigningCertFilePath</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCertFilePath</span>)</span><br />
+      Set signature X.509 cert property method</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningCertFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningCertChain" class="summary-sig-name">__setSigningCertChain</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCertChain</span>)</span><br />
+      Signature set-up with &quot;X509PKIPathv1&quot; 
+      BinarySecurityToken ValueType.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningCertChain">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setSigningPriKeyPwd"></a><span class="summary-sig-name">__setSigningPriKeyPwd</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKeyPwd</span>)</span><br />
+      Set method for private key file password used to sign message</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningPriKeyPwd">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningPriKey" class="summary-sig-name">__setSigningPriKey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKey</span>)</span><br />
+      Set method for client private key</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningPriKey">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningPriKeyFilePath" class="summary-sig-name">__setSigningPriKeyFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKeyFilePath</span>)</span><br />
+      Set method for client private key file path</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningPriKeyFilePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__caCertIsSet"></a><span class="summary-sig-name">__caCertIsSet</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check for CA certificate set (X.509 Stack has been created)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__caCertIsSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__appendCAX509Stack" class="summary-sig-name">__appendCAX509Stack</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertList</span>)</span><br />
+      Store CA certificates in an X.509 Stack</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__appendCAX509Stack">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setCAX509StackFromDir" class="summary-sig-name">__setCAX509StackFromDir</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertDir</span>)</span><br />
+      Read CA certificates from directory and add them to the X.509 
+      stack</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCAX509StackFromDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setCAX509StackFromCertFileList" class="summary-sig-name">__setCAX509StackFromCertFileList</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>)</span><br />
+      Read CA certificates from file and add them to the X.509 stack</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCAX509StackFromCertFileList">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#sign" class="summary-sig-name">sign</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">soapWriter</span>)</span><br />
+      Sign the message body and binary security token of a SOAP 
+      message</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.sign">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#verify" class="summary-sig-name">verify</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parsedSOAP</span>)</span><br />
+      Verify signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.verify">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__beginCert"></a><span class="summary-name">__beginCert</span> = <code title="'''-----BEGIN CERTIFICATE-----
+'''"><code class="variable-quote">'</code><code class="variable-string">-----BEGIN CERTIFICATE-----\n</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__endCert"></a><span class="summary-name">__endCert</span> = <code title="'''
+-----END CERTIFICATE-----'''"><code class="variable-quote">'</code><code class="variable-string">\n-----END CERTIFICATE-----</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">regular expression pattern object</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__x509CertPat" class="summary-name">__x509CertPat</a> = <code title="re.compile(r'(?s)-----BEGIN CERTIFICATE-----\n?(.*?)\n?-----END CERTIF\
+ICATE-----')">re.compile(r'<code class="re-flags">(?s)</code>-----BEGIN CERTIFICATE-----\n<code class="variable-ellipsis">...</code></code><br />
+      regular expression for extracting the base64 encoded portion of a 
+      PEM encoded X.509 certificate
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#binSecTokValType" class="summary-name">binSecTokValType</a> = <code title="{'X509': 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509\
+-token-profile-1.0#X509',
+ 'X509PKIPathv1': 'http://docs.oasis-open.org/wss/2004/01/oasis-200401\
+-wss-x509-token-profile-1.0#X509PKIPathv1',
+ 'X509v3': 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x5\
+09-token-profile-1.0#X509v3'}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">X509</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">http://docs.oasis-open.org/wss/20</code><code class="variable-ellipsis">...</code></code><br />
+      supported ValueTypes for BinarySecurityToken element in WSSE 
+      header
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#reqBinSecTokValType" class="summary-name">reqBinSecTokValType</a><br />
+      ValueType attribute for BinarySecurityToken used in request
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#refC14nKw" class="summary-name">refC14nKw</a><br />
+      Keywords for c14n of reference elements
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signedInfoC14nKw" class="summary-name">signedInfoC14nKw</a><br />
+      Keywords for c14n of SignedInfo element
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#refC14nIsExcl" class="summary-name">refC14nIsExcl</a><br />
+      Return True/False c14n for reference elements set to exclusive 
+      type
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signedInfoC14nIsExcl" class="summary-name">signedInfoC14nIsExcl</a><br />
+      Return True/False c14n for SignedInfo element set to exclusive 
+      type
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#verifyingCert" class="summary-name">verifyingCert</a><br />
+      Set X.509 Cert.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#verifyingCertFilePath" class="summary-name">verifyingCertFilePath</a><br />
+      file path of X.509 Cert.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingCert" class="summary-name">signingCert</a><br />
+      Set X.509 Cert.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingCertFilePath" class="summary-name">signingCertFilePath</a><br />
+      File path X.509 cert.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingCertChain" class="summary-name">signingCertChain</a><br />
+      Cert.s in chain of trust to cert.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingPriKeyPwd" class="summary-name">signingPriKeyPwd</a><br />
+      Password protecting private key file used to sign message
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingPriKey" class="summary-name">signingPriKey</a><br />
+      Private key used to sign outbound message
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#signingPriKeyFilePath" class="summary-name">signingPriKeyFilePath</a><br />
+      File path for private key used to sign message
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#caCertIsSet" class="summary-name">caCertIsSet</a><br />
+      Check for CA certificate set (X.509 Stack has been created)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#caCertDirPath" class="summary-name">caCertDirPath</a><br />
+      Dir.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#caCertFilePathList" class="summary-name">caCertFilePathList</a><br />
+      List of CA cert.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">reqBinSecTokValType</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">X509v3</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">verifyingCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">verifyingCertFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingCert</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingCertFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingCertChain</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingPriKey</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingPriKeyFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">signingPriKeyPwd</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caCertDirPath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">caCertFilePathList</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">refC14nKw</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">unsuppressedPrefixes</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">xmlns</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsi</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsd</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">SOAP-ENV</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></span>,
+        <span class="sig-arg">signedInfoC14nKw</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">unsuppressedPrefixes</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">xsi</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">xsd</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">SOAP-ENV</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ds</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">wss</code><code class="variable-ellipsis">...</code></span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  x.__init__(...) initializes x; see x.__class__.__doc__ for 
+  signature
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>verifyingCert</code></strong> (M2Crypto.X509.X509 / ndg.security.common.X509.X509Cert) - X.509 certificate used by verify method to verify a message.  
+          This argument can be omitted if the message to be verified 
+          contains the X.509 certificate in the BinarySecurityToken 
+          element.  In this case, the cert read from the message will be 
+          assigned to the verifyingCert attribute.</li>
+        <li><strong class="pname"><code>verifyingCertFilePath</code></strong> (string) - alternative input to the above, pass the file path to the 
+          certificate stored in a file</li>
+        <li><strong class="pname"><code>signingCert</code></strong> (M2Crypto.X509.X509 / ndg.security.common.X509.X509Cert) - certificate associated with private key used to sign a 
+          message.  The sign method will add this to the 
+          BinarySecurityToken element of the WSSE header.  binSecTokValType
+          attribute must be set to 'X509' or 'X509v3' ValueTyep.  As an 
+          alternative, use signingCertChain - see below...</li>
+        <li><strong class="pname"><code>signingCertFilePath</code></strong> (string) - alternative input to the above, pass the file path to the 
+          certificate stored in a file</li>
+        <li><strong class="pname"><code>signingCertChain</code></strong> (list or tuple) - pass a list of certificates constituting a chain of trust from
+          the certificate used to verifying the signature backward to the 
+          CA cert.  The CA cert need not be included.  To use this option, 
+          reqBinSecTokValType must be set to the 'X509PKIPathv1' 
+          ValueType</li>
+        <li><strong class="pname"><code>signingPriKey</code></strong> (M2Crypto.RSA.) - private key used to be sign method to sign message</li>
+        <li><strong class="pname"><code>signingPriKeyFilePath</code></strong> (string) - equivalent to the above but pass private key from PEM file</li>
+        <li><strong class="pname"><code>signingPriKeyPwd</code></strong> (string or None) - password protecting private key.  Set / default to None if 
+          there is no password.</li>
+        <li><strong class="pname"><code>caCertDirPath</code></strong> (string) - establish trust for signature verification. This is a 
+          directory containing CA certificates.  These are used to verify 
+          the certificate used to verify the message signature.</li>
+        <li><strong class="pname"><code>caCertFilePathList</code></strong> (list or tuple) - same as above except pass in a list of file paths instead of a
+          single directory name.</li>
+        <li><strong class="pname"><code>refC14nKw</code></strong> (dict) - dictionary of keywords to reference Canonicalization.  Use 
+          'unsuppressedPrefixes' keyword to set unsuppressedPrefixes.</li>
+        <li><strong class="pname"><code>signedInfoC14nKw</code></strong> (dict) - keywords to Signed Info Canonicalization. It uses the same 
+          format as refC14nKw above.</li>
+        <li><strong class="pname"><code>__beginCert</code></strong> (string) - delimiter for beginning of base64 encoded portion of a PEM 
+          encoded X.509 certificate</li>
+    </ul></dd>
+    <dt>Overrides:
+      object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setReqBinSecTokValType"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setReqBinSecTokValType</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setReqBinSecTokValType">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set ValueType attribute for BinarySecurityToken used in a request
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>value</code></strong> (string) - name space for BinarySecurityToken ValueType check 
+          'binSecTokValType' class variable for supported types.  Input can
+          be shortened to binSecTokValType keyword if desired.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__checkC14nKw"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__checkC14nKw</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">kw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__checkC14nKw">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Check keywords for canonicalization in signing process - generic 
+  method for setting keywords for reference element and SignedInfo element 
+  c14n
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kw</code></strong> (dict) - keyword used with ZSI.wstools.Utility.Canonicalization</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cert</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  filter and convert input cert to signing verifying cert set property 
+  methods.  For signingCert, set to None if it is not to be included in the
+  SOAP header.  For verifyingCert, set to None if this cert can be expected
+  to be retrieved from the SOAP header of the message to be verified
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><p><strong class="pname"><code>cert</code></strong> - X.509 certificate.</p>
+          @rtype ndg.security.common.X509.X509Cert @return X.509 
+          certificate object</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getVerifyingCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getVerifyingCert</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__getVerifyingCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <pre class="literalblock">
+Return X.509 cert object corresponding to cert used to verify the 
+signature in the last call to verify
+
+ * Cert will correspond to one used in the LATEST call to verify, on
+ the next call it will be replaced
+ * if verify hasn't been called, the cert will be None
+
+@rtype: M2Crypto.X509.X509
+@return: certificate object
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setVerifyingCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setVerifyingCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">verifyingCert</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setVerifyingCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set property method for X.509 cert. used to verify a signature
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setVerifyingCertFilePath"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setVerifyingCertFilePath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">verifyingCertFilePath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setVerifyingCertFilePath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set method for Service X.509 cert. file path property
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setSigningCert"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setSigningCert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">signingCert</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningCert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Set property method for X.509 cert. to be included with signature
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setSigningCertChain"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setSigningCertChain</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">signingCertChain</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningCertChain">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Signature set-up with &quot;X509PKIPathv1&quot; BinarySecurityToken 
+  ValueType.  Use an X.509 Stack to store certificates that make up a chain
+  of trust to certificate used to verify a signature
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>signingCertChain</code></strong> (list or tuple of M2Crypto.X509.X509Cert or 
+          ndg.security.common.X509.X509Cert types.) - list of certificate objects making up the chain of trust.  The
+          last certificate is the one associated with the private key used 
+          to sign the message.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setSigningPriKey"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setSigningPriKey</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">signingPriKey</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningPriKey">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Set method for client private key</p>
+  Nb. if input is a string, signingPriKeyPwd will need to be set if the 
+  key is password protected.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>signingPriKey</code></strong> (M2Crypto.RSA.RSA / string) - private key used to sign message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setSigningPriKeyFilePath"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setSigningPriKeyFilePath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">signingPriKeyFilePath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setSigningPriKeyFilePath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Set method for client private key file path</p>
+  signingPriKeyPwd MUST be set prior to a call to this method
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__appendCAX509Stack"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__appendCAX509Stack</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caCertList</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__appendCAX509Stack">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Store CA certificates in an X.509 Stack
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caCertList</code></strong> (M2Crypto.X509.X509 certificate objects) - list or tuple</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setCAX509StackFromDir"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setCAX509StackFromDir</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caCertDir</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCAX509StackFromDir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Read CA certificates from directory and add them to the X.509 
+  stack
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caCertDir</code></strong> (directory from which to read CA certificate files) - string</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setCAX509StackFromCertFileList"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setCAX509StackFromCertFileList</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">caCertFilePathList</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.__setCAX509StackFromCertFileList">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Read CA certificates from file and add them to the X.509 stack
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>caCertFilePathList</code></strong> (list or tuple) - list of file paths for CA certificates to be used to verify 
+          certificate used to sign message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sign"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sign</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">soapWriter</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.sign">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Sign the message body and binary security token of a SOAP message
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>soapWriter</code></strong> (ZSI.writer.SoapWriter) - ZSI object to write SOAP message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verify"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">verify</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parsedSOAP</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.wsSecurity-pysrc.html#SignatureHandler.verify">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Verify signature
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parsedSOAP</code></strong> (ZSI.parse.ParsedSoap) - object contain parsed SOAP message received from sender</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__x509CertPat"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__x509CertPat</h3>
+  regular expression for extracting the base64 encoded portion of a PEM 
+  encoded X.509 certificate
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>regular expression pattern object</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+re.compile(r'<code class="re-flags">(?s)</code>-----BEGIN CERTIFICATE-----\n<code class="re-op">?</code><code class="re-group">(</code>.<code class="re-op">*?</code><code class="re-group">)</code>\n<code class="re-op">?</code>-----END CERTIF<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ICATE-----')
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="binSecTokValType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">binSecTokValType</h3>
+  supported ValueTypes for BinarySecurityToken element in WSSE 
+  header
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>dict</dd>
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">X509</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">-token-profile-1.0#X509</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">X509PKIPathv1</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">http://docs.oasis-open.org/wss/2004/01/oasis-200401</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">-wss-x509-token-profile-1.0#X509PKIPathv1</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">X509v3</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x5</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">09-token-profile-1.0#X509v3</code><code class="variable-quote">'</code><code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="reqBinSecTokValType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">reqBinSecTokValType</h3>
+  ValueType attribute for BinarySecurityToken used in request
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setReqBinSecTokValType" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setReqBinSecTokValType</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Set ValueType attribute for BinarySecurityToken used in a 
+      request
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="refC14nKw"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">refC14nKw</h3>
+  Keywords for c14n of reference elements
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setRefC14nKw" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setRefC14nKw</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span>
+        - Set keywords for canonicalization of reference elements in the 
+      signing process
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signedInfoC14nKw"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signedInfoC14nKw</h3>
+  Keywords for c14n of SignedInfo element
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSignedInfoC14nKw" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSignedInfoC14nKw</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kw</span>)</span>
+        - Set keywords for canonicalization of SignedInfo element in the 
+      signing process
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="refC14nIsExcl"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">refC14nIsExcl</h3>
+  Return True/False c14n for reference elements set to exclusive 
+  type
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__refC14nIsExcl" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__refC14nIsExcl</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signedInfoC14nIsExcl"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signedInfoC14nIsExcl</h3>
+  Return True/False c14n for SignedInfo element set to exclusive 
+  type
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__signedInfoC14nIsExcl" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__signedInfoC14nIsExcl</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verifyingCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">verifyingCert</h3>
+  Set X.509 Cert. for verifying signature
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__getVerifyingCert" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__getVerifyingCert</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Return X.509 cert object corresponding to cert used to verify the ...
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setVerifyingCert" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setVerifyingCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">verifyingCert</span>)</span>
+        - Set property method for X.509 cert.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verifyingCertFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">verifyingCertFilePath</h3>
+  file path of X.509 Cert. for verifying signature
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setVerifyingCertFilePath" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setVerifyingCertFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">verifyingCertFilePath</span>)</span>
+        - Set method for Service X.509 cert.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingCert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingCert</h3>
+  Set X.509 Cert. to include signature
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningCert" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningCert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCert</span>)</span>
+        - Set property method for X.509 cert.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingCertFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingCertFilePath</h3>
+  File path X.509 cert. to include with signed message
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningCertFilePath" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningCertFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCertFilePath</span>)</span>
+        - Set signature X.509 cert property method
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingCertChain"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingCertChain</h3>
+  Cert.s in chain of trust to cert. used to verify msg.
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningCertChain" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningCertChain</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingCertChain</span>)</span>
+        - Signature set-up with &quot;X509PKIPathv1&quot; 
+      BinarySecurityToken ValueType.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingPriKeyPwd"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingPriKeyPwd</h3>
+  Password protecting private key file used to sign message
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningPriKeyPwd" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningPriKeyPwd</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKeyPwd</span>)</span>
+        - Set method for private key file password used to sign message
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingPriKey"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingPriKey</h3>
+  Private key used to sign outbound message
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningPriKey" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningPriKey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKey</span>)</span>
+        - Set method for client private key
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signingPriKeyFilePath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">signingPriKeyFilePath</h3>
+  File path for private key used to sign message
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setSigningPriKeyFilePath" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setSigningPriKeyFilePath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">signingPriKeyFilePath</span>)</span>
+        - Set method for client private key file path
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caCertIsSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caCertIsSet</h3>
+  Check for CA certificate set (X.509 Stack has been created)
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__caCertIsSet" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__caCertIsSet</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Check for CA certificate set (X.509 Stack has been created)
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caCertDirPath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caCertDirPath</h3>
+  Dir. containing CA cert.s used for verification
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setCAX509StackFromDir" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setCAX509StackFromDir</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertDir</span>)</span>
+        - Read CA certificates from directory and add them to the X.509 
+      stack
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="caCertFilePathList"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">caCertFilePathList</h3>
+  List of CA cert. files used for verification
+  <dl class="fields">
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="ndg.security.common.wsSecurity.SignatureHandler-class.html#__setCAX509StackFromCertFileList" class="summary-sig-name">ndg.security.common.wsSecurity.SignatureHandler.__setCAX509StackFromCertFileList</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">caCertFilePathList</span>)</span>
+        - Read CA certificates from file and add them to the X.509 stack
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Mon Dec 17 09:22:46 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

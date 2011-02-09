@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ndg.security.common.SQLObject.CredRepos</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ndg-module.html">Package&nbsp;ndg</a> ::
+        <a href="ndg.security-module.html">Package&nbsp;security</a> ::
+        <a href="ndg.security.common-module.html">Package&nbsp;common</a> ::
+        <a href="ndg.security.common.SQLObject-module.html">Module&nbsp;SQLObject</a> ::
+        Class&nbsp;CredRepos
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class CredRepos</h1><p class="nomargin-top"><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_ndg_secu_47" name="uml_class_diagram_for_ndg_secu_47">
+<area shape="rect" href="ndg.security.common.CredWallet.CredRepos&#45;class.html" title="CredWallet&#39;s interface class to a Credential Repository" alt="" coords="179,11,317,43"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos.UserID&#45;class.html" title="SQLObject derived class to define Credentials Repository db table to store &#160;user information" alt="" coords="17,89,479,108"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos.UserCredential&#45;class.html" title="SQLObject derived class to define Credentials Repository db table to store &#160;user credentials information" alt="" coords="17,108,479,127"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#__init__" title="Initialise Credentials Repository Database object." alt="" coords="17,129,479,148"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#setProperties" title="Update existing properties from an input dictionary Check input keys are &#160;valid names" alt="" coords="17,148,479,167"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#readProperties" title="Read the configuration properties for the CredentialRepository" alt="" coords="17,167,479,185"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#addUser" title="A new user to Credentials Repository" alt="" coords="17,185,479,204"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#auditCredentials" title="Check the attribute certificates held in the repository and delete any that have expired" alt="" coords="17,204,479,223"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#getCredentials" title="Get the list of credentials for a given user&#39;s DN" alt="" coords="17,223,479,241"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html#addCredentials" title="Add new attribute certificates for a user." alt="" coords="17,241,479,260"/>
+<area shape="rect" href="ndg.security.common.SQLObject.CredRepos&#45;class.html" title="Interface to Credential Repository Database" alt="" coords="16,72,480,261"/>
+</map>
+  <img src="uml_class_diagram_for_ndg_secu_47.gif" alt='' usemap="#uml_class_diagram_for_ndg_secu_47" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Interface to Credential Repository Database</p>
+  <p>Nb. inherits from CredWallet.CredRepos to ensure correct interface to 
+  the wallet</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.SQLObject.CredRepos.UserID-class.html" class="summary-name">UserID</a><br />
+      SQLObject derived class to define Credentials Repository db table to 
+      store user information
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="ndg.security.common.SQLObject.CredRepos.UserCredential-class.html" class="summary-name">UserCredential</a><br />
+      SQLObject derived class to define Credentials Repository db table to 
+      store user credentials information
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbPPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Initialise Credentials Repository Database object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#__setConnection" class="summary-sig-name" onclick="show_private();">__setConnection</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dbType</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbUserName</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbPPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbHostname</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbName</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbURI</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">chkConnection</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Establish a database connection from a database URI</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.__setConnection">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setProperties"></a><span class="summary-sig-name">setProperties</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dbPPhrase</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**prop</span>)</span><br />
+      Update existing properties from an input dictionary Check input keys 
+      are valid names</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.setProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#readProperties" class="summary-sig-name">readProperties</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">propFilePath</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">propElem</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dbPPhrase</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read the configuration properties for the CredentialRepository</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.readProperties">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#addUser" class="summary-sig-name">addUser</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">userName</span>,
+        <span class="summary-sig-arg">dn</span>)</span><br />
+      A new user to Credentials Repository</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.addUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#auditCredentials" class="summary-sig-name">auditCredentials</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dn</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**attCertValidKeys</span>)</span><br />
+      Check the attribute certificates held in the repository and delete
+any that have expired</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.auditCredentials">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#getCredentials" class="summary-sig-name">getCredentials</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dn</span>)</span><br />
+      Get the list of credentials for a given user's DN</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.getCredentials">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="ndg.security.common.SQLObject.CredRepos-class.html#addCredentials" class="summary-sig-name">addCredentials</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dn</span>,
+        <span class="summary-sig-arg">attCertList</span>)</span><br />
+      Add new attribute certificates for a user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.addCredentials">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_initTables"></a><span class="summary-sig-name">_initTables</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">prompt</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Use with EXTREME caution - this method will initialise the database 
+      tables removing any previous records entered</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos._initTables">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__validKeys"></a><span class="summary-name">__validKeys</span> = <code title="['dbURI']">['dbURI']</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbPPhrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**prop</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialise Credentials Repository Database object.</p>
+  <p>If the connection string or properties file is set a connection will 
+  be made</p>
+  <p>dbURI:              &lt;db 
+  type&gt;://&lt;username&gt;:&lt;passwd&gt;@&lt;hostname&gt;/dbname 
+  propFilePath: file path to properties file</p>
+  <p>Nb. propFilePath setting overrides input dbURI</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dbPPhrase</code></strong> - pass-phrase to database if applicable</li>
+        <li><strong class="pname"><code>propFilePath</code></strong> - file path to a properties file.  This could contain configuration
+          parameters for the repository e.g.  database connection 
+          parameters</li>
+        <li><strong class="pname"><code>**prop</code></strong> - any other keywords required</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="ndg.security.common.CredWallet.CredRepos-class.html#__init__">CredWallet.CredRepos.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__setConnection"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__setConnection</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dbType</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbUserName</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbPPhrase</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbHostname</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbName</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbURI</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">chkConnection</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.__setConnection">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Establish a database connection from a database URI
+
+pass a URI OR the parameters to construct the URI
+    
+dbURI: &quot;&lt;db type&gt;://&lt;username&gt;:&lt;passwd&gt;:&lt;hostname&gt;/dbname&quot;
+
+or
+
+dbURI: &quot;&lt;db type&gt;://&lt;username&gt;:%PPHRASE%:&lt;hostname&gt;/dbname&quot;
++ passPhrase
+
+- %PPHRASE% is substituted with the input passPhrase keyword
+
+or
+
+dbType:         database type e.g. 'mysql'
+dbUserName:     username
+dbPPhrase:      pass-phrase
+dbHostname:     name of host where database resides
+dbName:         name of the database
+
+
+chkConnection:  check that the URI is able to connect to the 
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="readProperties"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readProperties</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">propFilePath</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">propElem</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dbPPhrase</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.readProperties">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read the configuration properties for the CredentialRepository</p>
+  <p>propFilePath|propElem</p>
+  <p>propFilePath: set to read from the specified file propElem:     set to
+  read beginning from a cElementTree node</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addUser"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addUser</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">userName</span>,
+        <span class="sig-arg">dn</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.addUser">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>A new user to Credentials Repository</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> - username for new user</li>
+        <li><strong class="pname"><code>dn</code></strong> - users Distinguished Name</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="ndg.security.common.CredWallet.CredRepos-class.html#addUser">CredWallet.CredRepos.addUser</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="auditCredentials"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">auditCredentials</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dn</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**attCertValidKeys</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.auditCredentials">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Check the attribute certificates held in the repository and delete
+any that have expired
+
+dn:                Only audit for the given user distinguished Name.
+                   if not set, all records are audited
+attCertValidKeys:  keywords which set how to check the Attribute
+                   Certificate e.g. check validity time, XML
+                   signature, version etc.  Default is check
+                   validity time only
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="ndg.security.common.CredWallet.CredRepos-class.html#auditCredentials">CredWallet.CredRepos.auditCredentials</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCredentials"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCredentials</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dn</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.getCredentials">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the list of credentials for a given user's DN</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dn</code></strong> - users distinguished name</li>
+    </ul></dd>
+    <dt>Returns: list</dt>
+        <dd>list of Attribute Certificates</dd>
+    <dt>Overrides:
+        <a href="ndg.security.common.CredWallet.CredRepos-class.html#getCredentials">CredWallet.CredRepos.getCredentials</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addCredentials"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addCredentials</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">dn</span>,
+        <span class="sig-arg">attCertList</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="ndg.security.common.SQLObject-pysrc.html#CredRepos.addCredentials">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add new attribute certificates for a user.  The user must have been 
+  previously registered in the repository</p>
+  <p>dn:             users Distinguished name attCertList:   list of 
+  attribute certificates</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>dn</code></strong> - users Distinguished name</li>
+        <li><strong class="pname"><code>attCertList</code></strong> - list of attribute certificates</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="ndg.security.common.CredWallet.CredRepos-class.html#addCredentials">CredWallet.CredRepos.addCredentials</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ndg-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >NDG Security</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Sep  4 09:37:43 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
