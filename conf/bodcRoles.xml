@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<roleSet>
+    <role>
+        <name>anonymous</name>
+        <description>Anybody not registered in the BODC database. As BODC needs to provide originators with information on who has accessed their data, no data can be delivered to anonymous users.  However, anonymous users can access metadata.</description>
+    </role>
+    <role>
+        <name>public</name>
+        <description>Anybody registered with BODC. </description>
+    </role>
+    <role>
+        <name>commercial</name>
+        <description>A user who makes financial gain from data supplied or who works for an organisation that makes such a financial gain.</description>
+    </role>
+    <role>
+        <name>government</name>
+        <description>A user who works for a central or local government department.  Excludes Research Councils.</description>
+    </role>
+    <role>
+        <name>academic</name>
+        <description>A user engaged in bona fide academic research.</description>
+    </role>
+    <role>
+        <name>BODCstaff</name>
+        <description>A current member of BODC staff.</description>
+    </role>
+    <role>
+        <name>metOfficeForm</name>
+        <description>A user who has filled in the Met Office licence agreement and had that licence accepted by the Met Office.</description>
+    </role>
+    <role>
+        <name>FRSAuth</name>
+        <description>Users may only be added with explicit Fisheries Research Services Marine Laboratory.  FRS also determines membership duration. </description>
+    </role>
+    <role>
+        <name>NOCS_NERCAuth</name>
+        <description>Users may only be added with the explicit permission of Director NOCS, head of NOCS divisions or their delegates.  NOCS also determines membership duration.</description>
+    </role>
+    <role>
+        <name>ConocoPhillipsAuth</name>
+        <description>Users may only be added with the explicit permission of ConocoPhillips, who also determine the duration of membership </description>
+    </role>
+    <role>
+        <name>ESBDAuth</name>
+        <description>Users may only be added with the explicit permission of the Electricity Supply Board, Dublin, who also determine the duration of membership </description>
+    </role>
+    <role>
+        <name>IrHydAuth</name>
+        <description>Users may only be added with the explicit permission of Irish Hydrodata, who also determine the duration of membership </description>
+    </role>
+    <role>
+        <name>ShellAuth</name>
+        <description>Users may only be added with the explicit permission of Shell Expro, who also determine the duration of membership. </description>
+    </role>
+    <role>
+        <name>BPAuth</name>
+        <description>Users may only be added with the explicit permission of BP, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>TotalAuth</name>
+        <description>Users may only be added with the explicit permission of Total, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>WessWAuth</name>
+        <description>Users may only be added with the explicit permission of Wessex Water Authority, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>NERPRBAuth</name>
+        <description>Users may only be added with the explicit permission of NERPB, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>SWWAuth</name>
+        <description>Users may only be added with the explicit permission of South West Water, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>UnivBrGeolAuth</name>
+        <description>Users may only be added with the explicit permission of University of Bristol Geology Department, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>UnivCambEScAuth</name>
+        <description>Users may only be added with the explicit permission of University of Cambridge Earth Sciences Department, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>UnivEdinGeolAuth</name>
+        <description>Users may only be added with the explicit permission of University of Edinburgh Geology Department, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>UWBSOSAuth</name>
+        <description>Users may only be added with the explicit permission of University Wales Bangor School of Ocean Sciences, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>WelshWAuth</name>
+        <description>Users may only be added with the explicit permission of Welsh Water Authority, who also determine the duration of membership</description>
+    </role>
+    <role>
+        <name>NPAuth</name>
+        <description>Users may only be added with the explicit permission of National Power/Nuclear Electric, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>HRAuth</name>
+        <description>Users may only be added with the explicit permission of Hydraulics Research, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>ChevronAuth</name>
+        <description>Users may only be added with the explicit permission of Chevron Petroleum, who also determine the duration of membership</description>
+    </role>
+    <role>
+        <name>SAMSAuth</name>
+        <description>Users may only be added to this list with the explicit permission of Director SAMS or their delegate, who also determine duration of membership.</description>
+    </role>
+    <role>
+        <name>PortErinAuth</name>
+        <description>Users may only be added with the explicit permission of the Port Erin Marine Laboratory, who also determine the duration of membership</description>
+    </role>
+    <role>
+        <name>CEFASAuth</name>
+        <description>Users may only be added with the explicit permission of CEFAS, who also determine the duration of membership.</description>
+    </role>
+    <role>
+        <name>POLAuth</name>
+        <description>Users may only be added to this list with the explicit permission of Director POL or their delegate, who also determine duration of membership.</description>
+    </role>
+    <role>
+        <name>GEOSAuth</name>
+        <description>Users may only be added to this list with the explicit permission of FugroGEOS, who also determine duration of membership.</description>
+    </role>        <description>Membership Clubs</description>
+    </role>        <description>These are groups of users who gain rights to assets on the basis of project membership. Users may have any number of these roles assigned</description>
+    </role>
+    <role>
+        <name>MarProdMemb</name>
+        <description>Principal and co-investigators of the Marine Productivity Project or people designated by them as workers on the project.</description>
+    </role>
+    <role>
+        <name>AUIMemb</name>
+        <description>Principal and co-investigators of the Autosub Under Ice Project.</description>
+    </role>
+    <role>
+        <name>MFMBMemb</name>
+        <description>Principal and co-investigators of the Marine and Freshwater Microbial Biodiversity Project or people designated by them as workers on the project.</description>
+    </role>
+    <role>
+        <name>RapidMemb</name>
+        <description>Principal and co-investigators of the Rapid Project or people designated by them as workers on the project.</description>
+    </role>
+    <role>
+        <name>MOCMemb</name>
+        <description>Principal and co-investigators of the MOC sub-project of the Rapid project or people designated by them as workers on the sub-project.</description>
+    </role>
+    <role>
+        <name>DeltaFlumeMemb</name>
+        <description>Principal and co-investigators of the Deltaflume project or people designated by them as workers on the project.</description>
+    </role>
+    <role>
+        <name>AMTMemb</name>
+        <description>Principal and co-investigators of the Atlantic Meridianal Transect  Project or people designated by them as workers on the project</description>
+    </role>
+</roleSet>

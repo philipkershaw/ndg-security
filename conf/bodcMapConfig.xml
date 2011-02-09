@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<AAmap>
+	<thisHost name="BODC">
+        <aaURI>http://aa.bodc.nerc.ac.uk/</aaURI>
+        <loginURI>https://grid.bodc.nerc.ac.uk/ndg/login</loginURI>
+        <aaDN>/O=NDG/OU=BODC/CN=AttributeAuthority</aaDN>
+        <loginServerDN>/C=GB/ST=Merseyside/L=Liverpool/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginServerDN>
+        <loginRequestServerDN>/C=GB/ST=Merseyside/L=Liverpool/O=Natural Environment Research Council/OU=British Oceanographic Data Centre/CN=grid.bodc.nerc.ac.uk/emailAddress=webmaster@bodc.ac.uk</loginRequestServerDN>
+	</thisHost>
+
+    <trusted name="BADC">
+        <aaURI>http://aa.ceda.rl.ac.uk</aaURI>
+        <aaDN>/CN=AttributeAuthority/O=NDG/OU=BADC</aaDN>
+        <loginURI>https://ndgbeta.badc.rl.ac.uk/login</loginURI>
+        <loginServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginServerDN>
+        <loginRequestServerDN>/C=GB/ST=Oxfordshire/O=NDG/OU=BADC/CN=ndgbeta.badc.rl.ac.uk</loginRequestServerDN>
+        <role remote="nercInst" local="academic"/>
+        <role remote="nercFunded" local="academic"/>
+        <role remote="university" local="academic"/>
+        <role remote="government" local="government"/>
+        <role remote="commercial" local="commercial"/>
+        <role remote="school" local="public"/>
+        <role remote="other" local="public"/>
+        <role remote="metOfficeForm" local="public"/>
+        <role remote="metOfficeForm" local="metOfficeForm"/>
+        <role remote="bodcUser" local="public"/>
+        <role remote="badcUser" local="public"/>
+        <role remote="acsoe" local="academic"/>
+        <role remote="rapid" local="academic"/>
+        <role remote="rapid" local="RapidMemb"/>
+    </trusted>
+</AAmap>
