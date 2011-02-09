@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.5</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
+
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/ndgsecurity/ndg_security_client</path>
+<path>/ndgsecurity/ndg_security_common</path>
+<path>/ndgsecurity/ndg_security_saml</path>
+<path>/ndgsecurity/ndg_security_server</path>
+<path>/ndgsecurity/ndg_security_test</path>
+<path>/ndgsecurity/MyProxyClient</path>
+</pydev_pathproperty>
+</pydev_project>

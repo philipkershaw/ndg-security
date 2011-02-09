@@ -1,0 +1,228 @@
+#!/bin/bash
+#
+# SysV init script for NDG Security Session Manager
+#
+# P J Kershaw
+#
+# 13/06/06
+#
+# Copyright (C) 2006 CCLRC & NERC
+# 
+# This software may be distributed under the terms of the Q Public License,
+# version 1.0 or later.
+#
+# chkconfig: 2345 99 01
+# description: NERC Data Grid Security Session Manager Web Service
+#
+# $Id:$
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Edit "uid", "prefixDir", "srvSubDir" and "tacFilePath" variables as 
+# required
+uid="globus"
+gid="globus"
+
+# Suggested location for NDG Security settings
+export NDGSEC_DIR=/etc/ndg/security
+
+# Set path to Twisted 'tac' file.  It is recommended that the .tac file is 
+# installed from the egg in /.../lib/pythonX.Y/site-packages into 
+# $NDGSEC_DIR/conf for ease of reference here
+tacFilePath=${NDGSEC_DIR}/conf/sessionMgr.tac
+
+# Set a specific location for the properties file if required
+# otherwise $NDGSEC_DIR/conf/sessionMgrProperties.xml is assumed
+#export NDGSEC_SM_PROPFILEPATH=
+
+serviceName=${0##*/}
+
+# Write PID file to /tmp initially as uid of twistd process may not have
+# write permission on /var/run.  Move file from /tmp to /var/run as root - 
+# see below ...
+pidFilePath=/var/run/${serviceName}.pid
+
+# Command line args e.g. set alternative port number or configuration file
+# path.  Note security consideration that these args will appear in a ps 
+# process listing
+prog=/usr/local/bin/twistd
+
+# Specify python for status() to search when looking for an existing process
+# running
+statCheckProg=/usr/local/bin/python
+
+args="-u ${uid} -g ${gid} --syslog --prefix=${serviceName} \
+--pidfile=${pidFilePath} -oy ${tacFilePath}"
+cmd="${prog} ${args}"
+
+RETVAL=0
+
+
+start()
+{
+    echo -n "Starting ${serviceName}: "
+   
+    # See if it's already running. Look *only* at the pid file.
+    local pid=
+    if [ -f ${pidFilePath} ]; then
+        local line p
+        read line < ${pidFilePath}
+        for p in $line ; do
+            [ -z "${p//[0-9]/}" -a -d "/proc/$p" ] && pid="$pid $p"
+        done
+    fi
+
+    [ -n "${pid:-}" ] && return
+
+    # Make sure it doesn't core dump anywhere; while this could mask
+    # problems with the daemon, it also closes some security problems
+    ulimit -S -c 0 >/dev/null 2>&1
+
+    if [ ! -f ${tacFilePath} ]; then
+        failure $"Path to python .tac file not found:"
+        return
+    fi
+
+    # Echo daemon
+    [ "${BOOTUP:-}" = "verbose" -a -z "$LSB" ] && echo -n " ${serviceName}"
+
+    # And start it up.
+    initlog $INITLOG_ARGS -c "${cmd}" 
+    RETVAL=$?
+    if [ $RETVAL = 0 ]; then    
+        # Use root privilege to move pid file to correct location - put wait 
+        # in to give twistd some leaway
+        i=0
+        while [ ! -f ${pidFilePath} ] && [ "$i" -lt 10 ]; do 
+            sleep 1; 
+            let "i++"; 
+        done
+    
+        touch /var/lock/subsys/${serviceName}        
+        success $"startup"
+    else
+        failure $"startup"
+    fi
+    
+    echo
+}
+
+
+stop()
+{
+    echo -n "Shutting down ${serviceName}: "
+    
+    # Find pid
+    pid=
+    if [ -f ${pidFilePath} ]; then
+       local line p
+       read line < ${pidFilePath}
+       for p in $line ; do
+           [ -z "${p//[0-9]/}" -a -d "/proc/$p" ] && pid="$pid $p"
+       done
+    fi
+
+    if [ -z "$pid" ]; then
+        failure $"stop - no process found from PID file: "
+        return
+    fi
+
+    # Kill it.
+    if [ -n "${pid:-}" ] ; then
+       [ "$BOOTUP" = "verbose" -a -z "$LSB" ] && echo -n "${serviceName} "
+          
+        if checkpid $pid 2>&1; then
+            # TERM first, then KILL if not dead
+            kill -TERM $pid
+            usleep 100000
+            if checkpid $pid && sleep 1 &&
+               checkpid $pid && sleep 3 &&
+               checkpid $pid ; then
+                kill -KILL $pid
+                usleep 100000
+            fi
+            checkpid $pid
+            RC=$?
+            [ "$RC" -eq 0 ] && failure $"shutdown" || success $"shutdown"
+            RC=$((! $RC))
+        fi    
+    else
+        failure $"shutdown"
+        RC=1
+    fi
+
+    # Remove pid and lock files if any.
+    rm -f ${pidFilePath}
+    rm -f /var/lock/subsys/${serviceName}
+    
+    echo
+}
+
+
+restart()
+{
+    stop
+    start
+}
+
+
+status()
+{
+    local pid=
+    
+    # Get pid from "/var/run/*.pid" file
+    local pidFound=
+    if [ -f $pidFilePath ] ; then
+        read pid < $pidFilePath
+        if [ -z "$pid" ]; then
+            echo $"Can't get pid from pid file $pidFilePath"
+            return
+        fi
+        pidFound=Yes
+    fi
+
+    # look for pid in listing
+    for i in `pidof -o $$ -o $PPID -o %PPID -x "${statCheckProg}"`; do
+        [[ $i = $pid ]] && pidFound=Yes && break;
+    done
+    
+    if [ -n "$pidFound" ]; then
+        echo $"$prog (pid $pid) is running..."
+
+    elif [ -f /var/lock/subsys/${serviceName} ]; then
+        echo $"$prog is dead but subsys locked"
+
+    elif [ -f ${pidFilePath} ]; then
+        echo $"$prog is dead but pid file $pidFilePath exists"
+    else
+        echo $"$prog is dead"
+    fi
+}
+
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    status)
+        status
+    ;;
+    restart)
+        restart ${serviceName}
+    ;;
+    condrestart)
+    if [ -f ${pidFilePath} ] ; then
+        stop
+        start
+    fi
+    ;;
+    *)
+        echo \
+        "Usage: ${serviceName} {start|stop|restart|condrestart|status}"
+        exit 1
+    ;;
+esac
