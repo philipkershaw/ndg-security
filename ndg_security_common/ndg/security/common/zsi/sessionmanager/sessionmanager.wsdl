@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="SessionManager"
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="urn:ndg:security:SessionManager"
+ targetNamespace="urn:ndg:security:SessionManager">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:ndg:security:SessionManager">
+      <xsd:element name="getSessionStatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="userDN" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sessID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getSessionStatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+		    <xsd:element name="isAlive" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+		  </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="connect">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="passphrase" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		    <xsd:element name="createServerSess" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="connectResponse">
+        <xsd:complexType>
+		  <xsd:sequence>
+		    <xsd:element name="userX509Cert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="userPriKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="issuingCert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="sessID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		  </xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="disconnect">
+        <xsd:complexType>
+		  <xsd:sequence>
+		    <xsd:element name="userX509Cert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="sessID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		  </xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="disconnectResponse">
+        <xsd:complexType/>
+      </xsd:element>
+            
+      <xsd:element name="getAttCert">
+        <xsd:complexType>
+		  <xsd:sequence>
+		    <xsd:element name="userX509Cert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="sessID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="attributeAuthorityURI" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="reqRole" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="mapFromTrustedHosts" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+		    <xsd:element name="rtnExtAttCertList" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="extAttCert" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="extTrustedHost" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+   		  </xsd:sequence>
+		</xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getAttCertResponse">
+        <xsd:complexType>
+	      <xsd:sequence>
+	        <xsd:element name="attCert" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	        <xsd:element name="msg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="extAttCertOut" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+	      </xsd:sequence>
+	    </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </wsdl:types>
+ 
+  <wsdl:message name="getSessionStatusInputMsg">
+    <wsdl:part name="parameters" element="tns:getSessionStatus"/>
+  </wsdl:message>
+
+  <wsdl:message name="getSessionStatusOutputMsg">
+    <wsdl:part name="parameters" element="tns:getSessionStatusResponse"/>
+  </wsdl:message>
+ 
+  <wsdl:message name="connectInputMsg">
+    <wsdl:part name="parameters" element="tns:connect"/>
+  </wsdl:message>
+
+  <wsdl:message name="connectOutputMsg">
+    <wsdl:part name="parameters" element="tns:connectResponse"/>
+  </wsdl:message>
+  
+  <wsdl:message name="disconnectInputMsg">
+    <wsdl:part name="parameters" element="tns:disconnect"/>
+  </wsdl:message>
+
+  <wsdl:message name="disconnectOutputMsg">
+    <wsdl:part name="parameters" element="tns:disconnectResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="getAttCertInputMsg">
+    <wsdl:part name="parameters" element="tns:getAttCert"/>
+  </wsdl:message>
+
+  <wsdl:message name="getAttCertOutputMsg">
+    <wsdl:part name="parameters" element="tns:getAttCertResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="SessionManager">
+    <wsdl:operation name="getSessionStatus">
+      <wsdl:input message="tns:getSessionStatusInputMsg"/>
+      <wsdl:output message="tns:getSessionStatusOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="connect">
+      <wsdl:input message="tns:connectInputMsg"/>
+      <wsdl:output message="tns:connectOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="disconnect">
+      <wsdl:input message="tns:disconnectInputMsg"/>
+      <wsdl:output message="tns:disconnectOutputMsg"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="getAttCert">
+      <wsdl:input message="tns:getAttCertInputMsg"/>
+      <wsdl:output message="tns:getAttCertOutputMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>  
+  
+  <wsdl:binding name="SessionManagerBinding" type="tns:SessionManager">
+    <soap:binding
+     style="document"
+     transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <wsdl:operation name="getSessionStatus">
+      <soap:operation soapAction="getSessionStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+    
+    <wsdl:operation name="connect">
+      <soap:operation soapAction="connect"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+    
+    <wsdl:operation name="disconnect">
+      <soap:operation soapAction="disconnect"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+    
+    <wsdl:operation name="getAttCert">
+      <soap:operation soapAction="getAttCert"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output> 
+    </wsdl:operation>
+  
+  </wsdl:binding>
+
+  <wsdl:service name="SessionManagerService">
+    <wsdl:documentation>NERC Data Grid Session Manager web service</wsdl:documentation>
+    <wsdl:port name="SessionManager" binding="tns:SessionManagerBinding">
+      <soap:address location="http://localhost:5000"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
