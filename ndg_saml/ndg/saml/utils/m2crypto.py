@@ -1234,10 +1234,10 @@ class SSLContextProxy(object):
         
         # Configure context according to this proxy's attributes
         if self.sslCertFilePath and self.sslPriKeyFilePath:
-            # Pass client certificate
-            ctx.load_cert(self.sslCertFilePath, 
-                          self.__sslPriKeyFilePath, 
-                          lambda *arg, **kw: self.sslPriKeyPwd)
+            # Pass client certificate (optionally with chain)
+            ctx.load_cert_chain(self.sslCertFilePath, 
+                                self.__sslPriKeyFilePath, 
+                                lambda *arg, **kw: self.sslPriKeyPwd)
             log.debug("Set client certificate and key in SSL Context")
         else:
             log.debug("No client certificate or key set in SSL Context")
@@ -1347,7 +1347,7 @@ class SSLContextProxy(object):
         return self.__sslCertFilePath
     
     def _setSSLCertFilePath(self, filePath):
-        "Set X.509 cert file path property method"
+        "Set X.509 cert/cert chian file path property method"
         
         if isinstance(filePath, basestring):
             filePath = os.path.expandvars(filePath)
@@ -1359,7 +1359,7 @@ class SSLContextProxy(object):
                 
     sslCertFilePath = property(fset=_setSSLCertFilePath,
                                fget=_getSSLCertFilePath,
-                               doc="File path to X.509 cert.")
+                               doc="File path to X.509 cert. / cert. chain")
         
     def _getSSLCACertFilePath(self):
         """Get file path for list of CA cert or certs used to validate SSL 
