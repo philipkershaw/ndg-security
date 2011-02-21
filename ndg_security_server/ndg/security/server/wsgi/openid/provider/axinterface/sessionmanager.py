@@ -15,11 +15,11 @@ __revision__ = "$Id$"
 import logging
 log = logging.getLogger(__name__)
 from string import Template
-from sqlalchemy import create_engine
 
 from ndg.security.server.wsgi.openid.provider.axinterface import \
     AXInterface, AXInterfaceConfigError, MissingRequiredAttrs
 from ndg.security.server.wsgi.openid.provider import AbstractAuthNInterface    
+    
     
 class SessionManagerAXInterface(AXInterface):
     '''Authentication interface class for OpenIDProviderMiddleware to enable

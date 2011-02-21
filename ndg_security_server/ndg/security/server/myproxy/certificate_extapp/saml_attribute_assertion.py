@@ -13,8 +13,6 @@ import logging
 log = logging.getLogger(__name__)
 
 import traceback
-from datetime import datetime, timedelta
-from uuid import uuid4
 from string import Template
 
 from sqlalchemy import create_engine, exc
@@ -24,26 +22,12 @@ try: # >= python 2.5
 except ImportError:
     import ElementTree
 
-from saml.utils import SAMLDateTime
-from saml.common.xml import SAMLConstants
-from saml.saml2.core import (Attribute, 
-                             SAMLVersion, 
-                             Subject, 
-                             NameID, 
-                             Issuer, 
-                             AttributeQuery, 
-                             XSStringAttributeValue, 
-                             Status,
-                             StatusCode,
-                             StatusMessage)
-from saml.xml.etree import AssertionElementTree, ResponseElementTree
+from saml.saml2.core import Status, StatusCode, StatusMessage
+from saml.xml.etree import AssertionElementTree
    
 from ndg.security.common.saml_utils.bindings import AttributeQuerySslSOAPBinding
 from ndg.security.common.saml_utils.esg import (EsgSamlNamespaces,
                                                 EsgDefaultQueryAttributes)
-from ndg.security.common.utils.etree import prettyPrint
-from ndg.security.common.X509 import X500DN
-from ndg.security.server.wsgi.openid.provider import IdentityMapping
 from ndg.security.common.utils.configfileparsers import (     
                                                     CaseSensitiveConfigParser,)
 
@@ -120,7 +104,8 @@ class CertExtApp(object):
     __PRIVATE_ATTR_PREFIX = '__'
     __slots__ = tuple(
         [__PRIVATE_ATTR_PREFIX + i 
-         for i in CONFIG_FILE_OPTNAMES + (ATTRIBUTE_QUERY_ATTRNAME,)]
+         for i in CONFIG_FILE_OPTNAMES + (ATTRIBUTE_QUERY_ATTRNAME,)] + [
+        '__dbEngine']
     )
     del i
     
@@ -235,18 +220,28 @@ class CertExtApp(object):
             raise TypeError('Expecting string type for "%s" attribute; got %r'%
                             (CertExtApp.CONNECTION_STRING_OPTNAME,
                              type(value)))
+            
         self.__connectionString = os.path.expandvars(value)
+        
+        try:
+            self.__dbEngine = create_engine(self.__connectionString)
+        except ImportError, e:
+            raise CertExtAppConfigError("Missing database engine for "
+                                        "SQLAlchemy: %s" % e)
 
     connectionString = property(fget=_getConnectionString, 
                                 fset=_setConnectionString, 
-                                doc="Database connection string")
+                                doc="Database connection string.  Nb. this "
+                                "attention: also creates the database engine!  "
+                                "Should be called once only for a given new "
+                                "connection string")
 
     def _getOpenIdSqlQuery(self):
         return self.__openIdSqlQuery
 
     def _setOpenIdSqlQuery(self, value):
         if not isinstance(value, basestring):
-            raise TypeError('Expecting string type for "%s" attribute; got %r'% 
+            raise TypeError('Expecting string type for "%s" attribute; got %r' % 
                         (CertExtApp.OPENID_SQLQUERY_OPTNAME,
                          type(value)))
         self.__openIdSqlQuery = value
@@ -280,12 +275,7 @@ class CertExtApp(object):
         @return: the OpenID identifier corresponding to the input username
         """
 
-        try:
-            dbEngine = create_engine(self.connectionString)
-        except ImportError, e:
-            raise CertExtAppConfigError("Missing database engine for "
-                                        "SQLAlchemy: %s" % e)
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
         
         try:
             queryInputs = dict(username=username)

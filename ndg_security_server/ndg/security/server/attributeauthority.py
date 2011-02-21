@@ -1889,7 +1889,6 @@ class PostgresAttributeInterface(AttributeInterface):
     cursor = property(fget=__getCursor, doc="database cursor")
 
 
-import traceback
 from string import Template
 try:
     from sqlalchemy import create_engine, exc
@@ -1937,9 +1936,11 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         SAML_VALID_REQUESTOR_DNS_OPTNAME,
         SAML_ASSERTION_LIFETIME_OPTNAME,
         SAML_ATTRIBUTE2SQLQUERY_OPTNAME,
+        
     )
-    __PRIVATE_ATTR_PREFIX = '_SQLAlchemyAttributeInterface__'
-    __slots__ += tuple([__PRIVATE_ATTR_PREFIX + i for i in __slots__])
+    __PRIVATE_ATTR_PREFIX = '__'
+    __slots__ += tuple([__PRIVATE_ATTR_PREFIX + i for i in __slots__
+                        ] + [__PRIVATE_ATTR_PREFIX + 'dbEngine'])
     del i
     
 #    For Reference - split based on space separated ' or " quoted items
@@ -2145,10 +2146,17 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
                         (SQLAlchemyAttributeInterface.CONNECTION_STRING_OPTNAME,
                          type(value)))
         self.__connectionString = value
+        
+        # Beware of setting multiple times
+        self.__dbEngine = create_engine(self.__connectionString)
+
 
     connectionString = property(fget=_getConnectionString, 
                                 fset=_setConnectionString, 
-                                doc="Database connection string")
+                                doc="Database connection string.  Nb. this "
+                                "attention: also creates the database engine!  "
+                                "Should be called once only for a given new "
+                                "connection string")
 
     def _getAttributeSqlQuery(self):
         return self.__attributeSqlQuery
@@ -2173,8 +2181,7 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         @return: list of roles for the given user
         """
 
-        dbEngine = create_engine(self.connectionString)
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
         
         try:
             queryInputs = {
@@ -2311,11 +2318,9 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
                       'skipping SAML subject query step')
             return True
         
-        if self.connectionString is None:
-            raise AttributeInterfaceConfigError('No "connectionString" setting '
-                                                'has been made')
-            
-        dbEngine = create_engine(self.connectionString)
+        if self.__dbEngine is None:
+            raise AttributeInterfaceConfigError('No connection '
+                                                'has been initialised')
         
         try:
             queryInputs = {
@@ -2330,7 +2335,7 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
 
         log.debug('Checking for SAML subject with SQL Query = "%s"', query)
         try:
-            connection = dbEngine.connect()
+            connection = self.__dbEngine.connect()
             result = connection.execute(query)
 
         except (exc.ProgrammingError, exc.OperationalError):
@@ -2361,11 +2366,9 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         @return: True/False is user registered?
         """
         
-        if self.connectionString is None:
-            raise AttributeInterfaceConfigError('No "connectionString" setting '
-                                                'has been made')
-
-        dbEngine = create_engine(self.connectionString)
+        if self.__dbEngine is None:
+            raise AttributeInterfaceConfigError('No connection has been '
+                                                'initialised')
         
         queryTmpl = self.samlAttribute2SqlQuery.get(attributeName)
         if queryTmpl is None:
@@ -2387,7 +2390,7 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         log.debug('Checking for SAML attributes with SQL Query = "%s"', query)
                 
         try:
-            connection = dbEngine.connect()
+            connection = self.__dbEngine.connect()
             result = connection.execute(query)
             
         except (exc.ProgrammingError, exc.OperationalError):

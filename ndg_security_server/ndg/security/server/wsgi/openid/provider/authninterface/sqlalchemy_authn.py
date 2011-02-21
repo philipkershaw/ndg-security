@@ -24,8 +24,7 @@ from sqlalchemy import create_engine, exc
 from ndg.security.common.utils import str2Bool as _str2Bool
 from ndg.security.server.wsgi.openid.provider.authninterface import (
     AbstractAuthNInterface, AuthNInterfaceInvalidCredentials, 
-    AuthNInterfaceRetrieveError, AuthNInterfaceConfigError, 
-    AuthNInterfaceUsername2IdentifierMismatch)
+    AuthNInterfaceRetrieveError, AuthNInterfaceConfigError)
 
 
 class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
@@ -47,7 +46,7 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
         USERNAME2USERIDENTIFIER_SQLQUERY_OPTNAME,
         IS_MD5_ENCODED_PWD
     )
-    __slots__ = tuple(["__%s" % name for name in ATTR_NAMES])
+    __slots__ = tuple(["__%s" % name for name in ATTR_NAMES] + ['__dbEngine'])
     
     def __init__(self, **prop):
         '''Instantiate object taking in settings from the input
@@ -73,7 +72,7 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
                             SQLAlchemyAuthnInterface.IS_MD5_ENCODED_PWD]    
         except KeyError, e:
             raise AuthNInterfaceConfigError("Initialisation from keywords: %s"%
-                                            e)
+                                            e)  
 
     def _getConnectionString(self):
         return self.__connectionString
@@ -84,6 +83,13 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
                             (SQLAlchemyAuthnInterface.CONNECTION_STRING_OPTNAME,
                              type(value)))
         self.__connectionString = value
+            
+        # Make engine to one database once for the lifetime of the app  
+        try:
+            self.__dbEngine = create_engine(self.connectionString)
+        except ImportError, e:
+            raise AuthNInterfaceConfigError("Missing database engine for "
+                                            "SQLAlchemy: %s" % e)
 
     connectionString = property(fget=_getConnectionString, 
                                 fset=_setConnectionString, 
@@ -172,12 +178,7 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
         else:
             _password = password
 
-        try:
-            dbEngine = create_engine(self.connectionString)
-        except ImportError, e:
-            raise AuthNInterfaceConfigError("Missing database engine for "
-                                            "SQLAlchemy: %s" % e)
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
         
         try:
             queryInputs = {
@@ -248,13 +249,7 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
         @raise AuthNInterfaceConfigError: missing database engine plugin for
         SQLAlchemy
         """
-
-        try:
-            dbEngine = create_engine(self.connectionString)
-        except ImportError, e:
-            raise AuthNInterfaceConfigError("Missing database engine for "
-                                            "SQLAlchemy: %s" % e)
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
         
         try:
             queryInputs = {
@@ -287,7 +282,6 @@ class SQLAlchemyAuthnInterface(AbstractAuthNInterface):
                   userIdentifiers)
         
         return userIdentifiers
-
 
     def __getstate__(self):
         '''Enable pickling for use with beaker.session'''

@@ -8,9 +8,8 @@ __copyright__ = "(C) 2009 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
+import warnings
 
-
-import types
 import os
 
 # For removal of BEGIN and END CERTIFICATE markers from X.509 certs
@@ -18,13 +17,24 @@ import re
 
 # Include for re-parsing doc ready for canonicalization in sign method - see
 # associated note
-from xml.dom.ext.reader.PyExpat import Reader
+try:
+    from xml.dom.ext.reader.PyExpat import Reader
+except ImportError, e:
+    warnings.warn("PyXML not installed: %s" % e)
+    def Reader(*args, **kw):
+        raise NotImplementedError('PyXML must be installed')
+    
 from Ft.Xml.Domlette import NonvalidatingReader
 
 # Use to find parent node when parsing docs
-from xml.dom.Element import Element
-
-getParentNode = lambda docNode: [elem for elem in docNode.childNodes \
+try:
+    from xml.dom.Element import Element
+except ImportError, e:
+    warnings.warn("PyXML not installed: %s" % e)
+    def getParentNode(docNode):
+        raise NotImplementedError('PyXML must be installed')
+else:
+    getParentNode = lambda docNode: [elem for elem in docNode.childNodes \
                                  if isinstance(elem, Element)][0]
 
 # Digest and signature/verify
@@ -35,9 +45,16 @@ import base64
 
 # Canonicalization
 from ZSI.wstools.c14n import Canonicalize
-from xml.dom import Node
-from xml.xpath.Context import Context
-from xml import xpath
+try:
+    from xml import xpath
+    from xml.xpath.Context import Context
+except ImportError, e:
+    warnings.warn("PyXML not installed: %s" % e)
+    class Context:
+        def __init__(self, *arg, **kw):
+            raise NotImplementedError('PyXML must be installed')
+    
+
 
 from ZSI.wstools.Namespaces import DSIG, XMLNS
 

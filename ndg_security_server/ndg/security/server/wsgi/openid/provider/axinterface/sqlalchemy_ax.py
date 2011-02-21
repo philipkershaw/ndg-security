@@ -37,7 +37,7 @@ class SQLAlchemyAXInterface(AXInterface):
         SQLQUERY_OPTNAME,
         ATTRIBUTE_NAMES_OPTNAME,
     )
-    __slots__ = tuple(["__%s" % name for name in ATTR_NAMES])
+    __slots__ = tuple(["__%s" % name for name in ATTR_NAMES] + ['__dbEngine'])
     del name
     
     def __init__(self, **properties):
@@ -67,9 +67,14 @@ class SQLAlchemyAXInterface(AXInterface):
                              type(value)))
         self.__connectionString = value
 
+        self.__dbEngine = create_engine(self.__connectionString)
+
     connectionString = property(fget=_getConnectionString, 
                                 fset=_setConnectionString, 
-                                doc="Database connection string")
+                                doc="Database connection string.  Nb. this "
+                                "attention: also creates the database engine!  "
+                                "Should be called once only for a given new "
+                                "connection string")
 
     def _getSqlQuery(self):
         return self.__sqlQuery
@@ -182,10 +187,9 @@ class SQLAlchemyAXInterface(AXInterface):
         correct mapping between the SQL query results and the attribute names 
         they refer to
         '''            
-        if self.connectionString is None:
-            raise AXInterfaceConfigError('No "connectionString" setting has '
-                                         'been made')
-        dbEngine = create_engine(self.connectionString)
+        if self.__dbEngine is None:
+            raise AXInterfaceConfigError('Database engine has not been '
+                                         'initialised')
         
         try:
             queryInputs = {
@@ -198,7 +202,7 @@ class SQLAlchemyAXInterface(AXInterface):
                                          "string.  The valid key is %r" % (e, 
                                 SQLAlchemyAXInterface.SQLQUERY_USERID_KEYNAME))
             
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
             
         try:
             result = connection.execute(query)

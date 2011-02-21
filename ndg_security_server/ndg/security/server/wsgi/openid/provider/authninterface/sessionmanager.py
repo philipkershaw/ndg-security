@@ -64,6 +64,8 @@ class SessionManagerOpenIDAuthNInterface(AbstractAuthNInterface):
         # Set at login
         self.sessionId = None
         
+        self.__dbEngine = create_engine(self.connectionString)
+        
     def logon(self, environ, userIdentifier, username, password):
         """Interface login method
         
@@ -89,8 +91,7 @@ class SessionManagerOpenIDAuthNInterface(AbstractAuthNInterface):
             # Check for a match between the OpenID user identifier and the 
             # username
             try:
-                dbEngine = create_engine(self.connectionString)
-                connection = dbEngine.connect()
+                connection = self.__dbEngine.connect()
             except Exception, e:
                 log.error('Connecting database for user logon query : %s' % e)
                 raise
@@ -143,8 +144,7 @@ class SessionManagerOpenIDAuthNInterface(AbstractAuthNInterface):
         to identifier e.g. error with database look-up.
         """
         try:
-            dbEngine = create_engine(self.connectionString)
-            connection = dbEngine.connect()
+            connection = self.__dbEngine.connect()
         except Exception, e:
             log.error('Connecting database for user identifiers query : %s'%e)
             raise

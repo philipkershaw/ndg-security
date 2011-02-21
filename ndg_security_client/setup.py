@@ -43,7 +43,7 @@ client interfaces.
 
 setup(
     name =              	'ndg_security_client',
-    version =           	'1.5.9',
+    version =           	'1.5.10',
     description =       	'NERC DataGrid Security Client side interface',
     long_description =   	_longDescription,
     author =            	'Philip Kershaw',

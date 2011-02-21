@@ -15,6 +15,8 @@ logging.basicConfig(level=logging.DEBUG)
 import urllib2
 import base64
 import paste.fixture
+from os import environ
+
 from ndg.security.test.unit import BaseTestCase
 from ndg.security.server.wsgi.authn import HTTPBasicAuthMiddleware, \
     HTTPBasicAuthUnauthorized
@@ -62,7 +64,7 @@ class HTTPBasicAuthPluginMiddleware(object):
     
 class HTTPBasicAuthMiddlewareTestCase(BaseTestCase):
     SERVICE_PORTNUM = 10443
-    WGET_CMD = 'wget'
+    WGET_CMD = environ.get('NDGSEC_HTTPBASICAUTH_TEST_WGETPATH', 'wget')
     WGET_USER_OPTNAME = '--http-user'
     WGET_PASSWD_OPTNAME = '--http-password'
     WGET_OUTPUT_OPTNAME = '--output-document'
@@ -77,6 +79,10 @@ class HTTPBasicAuthMiddlewareTestCase(BaseTestCase):
         self.app = paste.fixture.TestApp(self.wsgiapp)
          
         BaseTestCase.__init__(self, *args, **kwargs)
+        
+        # Thread separate Paster based service 
+        self.addService(app=self.wsgiapp, 
+                        port=HTTPBasicAuthMiddlewareTestCase.SERVICE_PORTNUM)
 
     def test01PasteFixture(self):
         username = HTTPBasicAuthPluginMiddleware.USERNAME
@@ -91,11 +97,7 @@ class HTTPBasicAuthMiddlewareTestCase(BaseTestCase):
         response = self.app.get(url, headers=headers, status=200)
         print response
         
-    def test02Urllib2Client(self):
-        # Thread separate Paster based service 
-        self.addService(app=self.wsgiapp, 
-                        port=HTTPBasicAuthMiddlewareTestCase.SERVICE_PORTNUM)
-        
+    def test02Urllib2Client(self):        
         username = HTTPBasicAuthPluginMiddleware.USERNAME
         password = HTTPBasicAuthPluginMiddleware.PASSWORD
         url = 'http://localhost:%d/test_200' % \
@@ -136,4 +138,5 @@ class HTTPBasicAuthMiddlewareTestCase(BaseTestCase):
 
 
 if __name__ == "__main__":
+    import unittest
     unittest.main()

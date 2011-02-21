@@ -40,6 +40,7 @@ class DatabaseAuthN(AbstractAuthNService):
             raise AuthNServiceError("Missing property setting: %s" % e)
         
         self.isMD5EncodedPwd = prop.get('isMD5EncodedPwd', False)
+        self.__dbEngine = create_engine(self.connectionString)
        
     def logon(self, username, passphrase):
         '''Implementation of AbstractAuthNService for database authentication
@@ -62,8 +63,7 @@ class DatabaseAuthN(AbstractAuthNService):
         else:
             passwd = passphrase
 
-        dbEngine = create_engine(self.connectionString)
-        connection = dbEngine.connect()
+        connection = self.__dbEngine.connect()
         
         try:
             queryInputs = dict(username=username, password=passwd)

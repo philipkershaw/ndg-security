@@ -18,7 +18,7 @@ from setuptools import setup, find_packages
 
 setup(
     name =           		'ndg_security_test',
-    version =        		'1.5.9',
+    version =        		'1.5.10',
     description =    		'NERC DataGrid Security Unit tests',
     long_description =		'Unit tests client - server side',
     author =         		'Philip Kershaw',

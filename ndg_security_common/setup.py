@@ -52,7 +52,7 @@ client interfaces.
 
 setup(
     name =           		'ndg_security_common',
-    version =        		'1.5.9',
+    version =        		'1.5.10',
     description =           'NERC DataGrid Security package containing common '
                             'utilities used by both server and client '
                             'packages',

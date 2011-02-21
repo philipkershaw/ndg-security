@@ -59,7 +59,7 @@ client interfaces.
 
 setup(
     name =           		'ndg_security_server',
-    version =        		'1.5.9',
+    version =        		'1.5.10',
     description =    		'Server side components for running NERC DataGrid '
                             'Security Services',
     long_description =		_longDescription,

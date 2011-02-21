@@ -41,7 +41,7 @@ client interfaces.
 """
 setup(
     name =            		'ndg_security',
-    version =         		'1.5.9',
+    version =         		'1.5.10',
     description =     		'NERC DataGrid Security Utilities',
     long_description = 		_longDescription,
     author =          		'Philip Kershaw',
