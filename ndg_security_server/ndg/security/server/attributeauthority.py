@@ -1938,7 +1938,7 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         SAML_ATTRIBUTE2SQLQUERY_OPTNAME,
         
     )
-    __PRIVATE_ATTR_PREFIX = '__'
+    __PRIVATE_ATTR_PREFIX = '_SQLAlchemyAttributeInterface__'
     __slots__ += tuple([__PRIVATE_ATTR_PREFIX + i for i in __slots__
                         ] + [__PRIVATE_ATTR_PREFIX + 'dbEngine'])
     del i
