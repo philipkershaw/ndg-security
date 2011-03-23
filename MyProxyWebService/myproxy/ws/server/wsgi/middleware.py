@@ -119,20 +119,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
     '''Create a MyProxy client and make it available to other middleware in the 
     WSGI stack
     
-    @cvar LOGON_FUNC_ENV_KEYNAME_OPTNAME: ini file option name to set the key 
-    name in WSGI environ dict to assign to the Logon function created by this
-    middleware
-    @type LOGON_FUNC_ENV_KEYNAME_OPTNAME: string
-    
-    @cvar DEFAULT_LOGON_FUNC_ENV_KEYNAME: default value for the key name in 
-    WSGI environ dict to assign to the Logon function created by this
-    middleware
-    @type DEFAULT_LOGON_FUNC_ENV_KEYNAME: string
-    
-    @cvar CERT_REQ_POST_PARAM_KEYNAME: HTTP POST field name for the 
-    certificate request posted in logon calls
-    @type CERT_REQ_POST_PARAM_KEYNAME: string
-    
     @cvar PARAM_PREFIX: prefix for ini file option names 
     @type PARAM_PREFIX: string
     
@@ -148,9 +134,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
     middleware to communicate with a backend MyProxy server using the MyProxy
     protocol
     @type __myProxyClient: myproxy.client.MyProxyClient
-    
-    @ivar __logonFuncEnvironKeyName: 
-    @type __logonFuncEnvironKeyName: string
     '''
     # Options for ini file
     LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'     
@@ -167,7 +150,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
     
     __slots__ = (
         '__myProxyClient', 
-        '__logonFuncEnvironKeyName',
     )
     
     def __init__(self, app):
@@ -239,37 +221,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
                     
         self.clientEnvironKeyName = app_conf.get(clientEnvKeyOptName,
                             MyProxyClientMiddleware.DEFAULT_CLIENT_ENV_KEYNAME)
-                    
-        logonFuncEnvKeyOptName = prefix + \
-                        MyProxyClientMiddleware.LOGON_FUNC_ENV_KEYNAME_OPTNAME
-
-        self.logonFuncEnvironKeyName = app_conf.get(logonFuncEnvKeyOptName,
-                        MyProxyClientMiddleware.DEFAULT_LOGON_FUNC_ENV_KEYNAME)
-
-    def _getLogonFuncEnvironKeyName(self):
-        """Get MyProxyClient logon function environ key name
-        
-        @rtype: basestring
-        @return: MyProxyClient logon function environ key name
-        """
-        return self.__logonFuncEnvironKeyName
-
-    def _setLogonFuncEnvironKeyName(self, value):
-        """Set MyProxyClient environ key name
-        
-        @type value: basestring
-        @param value: MyProxyClient logon function environ key name
-        """
-        if not isinstance(value, basestring):
-            raise TypeError('Expecting string type for '
-                            '"logonFuncEnvironKeyName"; got %r type' % 
-                            type(value))
-        self.__logonFuncEnvironKeyName = value
-
-    logonFuncEnvironKeyName = property(fget=_getLogonFuncEnvironKeyName, 
-                                       fset=_setLogonFuncEnvironKeyName, 
-                                       doc="key name in environ for the "
-                                           "MyProxy logon function")
     
     def _getMyProxyClient(self):
         """Get MyProxyClient instance
@@ -305,10 +256,118 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
         '''
         log.debug("MyProxyClientMiddleware.__call__ ...")
         environ[self.clientEnvironKeyName] = self.myProxyClient
-        environ[self.logonFuncEnvironKeyName] = self.myProxyLogon
         
         return self.app(environ, start_response)
+
+
+class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
+    """Build on MyClientMiddleware to expose a special logon Web Service method
     
+    TODO: possible refactor to NOT inherit from MyProxyClientMiddleware but 
+    instead receive a MyProxyClient instance via environ set from an upstream 
+    MyProxyClientMiddleware object
+    
+    @cvar LOGON_FUNC_ENV_KEYNAME_OPTNAME: ini file option name to set the key 
+    name in WSGI environ dict to assign to the Logon function created by this
+    middleware
+    @type LOGON_FUNC_ENV_KEYNAME_OPTNAME: string
+    
+    @cvar DEFAULT_LOGON_FUNC_ENV_KEYNAME: default value for the key name in 
+    WSGI environ dict to assign to the Logon function created by this
+    middleware
+    @type DEFAULT_LOGON_FUNC_ENV_KEYNAME: string
+    
+    @cvar CERT_REQ_POST_PARAM_KEYNAME: HTTP POST field name for the 
+    certificate request posted in logon calls
+    @type CERT_REQ_POST_PARAM_KEYNAME: string
+    
+    @ivar __logonFuncEnvironKeyName: 
+    @type __logonFuncEnvironKeyName: string
+    """
+    # Options for ini file
+    LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'     
+    
+    # Default environ key names
+    DEFAULT_LOGON_FUNC_ENV_KEYNAME = ('myproxy.server.wsgi.middleware.'
+                                      'MyProxyClientMiddleware.logon')
+    
+    CERT_REQ_POST_PARAM_KEYNAME = 'certificate_request'
+    
+    __slots__ = (
+        '__logonFuncEnvironKeyName',
+    )
+    
+    def __init__(self, app):
+        '''Create attributes
+        
+        @type app: function
+        @param app: WSGI callable for next application in stack
+        '''
+        super(MyProxyLogonWSMiddleware, self).__init__(app)
+        self.__logonFuncEnvironKeyName = None  
+          
+    def parseConfig(self, prefix=PARAM_PREFIX, myProxyClientPrefix=None,
+                    **app_conf):
+        """Parse dictionary of configuration items updating the relevant 
+        attributes of this instance
+        
+        @type prefix: basestring
+        @param prefix: prefix for configuration items
+        @type myProxyClientPrefix: basestring
+        @param myProxyClientPrefix: explicit prefix for MyProxyClient class 
+        specific configuration items - ignored in this derived method
+        @type app_conf: dict        
+        @param app_conf: PasteDeploy application specific configuration 
+        dictionary
+        """
+        
+        # Call parent version
+        super(MyProxyLogonWSMiddleware, self).parseConfig(prefix=PARAM_PREFIX, 
+                            myProxyClientPrefix=myProxyClientPrefix, **app_conf)  
+            
+        # Extract addtional parameters
+        logonFuncEnvKeyOptName = prefix + \
+                        self.__class__.LOGON_FUNC_ENV_KEYNAME_OPTNAME
+
+        self.logonFuncEnvironKeyName = app_conf.get(logonFuncEnvKeyOptName,
+                        self.__class__.DEFAULT_LOGON_FUNC_ENV_KEYNAME)
+
+    @property
+    def logonFuncEnvironKeyName(self):
+        """Get MyProxyClient logon function environ key name
+        
+        @rtype: basestring
+        @return: MyProxyClient logon function environ key name
+        """
+        return self.__logonFuncEnvironKeyName
+
+    @property.setter
+    def logonFuncEnvironKeyName(self, value):
+        """Set MyProxyClient environ key name
+        
+        @type value: basestring
+        @param value: MyProxyClient logon function environ key name
+        """
+        if not isinstance(value, basestring):
+            raise TypeError('Expecting string type for '
+                            '"logonFuncEnvironKeyName"; got %r type' % 
+                            type(value))
+        self.__logonFuncEnvironKeyName = value
+    
+    def __call__(self, environ, start_response):
+        '''Set MyProxy logon method in environ
+        
+        @type environ: dict
+        @param environ: WSGI environment variables dictionary
+        @type start_response: function
+        @param start_response: standard WSGI start response function
+        '''
+        log.debug("MyProxyClientMiddleware.__call__ ...")
+        environ[self.logonFuncEnvironKeyName] = self.myProxyLogon
+        
+        return super(MyProxyLogonWSMiddleware, self).__call__(environ, 
+                                                              start_response)
+        
     @property
     def myProxyLogon(self):
         """Return the MyProxy logon method wrapped as a HTTP Basic Auth 
