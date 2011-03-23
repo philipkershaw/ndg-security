@@ -320,6 +320,7 @@ class MyProxyClient(object):
     MYPROXY_SERVER_DN_ENVVARNAME = 'MYPROXY_SERVER_DN'
     
     GLOBUS_LOCATION_ENVVARNAME = 'GLOBUS_LOCATION'
+    X509_USER_PROXY_ENVVARNAME = 'X509_USER_PROXY'
     
     GET_CMD="""VERSION=MYPROXYv2
 COMMAND=0
@@ -368,8 +369,18 @@ TRUSTED_CERTS=1"""
     TRUSTED_CERTS_FIELDNAME = 'TRUSTED_CERTS'
     TRUSTED_CERTS_FILEDATA_FIELDNAME_PREFIX = 'FILEDATA_'
     
-    HOSTCERT_SUBDIRPATH = ('etc', 'hostcert.pem')
-    HOSTKEY_SUBDIRPATH = ('etc', 'hostkey.pem')
+    HOSTCERT_FILENAME = 'hostcert.pem'
+    HOSTKEY_FILENAME = 'hostkey.pem'
+    
+    GRID_SECURITY_DIRPATH = '/etc/grid-security'
+    
+    HOSTCERT_GRID_FILEPATH = os.path.join(GRID_SECURITY_DIRPATH, 
+                                          HOSTCERT_FILENAME)
+    HOSTKEY_GRID_FILEPATH = os.path.join(GRID_SECURITY_DIRPATH, 
+                                         HOSTKEY_FILENAME)
+    
+    HOSTCERT_SUBDIRPATH = ('etc', HOSTCERT_FILENAME)
+    HOSTKEY_SUBDIRPATH = ('etc', HOSTKEY_FILENAME)
     
     PROXY_FILE_PERMISSIONS = 0600
     
@@ -835,7 +846,53 @@ TRUSTED_CERTS=1"""
             dat = dat[ind + len + 4:]
            
         return pemCerts
-       
+
+    @classmethod
+    def locateClientCredentials(cls, enableTmpFileLoc=False):
+        """Find the location of a client certificate and private key to use to 
+        authenticate with the server based on the various default locations
+        that MyProxy/Globus support
+        
+        @param enableTmpFileLoc: enable setting based on /tmp/x509up_<uid>,
+        defaults to False
+        @type enableTmpFileLoc: bool
+        @return: private key and certificate file location to use based on the
+        current environment
+        @rtype: tuple
+        """
+        sslKeyFile = None
+        sslCertFile = None
+        
+        x509UserProxy = os.environ.get(cls.X509_USER_PROXY_ENVVARNAME)
+        if x509UserProxy is not None:
+            sslKeyFile = x509UserProxy
+            sslCertFile = x509UserProxy
+            
+        elif enableTmpFileLoc and os.access(cls.DEF_PROXY_FILEPATH, os.R_OK):
+            sslKeyFile = cls.DEF_PROXY_FILEPATH
+            sslCertFile = cls.DEF_PROXY_FILEPATH
+            
+        elif (os.access(cls.HOSTKEY_GRID_FILEPATH, os.R_OK) and 
+              os.access(cls.HOSTCERT_GRID_FILEPATH, os.R_OK)):
+            sslKeyFile = cls.HOSTKEY_GRID_FILEPATH
+            sslCertFile = cls.HOSTCERT_GRID_FILEPATH
+            
+        else:
+            globusLoc = os.environ.get(cls.GLOBUS_LOCATION_ENVVARNAME)
+            if globusLoc:
+                sslKeyFile = os.path.join(globusLoc, 
+                                          *cls.HOSTKEY_SUBDIRPATH)
+                if os.access(sslKeyFile, os.R_OK):
+                    sslCertFile = os.path.join(globusLoc, 
+                                           *cls.HOSTCERT_SUBDIRPATH)
+                else:
+                    # Access to the private key is prohibited default to
+                    # username/password based authentication             
+                    sslKeyFile = None
+                    sslCertFile = None
+                    
+        return sslKeyFile, sslCertFile
+                
     @classmethod
     def writeProxyFile(cls, proxyCert, proxyPriKey, userX509Cert, 
                        filePath=None):
@@ -1238,7 +1295,10 @@ TRUSTED_CERTS=1"""
               nBitsForKey=PRIKEY_NBITS, 
               bootstrap=False,
               updateTrustRoots=False,
-              authnGetTrustRootsCall=False):
+              authnGetTrustRootsCall=False,
+              sslCertFile=None,
+              sslKeyFile=None,
+              sslKeyPassphrase=None):
         """Retrieve a proxy credential from a MyProxy server
         
         Exceptions:  MyProxyClientGetError, MyProxyClientRetrieveError
@@ -1289,7 +1349,16 @@ TRUSTED_CERTS=1"""
         or "bootstrap" keywords are set.  This is not recommended for 
         bootstrap since in this case the server is NOT authenticated by this 
         client. 
-        """
+        
+        @param sslCertFile: applies to SSL client based authentication - 
+        alternative to username/pass-phrase based.  This certificate is used for 
+        authentication with MyProxy server over the SSL connection.  If not set,
+        this argument defaults to $GLOBUS_LOCATION/etc/hostcert.pem 
+        @param sslKeyFile: corresponding private key file.  See explanation
+        for sslCertFile
+        @param sslKeyFilePassphrase: passphrase for sslKeyFile.  Omit if the
+        private key is not password protected.  
+         """
         if bootstrap:
             log.info('Bootstrapping MyProxy server root of trust.')
             
@@ -1310,6 +1379,11 @@ TRUSTED_CERTS=1"""
             
         lifetime = lifetime or self.proxyCertLifetime
 
+        # Sanitise password - None is legal for modes where username/password
+        # based authentication is not required
+        if passphrase is None:
+            passphrase = ''
+            
         # Certificate request may be passed as an input but if not generate it
         # here request here 
         if certReq is None:
@@ -1321,9 +1395,17 @@ TRUSTED_CERTS=1"""
 
         if keyPair is not None: 
             pemKeyPair = crypto.dump_privatekey(crypto.FILETYPE_PEM, keyPair)
-        
+
+
+        # Check for certificate and private key set in environment which can
+        # be used to authenticate with.  This is an alternative to the username
+        # / passphrase based authentication
+        sslKeyFile, sslCertFile = self.__class__.locateClientCredentials()
+                
         # Set-up SSL connection
-        conn = self._initConnection()
+        conn = self._initConnection(certFile=sslCertFile,
+                                    keyFile=sslKeyFile,
+                                    keyFilePassphrase=sslKeyPassphrase)
         conn.connect((self.hostname, self.port))
         
         # send globus compatibility stuff

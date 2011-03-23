@@ -52,9 +52,9 @@ commands:
     op.add_option('-o', '--out', dest='outfile',
                   action='store', type='string',
                   help='''\
-Set the file to store the retrieved creentials.
+Set the file to store the retrieved credentials.
 If not specified credentials will be stored in X509_USER_PROXY environment
-variable.  To write the credential tostdout use -o -.
+variable.  To write the credential to stdout use -o -.
 ''')
     
     op.add_option('-C', '--cadir', dest='cadir', 
@@ -71,6 +71,10 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
     op.add_option('-p', '--psport', dest='port', 
                   action='store', type='int',
                   help='Set port of myproxy server')
+    
+    op.add_option('-n', '--no_passphrase', dest='no_pass', 
+                  action='store_true', 
+                  help='Don\'t prompt for pass-phrase')
     
     def set_lifetime(opt, opt_str, val, op):
         """Callback to convert input requested proxy lifetime from hours to 
@@ -96,13 +100,10 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
                   action='store_true',
                   help='Read the password directly from stdin')
     
-    #!TODO: What is the myproxy-logon equivalent of this option?
-    #op.add_option('-m', '--maxlifetime', dest='maxlifetime',
-    #              action='store', type='int',
-    #              help='Set proxy certificate Lifetime')
     op.add_option('-b', '--bootstrap', dest='bootstrap',
                   action='store_true',
-                  help='Download trusted CA certificates')
+                  help='Bootstrap trust in MyProxy server downloading trusted '
+                       'CA certificates')
     
     op.add_option('-T', '--trustroots', dest='trustroots',
                   action='store_true',
@@ -124,6 +125,7 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
         openid=None,
         username=None,
         stdin_pass=False,
+        no_pass=False,
         )
 
     return op
@@ -201,6 +203,8 @@ def do_logon(myproxy, options):
     if options.stdin_pass:
         #!TODO: Is this right to read just the first line of stdin?
         password = sys.stdin.readline().rstrip()
+    elif options.no_pass:
+        password = None
     else:
         password = getpass.getpass('Enter password for user %r on MyProxy '
                                    'server %r:'
