@@ -1298,7 +1298,7 @@ TRUSTED_CERTS=1"""
               authnGetTrustRootsCall=False,
               sslCertFile=None,
               sslKeyFile=None,
-              sslKeyPassphrase=None):
+              sslKeyFilePassphrase=None):
         """Retrieve a proxy credential from a MyProxy server
         
         Exceptions:  MyProxyClientGetError, MyProxyClientRetrieveError
@@ -1358,7 +1358,7 @@ TRUSTED_CERTS=1"""
         for sslCertFile
         @param sslKeyFilePassphrase: passphrase for sslKeyFile.  Omit if the
         private key is not password protected.  
-         """
+        """
         if bootstrap:
             log.info('Bootstrapping MyProxy server root of trust.')
             
@@ -1385,7 +1385,7 @@ TRUSTED_CERTS=1"""
             passphrase = ''
             
         # Certificate request may be passed as an input but if not generate it
-        # here request here 
+        # here 
         if certReq is None:
             # If no key pair was passed, generate here
             if keyPair is None:
@@ -1405,7 +1405,7 @@ TRUSTED_CERTS=1"""
         # Set-up SSL connection
         conn = self._initConnection(certFile=sslCertFile,
                                     keyFile=sslKeyFile,
-                                    keyFilePassphrase=sslKeyPassphrase)
+                                    keyFilePassphrase=sslKeyFilePassphrase)
         conn.connect((self.hostname, self.port))
         
         # send globus compatibility stuff
