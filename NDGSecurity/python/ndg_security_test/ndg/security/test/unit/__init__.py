@@ -103,6 +103,18 @@ class BaseTestCase(unittest.TestCase):
     LASTNAME = 'Kershaw'
     EMAILADDRESS = 'pjk@somewhere.ac.uk'
     
+    # Add a second test user
+    USERNAME2 = 'another'
+    PASSWORD2 = 'testpassword'
+    MD5_PASSWORD2 = md5(PASSWORD).hexdigest()
+    
+    OPENID_IDENTIFIER2 = 'a.n.other'
+    OPENID_URI2 = OPENID_URI_STEM + OPENID_IDENTIFIER
+    
+    FIRSTNAME2 = 'Anne'
+    LASTNAME2 = 'Other'
+    EMAILADDRESS2 = 'ano@somewhere.ac.uk'
+     
     ATTRIBUTE_NAMES = (
         "urn:siteA:security:authz:1.0:attr",
         "urn:siteA:security:authz:1.0:attr",
@@ -296,6 +308,18 @@ class BaseTestCase(unittest.TestCase):
                     cls.EMAILADDRESS)
         
         session.add(user)
+           
+        # Add a second user entry
+        user2 = User(cls.USERNAME2, 
+                     cls.MD5_PASSWORD2,
+                     cls.OPENID_URI2,
+                     cls.OPENID_IDENTIFIER2,
+                     cls.FIRSTNAME2,
+                     cls.LASTNAME2,
+                     cls.EMAILADDRESS2)
+        
+        session.add(user2)
+
         session.commit() 
 
 
