@@ -41,7 +41,7 @@ need to modify application code.
 """
 setup(
     name =            		'ndg_security',
-    version =         		'2.2.0',
+    version =         		'2.2.1',
     description =     		'NERC DataGrid Security Utilities',
     long_description = 		_longDescription,
     author =          		'Philip Kershaw',
