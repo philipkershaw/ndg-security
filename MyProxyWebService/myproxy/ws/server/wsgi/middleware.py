@@ -50,7 +50,11 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
     
     @ivar __logonFuncEnvironKeyName: 
     @type __logonFuncEnvironKeyName: string
+    
+    @cvar PARAM_PREFIX: prefix for ini file option names 
+    @type PARAM_PREFIX: string
     """
+    
     # Options for ini file
     LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'     
     
@@ -63,6 +67,7 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
     __slots__ = (
         '__logonFuncEnvironKeyName',
     )
+    PARAM_PREFIX = 'myproxy.ws.server.logon.'
     
     def __init__(self, app):
         '''Create attributes
@@ -108,7 +113,7 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
         """
         return self.__logonFuncEnvironKeyName
 
-    @property.setter
+    @logonFuncEnvironKeyName.setter
     def logonFuncEnvironKeyName(self, value):
         """Set MyProxyClient environ key name
         
