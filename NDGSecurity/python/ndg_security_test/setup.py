@@ -41,7 +41,7 @@ need to modify application code.
 
 setup(
     name =           		'ndg_security_test',
-    version =        		'2.2.1',
+    version =        		'2.2.2',
     description =    		'NERC DataGrid Security Unit and Integration tests',
     long_description =		_longDescription,
     author =         		'Philip Kershaw',

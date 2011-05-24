@@ -71,7 +71,7 @@ class RelyingPartyAuthnServicesTemplateTestCase(unittest.TestCase):
     SERVICE_CONF_DIR = 'relyingparty_authn_services'
     SERVICE_CONF_DIRPATH = path.join(HERE_DIR, SERVICE_CONF_DIR)
     SERVICE_CONF_DIR_FILES = (
-        'pki', 'service.ini', 
+        'pki', 'authenticationservices.ini', 
     )
     
     def test01Run(self):
