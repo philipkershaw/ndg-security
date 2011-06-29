@@ -145,6 +145,7 @@ wget --spider \
  --private-key=$privateKeyFile \
  --keep-session-cookies \
  --save-cookies=$cookieFile \
+ --no-cache \
  --cookies=on \
  $uri
  
@@ -154,5 +155,6 @@ wget --spider \
 #    completed the job.  -nc is set here in step 2) to avoid re-downloading the 
 #    same file
 wget -r -nc \
+ --no-cache \
  --load-cookies=$cookieFile $outputFileSetting \
  $uri
