@@ -142,5 +142,6 @@ wget \
  --keep-session-cookies \
  --save-cookies=$cookieFile \
  --cookies=on \
+ --no-cache \
  $outputFileSetting \
  $uri
