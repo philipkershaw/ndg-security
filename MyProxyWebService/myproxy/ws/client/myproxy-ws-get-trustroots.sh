@@ -85,32 +85,23 @@ fi
 
 # Set peer authentication based on bootstrap command line setting
 if [ -z $bootstrap ]; then 
-    ca_arg="--ca-directory $cadir"
+    ca_arg="--capath $cadir"
 else
     echo Bootstrapping MyProxy server root of trust.
-    ca_arg="--no-check-certificate"
+    ca_arg="--insecure"
 fi
 
-# Make a temporary file for error output
-error_output_filepath="/tmp/$UID-$RANDOM.csr"
-
 # Post request to MyProxy web service
-response=$(wget $uri  --secure-protocol SSLv3 $ca_arg -t 1 -O - 2> $error_output_filepath)
-
-# Extract error output and clean up
-error_output=$(cat $error_output_filepath)
-rm -f $error_output_filepath
-
-# Pull out the response code from the error output
-wget_statcode_line="HTTP request sent, awaiting response..."
-responsecode=$(echo "$error_output"|grep "$wget_statcode_line"|awk '{print $6}')
+response=$(curl $uri --sslv3 $ca_arg -w " %{http_code}" -s -S)
+responsemsg=$(echo "$response"|sed '$s/ *\([^ ]* *\)$//')
+responsecode=$(echo $response|awk '{print $NF}')
 if [ "$responsecode" != "200" ]; then
     echo "$responsemsg" >&2
     exit 1
 fi
 
 # Process response
-entries=$(echo $response|awk '{print $0}')
+entries=$(echo $responsemsg|awk '{print $0}')
 for i in $entries; do
     filename=${i%%=*}
     filecontent="$(echo ${i#*=}|sed -e "s/.\{65\}/&\n/g"|openssl enc -d -base64)"
