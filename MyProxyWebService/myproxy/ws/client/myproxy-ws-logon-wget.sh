@@ -94,6 +94,9 @@ key=$(openssl req -new -newkey rsa:2048 -nodes -keyout /dev/stdout -subj /CN=dum
 # auth based authentication.  
 encoded_certreq=$(cat $certreqfilepath|sed s/+/%2B/g)
 
+# Clean up certificate request temporary file
+rm -f $certreqfilepath
+
 response=$(wget --secure-protocol SSLv3 --ca-directory=$cadir \
 --http-user=$username --http-password=$password \
 --post-data "certificate_request=$encoded_certreq" \
