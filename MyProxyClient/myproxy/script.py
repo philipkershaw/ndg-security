@@ -90,7 +90,7 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
         @type op: optparse.OptionParser
         @param op: OptionParser instance
         """
-        op.values.lifetime = val * 60 * 60
+        op.values.lifetime = int(val * 60 * 60)
         
     op.add_option('-t', '--proxy_lifetime', type='float', 
                   action='callback', callback=set_lifetime,
