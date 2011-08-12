@@ -618,18 +618,18 @@ TRUSTED_CERTS=1"""
         return self.__proxyCertLifetime
     
     def _setProxyCertLifetime(self, val):
-        if isinstance(val, basestring):
+        if isinstance(val, (basestring, float)):
             self.__proxyCertLifetime = int(val)
         elif isinstance(val, int):
             self.__proxyCertLifetime = val
         else:
-            raise TypeError("Expecting int type for proxyCertLifetime "
-                            "attribute")
+            raise TypeError("Expecting int, float or string type for input "
+                            "proxyCertLifetime attribute")
     
     proxyCertLifetime = property(fget=_getProxyCertLifetime,
                                  fset=_setProxyCertLifetime,
-                                 doc="Default proxy cert. lifetime used in "
-                                     "logon request")
+                                 doc="Default proxy cert. lifetime (seconds) "
+                                     "used in logon request")
 
     def _getCACertDir(self):
         return self.__caCertDir
@@ -1288,7 +1288,8 @@ TRUSTED_CERTS=1"""
         
     def logon(self, 
               username, 
-              passphrase, 
+              passphrase,
+              credname=None, 
               lifetime=None, 
               keyPair=None, 
               certReq=None, 
@@ -1309,6 +1310,10 @@ TRUSTED_CERTS=1"""
         @type passphrase: basestring
         @param passphrase: pass-phrase for private key of credential held on
         server
+        
+        @type credname: string / None type
+        @param credname: optional credential name - provides additional means
+        to specify credential to be retrieved
         
         @type lifetime: int
         @param lifetime: lifetime for generated certificate
@@ -1379,11 +1384,26 @@ TRUSTED_CERTS=1"""
             
         lifetime = lifetime or self.proxyCertLifetime
 
+        # Basic sanity check on username to avoid overhead on server
+        if not username:
+            raise MyProxyClientGetError('No username has been set')
+        
         # Sanitise password - None is legal for modes where username/password
         # based authentication is not required
         if passphrase is None:
             passphrase = ''
-            
+        
+        # Check for credential name setting
+        if credname:
+            if not isinstance(credname, basestring):
+                raise TypeError('Expecting string type or None for "credname" '
+                                'input argument')
+                
+            # Make a concatenated username credential parameter to pass
+            userid = "%s-%s" % (username, credname)
+        else:
+            userid = username
+                     
         # Certificate request may be passed as an input but if not generate it
         # here 
         if certReq is None:
@@ -1400,7 +1420,8 @@ TRUSTED_CERTS=1"""
         # Check for certificate and private key set in environment which can
         # be used to authenticate with.  This is an alternative to the username
         # / passphrase based authentication
-        sslKeyFile, sslCertFile = self.__class__.locateClientCredentials()
+        if sslKeyFile is None or sslCertFile is None:
+            sslKeyFile, sslCertFile = self.__class__.locateClientCredentials()
                 
         # Set-up SSL connection
         conn = self._initConnection(certFile=sslCertFile,
@@ -1412,7 +1433,7 @@ TRUSTED_CERTS=1"""
         conn.write('0')
     
         # send get command - ensure conversion from unicode before writing
-        cmd = MyProxyClient.GET_CMD % (username, passphrase, lifetime)
+        cmd = MyProxyClient.GET_CMD % (userid, passphrase, lifetime)
             
         conn.write(str(cmd))
         

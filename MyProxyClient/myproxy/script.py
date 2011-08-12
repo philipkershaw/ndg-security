@@ -76,6 +76,10 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
                   action='store_true', 
                   help='Don\'t prompt for pass-phrase')
     
+    op.add_option('-k', '--credname', dest='credname', 
+                  action='store', type='string',
+                  help='Specify credential name')
+        
     def set_lifetime(opt, opt_str, val, op):
         """Callback to convert input requested proxy lifetime from hours to 
         seconds
@@ -92,7 +96,7 @@ environment variable or ~/.globus/certificates or /etc/grid-security.
         """
         op.values.lifetime = int(val * 60 * 60)
         
-    op.add_option('-t', '--proxy_lifetime', type='float', 
+    op.add_option('-t', '--proxy_lifetime', type='int', 
                   action='callback', callback=set_lifetime,
                   help='Set proxy certificate Lifetime (hours)')
     
@@ -210,7 +214,8 @@ def do_logon(myproxy, options):
                                    'server %r:'
                                    % (options.username, options.hostname))
 
-    creds = myproxy.logon(options.username, password, 
+    creds = myproxy.logon(options.username, password,
+                          credname=options.credname, 
                           bootstrap=options.bootstrap,
                           updateTrustRoots=options.trustroots)
     
