@@ -12,9 +12,6 @@ __revision__ = '$Id$'
 
 import unittest
 import os
-import sys
-import getpass
-import re
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
