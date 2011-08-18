@@ -8,7 +8,7 @@ __date__ = "02/08/10"
 __copyright__ = "(C) 2010 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
-__revision__ = '$Id:$'
+__revision__ = '$Id$'
 import logging
 logging.basicConfig(level=logging.DEBUG)
 import os
@@ -74,8 +74,8 @@ class EsgAttributeServiceIntegrationTestCase(unittest.TestCase):
     def test03pcmdiAttributeQuery(self):
         self._attributeQuery('test03pcmdiAttributeQuery')
         
-    def test04cedaAttributeQuery(self):
-        self._attributeQuery('test04cedaAttributeQuery')
+#    def test04cedaAttributeQuery(self):
+#        self._attributeQuery('test04cedaAttributeQuery')
 
        
 if __name__ == "__main__":
