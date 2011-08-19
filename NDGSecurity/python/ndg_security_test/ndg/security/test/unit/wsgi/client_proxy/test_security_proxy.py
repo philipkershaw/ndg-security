@@ -32,7 +32,7 @@ class SecurityProxyTestCase(BaseTestCase):
         app.initialise({}, **local_conf)
         app = SessionMiddleware(app, environ_key='ndg.security.session')
         extra_environ = {
-            'REMOTE_USER': 'philipk' 
+            'REMOTE_USER': BaseTestCase.OPENID_URI 
         }
         app = paste.fixture.TestApp(app, extra_environ=extra_environ)
         
