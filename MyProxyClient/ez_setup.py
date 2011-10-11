@@ -35,7 +35,7 @@ md5_data = {
     'setuptools-0.6c3-py2.5.egg': 'abef16fdd61955514841c7c6bd98965e',
 }
 
-import sys, os
+import os
 
 def _validate_md5(egg_name, data):
     if egg_name in md5_data:

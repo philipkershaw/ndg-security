@@ -123,7 +123,7 @@ class OpenSSLConfig(SafeConfigParser, object):
                                          
             except Exception, e:
                 raise OpenSSLConfigError("OpenSSL CA directory path is not "
-                                         'valid: "%s": %s' % (filePath, e))
+                                         'valid: "%s": %s' % (caDir, e))
                     
         self._caDir = caDir
                     
@@ -194,7 +194,7 @@ class OpenSSLConfig(SafeConfigParser, object):
                                           for opt, optVal in val.items()])
             del self._sections[section]
        
-        self._setReqDN()
+        self._set_required_dn_params()
 
     def _filtOptVal(self, optVal):
         """For option value, filter out comments and substitute $dir with
@@ -216,7 +216,7 @@ class OpenSSLConfig(SafeConfigParser, object):
         parsing errors"""
         raise NotImplementedError("Use read method instead")
 
-    def _setReqDN(self):
+    def _set_required_dn_params(self):
         """Set Required DN parameters from the configuration file returning
         them in a dictionary"""
         

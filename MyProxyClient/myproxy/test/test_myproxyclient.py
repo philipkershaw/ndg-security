@@ -42,6 +42,7 @@ class MyProxyClientLiveTestCase(_MyProxyClientTestCase):
     '''
     CONFIG_FILENAME = "myProxyClientTest.cfg"
     
+        
     def setUp(self):
         
         super(MyProxyClientLiveTestCase, self).setUp()
@@ -57,29 +58,40 @@ class MyProxyClientLiveTestCase(_MyProxyClientTestCase):
         
         configFilePath = path.expandvars(self.cfg['setUp']['cfgFilePath'])
         self.clnt = MyProxyClient(cfgFilePath=configFilePath)
+        
+        # Get trust roots bootstrapping trust ready for test
+        self.trustRoots = self.clnt.getTrustRoots(writeToCACertDir=True, 
+                                                  bootstrap=True)
+        
+        # Keep a copy of files stored ready for tearDown tidy up
+        self.trustRootFiles = []
+        
+        dirContents = os.listdir(self.clnt.caCertDir)
+        for fileName in self.trustRoots:
+            self.assert_(fileName in dirContents)
+            file_path = os.path.join(self.clnt.caCertDir, fileName)
+            self.trustRootFiles.append(file_path)
 
-    def __del__(self):
+    def tearDown(self):
         """Clear up CA certs retrieved in test01GetTrustRoots call ready for
         next run of these unit tests
         """
+        self.trustRoots = None
         self._deleteTrustRootFiles()
         
     def _deleteTrustRootFiles(self):
         """Helper method clears up CA certs in trust roots directory set from
         previous call to test01GetTrustRoots()
         """        
-        if hasattr(self, 'trustRootFiles'):
-            for fileName in self.trustRootFiles:
-                os.remove(fileName)
+        for fileName in self.trustRootFiles:
+            os.remove(fileName)
             
     def test01GetTrustRoots(self):
-        # Test get trust roots command bootstrapping trust
-        trustRoots = self.clnt.getTrustRoots(writeToCACertDir=True, 
-                                             bootstrap=True)
-        self.assert_(trustRoots)
-        self.assert_(isinstance(trustRoots, dict))
-        self.assert_(len(trustRoots) > 0)
-        for fileName, fileContents in trustRoots.items():
+        # Test output from getTrustRoots call made in setUp
+        self.assert_(self.trustRoots)
+        self.assert_(isinstance(self.trustRoots, dict))
+        self.assert_(len(self.trustRoots) > 0)
+        for fileName, fileContents in self.trustRoots.items():
             if fileName.endswith('.0'):
                 # test parsing certificate
                 cert = crypto.load_certificate(crypto.FILETYPE_PEM,
@@ -89,17 +101,11 @@ class MyProxyClientLiveTestCase(_MyProxyClientTestCase):
                 subj = cert.get_subject()
                 self.assert_(subj)
                 print("Trust root certificate retrieved with DN=%s" % subj) 
-                
-        # Keep for __del__ tidy up
-        self.trustRootFiles = []
-        
-        dirContents = os.listdir(self.clnt.caCertDir)
-        for fileName in trustRoots:     
-            self.assert_(fileName in dirContents)
-            self.trustRootFiles.append(os.path.join(self.clnt.caCertDir, 
-                                                    fileName))
    
     def test02Store(self):
+        # Test get trust root to bootstrap trust
+        self.test01GetTrustRoots()
+
         # upload X509 cert and private key to repository
         thisSection = self.cfg['test02Store']
         

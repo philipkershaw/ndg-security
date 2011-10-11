@@ -1,13 +1,13 @@
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 2 (0x2)
-        Signature Algorithm: sha1WithRSAEncryption
-        Issuer: O=Gabriel, CN=Gabriel Test CA
+        Serial Number: 46 (0x2e)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: O=NDG, OU=Security, CN=Test CA
         Validity
-            Not Before: Apr 21 08:49:02 2010 GMT
-            Not After : Apr 21 08:49:02 2011 GMT
-        Subject: O=Gabriel, CN=testuser
+            Not Before: Oct 11 12:20:00 2011 GMT
+            Not After : Oct 10 12:20:00 2012 GMT
+        Subject: O=NDG, OU=Security, CN=testuser
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
             RSA Public Key: (1024 bit)
@@ -25,24 +25,25 @@ Certificate:
         X509v3 extensions:
             Netscape Cert Type: 
                 SSL Client, SSL Server, S/MIME, Object Signing
-    Signature Algorithm: sha1WithRSAEncryption
-        21:7d:0b:21:9b:e1:51:60:f4:b9:00:f7:15:65:c6:7c:f8:5c:
-        82:6d:78:4e:9c:36:b3:1d:55:18:6f:9c:ea:4e:94:72:c3:49:
-        50:e8:15:c2:c2:0d:cc:34:14:91:d6:2f:01:c0:6b:0c:6a:76:
-        00:6e:d9:2d:fd:ba:1e:59:2b:a3:45:8f:e9:87:87:f3:5e:03:
-        cd:8f:b5:4a:bd:6e:f4:86:38:4d:7c:71:a3:fc:e7:59:cd:a7:
-        6a:56:86:bd:a7:9d:47:42:f1:71:17:3e:2f:78:89:2b:0b:62:
-        fd:f7:68:67:e7:a6:f8:01:45:7f:cf:da:06:5a:5b:e3:5a:ba:
-        49:00
+    Signature Algorithm: md5WithRSAEncryption
+        0d:4e:ce:4e:b4:c6:1f:dd:0c:a8:5f:81:e5:31:09:24:4a:54:
+        10:30:cd:a8:fc:1f:27:a6:fe:ee:3b:b1:6c:f4:f2:cf:21:2b:
+        d6:2f:91:88:14:db:5b:1f:1e:68:8d:a0:f7:3f:fe:0f:fa:e0:
+        55:ee:48:f6:31:3b:1d:fc:cd:96:38:83:2e:c2:7a:ef:ce:66:
+        61:a8:42:d0:58:6f:77:37:53:e6:0c:93:44:d3:09:09:c8:7d:
+        b0:7b:c1:8d:d4:57:2e:b7:1c:4b:a7:ca:ac:eb:1c:5d:77:10:
+        bf:d0:e4:07:7e:5f:43:af:0c:20:9c:b0:f5:75:d5:8f:9d:5b:
+        24:41
 -----BEGIN CERTIFICATE-----
-MIIB3DCCAUWgAwIBAgIBAjANBgkqhkiG9w0BAQUFADAsMRAwDgYDVQQKEwdHYWJy
-aWVsMRgwFgYDVQQDEw9HYWJyaWVsIFRlc3QgQ0EwHhcNMTAwNDIxMDg0OTAyWhcN
-MTEwNDIxMDg0OTAyWjAlMRAwDgYDVQQKEwdHYWJyaWVsMREwDwYDVQQDEwh0ZXN0
-dXNlcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA6nV1jephMPKO7GnNn6tJ
-cEfx/09obsszso6F5BWrapcA/d4p6FYVWAj3C+kCybqa0vByW7owJnGfzHDyzpGC
-+cUKIQMHVFzkD71iGHHrKR1tBymH2vOt2sxU8meJ0XadEhxf0P2cq6MW71cvsZmb
-vUrkKSLQjJf5BJedHtMYnfECAwEAAaMVMBMwEQYJYIZIAYb4QgEBBAQDAgTwMA0G
-CSqGSIb3DQEBBQUAA4GBACF9CyGb4VFg9LkA9xVlxnz4XIJteE6cNrMdVRhvnOpO
-lHLDSVDoFcLCDcw0FJHWLwHAawxqdgBu2S39uh5ZK6NFj+mHh/NeA82PtUq9bvSG
-OE18caP851nNp2pWhr2nnUdC8XEXPi94iSsLYv33aGfnpvgBRX/P2gZaW+NaukkA
+MIIB8jCCAVugAwIBAgIBLjANBgkqhkiG9w0BAQQFADAzMQwwCgYDVQQKEwNOREcx
+ETAPBgNVBAsTCFNlY3VyaXR5MRAwDgYDVQQDEwdUZXN0IENBMB4XDTExMTAxMTEy
+MjAwMFoXDTEyMTAxMDEyMjAwMFowNDEMMAoGA1UEChMDTkRHMREwDwYDVQQLEwhT
+ZWN1cml0eTERMA8GA1UEAxMIdGVzdHVzZXIwgZ8wDQYJKoZIhvcNAQEBBQADgY0A
+MIGJAoGBAOp1dY3qYTDyjuxpzZ+rSXBH8f9PaG7LM7KOheQVq2qXAP3eKehWFVgI
+9wvpAsm6mtLwclu6MCZxn8xw8s6RgvnFCiEDB1Rc5A+9Yhhx6ykdbQcph9rzrdrM
+VPJnidF2nRIcX9D9nKujFu9XL7GZm71K5Cki0IyX+QSXnR7TGJ3xAgMBAAGjFTAT
+MBEGCWCGSAGG+EIBAQQEAwIE8DANBgkqhkiG9w0BAQQFAAOBgQANTs5OtMYf3Qyo
+X4HlMQkkSlQQMM2o/B8npv7uO7Fs9PLPISvWL5GIFNtbHx5ojaD3P/4P+uBV7kj2
+MTsd/M2WOIMuwnrvzmZhqELQWG93N1PmDJNE0wkJyH2we8GN1FcutxxLp8qs6xxd
+dxC/0OQHfl9DrwwgnLD1ddWPnVskQQ==
 -----END CERTIFICATE-----

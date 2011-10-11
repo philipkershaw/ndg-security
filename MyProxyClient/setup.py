@@ -5,7 +5,7 @@ NERC DataGrid Project
 """
 __author__ = "P J Kershaw"
 __date__ = "12/12/08"
-__copyright__ = "(C) 2010 Science and Technology Facilities Council"
+__copyright__ = "(C) 2011 Science and Technology Facilities Council"
 __license__ = """BSD - See LICENSE file in top-level directory
 
 Software adapted from myproxy_logon.  - For myproxy_logon see Access Grid 
@@ -20,14 +20,11 @@ __revision__ = '$Id$'
 # Bootstrap setuptools if necessary.
 from ez_setup import use_setuptools
 use_setuptools()
-
 from setuptools import setup, find_packages
-
-import os
 
 setup(
     name =            	'MyProxyClient',
-    version =         	'1.2.2',
+    version =         	'1.3.0',
     description =     	'MyProxy Client',
     long_description = 	'''\
 Python implementation of the client interface to the MyProxy credential 
@@ -36,11 +33,13 @@ management service (http://grid.ncsa.illinois.edu/myproxy/).
 The code has been extended from an original program myproxy_logon by Tom Uram of
 ANL.
 
-1.2.2
+1.3.0
 =====
-Fixes bug with server certificate subject name check - allow for host/, myproxy/
-or no prefix to subject name Common Name field.  This is now applied as a 
-default without any need to set explicitly.
+ * Added capability for SSL-client cert based authentication for logon without 
+pass-phrase.  This enables authorised retrievers to get a new delegation for
+credentials belonging to another user.  
+ * Also add support for credential name along with user name.
+ * Fix to script credential lifetime setting for script invocation.
 ''',
     author =          	'Philip Kershaw',
     author_email =    	'Philip.Kershaw@stfc.ac.uk',
