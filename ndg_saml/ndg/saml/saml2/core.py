@@ -2888,7 +2888,7 @@ class Action(SAMLObject):
         if value not in self.__actionTypes.keys():
             raise AttributeError('"namespace" action type %r not recognised. '
                                  'It must be one of these action types: %r' % 
-                                 self.__actionTypes.keys())
+                                 (value, self.__actionTypes.keys()))
             
         self.__namespace = value
 
