@@ -105,6 +105,7 @@ rm -f $error_output_filepath
 wget_statcode_line="HTTP request sent, awaiting response..."
 responsecode=$(echo "$error_output"|grep "$wget_statcode_line"|awk '{print $6}')
 if [ "$responsecode" != "200" ]; then
+    echo "MyProxy server returned error code $responsecode:" >&2
     echo "$responsemsg" >&2
     exit 1
 fi

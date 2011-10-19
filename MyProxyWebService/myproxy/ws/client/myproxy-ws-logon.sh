@@ -106,6 +106,7 @@ response=$(curl $uri --sslv3 -u $username:$password --data "certificate_request=
 responsemsg=$(echo "$response"|sed '$s/ *\([^ ]* *\)$//')
 responsecode=$(echo $response|awk '{print $NF}')
 if [ "$responsecode" != "200" ]; then
+    echo "MyProxy server returned error code $responsecode:" >&2
     echo "$responsemsg" >&2
     exit 1
 fi
