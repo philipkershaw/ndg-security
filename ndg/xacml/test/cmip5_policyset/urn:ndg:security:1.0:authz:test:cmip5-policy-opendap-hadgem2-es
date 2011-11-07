@@ -9,7 +9,18 @@
     	Policy for OPeNDAP access: HadGEM2-ES
     </Description>
 
-    <Target/>
+    <Target>
+        <Resources>
+            <Resource>
+                <ResourceMatch MatchId="urn:oasis:names:tc:xacml:2.0:function:anyURI-regexp-match">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">^https?://cmip-dn\.badc\.rl\.ac\.uk/thredds/dodsC/cmip5\.output1\.MOHC\.HadGEM2-ES\.</AttributeValue>
+                    <ResourceAttributeDesignator
+                        AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id"
+                        DataType="http://www.w3.org/2001/XMLSchema#anyURI"/>
+                </ResourceMatch>
+            </Resource>
+        </Resources>
+    </Target>
 
     <Rule RuleId="cmip5-policy-opendap-hadgem2-es RF Deny" Effect="Deny">
         <Target>
