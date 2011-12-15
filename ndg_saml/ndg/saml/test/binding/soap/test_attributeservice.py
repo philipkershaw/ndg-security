@@ -19,7 +19,7 @@ from ndg.soap.etree import SOAPEnvelope
 from ndg.saml.saml2.core import (Assertion, Attribute, AttributeStatement, 
                                  SAMLVersion, Subject, NameID, Issuer, 
                                  AttributeQuery, XSStringAttributeValue, 
-                                 Conditions, Status, StatusCode)
+                                 Conditions, StatusCode)
 from ndg.saml.xml import XMLConstants
 from ndg.saml.xml.etree import AttributeQueryElementTree, ResponseElementTree
 from ndg.saml.test.binding.soap import WithPasteFixtureBaseTestCase
