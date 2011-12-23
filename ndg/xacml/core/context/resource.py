@@ -50,3 +50,20 @@ class Resource(RequestChildBase):
 
     resourceContent = property(_get_resourceContent, _set_resourceContent, None, 
                                "Resource content")
+
+    def __getstate__(self):
+        '''Enable pickling
+        
+        @return: object's attribute dictionary
+        @rtype: dict
+        '''
+        _dict = super(Resource, self).__getstate__()
+        for attrName in Resource.__slots__:
+            # Ugly hack to allow for derived classes setting private member
+            # variables
+            if attrName.startswith('__'):
+                attrName = "_Resource" + attrName
+                
+            _dict[attrName] = getattr(self, attrName)
+            
+        return _dict

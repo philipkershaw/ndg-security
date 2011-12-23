@@ -242,6 +242,9 @@ class Status(XacmlContextBase):
 class Decision(object):
     """Define decision types for Response Result
     
+    @cvar ELEMENT_LOCAL_NAME: XML Local Name of StatusCode element 
+    @type ELEMENT_LOCAL_NAME: string
+    
     @cvar PERMIT_STR: permit decision string
     @type PERMIT_STR: string
     
@@ -272,6 +275,7 @@ class Decision(object):
     @ivar __value: decision value
     @type __value: string
     """
+    ELEMENT_LOCAL_NAME  = 'Decision'
     
     # "Permit" decision type string
     PERMIT_STR = "Permit"
