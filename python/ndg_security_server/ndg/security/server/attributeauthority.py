@@ -1002,18 +1002,24 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
             query = Template(self.attributeSqlQuery).substitute(queryInputs)
             result = connection.execute(query)
 
+            try:
+                attributes = [attr for attr in result][0][0]
+            
+            except (IndexError, TypeError):
+                raise AttributeInterfaceRetrieveError("Error with result set: %s" %
+                                                      traceback.format_exc())
         except exc.ProgrammingError:
             raise AttributeInterfaceRetrieveError("Error with SQL Syntax: %s" %
                                                   traceback.format_exc())
         finally:
             connection.close()
 
-        try:
-            attributes = [attr for attr in result][0][0]
-        
-        except (IndexError, TypeError):
-            raise AttributeInterfaceRetrieveError("Error with result set: %s" %
-                                                  traceback.format_exc())
+#        try:
+#            attributes = [attr for attr in result][0][0]
+#        
+#        except (IndexError, TypeError):
+#            raise AttributeInterfaceRetrieveError("Error with result set: %s" %
+#                                                  traceback.format_exc())
         
         log.debug('Attributes=%r retrieved for user=%r' % (attributes, 
                                                            userId))
@@ -1161,18 +1167,24 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         try:
             result = connection.execute(query)
 
+            try:
+                found = [entry for entry in result][0][0] > 0
+            
+            except (IndexError, TypeError):
+                raise AttributeInterfaceRetrieveError("Error with result set: %s" %
+                                                      traceback.format_exc())
         except (exc.ProgrammingError, exc.OperationalError):
             raise AttributeInterfaceRetrieveError('SQL error: %s' %
                                                   traceback.format_exc()) 
         finally:
             connection.close()
 
-        try:
-            found = [entry for entry in result][0][0] > 0
-        
-        except (IndexError, TypeError):
-            raise AttributeInterfaceRetrieveError("Error with result set: %s" %
-                                                  traceback.format_exc())
+#        try:
+#            found = [entry for entry in result][0][0] > 0
+#        
+#        except (IndexError, TypeError):
+#            raise AttributeInterfaceRetrieveError("Error with result set: %s" %
+#                                                  traceback.format_exc())
         
         log.debug('user=%r found=%r' % (userId, found))
         
@@ -1224,18 +1236,24 @@ class SQLAlchemyAttributeInterface(AttributeInterface):
         try:
             result = connection.execute(query)
             
+            try:
+                attributeValues = [entry[0] for entry in result]
+                
+            except (IndexError, TypeError):
+                raise AttributeInterfaceRetrieveError("Error with result set: "
+                                                      "%s" % traceback.format_exc())
         except (exc.ProgrammingError, exc.OperationalError):
             raise AttributeInterfaceRetrieveError('SQL error: %s' %
                                                   traceback.format_exc())
         finally:
             connection.close()
 
-        try:
-            attributeValues = [entry[0] for entry in result]
-            
-        except (IndexError, TypeError):
-            raise AttributeInterfaceRetrieveError("Error with result set: "
-                                                  "%s" % traceback.format_exc())
+#        try:
+#            attributeValues = [entry[0] for entry in result]
+#            
+#        except (IndexError, TypeError):
+#            raise AttributeInterfaceRetrieveError("Error with result set: "
+#                                                  "%s" % traceback.format_exc())
         
         log.debug('Database results for SAML Attribute query user=%r '
                   'attribute values=%r' % (userId, attributeValues))
