@@ -363,6 +363,20 @@ class SAMLConstants(XMLConstants):
     SAML2_SOAP11_BINDING_URI = "urn:oasis:names:tc:SAML:2.0:bindings:SOAP"
   
     
+    # SAML 2.0 profile for XACML
+
+    # SAML 2.0 profile for XACML assertion namespace
+    SAML2_XACML_ASSERTION_NS = "urn:oasis:xacml:2.0:saml:assertion:schema:os"
+
+    # SAML 2.0 profile for XACML assertion QName prefix
+    SAML2_XACML_ASSERTION_PREFIX = "xacml-saml"
+
+    # SAML 2.0 profile for XACML protocol namespace
+    SAML2_XACML_PROTOCOL_NS = "urn:oasis:xacml:2.0:saml:protocol:schema:os"
+
+    # SAML 2.0 profile for XACML protocol QName prefix
+    SAML2_XACML_PROTOCOL_PREFIX = "xacml-samlp"
+
 class QName(object):
     """XML Qualified Name
     @ivar __namespaceURI: the namespace the element is in

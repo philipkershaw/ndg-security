@@ -104,15 +104,20 @@ def prettyPrint(*arg, **kw):
     
     # Keep track of namespace declarations made so they're not repeated
     declaredNss = []
-    
-    _prettyPrint = _PrettyPrint(declaredNss)
-    return _prettyPrint(*arg, **kw)
+    mappedPrefixes = dict.fromkeys(ElementTree._namespace_map.values(), True)
+    namespace_map_backup = ElementTree._namespace_map.copy()
+
+    _prettyPrint = _PrettyPrint(declaredNss, mappedPrefixes)
+    result = _prettyPrint(*arg, **kw)
+    ElementTree._namespace_map = namespace_map_backup
+    return result
 
 
 class _PrettyPrint(object):
     MAX_NS_TRIES = 256
-    def __init__(self, declaredNss):
+    def __init__(self, declaredNss, mappedPrefixes):
         self.declaredNss = declaredNss
+        self.mappedPrefixes = mappedPrefixes
     
     @staticmethod
     def estrip(elem):
@@ -134,8 +139,9 @@ class _PrettyPrint(object):
         
         for i in range(self.__class__.MAX_NS_TRIES):
             nsPrefix = "ns%d" % i
-            if nsPrefix not in self.declaredNss:
+            if nsPrefix not in self.mappedPrefixes:
                 ElementTree._namespace_map[nsURI] = nsPrefix
+                self.mappedPrefixes[nsPrefix] = True
                 break
             
         if nsURI not in ElementTree._namespace_map:                            
@@ -189,7 +195,7 @@ class _PrettyPrint(object):
         if children:
             for child in elem:
                 declaredNss = self.declaredNss[:]
-                _prettyPrint = _PrettyPrint(declaredNss)
+                _prettyPrint = _PrettyPrint(declaredNss, self.mappedPrefixes)
                 result += '\n'+ _prettyPrint(child, indent=indent+space) 
                 
             result += '\n%s%s</%s>' % (indent,

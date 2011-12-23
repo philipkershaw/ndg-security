@@ -51,6 +51,8 @@ from ndg.saml.common.xml import QName as GenericQName
 from ndg.saml.xml import XMLTypeParseError, UnknownAttrProfile
 from ndg.saml.utils import SAMLDateTime
 
+#### TODO
+_extensionElementTreeMap = {}
 
 # Generic ElementTree Helper classes
 class QName(ElementTree.QName):
@@ -419,8 +421,14 @@ class AssertionElementTree(Assertion):
             elem.append(conditionsElem)
             
         for statement in assertion.statements:
-            raise NotImplementedError("Assertion Statement creation is not "
-                                      "implemented")
+            qname = statement.qname
+            etreeImpl = _getElementTreeImplementationForQName(qname)
+            if etreeImpl is None:
+                raise NotImplementedError("No ElementTree implementation for "
+                                          "QName {%s}%s" %
+                                          (qname.namespaceURI, qname.localPart))
+            statementElem = etreeImpl.toXML(statement)
+            elem.append(statementElem)
         
         for authnStatement in assertion.authnStatements:
             raise NotImplementedError("Assertion Authentication Statement "
@@ -490,6 +498,9 @@ class AssertionElementTree(Assertion):
         
         for childElem in elem:
             localName = QName.getLocalPart(childElem.tag)
+
+            statementElementTree = _getElementTreeImplementationForQName(QName(childElem.tag))
+
             if localName == Issuer.DEFAULT_ELEMENT_LOCAL_NAME:
                 # Parse Issuer
                 assertion.issuer = IssuerElementTree.fromXML(childElem)
@@ -504,7 +515,11 @@ class AssertionElementTree(Assertion):
                 
             elif localName == Conditions.DEFAULT_ELEMENT_LOCAL_NAME:
                 assertion.conditions = ConditionsElementTree.fromXML(childElem)
-        
+
+            elif statementElementTree is not None:
+                statement = statementElementTree.fromXML(childElem)
+                assertion.statements.append(statement)
+
             elif localName == AuthnStatement.DEFAULT_ELEMENT_LOCAL_NAME:
                 raise NotImplementedError("Assertion Authentication Statement "
                                           "parsing is not implemented")
@@ -1836,4 +1851,12 @@ class AuthzDecisionQueryElementTree(AuthzDecisionQuery):
                                         "element \"%s\"" % localName)
         
         return authzDecisionQuery
+
+def _getElementTreeImplementationForQName(qname):
+    key = ("{%s}%s" % (qname.namespaceURI, qname.localPart))
+    return _extensionElementTreeMap.get(key)
+
+def setElementTreeImplementationForQName(qname, impl):
+    key = ("{%s}%s" % (qname.namespaceURI, qname.localPart))
+    _extensionElementTreeMap[key] = impl
 
