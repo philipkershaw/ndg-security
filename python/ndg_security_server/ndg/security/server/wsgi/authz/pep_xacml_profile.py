@@ -140,9 +140,12 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
 
         noCachedAssertion = assertions is None or len(assertions) == 0
         if noCachedAssertion:
-            xacmlContextRequest = self._make_xacml_context_request(request,
-                                                                   subjectID,
-                                                        self.subjectIdFormat)
+            xacmlContextRequest = self._make_xacml_context_request(
+                                            request.method,
+                                            request.url,
+                                            request.body_file_seekable.read(),
+                                            subjectID,
+                                            self.subjectIdFormat)
             self.client.query.xacmlContextRequest = xacmlContextRequest
             samlAuthzResponse = self.client.send(uri=self.authzServiceURI)
             assertions = samlAuthzResponse.assertions
@@ -151,85 +154,18 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
             # interrogation by any result handler Middleware
             self.saveResultCtx(self.client.query, samlAuthzResponse)
         
-        
-        # Set HTTP 403 Forbidden response if any of the decisions returned are
-        # deny or indeterminate status
-        failDecisions = (DecisionType.DENY, DecisionType.INDETERMINATE)
-        ### TODO What should be done with NOT_APPLICABLE decision?
-        xacmlFailDecisions = [XacmlDecision.DENY, XacmlDecision.INDETERMINATE,
-                              XacmlDecision.NOT_APPLICABLE]
-        
-        # Review decision statement(s) in assertions and enforce the decision
-        assertion = None
-        invalid_response = False
-        for assertion in assertions:
-            for statement in assertion.statements:
-                if not isinstance(statement, XACMLAuthzDecisionStatement):
-                    # Unexpected statement type
-                    invalid_response = True
-                results = statement.xacmlContextResponse.results
-                # Should be one result as only supplying one resource in the
-                # request.
-                if len(results) != 1:
-                    invalid_response = True
-
-                if results[0].decision in xacmlFailDecisions:
-                    response = webob.Response()
-                    
-                    if not subjectID:
-                        # Access failed and the user is not logged in
-                        response.status = httplib.UNAUTHORIZED
-                    else:
-                        # The user is logged in but not authorised
-                        response.status = httplib.FORBIDDEN
-
-                    response.body = 'Access denied to %r for user %r' % (
-                                                                     requestURI,
-                                                                     subjectID)
-                    response.content_type = 'text/plain'
-                    log.info(response.body)
-                    return response(environ, start_response)
-
-            ### TODO Is a non-XACML-profile response permitted?
-            for authzDecisionStatement in assertion.authzDecisionStatements:
-                if authzDecisionStatement.decision.value in failDecisions:
-                    response = webob.Response()
-                    
-                    if not subjectID:
-                        # Access failed and the user is not logged in
-                        response.status = httplib.UNAUTHORIZED
-                    else:
-                        # The user is logged in but not authorised
-                        response.status = httplib.FORBIDDEN
-                        
-                    response.body = 'Access denied to %r for user %r' % (
-                                                     requestURI,
-                                                     subjectID)
-                    response.content_type = 'text/plain'
-                    log.info(response.body)
-                    return response(environ, start_response)
-
-            if invalid_response:
-                response = webob.Response()
-                response.status = httplib.INTERNAL_SERVER_ERROR
-                response.body = 'Unexpected response from security service'
-                response.content_type = 'text/plain'
-                log.info(response.body)
-                return response(environ, start_response)
-
-        if assertion is None:
-            log.error("No assertions set in authorisation decision response "
-                      "from %r", self.authzServiceURI)
-            
+        (assertion,
+         error_status,
+         error_message) = self._evaluate_assertions(assertions, subjectID,
+                                                    requestURI,
+                                                    self.authzServiceURI)
+        if error_status is not None:
             response = webob.Response()
-            response.status = httplib.FORBIDDEN
-            response.body = ('An error occurred retrieving an access decision '
-                             'for %r for user %r' % (
-                                             requestURI,
-                                             subjectID))
+            response.status = error_status
+            response.body = error_message
             response.content_type = 'text/plain'
             log.info(response.body)
-            return response(environ, start_response)     
+            return response(environ, start_response)
                
         # Cache assertion if flag is set and it's one that's been freshly 
         # obtained from an authorisation decision query rather than one 
@@ -240,43 +176,51 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
         # If got through to here then all is well, call next WSGI middleware/app
         return self._app(environ, start_response)
 
-    def _make_xacml_context_request(self, httpRequest, subjectID,
-                                    subjectIdFormat):
+    @classmethod
+    def _make_xacml_context_request(cls, httpMethod, resourceURI,
+                                    resourceContents, subjectID,
+                                    subjectIdFormat, actions=None):
         """Create a XACML Request. Include post data as resource content if the
         HTTP method is POST.
-        @type httpRequest: webob.Request
-        @param httpRequest: HTTP request object
+        @type httpMethod: str
+        @param httpMethod: HTTP method
+        @type resourceURI: str
+        @param resourceURI: resource URI
+        @type resourceContents: basestr
+        @param resourceContents: resource contents XML as string
         @type subjectID: str
         @param subjectID: subject ID
         @type subjectIdFormat: str
         @param subjectIdFormat: subject ID format
+        @type actions: list of str
+        @param actions: actions
         """
-        resourceURI = httpRequest.url
-        if httpRequest.method == 'GET':
-            ### TODO need actions
-            return self._createXacmlProfileRequestCtx(subjectIdFormat,
-                                                      subjectID, resourceURI,
-                                                      None, [])
+        if actions is None:
+            actions = []
+        if httpMethod == 'GET':
+            ### TODO Should action be related to HTTP method?
+            return cls._createXacmlProfileRequestCtx(subjectIdFormat,
+                                                     subjectID, resourceURI,
+                                                     None, actions)
 
-        elif httpRequest.method == 'POST':
-            rcContentsStr = httpRequest.body_file_seekable.read()
-            rcContentsElem = ElementTree.XML(rcContentsStr)
+        elif httpMethod == 'POST':
+            resourceContentsElem = ElementTree.XML(resourceContents)
             ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS
                                 ] = XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
             tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                             XacmlResource.RESOURCE_CONTENT_ELEMENT_LOCAL_NAME))
             resourceContent = ElementTree.Element(tag)
-            resourceContent.append(rcContentsElem)
-            resourceContent.set('TestAttribute', 'Test Value')
+            resourceContent.append(resourceContentsElem)
     
-            request = self._createXacmlProfileRequestCtx(subjectIdFormat,
-                                                         subjectID, resourceURI,
-                                                         resourceContent,
-                                                         [])
+            request = cls._createXacmlProfileRequestCtx(subjectIdFormat,
+                                                        subjectID, resourceURI,
+                                                        resourceContent,
+                                                        actions)
 
             return request
 
-    def _createXacmlProfileRequestCtx(self, subjectNameIdFormat, subjectNameId,
+    @staticmethod
+    def _createXacmlProfileRequestCtx(subjectNameIdFormat, subjectNameId,
                                       resourceUri, resourceContent, actions):
         """Translate SAML authorisation decision query into a XACML request
         context
@@ -297,7 +241,6 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
         xacmlAttributeValueFactory = XacmlAttributeValueClassFactory()
         
         openidSubjectAttribute = XacmlAttribute()
-        roleAttribute = XacmlAttribute()
         
         openidSubjectAttribute.attributeId = \
                                 subjectNameIdFormat
@@ -349,3 +292,96 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
         xacmlRequest.environment = XacmlEnvironment()
 
         return xacmlRequest
+
+    @staticmethod
+    def _evaluate_assertions(assertions, subjectID, requestURI,
+                             authzServiceURI):
+        """Evaluates the assertions from a SAML authorisation response and
+        returns either a HTTP status and message indicating that access is not
+        granted or the assertion permitting access.
+        @type assertions: list of ndg.saml.xml.etree.AssertionElementTree
+        @param assertions: assertions to evaluate
+        @type subjectID: str
+        @param subjectID: subject used in request
+        @type requestURI: str
+        @param requestURI: request URI
+        @type authzServiceURI: str
+        @param authzServiceURI: authorisation service URI used for request
+        @rtype: tuple (
+          ndg.saml.xml.etree.AssertionElementTree,
+          int,
+          str)
+        @return: (
+          assertion if access permitted or None
+          HTTP status if access not permitted or None
+          error message if access not permitted or None
+        """
+        error_status = None
+        error_message = None
+
+        # Set HTTP 403 Forbidden response if any of the decisions returned are
+        # deny or indeterminate status
+        failDecisions = (DecisionType.DENY, DecisionType.INDETERMINATE)
+        ### TODO What should be done with NOT_APPLICABLE decision?
+        xacmlFailDecisions = [XacmlDecision.DENY, XacmlDecision.INDETERMINATE,
+                              XacmlDecision.NOT_APPLICABLE]
+        
+        # Review decision statement(s) in assertions and enforce the decision
+        assertion = None
+        invalid_response = False
+        for assertion in assertions:
+            for statement in assertion.statements:
+                if not isinstance(statement, XACMLAuthzDecisionStatement):
+                    # Unexpected statement type
+                    invalid_response = True
+                    break
+                results = statement.xacmlContextResponse.results
+                # Should be one result as only supplying one resource in the
+                # request.
+                if len(results) != 1:
+                    invalid_response = True
+
+                if results[0].decision in xacmlFailDecisions:
+                    if not subjectID:
+                        # Access failed and the user is not logged in
+                        error_status = httplib.UNAUTHORIZED
+                    else:
+                        # The user is logged in but not authorised
+                        error_status = httplib.FORBIDDEN
+
+                    error_message = 'Access denied to %r for user %r' % (
+                                                                     requestURI,
+                                                                     subjectID)
+                    return (None, error_status, error_message)
+
+            ### TODO Is a non-XACML-profile response permitted?
+            for authzDecisionStatement in assertion.authzDecisionStatements:
+                if authzDecisionStatement.decision.value in failDecisions:
+                    if not subjectID:
+                        # Access failed and the user is not logged in
+                        error_status = httplib.UNAUTHORIZED
+                    else:
+                        # The user is logged in but not authorised
+                        error_status = httplib.FORBIDDEN
+                        
+                    error_message = 'Access denied to %r for user %r' % (
+                                                     requestURI,
+                                                     subjectID)
+                    return (None, error_status, error_message)
+
+            if invalid_response:
+                error_status = httplib.INTERNAL_SERVER_ERROR
+                error_message = 'Unexpected response from security service'
+                return (None, error_status, error_message)
+
+        if assertion is None:
+            log.error("No assertions set in authorisation decision response "
+                      "from %r", authzServiceURI)
+
+            error_status = httplib.FORBIDDEN
+            error_message = ('An error occurred retrieving an access decision '
+                             'for %r for user %r' % (
+                                             requestURI,
+                                             subjectID))
+            return (None, error_status, error_message)
+        return (assertion, None, None)
