@@ -18,6 +18,7 @@ from ndg.xacml.core.attribute import Attribute
 from ndg.xacml.core.attributevalue import (AttributeValue, 
                                            AttributeValueClassFactory)
 
+from ndg.xacml.core.context.environment import Environment
 from ndg.xacml.core.context.request import Request
 from ndg.xacml.core.context.subject import Subject
 from ndg.xacml.core.context.resource import Resource
@@ -91,7 +92,8 @@ class XacmlContextBaseTestCase(unittest.TestCase):
                           includeSubject=True,
                           subjectRoles=None,
                           roleAttributeId=ROLE_ATTRIBUTE_ID,
-                          action='read'):
+                          action='read',
+                          resourceContent=None):
         """Create an example XACML Request Context for tests"""
         if subjectRoles is None:
             subjectRoles = ('staff',)
@@ -135,6 +137,8 @@ class XacmlContextBaseTestCase(unittest.TestCase):
         resourceAttribute.attributeValues.append(AnyUriAttributeValue())
         resourceAttribute.attributeValues[-1].value = resourceId
 
+        resource.resourceContent = resourceContent
+
         request.resources.append(resource)
         
         request.action = Action()
@@ -145,6 +149,8 @@ class XacmlContextBaseTestCase(unittest.TestCase):
         actionAttribute.dataType = StringAttributeValue.IDENTIFIER
         actionAttribute.attributeValues.append(StringAttributeValue())
         actionAttribute.attributeValues[-1].value = action
+
+        request.environment = Environment()
         
         return request
         
