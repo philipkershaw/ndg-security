@@ -1,9 +1,18 @@
-"""
-"""
+"""urllib2pyopenssl HTTPS module containing PyOpenSSL implementation of
+httplib.HTTPSConnection
 
-from httplib import HTTPConnection, HTTPS_PORT
+PyOpenSSL utility to make a httplib-like interface suitable for use with 
+urllib2
+"""
+__author__ = "P J Kershaw (STFC)"
+__date__ = "09/12/11"
+__copyright__ = "(C) 2012 Science and Technology Facilities Council"
+__license__ = "BSD - see LICENSE file in top-level directory"
+__contact__ = "Philip.Kershaw@stfc.ac.uk"
+__revision__ = '$Id$'
 import logging
 import socket
+from httplib import HTTPConnection, HTTPS_PORT
 from urllib2 import AbstractHTTPHandler
 
 from OpenSSL import SSL
@@ -11,6 +20,7 @@ from OpenSSL import SSL
 from urllib2pyopenssl.ssl_socket import SSLSocket
 
 log = logging.getLogger(__name__)
+
 
 class HTTPSConnection(HTTPConnection):
     """This class allows communication via SSL using PyOpenSSL.
@@ -32,8 +42,8 @@ class HTTPSConnection(HTTPConnection):
 
     def connect(self):
         """Create SSL socket and connect to peer
-        """
-        if hasattr(self, 'ssl_context') and (self.ssl_context is not None):
+        """ 
+        if getattr(self, 'ssl_context', None):
             if not isinstance(self.ssl_context, SSL.Context):
                 raise TypeError('Expecting OpenSSL.SSL.Context type for "'
                                 'ssl_context" keyword; got %r instead' %
@@ -43,7 +53,7 @@ class HTTPSConnection(HTTPConnection):
             ssl_context = SSL.Context(SSL.SSLv23_METHOD)
 
         sock = socket.create_connection((self.host, self.port), self.timeout)
-        if self._tunnel_host:
+        if getattr(self, '_tunnel_host', None):
             self.sock = sock
             self._tunnel()
         self.sock = SSLSocket(ssl_context, sock)
@@ -53,6 +63,7 @@ class HTTPSConnection(HTTPConnection):
     def close(self):
         """Close socket and shut down SSL connection"""
         self.sock.close()
+        
 
 class HTTPSContextHandler(AbstractHTTPHandler):
     '''HTTPS handler that provides allows a SSL context to be set for the SSL

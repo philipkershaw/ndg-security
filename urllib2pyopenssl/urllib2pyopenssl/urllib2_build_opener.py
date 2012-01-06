@@ -1,7 +1,6 @@
-"""PyOpenSSL utilites including HTTPSSocket class which wraps PyOpenSSL
+"""PyOpenSSL utilities including HTTPSSocket class which wraps PyOpenSSL
 SSL connection into a httplib-like interface suitable for use with urllib2
-
-NERC DataGrid Security"""
+"""
 __author__ = "P J Kershaw"
 __date__ = "21/12/10"
 __copyright__ = "(C) 2011 Science and Technology Facilities Council"
