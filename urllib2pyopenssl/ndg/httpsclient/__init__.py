@@ -1,5 +1,5 @@
-"""PyOpenSSL utility to make a httplib-like interface suitable for use with 
-urllib2
+"""ndg_httpsclient - PyOpenSSL utility to make a httplib-like interface suitable
+for use with urllib2
 """
 __author__ = "P J Kershaw (STFC) and Richard Wilkinson (Tessella)"
 __date__ = "09/12/11"

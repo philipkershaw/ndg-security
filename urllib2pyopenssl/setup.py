@@ -12,6 +12,7 @@ setup(
     author='Richard Wilkinson',
     long_description=open('README').read(),
     license='BSD - See LICENCE file for details',
+    namespace_packages=['ndg'],
     packages=find_packages(),
     entry_points = {
         'console_scripts': [
