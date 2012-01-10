@@ -23,6 +23,7 @@ from ndg.xacml.core.context.pdp import PDP
 from ndg.xacml.core.context.result import Decision
 from ndg.xacml.test import XACML_ATTRIBUTESELECTOR1_FILEPATH
 from ndg.xacml.test import XACML_ATTRIBUTESELECTOR2_FILEPATH
+from ndg.xacml.test import XACML_ATTRIBUTESELECTOR3_FILEPATH
 from ndg.xacml.test.context import XacmlContextBaseTestCase
 from ndg.xacml.utils.etree import QName
 from ndg.xacml.utils.xpath_selector import EtreeXPathSelector
@@ -196,6 +197,39 @@ class Test(XacmlContextBaseTestCase):
         for result in response.results:
             self.failIf(result.decision != Decision.PERMIT,
                         "Expecting permit decision")
+
+    def test06ExecuteConditionPermit(self):
+        self.pdp = PDP.fromPolicySource(XACML_ATTRIBUTESELECTOR3_FILEPATH,
+                                        ReaderFactory)
+        resourceContent = self._make_resource_content_element(
+                                    self.__class__.RESOURCE_CONTENT_EXECUTE)
+        request = self._createRequestCtx(
+                                    self.__class__.PUBLIC_RESOURCE_ID,
+                                    resourceContent=resourceContent)
+        request.elem = RequestElementTree.toXML(request)
+        request.attributeSelector = EtreeXPathSelector(request.elem)
+        response = self.pdp.evaluate(request)
+        self.failIf(response is None, "Null response")
+        for result in response.results:
+            self.failIf(result.decision != Decision.PERMIT,
+                        "Expecting permit decision")
+
+    def test07ExecuteConditionDeny(self):
+        self.pdp = PDP.fromPolicySource(XACML_ATTRIBUTESELECTOR3_FILEPATH,
+                                        ReaderFactory)
+        resourceContent = self._make_resource_content_element(
+                                    self.__class__.RESOURCE_CONTENT_EXECUTE)
+        request = self._createRequestCtx(
+                                    self.__class__.PUBLIC_RESOURCE_ID,
+                                    subjectId='https://nowhere.ac.uk/noone',
+                                    resourceContent=resourceContent)
+        request.elem = RequestElementTree.toXML(request)
+        request.attributeSelector = EtreeXPathSelector(request.elem)
+        response = self.pdp.evaluate(request)
+        self.failIf(response is None, "Null response")
+        for result in response.results:
+            self.failIf(result.decision != Decision.DENY,
+                        "Expecting deny decision")
 
 
 if __name__ == "__main__":

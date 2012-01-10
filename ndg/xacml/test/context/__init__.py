@@ -90,6 +90,7 @@ class XacmlContextBaseTestCase(unittest.TestCase):
     @staticmethod
     def _createRequestCtx(resourceId, 
                           includeSubject=True,
+                          subjectId=SUBJECT_ID,
                           subjectRoles=None,
                           roleAttributeId=ROLE_ATTRIBUTE_ID,
                           action='read',
@@ -109,7 +110,7 @@ class XacmlContextBaseTestCase(unittest.TestCase):
             
             openidSubjectAttribute.attributeValues.append(
                                                         AnyUriAttributeValue())
-            openidSubjectAttribute.attributeValues[-1].value = SUBJECT_ID
+            openidSubjectAttribute.attributeValues[-1].value = subjectId
                                         
             
             subject.attributes.append(openidSubjectAttribute)
