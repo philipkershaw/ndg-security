@@ -43,7 +43,7 @@ need to modify application code.
 """
 setup(
     name =            		'ndg_security',
-    version =         		'2.2.2',
+    version =         		'2.2.3',
     description =     		'NERC DataGrid Security Utilities',
     long_description = 		_longDescription,
     author =          		'Philip Kershaw',

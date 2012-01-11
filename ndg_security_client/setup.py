@@ -45,7 +45,7 @@ need to modify application code.
 
 setup(
     name =              	'ndg_security_client',
-    version =           	'2.2.2',
+    version =           	'2.2.3',
     description =       	'NERC DataGrid Security Client side interface',
     long_description =   	_longDescription,
     author =            	'Philip Kershaw',
