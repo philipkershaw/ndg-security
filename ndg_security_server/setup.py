@@ -77,6 +77,7 @@ setup(
                                 'WebOb',
                                 'beaker',
                                 'AuthKit',
+                                'SQLAlchemy'
                             ],
     extras_require = {
         'xacml':  ["ndg_xacml"],
