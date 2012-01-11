@@ -29,9 +29,12 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
 
 # Bootstrap setuptools if necessary.
-from ez_setup import use_setuptools
-use_setuptools()
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
    
 _longDescription = """\
 SAML 2.0 implementation for use with the NERC DataGrid / Earth System Grid 
