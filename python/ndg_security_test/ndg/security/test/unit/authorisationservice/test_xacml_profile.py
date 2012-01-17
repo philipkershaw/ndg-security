@@ -10,6 +10,18 @@ __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
 
+# Provided this file is loaded before any other that imports ElementTree, this
+# can be used to control whether lxml is used:
+#use_lxml = False
+#from ndg.xacml import Config as XacmlConfig
+#XacmlConfig.use_lxml = use_lxml
+#from ndg.saml import Config as SamlConfig
+#SamlConfig.use_lxml = use_lxml
+#from ndg.soap import Config as SoapConfig
+#SoapConfig.use_lxml = use_lxml
+#from ndg.security.common.config import Config as SecurityConfig
+#SecurityConfig.use_lxml = use_lxml
+
 from datetime import datetime
 import logging
 import os.path
@@ -124,7 +136,7 @@ class AuthServiceWithXacmlProfileTestCase(unittest.TestCase):
                                           params=request,
                                           headers=header,
                                           status=200)
-        print("Response status=%d" % httpResponse.status)
+        log.debug("Response status=%d", httpResponse.status)
 
         # Parse the SOAP response.
         envelope = SOAPEnvelope()

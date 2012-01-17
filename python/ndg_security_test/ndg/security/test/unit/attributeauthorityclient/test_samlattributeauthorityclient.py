@@ -14,7 +14,9 @@ logging.basicConfig(level=logging.DEBUG)
 import os
 from datetime import datetime
 from uuid import uuid4
-from xml.etree import ElementTree
+
+from ndg.security.common.config import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.common import SAMLVersion
 from ndg.saml.common.xml import SAMLConstants

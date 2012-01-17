@@ -17,13 +17,6 @@ import os
 import re
 import traceback
 
-# For parsing of properties file
-try: # python 2.5
-    from xml.etree import cElementTree as ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree as ElementTree
-
 # SAML 2.0 Attribute Query Support - added 20/08/2009
 from uuid import uuid4
 from datetime import timedelta

@@ -341,7 +341,7 @@ class SamlCtxHandler(_xacmlContext.handler.CtxHandlerBase):
 
         # Set XPath implementation for attribute selector.
         ### TODO make this configurable?
-        if xacmlRequest.elem:
+        if xacmlRequest.elem is not None:
             xacmlRequest.attributeSelector = \
                 EtreeXPathSelector(xacmlRequest.elem)
 

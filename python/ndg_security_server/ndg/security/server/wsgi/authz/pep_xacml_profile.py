@@ -13,11 +13,8 @@ log = logging.getLogger(__name__)
 import httplib
 import webob
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+from ndg.security.common.config import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.saml2.core import DecisionType
 from ndg.saml.saml2.binding.soap.client.xacmlauthzdecisionquery import \
@@ -32,6 +29,7 @@ from ndg.xacml.core.attributevalue import (
     AttributeValueClassFactory as XacmlAttributeValueClassFactory, 
     AttributeValue as XacmlAttributeValue)
     
+import ndg.security.common.utils.etree as etree
 from ndg.security.server.wsgi.authz.pep import SamlPepFilterConfigError
 from ndg.security.server.wsgi.authz.pep import SamlPepFilterBase
 
@@ -166,7 +164,9 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
             response.content_type = 'text/plain'
             log.info(response.body)
             return response(environ, start_response)
-               
+
+        log.debug('Response contains permit assertion')
+
         # Cache assertion if flag is set and it's one that's been freshly 
         # obtained from an authorisation decision query rather than one 
         # retrieved from the cache
@@ -205,11 +205,11 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
 
         elif httpMethod == 'POST':
             resourceContentsElem = ElementTree.XML(resourceContents)
-            ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS
-                                ] = XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
             tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                             XacmlResource.RESOURCE_CONTENT_ELEMENT_LOCAL_NAME))
-            resourceContent = ElementTree.Element(tag)
+            resourceContent = etree.makeEtreeElement(tag,
+                                XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                                XacmlContextBase.XACML_2_0_CONTEXT_NS)
             resourceContent.append(resourceContentsElem)
     
             request = cls._createXacmlProfileRequestCtx(subjectIdFormat,
@@ -265,7 +265,7 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
         resource = XacmlResource()
         resourceAttribute = XacmlAttribute()
         resource.attributes.append(resourceAttribute)
-        if resourceContent:
+        if resourceContent is not None:
             resource.resourceContent = resourceContent
         
         resourceAttribute.attributeId = XacmlIdentifiers.Resource.RESOURCE_ID
