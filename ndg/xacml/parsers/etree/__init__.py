@@ -11,8 +11,26 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id$"
 import logging
 log = logging.getLogger(__name__)
+import re
 
-from xml.etree import ElementTree
+from ndg.xacml import Config, importElementTree
+ElementTree = importElementTree()
+
+if Config.use_lxml:
+    def makeEtreeElement(tag, ns_prefix, ns_uri, attrib={}, **extra):
+        """Makes an ElementTree element handling namespaces in the way
+        appropriate for the ElementTree implementation in use.
+        """
+        elem = ElementTree.Element(tag, {ns_prefix: ns_uri}, attrib, **extra)
+        return elem
+else:
+    def makeEtreeElement(tag, ns_prefix, ns_uri, attrib={}, **extra):
+        """Makes an ElementTree element handling namespaces in the way
+         appropriate for the ElementTree implementation in use.
+        """
+        elem = ElementTree.Element(tag, attrib, **extra)
+        ElementTree._namespace_map[ns_uri] = ns_prefix
+        return elem
 
 # Generic ElementTree Helper classes
 class QName(ElementTree.QName):

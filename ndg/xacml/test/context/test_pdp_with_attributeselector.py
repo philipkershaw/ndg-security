@@ -8,29 +8,32 @@ __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id$"
 
+from ndg.xacml import Config, importElementTree
+ElementTree = importElementTree()
+
 import logging
 import unittest
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
 from ndg.xacml.core.context.resource import Resource as XacmlResource
 from ndg.xacml.core.context import XacmlContextBase
+from ndg.xacml.parsers.etree import QName
 from ndg.xacml.parsers.etree.factory import ReaderFactory
 from ndg.xacml.core.context.pdp import PDP
 from ndg.xacml.core.context.result import Decision
 from ndg.xacml.test import XACML_ATTRIBUTESELECTOR1_FILEPATH
 from ndg.xacml.test import XACML_ATTRIBUTESELECTOR2_FILEPATH
 from ndg.xacml.test import XACML_ATTRIBUTESELECTOR3_FILEPATH
+from ndg.xacml.test import XACML_ATTRIBUTESELECTOR4_FILEPATH
 from ndg.xacml.test.context import XacmlContextBaseTestCase
-from ndg.xacml.utils.etree import QName
+from ndg.xacml.utils.etree import prettyPrint
 from ndg.xacml.utils.xpath_selector import EtreeXPathSelector
 
 from ndg.xacml.parsers.etree.context import RequestElementTree
 
 logging.basicConfig(level=logging.DEBUG)
+
+log = logging.getLogger(__name__)
+
 
 class Test(XacmlContextBaseTestCase):
     """Tests use of AttributeSelector in policies with resource content XML in
@@ -102,16 +105,27 @@ class Test(XacmlContextBaseTestCase):
     </wps:ResponseForm>
 </wps:Execute>
 '''
+    @staticmethod
+    def _make_element(tag, ns_prefix, ns_uri):
+        if Config.use_lxml:
+            elem = ElementTree.Element(tag, nsmap={ns_prefix: ns_uri})
+        else:
+            elem = ElementTree.Element(tag)
+            ElementTree._namespace_map[ns_uri] = ns_prefix
+        return elem
 
     def _make_resource_content_element(self, resourceContent):
-        resourceContentsElem = ElementTree.XML(resourceContent)
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS
-                            ] = XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
+        resourceContentSubElem = ElementTree.XML(resourceContent)
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         XacmlResource.RESOURCE_CONTENT_ELEMENT_LOCAL_NAME))
-        resourceContent = ElementTree.Element(tag)
-        resourceContent.append(resourceContentsElem)
-        return resourceContent
+        resourceContentElem = self._make_element(tag,
+                                  XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                                  XacmlContextBase.XACML_2_0_CONTEXT_NS)
+        resourceContentElem.append(resourceContentSubElem)
+
+        log.debug("\n%s", prettyPrint(resourceContentElem))
+
+        return resourceContentElem
 
 
     def test01NotApplicable(self):
@@ -230,6 +244,30 @@ class Test(XacmlContextBaseTestCase):
         for result in response.results:
             self.failIf(result.decision != Decision.DENY,
                         "Expecting deny decision")
+
+    def test08ExecuteLxmlPermit(self):
+        """Test with condition in XPath expression - this will only return a
+        permit decision when using lxml, otherwise there will be an error
+        resulting in an indeterminate decision.
+        """
+        self.pdp = PDP.fromPolicySource(XACML_ATTRIBUTESELECTOR4_FILEPATH,
+                                        ReaderFactory)
+        resourceContent = self._make_resource_content_element(
+                                    self.__class__.RESOURCE_CONTENT_EXECUTE)
+        request = self._createRequestCtx(
+                                    self.__class__.PUBLIC_RESOURCE_ID,
+                                    resourceContent=resourceContent)
+        request.elem = RequestElementTree.toXML(request)
+        request.attributeSelector = EtreeXPathSelector(request.elem)
+        response = self.pdp.evaluate(request)
+        self.failIf(response is None, "Null response")
+        for result in response.results:
+            if Config.use_lxml:
+                self.failIf(result.decision != Decision.PERMIT,
+                            "Expecting permit decision")
+            else:
+                self.failIf(result.decision != Decision.INDETERMINATE,
+                            "Expecting indeterminate decision")
 
 
 if __name__ == "__main__":

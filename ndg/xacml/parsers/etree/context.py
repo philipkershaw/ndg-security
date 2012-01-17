@@ -12,11 +12,8 @@ __revision__ = "$Id$"
 import logging
 log = logging.getLogger(__name__)
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+from ndg.xacml import importElementTree
+ElementTree = importElementTree()
 
 from ndg.xacml.core import Identifiers
 from ndg.xacml.core.attribute import Attribute
@@ -30,6 +27,7 @@ from ndg.xacml.core.context.response import Response
 from ndg.xacml.core.context.result import Decision, Result
 from ndg.xacml.core.context.subject import Subject
 from ndg.xacml.parsers import XMLParseError
+import ndg.xacml.parsers.etree as etree
 from ndg.xacml.parsers.etree import QName
 
 
@@ -49,12 +47,11 @@ class RequestElementTree(Request):
             raise TypeError("Expecting %r class got %r" % (Request, 
                                                            type(request)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
-
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         # Subjects (should be at least one)
         for subject in request.subjects:
@@ -100,6 +97,10 @@ class RequestElementTree(Request):
 
         # Parse sub-elements
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
 
             if localName == Subject.ELEMENT_LOCAL_NAME:
@@ -138,11 +139,11 @@ class SubjectElementTree(Subject):
             raise TypeError("Expecting %r class got %r" % (Subject, 
                                                            type(subject)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         for attribute in subject.attributes:
             attributeElem = AttributeElementTree.toXML(attribute)
@@ -172,6 +173,10 @@ class SubjectElementTree(Subject):
 
         # Parse sub-elements
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
             if localName == Attribute.ELEMENT_LOCAL_NAME:
                 attribute = AttributeElementTree.fromXML(childElem)
@@ -194,11 +199,11 @@ class ResourceElementTree(Resource):
             raise TypeError("Expecting %r class got %r" % (Resource, 
                                                            type(resource)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         # ResourceContent can have any attributes and contains a sequence of
         # any elements.
@@ -236,6 +241,10 @@ class ResourceElementTree(Resource):
 
         # Parse sub-elements
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
             if localName == Attribute.ELEMENT_LOCAL_NAME:
                 attribute = AttributeElementTree.fromXML(childElem)
@@ -261,11 +270,11 @@ class ActionElementTree(Action):
             raise TypeError("Expecting %r class got %r" % (Action, 
                                                            type(action)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         for attribute in action.attributes:
             attributeElem = AttributeElementTree.toXML(attribute)
@@ -292,6 +301,10 @@ class ActionElementTree(Action):
 
         # Parse sub-elements
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
             if localName == Attribute.ELEMENT_LOCAL_NAME:
                 attribute = AttributeElementTree.fromXML(childElem)
@@ -314,11 +327,11 @@ class EnvironmentElementTree(Environment):
             raise TypeError("Expecting %r class got %r" % (Environment, 
                                                            type(environment)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         for attribute in environment.attributes:
             attributeElem = AttributeElementTree.toXML(attribute)
@@ -345,6 +358,10 @@ class EnvironmentElementTree(Environment):
 
         # Parse sub-elements
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
             if localName == Attribute.ELEMENT_LOCAL_NAME:
                 attribute = AttributeElementTree.fromXML(childElem)
@@ -368,11 +385,11 @@ class AttributeElementTree(Attribute):
             raise TypeError("Expecting %r class got %r" % (Attribute, 
                                                            type(attribute)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         # Handle attributes.
         ### TODO Check for mandatory attributes.
@@ -385,7 +402,9 @@ class AttributeElementTree(Attribute):
         for attributeValue in attribute.attributeValues:
             valueTag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                                  Attribute.ATTRIBUTE_VALUE_ELEMENT_LOCAL_NAME))
-            valueElem = ElementTree.Element(valueTag)
+            valueElem = etree.makeEtreeElement(valueTag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               Attribute.ATTRIBUTE_VALUE_ELEMENT_LOCAL_NAME)
             valueElem.text = attributeValue.value
             elem.append(valueElem)
             ### TODO AttributeValue is a sequence of xs:any with xs:anyAttribute
@@ -422,6 +441,10 @@ class AttributeElementTree(Attribute):
                                 "AttributeValues")
         AttributeValueClass = cls.attributeValueClassFactory(attribute.dataType)
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
 
             if localName == Attribute.ATTRIBUTE_VALUE_ELEMENT_LOCAL_NAME:
@@ -449,11 +472,11 @@ class ResponseElementTree(Response):
             raise TypeError("Expecting %r class got %r" % (Response, 
                                                            type(response)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
 
         for result in response.results:
             resultElem = ResultElementTree.toXML(result)
@@ -479,6 +502,10 @@ class ResponseElementTree(Response):
         response = Response()
 
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
 
             if localName == Result.ELEMENT_LOCAL_NAME:
@@ -507,8 +534,6 @@ class ResultElementTree(Result):
                             (Result, 
                             type(result)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
 
@@ -517,7 +542,9 @@ class ResultElementTree(Result):
         if result.resourceId is not None:
             attrib.append[cls.RESOURCE_ID_ATTRIB_NAME] = result.resourceId
 
-        elem = ElementTree.Element(tag, **attrib)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS, **attrib)
 
         decisionElem = DecisionElementTree.toXML(result.decision)
         elem.append(decisionElem)
@@ -548,6 +575,10 @@ class ResultElementTree(Result):
             result.resourceId = resourceId
 
         for childElem in elem:
+            # Allow for non-element children such as comments.
+            if (not hasattr(childElem, 'tag') or
+                not isinstance(childElem.tag, basestring)):
+                continue
             localName = QName.getLocalPart(childElem.tag)
 
             if localName == Decision.ELEMENT_LOCAL_NAME:
@@ -579,12 +610,12 @@ class DecisionElementTree(Decision):
                             (Decision, 
                             type(decision)))
 
-        ElementTree._namespace_map[XacmlContextBase.XACML_2_0_CONTEXT_NS] = \
-            XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX
         tag = str(QName(XacmlContextBase.XACML_2_0_CONTEXT_NS,
                         cls.ELEMENT_LOCAL_NAME))
 
-        elem = ElementTree.Element(tag)
+        elem = etree.makeEtreeElement(tag,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS_PREFIX,
+                               XacmlContextBase.XACML_2_0_CONTEXT_NS)
         elem.text = decision.value
 
         return elem

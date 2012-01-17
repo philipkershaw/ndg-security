@@ -9,11 +9,8 @@ __revision__ = "$Id$"
 
 from abc import ABCMeta, abstractmethod
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+from ndg.xacml import Config, importElementTree
+ElementTree = importElementTree()
 
 class XPathSelectorInterface(object):
     """Interface for XPath selectors.
@@ -52,19 +49,38 @@ class EtreeXPathSelector(XPathSelectorInterface):
                             (ElementTree.Element, contextElem))
         self.contextElem = contextElem
 
-    def selectText(self, path):
-        """Performs an XPath search and returns text content of matched
-        elements.
-        @type path: str
-        @param path: XPath path expression
-        @rtype: list of basestr
-        @return: text from selected elements
-        """
-        # ElementTree XPath doesn't support absolute paths. Make it relative
-        # to context element.
-        if path.startswith('/'):
-            relPath = '.' + path
-        else:
-            relPath = path
-        elems = self.contextElem.findall(relPath)
-        return [e.text for e in elems]
+    if Config.use_lxml:
+        def selectText(self, path):
+            """Performs an XPath search and returns text content of matched
+            elements.
+            @type path: str
+            @param path: XPath path expression
+            @rtype: list of basestr
+            @return: text from selected elements
+            """
+            # ElementTree XPath doesn't support absolute paths. Make it relative
+            # to context element.
+            if path.startswith('/'):
+                relPath = '.' + path
+            else:
+                relPath = path
+            find = ElementTree.ETXPath(relPath)
+            elems = find(self.contextElem)
+            return [e.text for e in elems]
+    else:
+        def selectText(self, path):
+            """Performs an XPath search and returns text content of matched
+            elements.
+            @type path: str
+            @param path: XPath path expression
+            @rtype: list of basestr
+            @return: text from selected elements
+            """
+            # ElementTree XPath doesn't support absolute paths. Make it relative
+            # to context element.
+            if path.startswith('/'):
+                relPath = '.' + path
+            else:
+                relPath = path
+            elems = self.contextElem.findall(relPath)
+            return [e.text for e in elems]
