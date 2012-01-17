@@ -13,11 +13,8 @@ __revision__ = '$Id$'
 import logging
 log = logging.getLogger(__name__)
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+from ndg.saml import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.common import SAMLVersion
 from ndg.saml.saml2.core import Issuer
@@ -25,6 +22,7 @@ from ndg.saml.saml2.xacml_profile import (XACMLAuthzDecisionQuery,
                                           XACMLAuthzDecisionStatement)
 from ndg.saml.utils import SAMLDateTime
 from ndg.saml.xml import XMLTypeParseError, UnknownAttrProfile
+import ndg.saml.xml.etree as etree
 from ndg.saml.xml.etree import (IssuerElementTree, QName,
                                 setElementTreeImplementationForQName)
 
@@ -65,10 +63,9 @@ class XACMLAuthzDecisionQueryElementTree(XACMLAuthzDecisionQuery):
         }
 
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = etree.makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                      cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                      **attrib)
 
         issuerElem = IssuerElementTree.toXML(xacmlAuthzDecisionQuery.issuer)
         elem.append(issuerElem)
@@ -155,10 +152,8 @@ class XACMLAuthzDecisionStatementElementTree(XACMLAuthzDecisionStatement):
                                  "XACMLAuthzDecisionStatement")
 
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag)
-
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = etree.makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                      cls.DEFAULT_ELEMENT_NAME.namespaceURI)
 
         xacmlContextResponseElem = ResponseElementTree.toXML(
                             xacmlAuthzDecisionStatement.xacmlContextResponse)

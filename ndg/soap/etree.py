@@ -10,14 +10,12 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id: etree.py 7131 2010-06-30 13:37:48Z pjkersha $'
 import logging
 log = logging.getLogger(__name__)
-    
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+
+from ndg.saml import Config, importElementTreeAndCElementTree
+(ElementTree, cElementTree) = importElementTreeAndCElementTree()
 
 # ElementTree helper functions
+import ndg.soap.utils.etree as etree
 from ndg.soap.utils.etree import QName
 
 from ndg.soap import (SOAPObject, SOAPEnvelopeBase, SOAPHeaderBase, 
@@ -56,8 +54,11 @@ class ETreeSOAPExtensions(object):
 
     @staticmethod
     def _serialize(elem):
-         """Serialise element tree into string"""
-         return cElementTree.tostring(elem)
+        """Serialise element tree into string"""
+        if Config.use_lxml:
+            return ElementTree.tostring(elem)
+        else:
+            return cElementTree.tostring(elem)
        
     @classmethod
     def _prettyPrint(cls, elem):
@@ -98,9 +99,9 @@ class SOAPHeader(SOAPHeaderBase, ETreeSOAPExtensions):
     def create(self):
         """Create header ElementTree element"""
         
-        self.elem = ElementTree.Element(str(self.qname))
-        ElementTree._namespace_map[SOAPHeaderBase.DEFAULT_ELEMENT_NS
-                                   ] = SOAPHeaderBase.DEFAULT_ELEMENT_NS_PREFIX
+        self.elem = etree.makeEtreeElement(str(self.qname),
+                                    SOAPHeaderBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                    SOAPHeaderBase.DEFAULT_ELEMENT_NS)
     
     def serialize(self):
         """Serialise element tree into string"""
@@ -146,7 +147,9 @@ class SOAPBody(SOAPBodyBase, ETreeSOAPExtensions):
         
     def create(self):
         """Create header ElementTree element"""
-        self.elem = ElementTree.Element(str(self.qname))
+        self.elem = etree.makeEtreeElement(str(self.qname),
+                                        SOAPBodyBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                        SOAPBodyBase.DEFAULT_ELEMENT_NS)
         if self.hasSOAPFault:
             self.fault.create()
             self.elem.append(self.fault.elem)
@@ -224,27 +227,37 @@ class SOAPFault(SOAPFaultBase, ETreeSOAPExtensions):
     
     def create(self):
         """Create Fault ElementTree element"""
-        self.elem = ElementTree.Element(str(self.qname))
+        self.elem = etree.makeEtreeElement(str(self.qname),
+                                        SOAPFaultBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                        SOAPFaultBase.DEFAULT_ELEMENT_NS)
         
-        faultStringElem = ElementTree.Element(
-                                str(self.__class__.FAULT_STRING_ELEMENT_NAME))
+        faultStringElem = etree.makeEtreeElement(
+                                str(self.__class__.FAULT_STRING_ELEMENT_NAME),
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS)
         faultStringElem.text = self.faultString
         self.elem.append(faultStringElem)
         
-        faultCodeElem = ElementTree.Element(
-                                str(self.__class__.FAULT_CODE_ELEMENT_NAME))
+        faultCodeElem = etree.makeEtreeElement(
+                                str(self.__class__.FAULT_CODE_ELEMENT_NAME),
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS)
         faultCodeElem.text = self.faultCode
         self.elem.append(faultCodeElem)
                          
         if self.faultActor is not None:
-            faultActorElem = ElementTree.Element(
-                                str(self.__class__.FAULT_ACTOR_ELEMENT_NAME))
+            faultActorElem = etree.makeEtreeElement(
+                                str(self.__class__.FAULT_ACTOR_ELEMENT_NAME),
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS)
             faultActorElem.text = self.faultActor
             self.elem.append(faultActorElem)
                              
         if self.detail is not None:
-            detailElem = ElementTree.Element(
-                                str(self.__class__.DETAIL_ELEMENT_NAME))
+            detailElem = etree.makeEtreeElement(
+                                str(self.__class__.DETAIL_ELEMENT_NAME),
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                SOAPFaultBase.DEFAULT_ELEMENT_NS)
             
             if ElementTree.iselement(self.detail):
                 detailElem.append(self.detail)
@@ -346,7 +359,9 @@ class SOAPEnvelope(SOAPEnvelopeBase, ETreeSOAPExtensions):
     def create(self):
         """Create SOAP Envelope with header and body"""
         
-        self.elem = ElementTree.Element(str(self.qname))
+        self.elem = etree.makeEtreeElement(str(self.qname),
+                                SOAPEnvelopeBase.DEFAULT_ELEMENT_NS_PREFIX,
+                                SOAPEnvelopeBase.DEFAULT_ELEMENT_NS)
             
         self.header.create()
         self.elem.append(self.header.elem)

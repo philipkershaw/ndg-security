@@ -14,7 +14,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 import unittest
 from os import path
-from xml.etree import ElementTree
+from ndg.saml import importElementTree
+ElementTree = importElementTree()
 
 from ndg.soap.utils.etree import prettyPrint
 
