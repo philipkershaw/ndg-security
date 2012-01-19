@@ -642,3 +642,20 @@ class Result(XacmlContextBase):
                             'attribute; got %r' % (Obligation, type(value)))
             
         self.__obligations = value
+
+    def __getstate__(self):
+        '''Enable pickling
+        
+        @return: object's attribute dictionary
+        @rtype: dict
+        '''
+        _dict = super(Result, self).__getstate__()
+        for attrName in Result.__slots__:
+            # Ugly hack to allow for derived classes setting private member
+            # variables
+            if attrName.startswith('__'):
+                attrName = "_Result" + attrName
+                
+            _dict[attrName] = getattr(self, attrName)
+            
+        return _dict

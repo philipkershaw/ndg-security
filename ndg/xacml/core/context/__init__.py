@@ -53,7 +53,12 @@ class XacmlContextBase(XacmlCoreBase):
             _dict[attrName] = getattr(self, attrName)
             
         return _dict
-   
+
+    def __setstate__(self, attrDict):
+        '''Explicit implementation needed with __slots__'''
+        for attr, val in attrDict.items():
+            setattr(self, attr, val)
+
 class RequestChildBase(XacmlContextBase):
     """Base class for XACML Context Subject, Resource, Action and Environment
     types
@@ -75,4 +80,18 @@ class RequestChildBase(XacmlContextBase):
         @rtype: ndg.xacml.utils.TypedList
         """
         return self.__attributes
-    
+
+    def __getstate__(self):
+        '''Enable pickling
+        
+        @return: object's attribute dictionary
+        @rtype: dict
+        '''
+        _dict = super(RequestChildBase, self).__getstate__()
+        for attrName in RequestChildBase.__slots__:
+            # Ugly hack to allow for derived classes setting private member
+            # variables
+            if attrName.startswith('__'):
+                attrName = "_RequestChildBase" + attrName
+            _dict[attrName] = getattr(self, attrName)
+        return _dict

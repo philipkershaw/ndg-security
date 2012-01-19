@@ -10,7 +10,7 @@ __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id$"
 from ndg.xacml.core.context import RequestChildBase
-
+import ndg.xacml.parsers.etree as etree
 
 class Resource(RequestChildBase):
     """XACML Context Resource type
@@ -63,7 +63,13 @@ class Resource(RequestChildBase):
             # variables
             if attrName.startswith('__'):
                 attrName = "_Resource" + attrName
-                
-            _dict[attrName] = getattr(self, attrName)
-            
+            value = getattr(self, attrName)
+            _dict[attrName] = etree.serialiseIfElementTree(value)
         return _dict
+
+    def __setstate__(self, state):
+        for k, v in state.iteritems():
+            if isinstance(v, etree.SerialisedElementTree):
+                setattr(self, k, etree.deserialiseIfElementTree(v))
+            else:
+                setattr(self, k, v)
