@@ -28,6 +28,7 @@ import os.path
 from StringIO import StringIO
 import unittest
 from uuid import uuid4
+import pickle
 
 import paste.fixture
 from paste.deploy import loadapp
@@ -145,6 +146,9 @@ class AuthServiceWithXacmlProfileTestCase(unittest.TestCase):
 
         # Extract the SAML response.
         samlAuthzResponse = ResponseElementTree.fromXML(envelope.body.elem[0])
+
+#        serialisedResponse = pickle.dumps(samlAuthzResponse)
+#        response2 = pickle.loads(serialisedResponse)
 
         assertions = samlAuthzResponse.assertions
         (assertion,

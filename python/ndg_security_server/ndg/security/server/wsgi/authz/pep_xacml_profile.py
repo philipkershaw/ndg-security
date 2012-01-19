@@ -15,6 +15,7 @@ import webob
 
 from ndg.security.common.config import importElementTree
 ElementTree = importElementTree()
+from ndg.security.common.utils import str2Bool
 
 from ndg.saml.saml2.core import DecisionType
 from ndg.saml.saml2.binding.soap.client.xacmlauthzdecisionquery import \
@@ -79,6 +80,21 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
                           doc="Subject format ID to use in XACML subject "
                           "attribute")
 
+    def _setCacheDecisions(self, value):
+        """Override method from SamlPepFilterBase to prevent decision caching
+        from being enabled since it doesn't work with the XACML profile request.
+        """
+        if isinstance(value, basestring):
+            newValue = str2Bool(value)
+        elif isinstance(value, bool):
+            newValue = value
+        else:
+            raise TypeError('Expecting bool/string type for "cacheDecisions" '
+                            'attribute; got %r' % type(value))
+        if newValue != False:
+            raise AttributeError('Caching of decisions cannot be enabled since '
+                                 'it does not work in this version.')
+
     def initialise(self, prefix='', **kw):
         '''Initialise object from keyword settings
         
@@ -129,6 +145,7 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
             return self._app(environ, start_response)
 
         # Check for cached decision
+        # Note: 
         if self.cacheDecisions:
             assertions = self._retrieveCachedAssertions(requestURI)
         else:
@@ -148,9 +165,11 @@ class XacmlSamlPepFilter(SamlPepFilterBase):
             samlAuthzResponse = self.client.send(uri=self.authzServiceURI)
             assertions = samlAuthzResponse.assertions
             
+            # SamlPepFilter has the following, which cannot be used here as
+            # pickling of XACML requests fails (in Python 2.6.2)
             # Record the result in the user's session to enable later 
             # interrogation by any result handler Middleware
-            self.saveResultCtx(self.client.query, samlAuthzResponse)
+            # self.saveResultCtx(self.client.query, samlAuthzResponse)
         
         (assertion,
          error_status,
