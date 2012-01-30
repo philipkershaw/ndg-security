@@ -44,7 +44,9 @@ class OpenSSLVerifyCallbackMiddleware(object):
     def __call__(self, environ, start_response):
         """Set the latest peer SSL client certificate from the SSL callback
         into environ SSL_CLIENT_CERT key"""
-        environ['SSL_CLIENT_CERT'] = self.ssl_client_cert
+        if self.ssl_client_cert:
+            environ['SSL_CLIENT_CERT'] = self.ssl_client_cert
+        self.ssl_client_cert = None
         return self._app(environ, start_response)
     
 

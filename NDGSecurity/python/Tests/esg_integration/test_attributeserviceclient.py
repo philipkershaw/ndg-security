@@ -15,7 +15,9 @@ import os
 import unittest
 
 from datetime import datetime
-from xml.etree import ElementTree
+
+from ndg.security.common.config import Config, importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.saml2.core import StatusCode
 from ndg.saml.saml2.binding.soap.client.attributequery import (

@@ -14,7 +14,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 import unittest
 from os import path
-from xml.etree import ElementTree
+
+from ndg.security.common.config import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.saml2.core import StatusCode, DecisionType, Action
 from ndg.saml.xml.etree import ResponseElementTree
