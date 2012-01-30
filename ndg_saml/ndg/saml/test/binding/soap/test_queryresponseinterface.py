@@ -18,7 +18,9 @@ import os
 from uuid import uuid4
 import paste.fixture
 from cStringIO import StringIO
-from xml.etree import ElementTree
+
+from ndg.saml import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.utils import SAMLDateTime
 from ndg.saml.saml2.core import (Response, Assertion, Attribute, 
@@ -27,10 +29,11 @@ from ndg.saml.saml2.core import (Response, Assertion, Attribute,
                              Conditions, Status, StatusCode)
 from ndg.saml.xml import XMLConstants
 from ndg.saml.xml.etree import AttributeQueryElementTree, ResponseElementTree
+from ndg.saml.saml2.binding.soap.client.requestbase import (
+    ResponseIssueInstantInvalid, AssertionIssueInstantInvalid,
+    AssertionConditionNotBeforeInvalid, AssertionConditionNotOnOrAfterInvalid)
 from ndg.saml.saml2.binding.soap.client.subjectquery import (
-    SubjectQuerySOAPBinding, ResponseIssueInstantInvalid, 
-    AssertionIssueInstantInvalid, AssertionConditionNotBeforeInvalid, 
-    AssertionConditionNotOnOrAfterInvalid)
+                                                        SubjectQuerySOAPBinding)
 
 from ndg.soap.client import (UrlLib2SOAPClient, UrlLib2SOAPRequest)
 from ndg.soap.etree import SOAPEnvelope

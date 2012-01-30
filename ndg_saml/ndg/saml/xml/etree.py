@@ -31,11 +31,8 @@ import logging
 log = logging.getLogger(__name__)
 import re
 
-try: # python 2.5
-    from xml.etree import cElementTree, ElementTree
-except ImportError:
-    # if you've installed it yourself it comes this way
-    import cElementTree, ElementTree
+from ndg.saml import Config, importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.saml2.core import (SAMLObject, Attribute, AttributeStatement, 
                                  AuthnStatement, AuthzDecisionStatement, 
@@ -51,6 +48,25 @@ from ndg.saml.common.xml import QName as GenericQName
 from ndg.saml.xml import XMLTypeParseError, UnknownAttrProfile
 from ndg.saml.utils import SAMLDateTime
 
+# Map of QName to ElementTree parsing class to be used in addition to those
+# defined in this module.
+_extensionElementTreeMap = {}
+
+if Config.use_lxml:
+    def makeEtreeElement(tag, ns_prefix, ns_uri, attrib={}, **extra):
+        """Makes an ElementTree element handling namespaces in the way
+        appropriate for the ElementTree implementation in use.
+        """
+        elem = ElementTree.Element(tag, {ns_prefix: ns_uri}, attrib, **extra)
+        return elem
+else:
+    def makeEtreeElement(tag, ns_prefix, ns_uri, attrib={}, **extra):
+        """Makes an ElementTree element handling namespaces in the way
+         appropriate for the ElementTree implementation in use.
+        """
+        elem = ElementTree.Element(tag, attrib, **extra)
+        ElementTree._namespace_map[ns_uri] = ns_prefix
+        return elem
 
 # Generic ElementTree Helper classes
 class QName(ElementTree.QName):
@@ -193,19 +209,33 @@ def prettyPrint(*arg, **kw):
     
     # Keep track of namespace declarations made so they're not repeated
     declaredNss = []
-    
-    _prettyPrint = PrettyPrint(declaredNss)
-    return _prettyPrint(*arg, **kw)
+    if not Config.use_lxml:
+        mappedPrefixes = dict.fromkeys(ElementTree._namespace_map.values(), True)
+        namespace_map_backup = ElementTree._namespace_map.copy()
+    else:
+        mappedPrefixes = {}
+
+    _prettyPrint = _PrettyPrint(declaredNss, mappedPrefixes)
+    result = _prettyPrint(*arg, **kw)
+
+    if not Config.use_lxml:
+        ElementTree._namespace_map = namespace_map_backup
+
+    return result
 
 
-class PrettyPrint(object):
+class _PrettyPrint(object):
     '''Class for lightweight pretty printing of ElementTree elements'''
-    def __init__(self, declaredNss):
+    MAX_NS_TRIES = 256
+    def __init__(self, declaredNss, mappedPrefixes):
         """
         @param declaredNss: declared namespaces
         @type declaredNss: iterable of string elements
+        @param mappedPrefixes: map of namespace URIs to prefixes
+        @type mappedPrefixes: map of string to string
         """
         self.declaredNss = declaredNss
+        self.mappedPrefixes = mappedPrefixes
     
     @staticmethod
     def estrip(elem):
@@ -242,10 +272,7 @@ class PrettyPrint(object):
             
             attrNamespace = QName.getNs(attr)
             if attrNamespace:
-                nsPrefix = ElementTree._namespace_map.get(attrNamespace)
-                if nsPrefix is None:
-                    raise KeyError('prettyPrint: missing namespace "%s" for ' 
-                                   'ElementTree._namespace_map'%attrNamespace)
+                nsPrefix = self._getNamespacePrefix(elem, attrNamespace)
                 
                 attr = "%s:%s" % (nsPrefix, QName.getLocalPart(attr))
                 
@@ -258,10 +285,7 @@ class PrettyPrint(object):
         strAttrib = ''.join(strAttribs)
         
         namespace = QName.getNs(elem.tag)
-        nsPrefix = ElementTree._namespace_map.get(namespace)
-        if nsPrefix is None:
-            raise KeyError('prettyPrint: missing namespace "%s" for ' 
-                           'ElementTree._namespace_map' % namespace)
+        nsPrefix = self._getNamespacePrefix(elem, namespace)
             
         tag = "%s:%s" % (nsPrefix, QName.getLocalPart(elem.tag))
         
@@ -275,23 +299,59 @@ class PrettyPrint(object):
             self.declaredNss.append(namespace)
             
         result = '%s<%s%s%s>%s' % (indent, tag, nsDeclaration, strAttrib, 
-                                   PrettyPrint.estrip(elem.text))
+                                   _PrettyPrint.estrip(elem.text))
         
         children = len(elem)
         if children:
             for child in elem:
                 declaredNss = self.declaredNss[:]
-                _prettyPrint = PrettyPrint(declaredNss)
+                _prettyPrint = _PrettyPrint(declaredNss, self.mappedPrefixes)
                 result += '\n'+ _prettyPrint(child, indent=indent+space) 
                 
             result += '\n%s%s</%s>' % (indent,
-                                       PrettyPrint.estrip(child.tail),
-                                       tag)
+                                     _PrettyPrint.estrip(child.tail),
+                                     tag)
         else:
             result += '</%s>' % tag
             
         return result
 
+    if Config.use_lxml:
+        def _getNamespacePrefix(self, elem, namespace):
+            for nsPrefix, ns in elem.nsmap.iteritems():
+                if ns == namespace:
+                    return nsPrefix
+            raise KeyError('prettyPrint: missing namespace "%s" for '
+                               'elem.nsmap' % namespace)
+    else:
+        def _getNamespacePrefix(self, elem, namespace):
+            nsPrefix = self._allocNsPrefix(namespace)
+            if nsPrefix is None:
+                raise KeyError('prettyPrint: missing namespace "%s" for '
+                               'ElementTree._namespace_map' % namespace)
+            return nsPrefix
+
+        def _allocNsPrefix(self, nsURI):
+            """Allocate a namespace prefix if one is not already set for the given
+            Namespace URI
+            """
+            nsPrefix = ElementTree._namespace_map.get(nsURI)
+            if nsPrefix is not None:
+                return nsPrefix
+
+            for i in range(self.__class__.MAX_NS_TRIES):
+                nsPrefix = "ns%d" % i
+                if nsPrefix not in self.mappedPrefixes:
+                    ElementTree._namespace_map[nsURI] = nsPrefix
+                    self.mappedPrefixes[nsPrefix] = True
+                    break
+
+            if nsURI not in ElementTree._namespace_map:                            
+                raise KeyError('prettyPrint: error adding namespace '
+                               '"%s" to ElementTree._namespace_map' % 
+                               nsURI)   
+
+            return nsPrefix
 
 # ElementTree SAML wrapper classes
 class ConditionsElementTree(Conditions):
@@ -320,10 +380,9 @@ class ConditionsElementTree(Conditions):
         }
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
 
         for condition in conditions.conditions:
             raise NotImplementedError("Conditions list creation is not "
@@ -397,10 +456,9 @@ class AssertionElementTree(Assertion):
             cls.VERSION_ATTRIB_NAME: str(assertion.version)
         }
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
         
         if assertion.issuer is not None:
             issuerElem = IssuerElementTree.toXML(assertion.issuer)
@@ -419,8 +477,14 @@ class AssertionElementTree(Assertion):
             elem.append(conditionsElem)
             
         for statement in assertion.statements:
-            raise NotImplementedError("Assertion Statement creation is not "
-                                      "implemented")
+            qname = statement.qname
+            etreeImpl = _getElementTreeImplementationForQName(qname)
+            if etreeImpl is None:
+                raise NotImplementedError("No ElementTree implementation for "
+                                          "QName {%s}%s" %
+                                          (qname.namespaceURI, qname.localPart))
+            statementElem = etreeImpl.toXML(statement)
+            elem.append(statementElem)
         
         for authnStatement in assertion.authnStatements:
             raise NotImplementedError("Assertion Authentication Statement "
@@ -490,6 +554,9 @@ class AssertionElementTree(Assertion):
         
         for childElem in elem:
             localName = QName.getLocalPart(childElem.tag)
+
+            statementElementTree = _getElementTreeImplementationForQName(QName(childElem.tag))
+
             if localName == Issuer.DEFAULT_ELEMENT_LOCAL_NAME:
                 # Parse Issuer
                 assertion.issuer = IssuerElementTree.fromXML(childElem)
@@ -504,7 +571,11 @@ class AssertionElementTree(Assertion):
                 
             elif localName == Conditions.DEFAULT_ELEMENT_LOCAL_NAME:
                 assertion.conditions = ConditionsElementTree.fromXML(childElem)
-        
+
+            elif statementElementTree is not None:
+                statement = statementElementTree.fromXML(childElem)
+                assertion.statements.append(statement)
+
             elif localName == AuthnStatement.DEFAULT_ELEMENT_LOCAL_NAME:
                 raise NotImplementedError("Assertion Authentication Statement "
                                           "parsing is not implemented")
@@ -547,9 +618,8 @@ class AttributeStatementElementTree(AttributeStatement):
                                                            attributeStatement))
             
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))  
-        elem = ElementTree.Element(tag)
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix 
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI)
 
         for attribute in attributeStatement.attributes:
             # Factory enables support for multiple attribute types
@@ -621,9 +691,9 @@ class AuthzDecisionStatementElementTree(AuthzDecisionStatement):
         }
             
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))  
-        elem = ElementTree.Element(tag, **attrib)
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix 
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
 
         for action in authzDecisionStatement.actions:
             # Factory enables support for multiple authzDecision types
@@ -711,9 +781,8 @@ class AttributeElementTree(Attribute):
             raise TypeError("Expecting %r type got: %r"%(Attribute, attribute))
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))    
-        elem = ElementTree.Element(tag)
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix 
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI)
         
         if attribute.friendlyName:
             elem.set(cls.FRIENDLY_NAME_ATTRIB_NAME, attribute.friendlyName) 
@@ -810,9 +879,8 @@ class AttributeValueElementTreeBase(AttributeValue):
                                                            attributeValue))
             
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))   
-        elem = ElementTree.Element(tag)
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI)
 
         return elem
 
@@ -837,20 +905,25 @@ class XSStringAttributeValueElementTree(AttributeValueElementTreeBase,
             raise TypeError("Expecting %r type got: %r" % 
                             (XSStringAttributeValue, attributeValue)) 
         
-        # Have to explicitly add namespace declaration here rather use 
-        # ElementTree._namespace_map because the prefixes are used for 
-        # attributes not element names        
-        elem.set("%s:%s" % (SAMLConstants.XMLNS_PREFIX, 
-                            SAMLConstants.XSD_PREFIX),
-                 SAMLConstants.XSD_NS)
-                                   
-        elem.set("%s:%s" % (SAMLConstants.XMLNS_PREFIX, 
-                            SAMLConstants.XSI_PREFIX),
-                 SAMLConstants.XSI_NS)
-        
-        elem.set("%s:%s" % (SAMLConstants.XSI_PREFIX, 'type'), 
-                 "%s:%s" % (SAMLConstants.XSD_PREFIX, 
-                            cls.TYPE_LOCAL_NAME))
+        if Config.use_lxml:
+            elem.set(("{%s}%s" % (SAMLConstants.XSI_NS, 'type')),
+                     "%s:%s" % (SAMLConstants.XSD_PREFIX, 
+                                cls.TYPE_LOCAL_NAME))
+        else:
+            # Have to explicitly add namespace declaration here rather use 
+            # ElementTree._namespace_map because the prefixes are used for 
+            # attributes not element names
+            elem.set("%s:%s" % (SAMLConstants.XMLNS_PREFIX, 
+                                SAMLConstants.XSD_PREFIX),
+                     SAMLConstants.XSD_NS)
+                                       
+            elem.set("%s:%s" % (SAMLConstants.XMLNS_PREFIX, 
+                                SAMLConstants.XSI_PREFIX),
+                     SAMLConstants.XSI_NS)
+            
+            elem.set("%s:%s" % (SAMLConstants.XSI_PREFIX, 'type'), 
+                     "%s:%s" % (SAMLConstants.XSD_PREFIX, 
+                                cls.TYPE_LOCAL_NAME))
 
         elem.text = attributeValue.value
 
@@ -888,8 +961,9 @@ class XSStringAttributeValueElementTree(AttributeValueElementTreeBase,
         
         # Update namespace map as an XSI type has been referenced.  This will
         # ensure the correct prefix is applied if it is re-serialised.
-        ElementTree._namespace_map[SAMLConstants.XSI_NS
-                                   ] = SAMLConstants.XSI_PREFIX
+        if not Config.use_lxml:
+            ElementTree._namespace_map[SAMLConstants.XSI_NS
+                                       ] = SAMLConstants.XSI_PREFIX
                                       
         attributeValue = XSStringAttributeValue()
         if elem.text is not None:
@@ -1052,9 +1126,9 @@ class IssuerElementTree(Issuer):
             attrib[cls.FORMAT_ATTRIB_NAME] = issuer.format
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        ElementTree._namespace_map[issuer.qname.namespaceURI
-                                   ] = issuer.qname.prefix
+        elem = makeEtreeElement(tag, issuer.qname.prefix,
+                                issuer.qname.namespaceURI,
+                                **attrib)
                                    
         elem.text = issuer.value
 
@@ -1112,10 +1186,9 @@ class NameIdElementTree(NameID):
             cls.FORMAT_ATTRIB_NAME: nameID.format
         }
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[nameID.qname.namespaceURI
-                                   ] = nameID.qname.prefix
+        elem = makeEtreeElement(tag, nameID.qname.prefix,
+                                nameID.qname.namespaceURI,
+                                **attrib)
         
         elem.text = nameID.value
 
@@ -1170,12 +1243,9 @@ class SubjectElementTree(Subject):
                                                            type(subject)))
             
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))  
-        elem = ElementTree.Element(tag)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI)
 
-            
         nameIdElem = NameIdElementTree.toXML(subject.nameID)
         elem.append(nameIdElem)
         
@@ -1229,10 +1299,9 @@ class StatusCodeElementTree(StatusCode):
             cls.VALUE_ATTRIB_NAME: statusCode.value
         }
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[statusCode.qname.namespaceURI
-                                   ] = statusCode.qname.prefix
+        elem = makeEtreeElement(tag, statusCode.qname.prefix,
+                                statusCode.qname.namespaceURI,
+                                **attrib)
 
         return elem
 
@@ -1283,10 +1352,8 @@ class StatusMessageElementTree(StatusMessage):
                                                            type(statusMessage)))
             
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag)
-        
-        ElementTree._namespace_map[statusMessage.qname.namespaceURI
-                                   ] = statusMessage.qname.prefix
+        elem = makeEtreeElement(tag, statusMessage.qname.prefix,
+                                statusMessage.qname.namespaceURI)
         
         elem.text = statusMessage.value
 
@@ -1332,10 +1399,8 @@ class StatusElementTree(Status):
                                                            type(Status)))
             
         tag = str(QName.fromGeneric(Status.DEFAULT_ELEMENT_NAME))  
-        elem = ElementTree.Element(tag)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI)
         
         statusCodeElem = StatusCodeElementTree.toXML(status.statusCode)
         elem.append(statusCodeElem)
@@ -1425,10 +1490,9 @@ class AttributeQueryElementTree(AttributeQuery):
         }
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
         
         issuerElem = IssuerElementTree.toXML(attributeQuery.issuer)
         elem.append(issuerElem)
@@ -1551,10 +1615,9 @@ class ResponseElementTree(Response):
         }
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))        
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
 
         # Issuer may be omitted: saml-profiles-2.0-os Section 4.1.4.2
         if response.issuer is not None: 
@@ -1669,10 +1732,10 @@ class ActionElementTree(Action):
             cls.NAMESPACE_ATTRIB_NAME: action.namespace
         }
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
+        elem = makeEtreeElement(tag, action.qname.prefix,
+                                action.qname.namespaceURI,
+                                **attrib)
         elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[action.qname.namespaceURI
-                                   ] = action.qname.prefix
         
         if not action.value:
             raise AttributeError("No action name set")
@@ -1747,10 +1810,9 @@ class AuthzDecisionQueryElementTree(AuthzDecisionQuery):
         }
         
         tag = str(QName.fromGeneric(cls.DEFAULT_ELEMENT_NAME))
-        elem = ElementTree.Element(tag, **attrib)
-        
-        ElementTree._namespace_map[cls.DEFAULT_ELEMENT_NAME.namespaceURI
-                                   ] = cls.DEFAULT_ELEMENT_NAME.prefix
+        elem = makeEtreeElement(tag, cls.DEFAULT_ELEMENT_NAME.prefix,
+                                cls.DEFAULT_ELEMENT_NAME.namespaceURI,
+                                **attrib)
         
         issuerElem = IssuerElementTree.toXML(authzDecisionQuery.issuer)
         elem.append(issuerElem)
@@ -1836,4 +1898,12 @@ class AuthzDecisionQueryElementTree(AuthzDecisionQuery):
                                         "element \"%s\"" % localName)
         
         return authzDecisionQuery
+
+def _getElementTreeImplementationForQName(qname):
+    key = ("{%s}%s" % (qname.namespaceURI, qname.localPart))
+    return _extensionElementTreeMap.get(key)
+
+def setElementTreeImplementationForQName(qname, impl):
+    key = ("{%s}%s" % (qname.namespaceURI, qname.localPart))
+    _extensionElementTreeMap[key] = impl
 

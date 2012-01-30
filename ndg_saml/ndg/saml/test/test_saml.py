@@ -35,8 +35,8 @@ from cStringIO import StringIO
 import unittest
 import pickle
 
-from xml.etree.ElementTree import iselement
-from xml.etree import ElementTree
+from ndg.saml import importElementTree
+ElementTree = importElementTree()
 
 from ndg.saml.utils import SAMLDateTime
 from ndg.saml.saml2.core import (SAMLVersion, Attribute, AttributeStatement, 
@@ -263,7 +263,7 @@ class SAMLTestCase(unittest.TestCase):
         # Create ElementTree Assertion Element
         assertionElem = AssertionElementTree.toXML(assertion)
         
-        self.assert_(iselement(assertionElem))
+        self.assert_(ElementTree.iselement(assertionElem))
         
         # Serialise to output 
         xmlOutput = prettyPrint(assertionElem)       
@@ -279,7 +279,7 @@ class SAMLTestCase(unittest.TestCase):
         # Create ElementTree Assertion Element
         assertionElem = AssertionElementTree.toXML(assertion)
         
-        self.assert_(iselement(assertionElem))
+        self.assert_(ElementTree.iselement(assertionElem))
         
         # Serialise to output 
         xmlOutput = prettyPrint(assertionElem)       
@@ -394,7 +394,7 @@ class SAMLTestCase(unittest.TestCase):
         # Create ElementTree Assertion Element
         responseElem = ResponseElementTree.toXML(response)
         
-        self.assert_(iselement(responseElem))
+        self.assert_(ElementTree.iselement(responseElem))
         
         # Serialise to output        
         xmlOutput = prettyPrint(responseElem)       
@@ -470,7 +470,7 @@ class SAMLTestCase(unittest.TestCase):
         authzDecisionQueryElem = AuthzDecisionQueryElementTree.toXML(
                                                             authzDecisionQuery)
         
-        self.assert_(iselement(authzDecisionQueryElem))
+        self.assert_(ElementTree.iselement(authzDecisionQueryElem))
         
         # Serialise to output 
         xmlOutput = prettyPrint(authzDecisionQueryElem)       
@@ -488,7 +488,7 @@ class SAMLTestCase(unittest.TestCase):
         authzDecisionQueryElem = AuthzDecisionQueryElementTree.toXML(
                                                             authzDecisionQuery)
         
-        self.assert_(iselement(authzDecisionQueryElem))
+        self.assert_(ElementTree.iselement(authzDecisionQueryElem))
         
         # Serialise to output 
         xmlOutput = prettyPrint(authzDecisionQueryElem)       
@@ -590,7 +590,7 @@ class SAMLTestCase(unittest.TestCase):
         
         # Create ElementTree Assertion Element
         responseElem = ResponseElementTree.toXML(response)
-        self.assert_(iselement(responseElem))
+        self.assert_(ElementTree.iselement(responseElem))
         
         # Serialise to output        
         xmlOutput = prettyPrint(responseElem)

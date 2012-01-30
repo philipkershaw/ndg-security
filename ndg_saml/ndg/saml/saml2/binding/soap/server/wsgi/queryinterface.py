@@ -22,12 +22,15 @@ from ndg.soap.etree import SOAPEnvelope
 from ndg.saml.utils import str2Bool
 from ndg.saml.utils.factory import importModuleObject
 from ndg.saml.xml import UnknownAttrProfile
+from ndg.saml.xml.etree import QName
 from ndg.saml.common import SAMLVersion
 from ndg.saml.utils import SAMLDateTime
 from ndg.saml.saml2.core import (Response, Status, StatusCode, StatusMessage, 
                                  Issuer) 
 from ndg.saml.saml2.binding.soap import SOAPBindingInvalidResponse
 
+from ndg.saml.saml2.xacml_profile import XACMLAuthzDecisionQuery
+import ndg.saml.xml.etree_xacml_profile as etree_xacml_profile
 
 class SOAPQueryInterfaceMiddlewareError(Exception):
     """Base class for WSGI SAML 2.0 SOAP Query Interface Errors"""
@@ -64,6 +67,7 @@ class SOAPQueryInterfaceMiddleware(SOAPMiddleware):
     RESPONSE_ENVELOPE_CLASS_OPTNAME = 'responseEnvelopeClass'
     SERIALISE_OPTNAME = 'serialise'
     DESERIALISE_OPTNAME = 'deserialise' 
+    DESERIALISE_XACML_PROFILE_OPTNAME = 'deserialiseXacmlProfile'
     SAML_VERSION_OPTNAME = 'samlVersion'
     ISSUER_NAME_OPTNAME = 'issuerName'
     ISSUER_FORMAT_OPTNAME = 'issuerFormat'
@@ -77,6 +81,7 @@ class SOAPQueryInterfaceMiddleware(SOAPMiddleware):
         RESPONSE_ENVELOPE_CLASS_OPTNAME,
         SERIALISE_OPTNAME,
         DESERIALISE_OPTNAME,
+        DESERIALISE_XACML_PROFILE_OPTNAME,
         SAML_VERSION_OPTNAME,
         ISSUER_NAME_OPTNAME,
         ISSUER_FORMAT_OPTNAME,
@@ -99,6 +104,7 @@ class SOAPQueryInterfaceMiddleware(SOAPMiddleware):
         self.__responseEnvelopeClass = None
         self.__serialise = None
         self.__deserialise = None
+        self.__deserialiseXacmlProfile = None
         self.__issuer = None
         self.__clockSkewTolerance = timedelta(seconds=0.)
         self.__verifyTimeConditions = True
@@ -169,6 +175,24 @@ class SOAPQueryInterfaceMiddleware(SOAPMiddleware):
                            _setDeserialise, 
                            doc="callable to de-serialise response from XML "
                                "type")        
+
+    def _getDeserialiseXacmlProfile(self):
+        return self.__deserialiseXacmlProfile
+
+    def _setDeserialiseXacmlProfile(self, value):
+        if isinstance(value, basestring):
+            self.__deserialiseXacmlProfile = importModuleObject(value)
+
+        elif callable(value):
+            self.__deserialiseXacmlProfile = value
+        else:
+            raise TypeError('Expecting callable for "deserialiseXacmlProfile"; '
+                            'got %r' % value)
+
+    deserialiseXacmlProfile = property(_getDeserialiseXacmlProfile,
+                                       _setDeserialiseXacmlProfile,
+                                       doc="callable to de-serialise response "
+                                       "from XML type with XACML profile")
 
     def _getIssuer(self):
         return self.__issuer
@@ -399,8 +423,14 @@ class SOAPQueryInterfaceMiddleware(SOAPMiddleware):
         samlResponse = self._initResponse()
         
         try:
-            samlQuery = self.deserialise(queryElem)
-            
+            queryType = QName.getLocalPart(queryElem.tag)
+            if queryType == XACMLAuthzDecisionQuery.DEFAULT_ELEMENT_LOCAL_NAME:
+                # Set up additional ElementTree parsing for XACML profile.
+                etree_xacml_profile.setElementTreeMap()
+                samlQuery = self.deserialiseXacmlProfile(queryElem)
+            else:
+                samlQuery = self.deserialise(queryElem)
+
         except UnknownAttrProfile, e:
             log.exception("%r raised parsing incoming query: %s" % 
                           (type(e), traceback.format_exc()))
