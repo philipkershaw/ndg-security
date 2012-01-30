@@ -50,8 +50,10 @@ class SamlPEPRequest(object):
     def _setAuthzDecisionQuery(self, value):
         if not (isinstance(value, _saml.AuthzDecisionQuery) or
                 isinstance(value, XACMLAuthzDecisionQuery)):
-            raise TypeError('Expecting %r type for "response" attribute, got %r'
-                            % (_saml.Response, type(value)))
+            raise TypeError('Expecting %r or %r type for "authzDecisionQuery" '
+                            'attribute, got %r' %
+                            (_saml.AuthzDecisionQuery, XACMLAuthzDecisionQuery,
+                             type(value)))
         self.__authzDecisionQuery = value
         
     authzDecisionQuery = property(_getAuthzDecisionQuery, 
