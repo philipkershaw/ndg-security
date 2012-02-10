@@ -157,7 +157,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
         '''
         super(MyProxyClientMiddleware, self).__init__(app)
         self.__myProxyClient = None
-        self.__logonFuncEnvironKeyName = None
 
     @classmethod
     def filter_app_factory(cls, app, global_conf, 

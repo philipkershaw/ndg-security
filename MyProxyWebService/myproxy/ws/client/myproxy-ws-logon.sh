@@ -42,6 +42,7 @@ while true ; do
         -l|--username) username=$2 ; shift 2 ;;
         -S|--stdin_pass) stdin_pass=True ; shift 1 ;;
         -o|--out) outfilepath=$2 ; shift 2 ;;
+        -c|--ca-directory) cadir=$2 ; shift 2 ;;
         --) shift ; break ;;
         *) echo "Error parsing command line" ; exit 1 ;;
     esac
@@ -68,12 +69,14 @@ else
 fi
 
 # Set-up trust root
-if [ ${X509_CERT_DIR} ]; then
-    cadir=${X509_CERT_DIR}
-elif [ "$username" = "root" ]; then
-    cadir=/etc/grid-security/certificates
-else
-    cadir=${HOME}/.globus/certificates
+if [ -z $cadir ]; then
+  if [ ${X509_CERT_DIR} ]; then
+      cadir=${X509_CERT_DIR}
+  elif [ "$username" = "root" ]; then
+      cadir=/etc/grid-security/certificates
+  else
+      cadir=${HOME}/.globus/certificates
+  fi
 fi
 
 # Set output file path
