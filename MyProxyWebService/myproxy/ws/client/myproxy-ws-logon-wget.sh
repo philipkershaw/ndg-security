@@ -11,7 +11,7 @@
 #
 # $Id$
 cmdname=$(basename $0)
-cmdline_opt=`getopt -o hU:l:So: --long help,uri:,username:,stdin_pass,out:: -n "$cmdname" -- "$@"`
+cmdline_opt=`getopt -o hU:l:So:c: --long help,uri:,username:,stdin_pass,out:ca-directory: -n "$cmdname" -- "$@"`
 
 usage="Usage: $cmdname [-U MyProxy Web Service URI][-l username] ...\n
 \n
@@ -21,6 +21,11 @@ usage="Usage: $cmdname [-U MyProxy Web Service URI][-l username] ...\n
        -l | --username\t<username>\tUsername for the delegated proxy (defaults to \$LOGNAME)\n
        -S | --stdin_pass\t\t\tpass password from stdin rather prompt from tty\n
        -o | --out\t\t<filepath>\tLocation of delegated proxy (default to stdout)\n
+       -c | --ca-directory <directory path>\tDirectory containing the trusted\n
+       \t\t\t\t\tCA (Certificate Authority) certificates.  These are used to\n
+       \t\t\t\t\tverify the identity of the MyProxy Web Service.  Defaults to\n 
+       \t\t\t\t\t${HOME}/.globus/certificates or\n
+       \t\t\t\t\t/etc/grid-security/certificates if running as root.\n
 "
 
 if [ $? != 0 ] ; then
@@ -37,6 +42,7 @@ while true ; do
         -l|--username) username=$2 ; shift 2 ;;
         -S|--stdin_pass) stdin_pass=True ; shift 1 ;;
         -o|--out) outfilepath=$2 ; shift 2 ;;
+        -c|--ca-directory) cadir=$2 ; shift 2 ;;
         --) shift ; break ;;
         *) echo "Error parsing command line" ; exit 1 ;;
     esac
@@ -63,12 +69,14 @@ else
 fi
 
 # Set-up trust root
-if [ ${X509_CERT_DIR} ]; then
-    cadir=${X509_CERT_DIR}
-elif [ "$username" = "root" ]; then
-    cadir=/etc/grid-security/certificates
-else
-    cadir=${HOME}/.globus/certificates
+if [ -z $cadir ]; then
+    if [ ${X509_CERT_DIR} ]; then
+        cadir=${X509_CERT_DIR}
+    elif [ "$username" = "root" ]; then
+        cadir=/etc/grid-security/certificates
+    else
+        cadir=${HOME}/.globus/certificates
+    fi
 fi
 
 # Set output file path
