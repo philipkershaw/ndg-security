@@ -122,7 +122,7 @@ class SOAPBinding(object):
 
     def _setRequestEnvelopeClass(self, value):
         if isinstance(value, basestring):
-            self.client.responseEnvelopeClass = importClass(value)
+            self.client.responseEnvelopeClass = importModuleObject(value)
             
         elif issubclass(value, SOAPEnvelopeBase):
             self.client.responseEnvelopeClass = value
@@ -290,7 +290,7 @@ class SOAPBinding(object):
         except AttributeError:
             if 'name' == SOAPBinding.RESPONSE_ENVELOPE_CLASS_OPTNAME:
                 if isinstance(value, basestring):
-                    self.client.responseEnvelopeClass = importClass(value)
+                    self.client.responseEnvelopeClass = importModuleObject(value)
                 elif issubclass(value, SOAPEnvelopeBase):
                     self.client.responseEnvelopeClass = value
                 else:

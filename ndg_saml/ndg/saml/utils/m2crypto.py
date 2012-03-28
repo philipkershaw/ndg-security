@@ -406,7 +406,7 @@ class X509Cert(object):
         if format is None:
             format = X509Cert.formatPEM
         
-         # Check for optional input certificate file path
+        # Check for optional input certificate file path
         if filePath is not None:
             if not isinstance(filePath, basestring):
                 raise X509CertError("Certificate File Path input must be a "
@@ -716,7 +716,7 @@ class X509Cert(object):
             return datetime(lTime[0], lTime[1], lTime[2],
                             lTime[3], lTime[4], lTime[5])
                                     
-        except Exception, e:
+        except Exception:
             msg = "Error parsing M2Crypto UTC"
             if sM2CryptoUTC is not None:
                 msg += ": " + sM2CryptoUTC
