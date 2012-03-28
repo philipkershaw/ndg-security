@@ -13,6 +13,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import os
 from datetime import datetime
+import unittest
 from uuid import uuid4
 
 from ndg.security.common.config import importElementTree
@@ -293,15 +294,18 @@ class AttributeAuthoritySAMLInterfaceTestCase(
         
         binding = AttributeQuerySOAPBinding()
         
-        binding.subjectID = AttributeAuthoritySAMLInterfaceTestCase.OPENID_URI
         binding.subjectIdFormat = ESGFSamlNamespaces.NAMEID_FORMAT
         binding.issuerName = \
             str(AttributeAuthoritySAMLInterfaceTestCase.VALID_REQUESTOR_IDS[0])
         binding.issuerFormat = Issuer.X509_SUBJECT
         
         binding.queryAttributes = ESGFDefaultQueryAttributes.ATTRIBUTES
-        
-        response = binding.send(uri=_cfg['uri'])
+
+        query = binding.makeQuery()
+        binding.setQuerySubjectId(query,
+                            AttributeAuthoritySAMLInterfaceTestCase.OPENID_URI)
+
+        response = binding.send(query, uri=_cfg['uri'])
         samlResponseElem = ResponseElementTree.toXML(response)
         
         print("SAML Response ...")
@@ -318,8 +322,9 @@ class AttributeAuthoritySAMLInterfaceTestCase(
         binding = AttributeQuerySOAPBinding.fromConfig(self.cfgFilePath, 
                                                        section=thisSection,
                                                        prefix='attributeQuery.')
-        binding.subjectID = _cfg['subject']
-        response = binding.send(uri=_cfg['uri'])
+        query = binding.makeQuery()
+        binding.setQuerySubjectId(query, _cfg['subject'])
+        response = binding.send(query, uri=_cfg['uri'])
         samlResponseElem = ResponseElementTree.toXML(response)
         
         print("SAML Response ...")
@@ -337,8 +342,9 @@ class AttributeAuthoritySAMLInterfaceTestCase(
                                                        section=thisSection,
                                                        prefix='attributeQuery.')
         
-        binding.subjectID = _cfg['subject']
-        response = binding.send(uri=_cfg['uri'])
+        query = binding.makeQuery()
+        binding.setQuerySubjectId(query, _cfg['subject'])
+        response = binding.send(query, uri=_cfg['uri'])
         samlResponseElem = ResponseElementTree.toXML(response)
         
         print("SAML Response ...")
