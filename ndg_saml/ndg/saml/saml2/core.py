@@ -3307,7 +3307,7 @@ class SubjectQuery(RequestAbstractType):
         @raise TypeError: incorrect input type
         '''
         if not isinstance(value, Subject):
-            raise TypeError('Setting "subject", got %r, expecting %r' %
+            raise TypeError('Setting "subject", expecting %r, got %r' %
                             (Subject, type(value)))
             
         self.__subject = value

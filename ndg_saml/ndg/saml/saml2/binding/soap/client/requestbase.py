@@ -11,6 +11,7 @@ __revision__ = '$Id: subjectquery.py 7634 2010-10-20 20:23:29Z pjkersha $'
 import logging
 log = logging.getLogger(__name__)
 
+import copy
 from datetime import datetime, timedelta
 from uuid import uuid4
 
@@ -66,7 +67,7 @@ class RequestBaseSOAPBinding(SOAPBinding):
     
     __PRIVATE_ATTR_PREFIX = "__"
     __slots__ = tuple([__PRIVATE_ATTR_PREFIX + i 
-                       for i in CONFIG_FILE_OPTNAMES + ('query', )])
+                       for i in CONFIG_FILE_OPTNAMES + ('issuer',)])
     del i
     
     QUERY_TYPE = RequestAbstractType
@@ -75,57 +76,55 @@ class RequestBaseSOAPBinding(SOAPBinding):
         '''Create SOAP Client for a SAML Subject Query'''       
         self.__clockSkewTolerance = timedelta(seconds=0.)
         self.__verifyTimeConditions = True
-        
-        self._initQuery()
+        self.__issuer = Issuer()
+        self.__issuer.format = Issuer.X509_SUBJECT
         
         super(RequestBaseSOAPBinding, self).__init__(**kw)
 
-    def _initQuery(self):
-        """Initialise query settings"""
-        self.__query = self.__class__.QUERY_TYPE()
-        self.__query.version = SAMLVersion(SAMLVersion.VERSION_20)
-        
-        # These properties access the __query instance
-        self.issuerFormat = Issuer.X509_SUBJECT
+    def makeQuery(self):
+        query = self.__class__.QUERY_TYPE()
+        query.version = SAMLVersion(SAMLVersion.VERSION_20)
+        self.addQueryAttributes(query)
+        return query
 
-    def _getQuery(self):
-        return self.__query
+    def addQueryAttributes(self, query):
+        query.issuer = copy.deepcopy(self.issuer)
 
-    def _setQuery(self, value):
-        if not isinstance(value, self.__class__.QUERY_TYPE):
-            raise TypeError('Expecting %r query type got %r instead' %
-                            (self.__class__, type(value)))
-        self.__query = value
+    def _getIssuer(self):
+        return self.__issuer
 
-    query = property(_getQuery, _setQuery, 
-                     doc="SAML Subject Query or derived query type")
+    def _setIssuer(self, value):
+        self.__issuer = value
+
+    issuer = property(_getIssuer, _setIssuer, 
+                      doc="Issuer")
 
     def _getIssuerFormat(self):
-        if self.__query.issuer is None:
+        if self.issuer is None:
             return None
         else:
-            return self.__query.issuer.value
+            return self.issuer.format
 
     def _setIssuerFormat(self, value):
-        if self.__query.issuer is None:
-            self.__query.issuer = Issuer()
-            
-        self.__query.issuer.format = value
+        if self.issuer is None:
+            self.issuer = Issuer()
+
+        self.issuer.format = value
 
     issuerFormat = property(_getIssuerFormat, _setIssuerFormat, 
                             doc="Issuer format")
 
     def _getIssuerName(self):
-        if self.__query.issuer is None:
+        if self.issuer is None:
             return None
         else:
-            return self.__query.issuer.value
+            return self.issuer.value
 
     def _setIssuerName(self, value):
-        if self.__query.issuer is None:
-            self.__query.issuer = Issuer()
-            
-        self.__query.issuer.value = value
+        if self.issuer is None:
+            self.issuer = Issuer()
+
+        self.issuer.value = value
 
     issuerName = property(_getIssuerName, _setIssuerName, 
                           doc="Name of issuer of SAML Subject Query")
@@ -175,28 +174,28 @@ class RequestBaseSOAPBinding(SOAPBinding):
                                       "notOnOrAfter times to allow for clock "
                                       "skew")
     
-    def _validateQueryParameters(self):
+    def _validateQueryParameters(self, query):
         """Perform sanity check immediately before creating the query and 
         sending it"""
         errors = []
         
-        if self.issuerName is None:
+        if query.issuer.value is None:
             errors.append('issuer name')
 
-        if self.issuerFormat is None:
+        if query.issuer.format is None:
             errors.append('issuer format')
         
         if errors:
             raise AttributeError('Missing attribute(s) for SAML Query: %s' %
                                  ', '.join(errors))
 
-    def _initSend(self):
+    def _initSend(self, query):
         """Perform any final initialisation prior to sending the query - derived
         classes may overload to specify as required"""
-        self.__query.issueInstant = datetime.utcnow()
+        query.issueInstant = datetime.utcnow()
         
         # Set ID here to ensure it's unique for each new call
-        self.__query.id = str(uuid4())
+        query.id = str(uuid4())
 
     def _verifyTimeConditions(self, response):
         """Verify time conditions set in a response
@@ -266,7 +265,7 @@ class RequestBaseSOAPBinding(SOAPBinding):
                     samlRespError.response = response
                     raise samlRespError
                 
-    def send(self, **kw):
+    def send(self, query, **kw):
         '''Make an attribute query to a remote SAML service
         
         @type uri: basestring 
@@ -275,10 +274,11 @@ class RequestBaseSOAPBinding(SOAPBinding):
         @param request: SOAP request object to which query will be attached
         defaults to ndg.security.common.soap.client.UrlLib2SOAPRequest
         '''
-        self._validateQueryParameters() 
-        self._initSend()
+        self._validateQueryParameters(query)
+        self._initSend(query)
            
-        response = super(RequestBaseSOAPBinding, self).send(self.query, **kw)
+        log.debug("Sending request: query ID: %s", query.id)
+        response = super(RequestBaseSOAPBinding, self).send(query, **kw)
 
         # Perform validation
         if response.status.statusCode.value != StatusCode.SUCCESS_URI:
@@ -291,9 +291,9 @@ class RequestBaseSOAPBinding(SOAPBinding):
             raise samlRespError
         
         # Check Query ID matches the query ID the service received
-        if response.inResponseTo != self.query.id:
+        if response.inResponseTo != query.id:
             msg = ('Response in-response-to ID %r, doesn\'t match the original '
-                   'query ID, %r' % (response.inResponseTo, self.query.id))
+                   'query ID, %r' % (response.inResponseTo, query.id))
             
             samlRespError = RequestResponseError(msg)
             samlRespError.response = response

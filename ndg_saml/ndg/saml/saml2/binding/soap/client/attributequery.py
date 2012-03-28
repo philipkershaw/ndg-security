@@ -8,6 +8,7 @@ __copyright__ = "(C) 2009 Science and Technology Facilities Council"
 __license__ = "http://www.apache.org/licenses/LICENSE-2.0"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
+import copy
 import re
 import logging
 log = logging.getLogger(__name__)
@@ -43,7 +44,7 @@ class AttributeQuerySOAPBinding(SubjectQuerySOAPBinding):
     QUERY_ATTRIBUTES_PAT = re.compile(',\s*')
     
     __PRIVATE_ATTR_PREFIX = "__"
-    __slots__ = ()
+    __slots__ = ('__attributes',)
 
     SERIALISE_KW = 'serialise'
     DESERIALISE_KW = 'deserialise'
@@ -62,9 +63,20 @@ class AttributeQuerySOAPBinding(SubjectQuerySOAPBinding):
             from ndg.saml.xml.etree import ResponseElementTree
             kw[AttributeQuerySOAPBinding.DESERIALISE_KW
                ] = ResponseElementTree.fromXML
-        
+
+        self.__attributes = TypedList(Attribute)
+
         super(AttributeQuerySOAPBinding, self).__init__(**kw)
             
+    def addQueryAttributes(self, query):
+        """Adds to a query attributes that are configured for
+        SubjectQuerySOAPBinding.
+        """
+        super(AttributeQuerySOAPBinding, self).addQueryAttributes(query)
+        # Initialise the query attributes from those preset.
+        query.attributes = TypedList(Attribute)
+        query.attributes.extend(self.queryAttributes)
+
     def __setattr__(self, name, value):
         """Enable setting of SAML query attribute objects via a comma separated
         string suitable for use reading from an ini file.  
@@ -93,7 +105,7 @@ class AttributeQuerySOAPBinding(SubjectQuerySOAPBinding):
                 raise
              
     def _getQueryAttributes(self):
-        return self.query.attributes
+        return self.__attributes
 
     def _setQueryAttributes(self, value):
         if not isinstance(value, TypedList) and value.elementType != Attribute:
@@ -101,9 +113,9 @@ class AttributeQuerySOAPBinding(SubjectQuerySOAPBinding):
                             '"queryAttributes"; got %r instead' % type(value))
         
         # Remove all previously set items and add new ones 
-        del self.query.attributes[:]
+        del self.__attributes[:]
         for attribute in value:
-            self.query.attributes.append(attribute)
+            self.__attributes.append(attribute)
   
     queryAttributes = property(_getQueryAttributes, 
                                _setQueryAttributes, 
@@ -131,12 +143,12 @@ class AttributeQuerySslSOAPBinding(AttributeQuerySOAPBinding):
         super(AttributeQuerySslSOAPBinding, self).__init__(handlers=(), **kw)
         self.__sslCtxProxy = SSLContextProxy()
 
-    def send(self, **kw):
+    def send(self, query, **kw):
         """Override base class implementation to pass explicit SSL Context
         """
         httpsHandler = HTTPSHandler(ssl_context=self.sslCtxProxy.createCtx())
         self.client.openerDirector.add_handler(httpsHandler)
-        return super(AttributeQuerySslSOAPBinding, self).send(**kw)
+        return super(AttributeQuerySslSOAPBinding, self).send(query, **kw)
             
     def _getSslCtxProxy(self):
         return self.__sslCtxProxy

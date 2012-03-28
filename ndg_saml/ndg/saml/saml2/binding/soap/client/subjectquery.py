@@ -40,40 +40,35 @@ class SubjectQuerySOAPBinding(RequestBaseSOAPBinding):
     
     def __init__(self, **kw):
         '''Create SOAP Client for a SAML Subject Query'''       
+        self.__subjectIdFormat = None
         super(SubjectQuerySOAPBinding, self).__init__(**kw)
 
-    def _getSubjectID(self):
-        if self.query.subject is None or self.query.subject.nameID is None:
-            return None
-        else:
-            return self.query.subject.nameID.value
+    def addQueryAttributes(self, query):
+        """Adds to a query attributes that are configured for
+        SubjectQuerySOAPBinding.
+        """
+        super(SubjectQuerySOAPBinding, self).addQueryAttributes(query)
+        # Initialise a Subject with the configured format.
+        query.subject = Subject()
+        nameID = NameID()
+        nameID.format = self.subjectIdFormat
+        query.subject.nameID = nameID
 
-    def _setSubjectID(self, value):
-        if self.query.subject is None:
-            self.query.subject = Subject()
-            
-        if self.query.subject.nameID is None:
-            self.query.subject.nameID = NameID()
-            
-        self.query.subject.nameID.value = value
-
-    subjectID = property(_getSubjectID, _setSubjectID, 
-                         doc="ID to be sent as query subject")
-    
     def _getSubjectIdFormat(self):
-        if self.query.subject is None or self.query.subject.nameID is None:
-            return None
-        else:
-            return self.query.subject.nameID.format
+        return self.__subjectIdFormat
 
     def _setSubjectIdFormat(self, value):
-        if self.query.subject is None:
-            self.query.subject = Subject()
-            
-        if self.query.subject.nameID is None:
-            self.query.subject.nameID = NameID()
-            
-        self.query.subject.nameID.format = value
+        self.__subjectIdFormat = value
 
     subjectIdFormat = property(_getSubjectIdFormat, _setSubjectIdFormat, 
                                doc="Subject Name ID format")
+
+    def setQuerySubjectId(self, query, subjectID):
+        """Sets the subject ID for a query created by SubjectQuerySOAPBinding or
+        a derived class.
+        """
+        if not query.subject:
+            query.subject = Subject()
+            nameID = NameID()
+            nameID.format = self.subjectIdFormat
+        query.subject.nameID.value = subjectID

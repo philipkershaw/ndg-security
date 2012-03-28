@@ -42,7 +42,7 @@ class AuthzDecisionQuerySOAPBinding(SubjectQuerySOAPBinding):
     SERIALISE_KW = 'serialise'
     DESERIALISE_KW = 'deserialise'
     QUERY_TYPE = AuthzDecisionQuery
-    __slots__ = ('__resourceURI', '__action', '__actionNs')
+    __slots__ = ()
     
     def __init__(self, **kw):
         '''Create SOAP Client for SAML Authorization Decision Query'''
@@ -58,19 +58,6 @@ class AuthzDecisionQuerySOAPBinding(SubjectQuerySOAPBinding):
             kw[cls.DESERIALISE_KW] = ResponseElementTree.fromXML
 
         super(AuthzDecisionQuerySOAPBinding, self).__init__(**kw)
-
-    def _getResourceURI(self):
-        return self.query.resource
-
-    def _setResourceURI(self, value):
-        self.query.resource = value
-        
-    resourceURI = property(_getResourceURI, _setResourceURI, 
-                           doc="Resource URI to query for access")
-    
-    @property
-    def actions(self):
-        return self.query.actions
 
     
 class AuthzDecisionQuerySslSOAPBinding(AuthzDecisionQuerySOAPBinding):
@@ -94,12 +81,12 @@ class AuthzDecisionQuerySslSOAPBinding(AuthzDecisionQuerySOAPBinding):
                                                                **kw)
         self.__sslCtxProxy = SSLContextProxy()
 
-    def send(self, **kw):
+    def send(self, query, **kw):
         """Override base class implementation to pass explicit SSL Context
         """
         httpsHandler = HTTPSHandler(ssl_context=self.sslCtxProxy.createCtx())
         self.client.openerDirector.add_handler(httpsHandler)
-        return super(AuthzDecisionQuerySslSOAPBinding, self).send(**kw)
+        return super(AuthzDecisionQuerySslSOAPBinding, self).send(query, **kw)
         
     @property
     def sslCtxProxy(self):

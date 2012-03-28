@@ -8,7 +8,7 @@ __date__ = "01/07/10"
 __copyright__ = "(C) 2010 Science and Technology Facilities Council"
 __license__ = "http://www.apache.org/licenses/LICENSE-2.0"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
-__revision__ = '$Id:$'
+__revision__ = '$Id$'
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
@@ -64,24 +64,26 @@ class SamlSslSoapBindingTestCase(WithPasterBaseTestCase):
     def test02SendQuery(self):
         attributeQuery = AttributeQuerySslSOAPBinding()
         
-        attributeQuery.subjectID = self.__class__.SUBJECT
         attributeQuery.subjectIdFormat = self.__class__.SUBJECT_FORMAT
         attributeQuery.clockSkewTolerance = 2.
         attributeQuery.issuerName = '/O=Site A/CN=Authorisation Service'
-        
+
+        query = attributeQuery.makeQuery()
+        attributeQuery.setQuerySubjectId(query, self.__class__.SUBJECT)
+
         attribute = Attribute()
         attribute.name = 'urn:ndg:saml:emailaddress'
         attribute.friendlyName = 'emailAddress'
         attribute.nameFormat = 'http://www.w3.org/2001/XMLSchema'
         
-        attributeQuery.queryAttributes.append(attribute)
+        query.attributes.append(attribute)
         
         attributeQuery.sslCACertDir = self.__class__.CLIENT_CACERT_DIR
         attributeQuery.sslCertFilePath = self.__class__.CLIENT_CERT_FILEPATH
         attributeQuery.sslPriKeyFilePath = self.__class__.CLIENT_PRIKEY_FILEPATH
         attributeQuery.sslValidDNs = self.__class__.VALID_DNS
         
-        response = attributeQuery.send(uri=self.__class__.SERVICE_URI)
+        response = attributeQuery.send(query, uri=self.__class__.SERVICE_URI)
         
         # Convert back to ElementTree instance read for string output
         samlResponseElem = ResponseElementTree.toXML(response)
