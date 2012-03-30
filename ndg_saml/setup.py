@@ -42,6 +42,18 @@ Project Attribute and Authorisation Query interfaces.  The implementation is
 based on the Java OpenSAML libraries.  An implementation is provided with  
 ElementTree but it can easily be extended to use other Python XML parsers.
 
+0.6.0 - added support for SAML 2.0 profile of XACML v2.0 (http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-saml-profile-spec-os.pdf),
+        specifically the SAML request extensions: XACMLAuthzDecisionQuery and 
+        XACMLAuthzDecisionStatement.  This an alternative to the SAML defined
+        AuthzDecisionQuery.  It enables a richer functionality for expressing
+        queries and authorisation decisions taking advantage of the full
+        capabilities of a XACML PDP.
+      - fixed bug in SAML SOAP binding code: RequestBaseSOAPBinding and derived 
+        classes to act as a query factory, instead of container, for thread 
+        safety.
+        
+        Thanks to Richard Wilkinson for these contributions.
+        
 0.5.5 - allow passing a client certificate chain in client HTTPS requests
 
 0.5.4 - fix for ndg.saml.saml2.binding.soap.server.wsgi.queryinterface.SOAPQueryInterfaceMiddleware:
@@ -65,7 +77,7 @@ Response).  Where possible, stubs have been provided for other classes.
 
 setup(
     name =           		'ndg_saml',
-    version =        		'0.5.5',
+    version =        		'0.6.0',
     description =    		('SAML 2.0 implementation for the NERC DataGrid '
                              'based on the Java OpenSAML library'),
     long_description =		_longDescription,
@@ -78,19 +90,24 @@ setup(
     packages =			    find_packages(),
     namespace_packages =	['ndg'],
     extras_require = {
+        # These additional packages are needed if you wish to use the SOAP 
+        # binding
         'soap_binding':  ["M2Crypto", "PyOpenSSL", "Paste", "PasteDeploy", 
                           "PasteScript"],
-        'zsi_soap_middleware': ['ZSI'],
+        # Required for the SAML profile to XACML - enables richer functionality
+        # for expressing authorisation queries and decisions.
+        'xacml_profile': ['ndg_xacml'],
     },
     include_package_data =  True,
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Environment :: Web Environment',
+        'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: Apache Software License',
+        'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX :: Linux',

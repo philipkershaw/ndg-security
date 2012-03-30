@@ -7,7 +7,8 @@
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
 <path>/ndg_saml</path>
 </pydev_pathproperty>
+
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
-<path>/home/pjkersha/workspace/ndg_soap</path>
+<path>/Users/philipkershaw/Documents/workspace/ndg_xacml</path>
 </pydev_pathproperty>
 </pydev_project>

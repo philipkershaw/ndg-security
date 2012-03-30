@@ -1,4 +1,4 @@
-"""XACML 2.0 profile for SACML 2.0 module
+"""XACML 2.0 profile for SAML 2.0 module
 
 NERC DataGrid Project
 """
@@ -14,6 +14,7 @@ from ndg.saml.saml2.core import RequestAbstractType, Statement
 
 from ndg.xacml.core.context.request import Request
 from ndg.xacml.core.context.response import Response
+
 
 class XACMLAuthzDecisionQuery(RequestAbstractType):
     '''SAML 2.0 XACML Profile XACMLAuthzDecisionQuery
