@@ -29,9 +29,18 @@ from ndg.saml.saml2.core import (Response, Status, StatusCode, StatusMessage,
                                  Issuer) 
 from ndg.saml.saml2.binding.soap import SOAPBindingInvalidResponse
 
-from ndg.saml.saml2.xacml_profile import XACMLAuthzDecisionQuery
-import ndg.saml.xml.etree_xacml_profile as etree_xacml_profile
-
+try:
+    from ndg.saml.saml2.xacml_profile import XACMLAuthzDecisionQuery
+    import ndg.saml.xml.etree_xacml_profile as etree_xacml_profile
+except ImportError, e:
+    from warnings import warn
+    warn('Error importing XACML packages - disabling SAML XACML profile ' + \
+         'support.  (Error is: %s)' % e)
+    class XACMLAuthzDecisionQuery(object):
+        """XACML Authz Decision Query substitute"""
+        DEFAULT_ELEMENT_LOCAL_NAME = 'XACMLAuthzDecisionQuery'
+        
+    
 class SOAPQueryInterfaceMiddlewareError(Exception):
     """Base class for WSGI SAML 2.0 SOAP Query Interface Errors"""
 
