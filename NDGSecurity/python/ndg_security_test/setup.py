@@ -11,9 +11,13 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
 
 # Bootstrap setuptools if necessary.
-from ez_setup import use_setuptools
-use_setuptools()
-from setuptools import setup, find_packages
+# Bootstrap setuptools if necessary.
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
   
 _longDescription = """\
 Unit and integration tests package for NDG Security
@@ -41,7 +45,7 @@ need to modify application code.
 
 setup(
     name =           		'ndg_security_test',
-    version =        		'2.2.2',
+    version =        		'2.3.0',
     description =    		'NERC DataGrid Security Unit and Integration tests',
     long_description =		_longDescription,
     author =         		'Philip Kershaw',

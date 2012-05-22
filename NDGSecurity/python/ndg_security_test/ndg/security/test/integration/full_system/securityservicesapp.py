@@ -30,12 +30,16 @@ class OpenSSLVerifyCallbackMiddleware(object):
     def __init__(self, app):
         self._app = app
         self.ssl_client_cert = None
+        self.ignore_pat = 'localhost'
         
     def createSSLCallback(self):
         """Make a SSL Context callback function and return it to the caller"""
         def _callback(conn, x509, errnum, errdepth, ok):
             if errdepth == 0:
-                self.ssl_client_cert = crypto.dump_certificate(
+                subject = x509.get_subject()
+                components = subject.get_components()
+                if self.ignore_pat not in [i[-1] for i in components]:
+                    self.ssl_client_cert = crypto.dump_certificate(
                                                     crypto.FILETYPE_PEM, x509)
             return ok
         
@@ -46,7 +50,8 @@ class OpenSSLVerifyCallbackMiddleware(object):
         into environ SSL_CLIENT_CERT key"""
         if self.ssl_client_cert:
             environ['SSL_CLIENT_CERT'] = self.ssl_client_cert
-        self.ssl_client_cert = None
+            self.ssl_client_cert = None
+
         return self._app(environ, start_response)
     
 
