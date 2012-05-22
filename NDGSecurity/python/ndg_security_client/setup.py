@@ -12,10 +12,12 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id$"
 
 # Bootstrap setuptools if necessary.
-from ez_setup import use_setuptools
-use_setuptools()
-
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
 
 _longDescription = """\
 Package for client-side specific NDG Security components
@@ -43,7 +45,7 @@ need to modify application code.
 
 setup(
     name =              	'ndg_security_client',
-    version =           	'2.2.2',
+    version =           	'2.3.0',
     description =       	'NERC DataGrid Security Client side interface',
     long_description =   	_longDescription,
     author =            	'Philip Kershaw',

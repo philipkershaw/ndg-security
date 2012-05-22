@@ -11,10 +11,12 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id:setup.py 4746 2009-01-06 08:25:37Z pjkersha $'
 
 # Bootstrap setuptools if necessary.
-from ez_setup import use_setuptools
-use_setuptools()
-
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
 
 import os
 
@@ -41,7 +43,7 @@ need to modify application code.
 """
 setup(
     name =            		'ndg_security',
-    version =         		'2.2.2',
+    version =         		'2.3.0',
     description =     		'NERC DataGrid Security Utilities',
     long_description = 		_longDescription,
     author =          		'Philip Kershaw',

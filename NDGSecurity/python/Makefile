@@ -9,7 +9,7 @@
 #
 # @license: BSD - LICENSE file
 #
-# $Id:$
+# $Id$
 EGG_DIRS=ndg_security_common ndg_security_client ndg_security_server \
 ndg_security_test ndg_security
 
@@ -21,6 +21,7 @@ Eggs:
 	@-for dir in ${EGG_DIRS}; do \
 		cd $$dir; \
 		${PYTHON} setup.py bdist_egg; \
+		${PYTHON} setup.py sdist; \
 		cd ..; \
 	done;
 
@@ -35,6 +36,7 @@ clean:
 	@-for dir in ${EGG_DIRS}; do \
 		cd $$dir; \
 		rm -f dist/*.egg; \
+		rm -f dist/*.tar.gz; \
 		rm -rf *.egg-info; \
 		rm -rf build; \
 		cd ..; \
@@ -52,7 +54,9 @@ force: replace
 install_eggs: Eggs
 	@echo "Installing eggs to ${NDG_EGG_DIST_HOST}:${NDG_EGG_DIST_DIR} ..."
 	scp ndg_security*/dist/*.egg ${NDG_EGG_DIST_USER}@${NDG_EGG_DIST_HOST}:${NDG_EGG_DIST_DIR}
+	scp ndg_security*/dist/*.tar.gz ${NDG_EGG_DIST_USER}@${NDG_EGG_DIST_HOST}:${NDG_EGG_DIST_DIR}
 	ssh ${NDG_EGG_DIST_USER}@${NDG_EGG_DIST_HOST} "chown ${NDG_EGG_DIST_USER}:cedadev ${NDG_EGG_DIST_DIR}/ndg_security*.egg"
+	ssh ${NDG_EGG_DIST_USER}@${NDG_EGG_DIST_HOST} "chown ${NDG_EGG_DIST_USER}:cedadev ${NDG_EGG_DIST_DIR}/ndg_security*.tar.gz"
 
 # Make ZSI stubs from Session Manager WSDL
 SM_ZSI_STUB_DIRS=./ndg_security_server/ndg/security/server/zsi/sessionmanager \

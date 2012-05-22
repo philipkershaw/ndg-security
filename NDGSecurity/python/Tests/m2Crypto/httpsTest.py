@@ -1,11 +1,10 @@
-#!/use/bin/env python
+#!/usr/bin/env python
 from M2Crypto.httpslib import HTTPSConnection
 from M2Crypto import SSL
 
-#hostname = 'gabriel.badc.rl.ac.uk'
-##hostname = 'grid.bodc.nerc.ac.uk'
-#path = '/openid'
-#
+hostname = 'ceda.ac.uk'
+path = '/AttributeAuthority'
+caDir = '/etc/grid-security/certificates'
 #body = '''<SOAP-ENV:Envelope 
 #xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" 
 #xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
