@@ -12,7 +12,7 @@ import sys
 from os import path
 from OpenSSL import SSL
 
-from myproxy.ws.test import PasteDeployAppServer
+from myproxy.ws.test.server_utils import PasteDeployAppServer
 
 THIS_DIR = path.abspath(path.dirname(__file__))
 INI_FILENAME = 'myproxywsgi.ini'

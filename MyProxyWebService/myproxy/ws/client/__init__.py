@@ -15,6 +15,7 @@ import urllib2
 from OpenSSL import SSL, crypto
 from ndg.httpsclient.urllib2_build_opener import build_opener
 
+testvar = True
 
 class MyProxyWSClient(object):
     PRIKEY_NBITS = 4096
@@ -24,9 +25,21 @@ class MyProxyWSClient(object):
     TRUSTED_CERTS_FILEDATA_FIELDNAME_PREFIX = 'FILEDATA_'
 
     def __init__(self):
-        self.ca_cert_dir = None
+        self.__ca_cert_dir = None
         self.timeout = 500
 
+    @property
+    def ca_cert_dir(self):
+        return self.__ca_cert_dir
+    
+    @ca_cert_dir.setter
+    def ca_cert_dir(self, val):
+        if not isinstance(val, basestring):
+            raise TypeError('Expecting string type for "ca_cert_dir"; got %r' %
+                            type(val))
+        
+        self.__ca_cert_dir = val
+        
     @staticmethod
     def create_key_pair(n_bits_for_key=PRIKEY_NBITS):
         """Generate key pair and return as PEM encoded string
@@ -71,7 +84,8 @@ class MyProxyWSClient(object):
 
         return cert_req
         
-    def logon(self, username, password, myproxy_server_url, cert_life_time):
+    def logon(self, username, password, myproxy_server_url, 
+              cert_life_time=86400):
         """Obtain a new certificate"""
         ctx = SSL.Context(SSL.SSLv3_METHOD)
         verify_callback = lambda conn, x509, errnum, errdepth, preverify_ok: \
@@ -89,7 +103,7 @@ class MyProxyWSClient(object):
         
         basicauth_handler = urllib2.HTTPBasicAuthHandler(password_mgr)
         
-        opener = build_opener(ssl_context=ctx, basicauth_handler)
+        opener = build_opener(basicauth_handler, ssl_context=ctx)
         
         key_pair = self.__class__.create_key_pair()
         cert_req = self.__class__.create_cert_req(key_pair)

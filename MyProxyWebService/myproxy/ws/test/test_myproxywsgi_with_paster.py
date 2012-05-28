@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 from OpenSSL import SSL, crypto
 
-from myproxy.ws.test import PasteDeployAppServer
+from myproxy.ws.test.server_utils import PasteDeployAppServer
         
 
 class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
