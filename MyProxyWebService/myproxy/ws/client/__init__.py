@@ -7,6 +7,11 @@ __copyright__ = "(C) 2010 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
+import base64
+import os
+import errno
+import urllib2
+
 from OpenSSL import SSL, crypto
 from ndg.httpsclient.urllib2_build_opener import build_opener
 
@@ -15,9 +20,11 @@ class MyProxyWSClient(object):
     PRIKEY_NBITS = 4096
     MESSAGE_DIGEST_TYPE = "md5"
     CERT_REQ_POST_PARAM_KEYNAME = 'certificate_request'
-    
+    TRUSTED_CERTS_FIELDNAME = 'TRUSTED_CERTS'
+    TRUSTED_CERTS_FILEDATA_FIELDNAME_PREFIX = 'FILEDATA_'
+
     def __init__(self):
-        self.caDir = None
+        self.ca_cert_dir = None
         self.timeout = 500
 
     @staticmethod
@@ -71,8 +78,18 @@ class MyProxyWSClient(object):
             preverify_ok 
             
         ctx.set_verify(SSL.VERIFY_PEER, verify_callback)
-        ctx.load_verify_locations(None, self.caDir)
-        opener = build_opener(ssl_context=ctx)
+        ctx.load_verify_locations(None, self.ca_cert_dir)
+        
+        # create a password manager
+        password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+        
+        # Add the username and password.
+        # If we knew the realm, we could use it instead of ``None``.
+        password_mgr.add_password(None, myproxy_server_url, username, password)
+        
+        basicauth_handler = urllib2.HTTPBasicAuthHandler(password_mgr)
+        
+        opener = build_opener(ssl_context=ctx, basicauth_handler)
         
         key_pair = self.__class__.create_key_pair()
         cert_req = self.__class__.create_cert_req(key_pair)
@@ -82,5 +99,26 @@ class MyProxyWSClient(object):
         
         return res
         
-    def get_trustroots(self):
+    def get_trustroots(self, write_to_ca_cert_dir=False, bootstrap=False):
         """Get trustroots"""
+        prefix = self.__class__.TRUSTED_CERTS_FILEDATA_FIELDNAME_PREFIX
+        field_name = self.__class__.TRUSTED_CERTS_FIELDNAME
+        file_data = {}
+        
+        files_dict = dict([(k.split(prefix, 1)[1], base64.b64decode(v)) 
+                          for k, v in file_data.items() if k != field_name])
+        
+        if write_to_ca_cert_dir:
+            # Create the CA directory path if doesn't already exist
+            try:
+                os.makedirs(self.ca_cert_dir)
+            except OSError, e:
+                # Ignore if the path already exists
+                if e.errno != errno.EEXIST:
+                    raise
+                
+            for file_name, file_contents in files_dict.items():
+                file_path = os.path.join(self.ca_cert_dir, file_name)
+                open(file_path, 'wb').write(file_contents)
+                
+        return files_dict
