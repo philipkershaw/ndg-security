@@ -10,6 +10,7 @@ __copyright__ = "(C) 2009 Science and Technology Facilities Council"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id$"
 from os import path
+import os
 import optparse 
      
 from OpenSSL import SSL
@@ -20,7 +21,14 @@ from paste.script.util.logging_config import fileConfig
 from ndg.security.server.utils.paste_utils import PasteDeployAppServer
 from ndg.security.test.unit import BaseTestCase
 
-   
+this_dir = path.dirname(__file__)
+if not os.environ.get('NDGSEC_INTEGRATION_TEST_DIR'):
+    os.environ['NDGSEC_INTEGRATION_TEST_DIR'] = path.dirname(this_dir)
+    
+if not os.environ.get('NDGSEC_TEST_CONFIG_DIR'):
+    os.environ['NDGSEC_TEST_CONFIG_DIR'] = BaseTestCase.NDGSEC_TEST_CONFIG_DIR
+    
+     
 class OpenSSLVerifyCallbackMiddleware(object):
     """Set peer certificate retrieved from PyOpenSSL SSL context callback in
     environ dict SSL_CLIENT_CERT item
@@ -112,6 +120,13 @@ if __name__ == '__main__':
                       default=cfgFilePath,
                       help="Configuration file path")
     
+    parser.add_option("-a",
+                      "--with-ssl-client-auth",
+                      dest="ssl_client_authn",
+                      action='store_true',
+                      help="Set client authentication with SSL (requires -s "
+                           "option")
+    
     opt = parser.parse_args()[0]
     cfgFilePath = path.abspath(opt.configFilePath)
     
@@ -130,15 +145,17 @@ if __name__ == '__main__':
         fileConfig(cfgFilePath, defaults={'here': path.dirname(cfgFilePath)})
         app = loadapp('config:%s' % cfgFilePath)
         
-        # Wrap the application in middleware to set the SSL client certificate 
-        # obtained from the SSL handshake in environ                
-        app = OpenSSLVerifyCallbackMiddleware(app)
-        _callback = app.createSSLCallback()
+        if opt.ssl_client_authn:
+            # Wrap the application in middleware to set the SSL client certificate 
+            # obtained from the SSL handshake in environ                
+            app = OpenSSLVerifyCallbackMiddleware(app)
+            _callback = app.createSSLCallback()
+            
+            # Wrap in middleware to simulate Apache environment
+            app = ApacheSSLVariablesMiddleware(app)
         
-        # Wrap in middleware to simulate Apache environment
-        app = ApacheSSLVariablesMiddleware(app)
-        
-        ssl_context.set_verify(SSL.VERIFY_PEER, _callback)
+            ssl_context.set_verify(SSL.VERIFY_PEER, _callback)
+            
         server = PasteDeployAppServer(app=app, 
                                       port=opt.port,
                                       ssl_context=ssl_context) 
