@@ -11,38 +11,38 @@
 #
 # $Id$
 cmdname=$(basename $0)
-cmdline_opt=`getopt -o hU:l:So:c: --long help,uri:,username:,stdin_pass,out:ca-directory: -n "$cmdname" -- "$@"`
+cmdline_opt=`getopt hU:l:So:c: $*`
 
 usage="Usage: $cmdname [-U MyProxy Web Service URI][-l username] ...\n
 \n
    Options\n
-       -h | --help\t\t\t\tDisplays usage\n
-       -U | --uri\t\t<uri>\t\tMyProxy web service URI\n
-       -l | --username\t<username>\tUsername for the delegated proxy (defaults to \$LOGNAME)\n
-       -S | --stdin_pass\t\t\tpass password from stdin rather prompt from tty\n
-       -o | --out\t\t<filepath>\tLocation of delegated proxy (default to stdout)\n
-       -c | --ca-directory <directory path>\tDirectory containing the trusted\n
-       \t\t\t\t\tCA (Certificate Authority) certificates.  These are used to\n
-       \t\t\t\t\tverify the identity of the MyProxy Web Service.  Defaults to\n 
-       \t\t\t\t\t${HOME}/.globus/certificates or\n
-       \t\t\t\t\t/etc/grid-security/certificates if running as root.\n
+       -h\t\t\tDisplays usage\n
+       -U <uri>\t\tMyProxy web service URI\n
+       -l <username>\t\tUsername for the delegated proxy (defaults to \$LOGNAME)\n
+       -S\t\t\tpass password from stdin rather prompt from tty\n
+       -o <filepath>\t\tOutput location of end entity certificate or delegated proxy (default to stdout)\n
+       -c <directory path>\tDirectory containing the trusted CA (Certificate Authority) certificates.  These are used to\n
+       \t\t\tverify the identity of the MyProxy Web Service.  Defaults to\n 
+       \t\t\t${HOME}/.globus/certificates or\n
+       \t\t\t/etc/grid-security/certificates if running as root.\n
 "
+
 
 if [ $? != 0 ] ; then
     echo -e $usage >&2 ;
     exit 1 ;
 fi
 
-eval set -- "$cmdline_opt"
+set -- $cmdline_opt
 
 while true ; do
     case "$1" in
-        -h|--help) echo -e $usage ; exit 0 ;;
-        -U|--uri) uri=$2 ; shift 2 ;;
-        -l|--username) username=$2 ; shift 2 ;;
-        -S|--stdin_pass) stdin_pass=True ; shift 1 ;;
-        -o|--out) outfilepath=$2 ; shift 2 ;;
-        -c|--ca-directory) cadir=$2 ; shift 2 ;;
+        -h) echo -e $usage ; exit 0 ;;
+        -U) uri=$2 ; shift 2 ;;
+        -l) username=$2 ; shift 2 ;;
+        -S) stdin_pass=True ; shift 1 ;;
+        -o) outfilepath=$2 ; shift 2 ;;
+        -c) cadir=$2 ; shift 2 ;;
         --) shift ; break ;;
         *) echo "Error parsing command line" ; exit 1 ;;
     esac

@@ -22,6 +22,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 from OpenSSL import SSL, crypto
 
+from myproxy.ws.test import (test_ca_dir, logon_shell_script_path,
+                             get_trustroots_shell_script_path)
 from myproxy.ws.test.server_utils import PasteDeployAppServer
         
 
@@ -31,7 +33,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
     """
     THIS_DIR = path.abspath(path.dirname(__file__))
     CA_DIRNAME = 'ca'
-    CA_DIR = path.join(THIS_DIR, CA_DIRNAME)
+    CA_DIR = test_ca_dir
     CA_ENV_VARNAME = 'X509_CERT_DIR'
     
     # CA files retrieved by the getTrustRoots unittest are cleared out 
@@ -47,14 +49,14 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
     SSLKEY_FILEPATH = 'localhost.key'
 
     SERVICE_PORTNUM = 10443
-    LOGON_SCRIPT_CMD = 'myproxy-ws-logon.sh'
-    LOGON_SCRIPT_USER_OPTNAME = '--username'
-    LOGON_SCRIPT_STDIN_PASS_OPTNAME = '--stdin_pass'
+    LOGON_SCRIPT_CMD = logon_shell_script_path
+    LOGON_SCRIPT_USER_OPTNAME = '-l'
+    LOGON_SCRIPT_STDIN_PASS_OPTNAME = '-S'
     
-    SCRIPT_URI_OPTNAME = '--uri'
+    SCRIPT_URI_OPTNAME = '-U'
     
-    GET_TRUSTROOTS_SCRIPT_CMD = 'myproxy-ws-get-trustroots.sh'
-    GET_TRUSTROOTS_SCRIPT_BOOTSTRAP_OPTNAME = '--bootstrap'
+    GET_TRUSTROOTS_SCRIPT_CMD = get_trustroots_shell_script_path
+    GET_TRUSTROOTS_SCRIPT_BOOTSTRAP_OPTNAME = '-b'
     
     def __init__(self, *arg, **kw):
         """Read settings from a config file and create thread for paster 
@@ -195,4 +197,3 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()        
-       

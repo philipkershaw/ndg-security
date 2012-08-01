@@ -9,8 +9,8 @@ __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id: $"
 from myproxy.ws.server.wsgi.httpbasicauth import HttpBasicAuthMiddleware
-from myproxy.ws.server.wsgi.middleware import (MyProxyClientMiddleware,
-                                            MyProxyGetTrustRootsMiddleware)
+from myproxy.ws.server.wsgi.middleware import (MyProxyLogonWSMiddleware,
+                                               MyProxyGetTrustRootsMiddleware)
      
         
 class MyProxyApp(object):
@@ -59,10 +59,10 @@ class MyProxyApp(object):
                                                     **app_conf)
         
         # Middleware to hold a MyProxy client and expose interface in environ
-        app = MyProxyClientMiddleware.filter_app_factory(getTrustRootsMWare, 
-                                                         global_conf, 
-                                                         prefix=prefix,
-                                                         **app_conf)
+        app = MyProxyLogonWSMiddleware.filter_app_factory(getTrustRootsMWare, 
+                                                          global_conf, 
+                                                          prefix=prefix,
+                                                          **app_conf)
         
         # Set HTTP Basic Auth to use the MyProxy client logon for its
         # authentication method

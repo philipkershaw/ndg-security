@@ -94,7 +94,7 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
         """
         
         # Call parent version
-        super(MyProxyLogonWSMiddleware, self).parseConfig(prefix=PARAM_PREFIX, 
+        super(MyProxyLogonWSMiddleware, self).parseConfig(prefix=prefix, 
                             myProxyClientPrefix=myProxyClientPrefix, **app_conf)  
             
         # Extract addtional parameters

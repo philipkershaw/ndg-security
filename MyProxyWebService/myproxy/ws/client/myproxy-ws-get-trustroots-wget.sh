@@ -12,18 +12,17 @@
 #
 # $Id$
 cmdname=$(basename $0)
-cmdline_opt=`getopt -o hU:bc: --long help,uri:,bootstrap,ca-directory: -n "$cmdname" -- "$@"`
+cmdline_opt=`getopt hU:bc: $*`
 
 usage="Usage: $cmdname [-h][-U get trust roots URI][-b][-c CA directory]\n
 \n
    Options\n
-       -h | --help\t\t\t\tDisplays usage and quits.\n
-       -U | --uri <uri>\t\t\tMyProxy web service URI\n
-       -b | --bootstrap\t\t\tbootstrap trust in the MyProxy Server\n
-       -c | --ca-directory <directory path>\tDirectory to store the trusted\n
-       \t\t\t\t\tCA (Certificate Authority) certificates.  Defaults to\n 
-       \t\t\t\t\t${HOME}/.globus/certificates or\n
-       \t\t\t\t\t/etc/grid-security/certificates if running as root.\n
+       -h\t\t\tDisplays usage and quits.\n
+       -U <uri>\t\tMyProxy web service URI\n
+       -b\t\t\tbootstrap trust in the MyProxy Server\n
+       -c <directory path>\tDirectory to store the trusted CA (Certificate Authority) certificates.\n
+       \t\t\tDefaults to ${HOME}/.globus/certificates or\n
+       \t\t\t/etc/grid-security/certificates if running as root.\n
 "
 
 if [ $? != 0 ] ; then
@@ -31,14 +30,14 @@ if [ $? != 0 ] ; then
     exit 1 ;
 fi
 
-eval set -- "$cmdline_opt"
+set -- $cmdline_opt
 
 while true ; do
     case "$1" in
-        -h|--help) echo -e $usage ; exit 0 ;;
-        -U|--uri) uri=$2 ; shift 2 ;;
-        -b|--bootstrap) bootstrap=1 ; shift 1 ;;
-        -c|--ca-directory) cadir=$2 ; shift 2 ;;
+        -h) echo -e $usage ; exit 0 ;;
+        -U) uri=$2 ; shift 2 ;;
+        -b) bootstrap=1 ; shift 1 ;;
+        -c) cadir=$2 ; shift 2 ;;
          --) shift ; break ;;
         *) echo "Error parsing command line" ; exit 1 ;;
     esac
