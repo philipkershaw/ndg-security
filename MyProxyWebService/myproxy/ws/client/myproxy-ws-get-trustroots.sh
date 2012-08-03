@@ -33,7 +33,6 @@ fi
 set -- $cmdline_opt
 
 while true ; do
-    echo "dollar one = $1"
     case "$1" in
         -h) echo -e $usage ; exit 0 ;;
         -U) uri=$2 ; shift 2 ;;

@@ -17,7 +17,9 @@ import socket
 import base64
 import traceback
 
-from myproxy.client import MyProxyClientError
+from OpenSSL import crypto
+
+from myproxy.client import MyProxyClient, MyProxyClientError
 from myproxy.server.wsgi.middleware import (MyProxyClientMiddlewareBase, 
                                             MyProxyClientMiddleware)
 from myproxy.ws.server.wsgi.httpbasicauth import HttpBasicAuthResponseException

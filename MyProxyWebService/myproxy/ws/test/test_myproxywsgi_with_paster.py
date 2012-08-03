@@ -36,6 +36,8 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
     CA_DIR = test_ca_dir
     CA_ENV_VARNAME = 'X509_CERT_DIR'
     
+    tmp_ca_dir = path.join(THIS_DIR, 'tmp_ca')
+    
     # CA files retrieved by the getTrustRoots unittest are cleared out 
     # afterwards by this classes' __del__' method but some CA file(s) need to be
     # reserved to allow verification of the paster web service's SSL certificate
@@ -83,7 +85,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
         
         cmd = (
             self.__class__.GET_TRUSTROOTS_SCRIPT_CMD, 
-            "%s=%s" % (self.__class__.SCRIPT_URI_OPTNAME, uri),
+            "%s %s" % (self.__class__.SCRIPT_URI_OPTNAME, uri),
             "%s" % self.__class__.GET_TRUSTROOTS_SCRIPT_BOOTSTRAP_OPTNAME
         )
                 
@@ -91,7 +93,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
             proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE,
                                     env={self.__class__.CA_ENV_VARNAME:
-                                         self.__class__.CA_DIR})
+                                         self.__class__.tmp_ca_dir})
         except OSError, e:
             self.failIf(e.errno == 13, 'Check that the %r script is set with '
                         'execute permissions' % 
@@ -116,8 +118,8 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
         
         cmd = (
             self.__class__.LOGON_SCRIPT_CMD, 
-            "%s=%s"%(self.__class__.SCRIPT_URI_OPTNAME, uri),
-            "%s=%s"%(self.__class__.LOGON_SCRIPT_USER_OPTNAME, username),
+            "%s %s"%(self.__class__.SCRIPT_URI_OPTNAME, uri),
+            "%s %s"%(self.__class__.LOGON_SCRIPT_USER_OPTNAME, username),
             self.__class__.LOGON_SCRIPT_STDIN_PASS_OPTNAME
         )
                 
@@ -126,7 +128,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
             p2 = subprocess.Popen(cmd, stdin=p1.stdout, stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE,
                                   env={self.__class__.CA_ENV_VARNAME:
-                                       self.__class__.CA_DIR})
+                                       self.__class__.tmp_ca_dir})
         except OSError, e:
             self.failIf(e.errno == 13, 'Check that the %r script is set with '
                         'execute permissions' % self.__class__.LOGON_SCRIPT_CMD)
