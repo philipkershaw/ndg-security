@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 #
 # Client script for web service interface to MyProxy get-trustroots based on 
 # curl and base64 commands.  Get trust roots retrieves the CA certificate 
@@ -50,37 +50,22 @@ if [ -z $uri ]; then
 fi
 
 # Set-up destination trust root directory
-if [ $cadir ]; then
-    if [ ! -d $cadir ]; then
-        mkdir -p $cadir
-    fi
+if [ -z $cadir ]; then
+    if [ ${X509_CERT_DIR} ]; then
+        cadir=${X509_CERT_DIR}
     
-elif [ ${X509_CERT_DIR} ]; then
-    cadir=${X509_CERT_DIR}
-    
-elif [ "$LOGNAME" = "root" ]; then
-    cadir=/etc/grid-security/certificates
-    
-    # Check path exists and if not make it
-    if [ ! -d "/etc/grid-security" ]; then
-        mkdir /etc/grid-security
-    fi
-       
-    if [ ! -d "/etc/grid-security/certificates" ]; then
-        mkdir /etc/grid-security/certificates
-    fi
-else
-    cadir=${HOME}/.globus/certificates
-    
-    # Check path exists and if not make it
-    if [ ! -d "${HOME}/.globus" ]; then
-        mkdir ${HOME}/.globus
-    fi
-    
-    if [ ! -d "${HOME}/.globus/certificates" ]; then
-        mkdir ${HOME}/.globus/certificates
+    elif [ "$LOGNAME" = "root" ]; then
+        cadir=/etc/grid-security/certificates
+    else
+        cadir=${HOME}/.globus/certificates
     fi
 fi
+
+# Make the directory path if it doesn't already exist
+if [ ! -d $cadir ]; then
+    mkdir -p $cadir
+fi
+
 
 # Set peer authentication based on bootstrap command line setting
 if [ -z $bootstrap ]; then 
@@ -103,7 +88,7 @@ fi
 entries=$(echo $responsemsg|awk '{print $0}')
 for i in $entries; do
     filename=${i%%=*}
-    filecontent="$(echo ${i#*=}|sed -e "s/.\{65\}/&\n/g"|openssl enc -d -base64)"
+    filecontent="$(echo ${i#*=}|awk '{for(i=1;i<length;i+=65) print substr($0,i,65)}'|openssl enc -d -base64)"
     echo "$filecontent" > $cadir/$filename
 done
 

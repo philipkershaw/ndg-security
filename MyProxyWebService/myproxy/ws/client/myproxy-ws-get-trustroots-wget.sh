@@ -113,7 +113,7 @@ fi
 entries=$(echo $response|awk '{print $0}')
 for i in $entries; do
     filename=${i%%=*}
-    filecontent="$(echo ${i#*=}|sed -e "s/.\{65\}/&\n/g"|openssl enc -d -base64)"
+    filecontent="$(echo ${i#*=}|awk '{for(i=1;i<length;i+=65) print substr($0,i,65)}'|openssl enc -d -base64)"
     echo "$filecontent" > $cadir/$filename
 done
 
