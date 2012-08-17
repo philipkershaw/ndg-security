@@ -834,16 +834,16 @@ TRUSTED_CERTS=1"""
             if ind < 0:
                 break
                 
-            len = 256*ord(dat[ind+2]) + ord(dat[ind+3])
+            length = 256*ord(dat[ind+2]) + ord(dat[ind+3])
     
             # extract der-format cert, and convert to pem
-            derCert = dat[ind:ind+len+4]
+            derCert = dat[ind:ind+length+4]
             x509Cert = crypto.load_certificate(crypto.FILETYPE_ASN1, derCert)
             pemCert = crypto.dump_certificate(crypto.FILETYPE_PEM, x509Cert)        
             pemCerts.append(pemCert)
     
             # trim cert from data
-            dat = dat[ind + len + 4:]
+            dat = dat[ind + length + 4:]
            
         return pemCerts
 
