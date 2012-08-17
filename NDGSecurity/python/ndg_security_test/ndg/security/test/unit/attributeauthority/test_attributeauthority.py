@@ -336,7 +336,7 @@ class SQLAlchemyAttributeInterfaceTestCase(BaseTestCase):
                 ].attributeValues) == \
                     SQLAlchemyAttributeInterfaceTestCase.N_ATTRIBUTE_VALUES)
 
-    def test04SamlAttributeQuery(self):
+    def test05SamlAttributeQuery(self):
         if self.skipTests:
             return
         
