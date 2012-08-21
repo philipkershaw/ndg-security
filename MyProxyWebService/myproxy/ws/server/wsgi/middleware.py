@@ -17,6 +17,7 @@ import socket
 import base64
 import traceback
 
+from webob import Request
 from OpenSSL import crypto
 
 from myproxy.client import MyProxyClient, MyProxyClientError

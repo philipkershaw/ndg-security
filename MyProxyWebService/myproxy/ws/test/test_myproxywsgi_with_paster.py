@@ -143,7 +143,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
         subj = cert.get_subject()
         self.assert_(subj)
         self.assert_(subj.CN)
-        print("Returned certificate subject CN=%r" % subj.CN)
+        print("Returned certificate subject CN=%r" % subj)
         
     def addService(self, *arg, **kw):
         """Utility for setting up threads to run Paste HTTP based services with

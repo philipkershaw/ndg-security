@@ -11,14 +11,9 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id: $"
 import logging
 log = logging.getLogger(__name__)
-import traceback
-import socket
 import httplib
-import re
 
-from OpenSSL import crypto
-
-from myproxy.client import MyProxyClient, MyProxyClientError
+from myproxy.client import MyProxyClient
   
 
 class MyProxyClientMiddlewareError(Exception):
@@ -132,15 +127,6 @@ class MyProxyClientMiddleware(MyProxyClientMiddlewareBase):
     protocol
     @type __myProxyClient: myproxy.client.MyProxyClient
     '''
-    # Options for ini file
-    LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'     
-    
-    # Default environ key names
-    DEFAULT_LOGON_FUNC_ENV_KEYNAME = ('myproxy.server.wsgi.middleware.'
-                                      'MyProxyClientMiddleware.logon')
-    
-    CERT_REQ_POST_PARAM_KEYNAME = 'certificate_request'
-    
     # Option prefixes
     PARAM_PREFIX = 'myproxy.'
     MYPROXY_CLIENT_PARAM_PREFIX = 'client.'

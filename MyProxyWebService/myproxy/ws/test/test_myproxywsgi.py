@@ -21,7 +21,7 @@ from OpenSSL import crypto
 import paste.fixture
 from paste.deploy import loadapp
 
-from myproxy.ws.server.wsgi.middleware import MyProxyClientMiddleware
+from myproxy.ws.server.wsgi.middleware import MyProxyLogonWSMiddleware
 
 
 class TestMyProxyClientMiddlewareApp(object):
@@ -30,8 +30,7 @@ class TestMyProxyClientMiddlewareApp(object):
     
     def __call__(self, environ, start_response):
         
-        assert(environ[MyProxyClientMiddleware.DEFAULT_CLIENT_ENV_KEYNAME])
-        assert(environ[MyProxyClientMiddleware.DEFAULT_LOGON_FUNC_ENV_KEYNAME])
+        assert(environ[MyProxyLogonWSMiddleware.DEFAULT_CLIENT_ENV_KEYNAME])
         status = "200 OK"
                 
         start_response(status,
@@ -44,7 +43,7 @@ class TestMyProxyClientMiddlewareApp(object):
 class MyProxyClientMiddlewareTestCase(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         app = TestMyProxyClientMiddlewareApp()
-        app = MyProxyClientMiddleware.filter_app_factory(app, {}, prefix='')
+        app = MyProxyLogonWSMiddleware.filter_app_factory(app, {}, prefix='')
         self.app = paste.fixture.TestApp(app)
          
         unittest.TestCase.__init__(self, *args, **kwargs)
@@ -112,7 +111,7 @@ class MyProxyLogonAppTestCase(MyProxyPasteDeployTestCaseBase):
         keyPair, certReq = self._createRequestCreds()
         
         postData = {
-            MyProxyClientMiddleware.CERT_REQ_POST_PARAM_KEYNAME: certReq
+            MyProxyLogonWSMiddleware.CERT_REQ_POST_PARAM_KEYNAME: certReq
         }
         response = self.app.post('/logon', postData, headers=headers, 
                                  status=200)
