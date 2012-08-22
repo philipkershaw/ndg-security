@@ -8,6 +8,8 @@ __copyright__ = "(C) 2012 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = "$Id: $"
+import logging
+logging.basicConfig(level=logging.DEBUG)
 from os import path
 
 THIS_DIR = path.abspath(path.dirname(__file__))

@@ -69,6 +69,8 @@ class HttpBasicAuthMiddleware(object):
     @cvar AUTHZ_ENV_KEYNAME: WSGI environ key name for HTTP Basic Auth header
     content
     @type AUTHZ_ENV_KEYNAME: string
+    @cvar AUTHN_HDR_FORMAT: HTTP Basic Auth format string following RFC2617
+    @type AUTHN_HDR_FORMAT: string
     
     @ivar __rePathMatchList: list of regular expression patterns used to match
     incoming requests and enforce HTTP Basic Auth against
@@ -101,6 +103,8 @@ class HttpBasicAuthMiddleware(object):
     
     FIELD_SEP = ':'
     AUTHZ_ENV_KEYNAME = 'HTTP_AUTHORIZATION'
+    
+    AUTHN_HDR_FORMAT = '%s ' + REALM_OPTNAME + '="%s"' 
     
     __slots__ = (
         '__rePathMatchList', 
@@ -318,8 +322,9 @@ class HttpBasicAuthMiddleware(object):
                         break
                      
                 if not authnRealmHdrFound:
+                    # Nb. realm requires double quotes according to RFC
                     authnRealmHdr = (self.__class__.AUTHENTICATE_HDR_FIELDNAME,
-                                     "%s %s" % (                                   
+                                     self.__class__.AUTHN_HDR_FORMAT % (                                   
                                      self.__class__.AUTHN_SCHEME_HDR_FIELDNAME,
                                      self.realm))
                     headers.append(authnRealmHdr)

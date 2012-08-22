@@ -175,33 +175,33 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
                 raise HttpBasicAuthResponseException(response, 
                                                      httplib.METHOD_NOT_ALLOWED)
                 
-            certReqKey = self.__class__.CERT_REQ_POST_PARAM_KEYNAME
-            pemCertReq = request.POST.get(certReqKey)
-            if pemCertReq is None:
+            # Extract cert request and convert to standard string - SSL library
+            # will not accept unicode
+            cert_req_key = self.__class__.CERT_REQ_POST_PARAM_KEYNAME
+            pem_cert_req = str(request.POST.get(cert_req_key))
+            if pem_cert_req is None:
                 response = ("No %r form variable set in POST message" % 
-                            certReqKey)
+                            cert_req_key)
                 log.error(response)
                 raise HttpBasicAuthResponseException(response, 
                                                      httplib.BAD_REQUEST)
         
-            log.debug("cert req = %r", pemCertReq)
+            log.debug("cert req = %r", pem_cert_req)
             
             # Expecting PEM encoded request
             try:
-                certReq = crypto.load_certificate_request(
-                                                        crypto.FILETYPE_PEM,
-                                                        pemCertReq)
+                cert_req = crypto.load_certificate_request(crypto.FILETYPE_PEM,
+                                                           pem_cert_req)
             except crypto.Error, e:
                 log.error("Error loading input certificate request: %r", 
-                          pemCertReq)
+                          pem_cert_req)
                 raise HttpBasicAuthResponseException("Error loading input "
                                                      "certificate request",
                                                      httplib.BAD_REQUEST)
             
             # Convert to ASN1 format expect by logon client call
-            asn1CertReq = crypto.dump_certificate_request(
-                                                    crypto.FILETYPE_ASN1, 
-                                                    certReq)
+            asn1CertReq = crypto.dump_certificate_request(crypto.FILETYPE_ASN1, 
+                                                          cert_req)
 
             try:
                 credentials = self.myProxyClient.logon(username, 

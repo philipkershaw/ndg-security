@@ -2,23 +2,29 @@
 
 """
 __author__ = "P J Kershaw"
-__date__ = "09/12/10"
-__copyright__ = "(C) 2010 Science and Technology Facilities Council"
+__date__ = "28/05/12"
+__copyright__ = "(C) 2012 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
+import logging
+log = logging.getLogger(__name__)
 import base64
 import os
 import errno
 import urllib2
+from urlparse import urlparse, urlunparse
 
 from OpenSSL import SSL, crypto
+from ndg.httpsclient.utils import (_should_use_proxy, fetch_stream_from_url, 
+                                   Configuration)
+from ndg.httpsclient.ssl_context_util import make_ssl_context
 from ndg.httpsclient.urllib2_build_opener import build_opener
 
 testvar = True
 
 class MyProxyWSClient(object):
-    PRIKEY_NBITS = 4096
+    PRIKEY_NBITS = 2048
     MESSAGE_DIGEST_TYPE = "md5"
     CERT_REQ_POST_PARAM_KEYNAME = 'certificate_request'
     TRUSTED_CERTS_FIELDNAME = 'TRUSTED_CERTS'
@@ -81,40 +87,46 @@ class MyProxyWSClient(object):
         
         cert_req = crypto.dump_certificate_request(crypto.FILETYPE_PEM, 
                                                    cert_req)
-
+        
         return cert_req
         
-    def logon(self, username, password, myproxy_server_url, 
+    def logon(self, username, password, server_url, proxies=None, no_proxy=None,
               cert_life_time=86400):
         """Obtain a new certificate"""
-        ctx = SSL.Context(SSL.SSLv3_METHOD)
-        verify_callback = lambda conn, x509, errnum, errdepth, preverify_ok: \
-            preverify_ok 
-            
-        ctx.set_verify(SSL.VERIFY_PEER, verify_callback)
-        ctx.load_verify_locations(None, self.ca_cert_dir)
+        ctx = make_ssl_context(ca_dir=self.ca_cert_dir, verify_peer=True, 
+                               url=server_url, 
+                               method=SSL.SSLv3_METHOD)
         
-        # create a password manager
+        # Create a password manager
         password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+        
+        # Get base URL for setting basic auth scope
+        parsed_url = urlparse(server_url)
+        base_url = urlunparse(parsed_url[0:2] + ('/', '', '', ''))
         
         # Add the username and password.
         # If we knew the realm, we could use it instead of ``None``.
-        password_mgr.add_password(None, myproxy_server_url, username, password)
+        password_mgr.add_password(None, base_url, username, password)
         
-        basicauth_handler = urllib2.HTTPBasicAuthHandler(password_mgr)
-        
-        opener = build_opener(basicauth_handler, ssl_context=ctx)
-        
+        handlers = [urllib2.HTTPBasicAuthHandler(password_mgr)]
+            
         key_pair = self.__class__.create_key_pair()
         cert_req = self.__class__.create_cert_req(key_pair)
         
-        req = "%s=%s\n" % (self.__class__.CERT_REQ_POST_PARAM_KEYNAME, cert_req)
-        res = opener.open(myproxy_server_url, req, self.timeout)
+        # Convert plus chars to make it safe for HTTP POST
+        encoded_cert_req = cert_req.replace('+', '%2B')
+        req = "%s=%s\n" % (self.__class__.CERT_REQ_POST_PARAM_KEYNAME, 
+                           encoded_cert_req)
+        config = Configuration(ctx, True)
+        res = fetch_stream_from_url(server_url, config, data=req, 
+                                    handlers=handlers)
         
         return res
         
-    def get_trustroots(self, write_to_ca_cert_dir=False, bootstrap=False):
+    def get_trustroots(self, server_url, write_to_ca_cert_dir=False, 
+                       bootstrap=False):
         """Get trustroots"""
+        raise NotImplementedError('To be completed in a subsequent release')
         prefix = self.__class__.TRUSTED_CERTS_FILEDATA_FIELDNAME_PREFIX
         field_name = self.__class__.TRUSTED_CERTS_FIELDNAME
         file_data = {}
