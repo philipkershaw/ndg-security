@@ -1,6 +1,6 @@
-"""MyProxy server utilities WSGI package
+"""MyProxy Web Service WSGI package
  
-NERC DataGrid Project
+MashMyData Project
 """
 __author__ = "P J Kershaw"
 __date__ = "23/03/11"

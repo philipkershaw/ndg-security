@@ -1,9 +1,5 @@
-'''
-Created on May 28, 2012
-
-@author: philipkershaw
-'''
-"""MyProxy Web Service top-level package
+"""MyProxy Web Service ws package.  The sub-package contains all the 
+functionality specific to exposing an external web service interface.
 
 """
 __author__ = "P J Kershaw"

@@ -1,4 +1,4 @@
-"""MyProxy Web Service client package
+"""MyProxy Web Service - web services client package
 
 """
 __author__ = "P J Kershaw"

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-"""Package for unit tests for MyProxy Web Service client 
+"""Package for unit tests for MyProxy Web Service web service client 
+functionality
 """
 __author__ = "P J Kershaw"
 __date__ = "22/08/12"

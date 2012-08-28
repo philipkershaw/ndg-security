@@ -1,4 +1,4 @@
-"""MyProxy Server Utilities unit test package
+"""MyProxy Web Service Utilities unit test package
 """
 __author__ = "P J Kershaw"
 __date__ = "25/05/10"

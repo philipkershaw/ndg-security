@@ -11,25 +11,26 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id: $'
 
 # Bootstrap setuptools if necessary.
-from ez_setup import use_setuptools
-use_setuptools()
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
 
-from setuptools import setup, find_packages
-
-import os
 
 setup(
     name =            	'MyProxyWebService',
-    version =         	'0.1.2',
+    version =         	'0.2.0',
     description =     	'MyProxy Web Service',
     long_description = 	'''\
-Provides a simple web service interface to MyProxy.  MyProxy is a Service for 
-managing PKI based credentials which is part of the Globus Toolkit.  Providing
-a HTTP based interface enables HTTP based clients to connect to a MyProxy server
-and retrieve credentials.
+Provides a simple web service interface to MyProxyCA.  MyProxy is a Service for 
+managing and issuing PKI based credentials which is part of the Globus Toolkit.  
+MyProxyWebService provides a HTTP based wrapper interface to MyProxy enabling
+HTTP based clients to connect to a MyProxy server and retrieve credentials.
 
 The interface is implemented as a WSGI application which fronts a normal 
-MyProxy server.  myproxy-logon and myproxy-get-trustroots are expressed as web 
+MyProxyCA server.  myproxy-logon and myproxy-get-trustroots are expressed as web 
 service calls.  The WSGI application forwards the requests on to the MyProxy 
 server over the usual MyProxy protocol.  The web service interface is RESTful 
 using GET and POST operations and the logon interface makes uses of HTTP Basic 
@@ -38,7 +39,44 @@ HTTPS.
 
 The unit tests include a test application served using paster.  Client scripts
 are also available which need no specialised installation or applications, only
-openssl and curl which are typically available on Linux/UNIX based systems.
+openssl and wget or curl which are typically available on Linux/UNIX based 
+systems.
+
+Changes for version 0.2.0
+=========================
+The package hierarchy has been reorganised:
+ * myproxy.server.wsgi: contains middleware to make calls to a MyProxy service
+   using the MyProxyClient package.  It exposes this interface through the 
+   environ dict so that other middleware or an app can access and use it.
+ * myproxy.ws: contains functionality specific to the web service 
+   interface:
+    - myproxy.ws.client: contains all the functionality for web service
+      clients to the MyProxy web service.  This includes:
+       - shell scripts (.sh suffix) for logon and get trustroots calls.  These 
+         are implemented with openssl and curl.  Alternative implementations are
+         also provided which use wget (-wget.sh suffix) instead of curl.  These
+         scripts have also been tested against an independent Short-Lived
+         Credential Service developed for the Contrail EU FP7 project.
+       - myproxy.ws.client.MyProxyWSClient: is a Python client interface to the 
+         web service.  The third party package ndg_httpclient is needed for this
+         class but note that overall, it is set as an optional install.  
+    - myproxy.ws.server: contains the server side functionality - a set of WSGI
+      middleware and an application to implement logon and get-trustroot web
+      service calls.
+
+Prerequisites
+=============
+This has been developed and tested for Python 2.6 and 2.7.
+
+Installation
+============
+Installation can be performed using easy_install or pip.  Since this package is
+a wrapper to MyProxy, a MyProxy instance must be deployed that this service can
+call and use.
+
+Configuration
+=============
+Examples are contained in myproxy.ws.client.test and myproxy.server.test.
     ''',
     author =          	'Philip Kershaw',
     author_email =    	'Philip.Kershaw@stfc.ac.uk',
@@ -50,6 +88,7 @@ openssl and curl which are typically available on Linux/UNIX based systems.
                          'PasteScript',
                          'WebOb', 
                          'MyProxyClient'],
+    extras_require = {'Python_client': 'ndg_httpclient'},
     license =           __license__,
     test_suite =        'myproxy.server.test',
     packages =          find_packages(),
@@ -59,7 +98,7 @@ openssl and curl which are typically available on Linux/UNIX based systems.
         ]
     },
     classifiers = [
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Environment :: Web Environment',
         'Intended Audience :: End Users/Desktop',

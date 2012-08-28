@@ -1,5 +1,6 @@
-"""MyProxy Server package contains WSGI middleware for exposing a MyProxy
-Client interface to other middleware or applications to use
+"""MyProxy Web Service server package.  This package contains WSGI middleware 
+for exposing a MyProxy Client interface to other middleware or applications to 
+use.
 
 NERC MashMyData Project
 """

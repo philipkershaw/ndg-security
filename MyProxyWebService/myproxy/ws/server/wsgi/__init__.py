@@ -1,4 +1,4 @@
-"""MyProxy Web Service WSGI package
+"""MyProxy Web Service - web services WSGI package
  
 NERC DataGrid Project
 """
