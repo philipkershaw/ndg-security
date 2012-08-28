@@ -77,7 +77,7 @@ call and use.
 Configuration
 =============
 Examples are contained in myproxy.ws.client.test and myproxy.server.test.
-    ''',
+''',
     author =          	'Philip Kershaw',
     author_email =    	'Philip.Kershaw@stfc.ac.uk',
     maintainer =        'Philip Kershaw',
