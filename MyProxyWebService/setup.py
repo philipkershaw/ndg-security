@@ -21,7 +21,7 @@ except ImportError:
 
 setup(
     name =            	'MyProxyWebService',
-    version =         	'0.2.0',
+    version =         	'0.2.1',
     description =     	'MyProxy Web Service',
     long_description = 	'''\
 Provides a simple web service interface to MyProxyCA.  MyProxy is a Service for 
@@ -42,7 +42,7 @@ are also available which need no specialised installation or applications, only
 openssl and wget or curl which are typically available on Linux/UNIX based 
 systems.
 
-Changes for version 0.2.0
+Changes for version 0.2.1
 =========================
 The package hierarchy has been reorganised:
  * ``myproxy.server.wsgi``: contains middleware to make calls to a MyProxy 
@@ -88,13 +88,19 @@ Examples are contained in ``myproxy.ws.client.test`` and ``myproxy.server.test``
                          'PasteScript',
                          'WebOb', 
                          'MyProxyClient'],
-    extras_require = {'Python_client': 'ndg_httpclient'},
+    extras_require =    {'Python_client': 'ndg_httpclient'},
     license =           __license__,
-    test_suite =        'myproxy.server.test',
+    test_suite =        'myproxy.ws.test',
     packages =          find_packages(),
     package_data =      {
-        'myproxy.server.test': [
-            'README', '*.cfg', '*.ini', '*.crt', '*.key', '*.sh', 'ca/*.0'
+        'myproxy.ws.test': [
+            'README', '*.cfg', '*.ini', '*.crt', '*.key', '*.pem', 'ca/*.0'
+        ],
+        'myproxy.ws.client': [
+            'README', '*.sh'
+        ],
+        'myproxy.ws.client.test': [
+            'README', '*.cfg'
         ]
     },
     classifiers = [
