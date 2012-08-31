@@ -539,8 +539,8 @@ TRUSTED_CERTS=1"""
     def _setHostname(self, val):
         """Also sets SSL Certificate verification object property!"""
         if not isinstance(val, basestring):
-            raise TypeError("Expecting string type for hostname "
-                                 "attribute")
+            raise TypeError("Expecting string type for hostname attribute")
+        
         self.__hostname = val
         self.__serverSSLCertVerify.hostname = val
         
