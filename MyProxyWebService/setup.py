@@ -21,7 +21,7 @@ except ImportError:
 
 setup(
     name =            	'MyProxyWebService',
-    version =         	'0.2.2',
+    version =         	'0.2.3',
     description =     	'MyProxy Web Service',
     long_description = 	'''\
 Provides a simple web service interface to MyProxyCA.  MyProxy is a Service for 
@@ -42,7 +42,7 @@ are also available which need no specialised installation or applications, only
 openssl and wget or curl which are typically available on Linux/UNIX based 
 systems.
 
-Changes for version 0.2.2
+Changes for version 0.2.3
 =========================
 The package hierarchy has been reorganised:
  * ``myproxy.server.wsgi``: contains middleware to make calls to a MyProxy 
