@@ -91,12 +91,13 @@ class MyProxyWSClient(object):
         return cert_req
         
     def logon(self, username, password, server_url, proxies=None, no_proxy=None,
-              cert_life_time=86400):
+              cert_life_time=86400, ssl_ctx=None):
         """Obtain a new certificate"""
-        ctx = make_ssl_context(ca_dir=self.ca_cert_dir, verify_peer=True, 
-                               url=server_url, 
-                               method=SSL.SSLv3_METHOD)
-        
+        if ssl_ctx is None:
+            ssl_ctx = make_ssl_context(ca_dir=self.ca_cert_dir, verify_peer=True, 
+                                       url=server_url, 
+                                       method=SSL.SSLv3_METHOD)
+
         # Create a password manager
         password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
         
@@ -117,7 +118,7 @@ class MyProxyWSClient(object):
         encoded_cert_req = cert_req.replace('+', '%2B')
         req = "%s=%s\n" % (self.__class__.CERT_REQ_POST_PARAM_KEYNAME, 
                            encoded_cert_req)
-        config = Configuration(ctx, True)
+        config = Configuration(ssl_ctx, True)
         res = fetch_stream_from_url(server_url, config, data=req, 
                                     handlers=handlers)
         
