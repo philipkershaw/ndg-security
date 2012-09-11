@@ -44,7 +44,11 @@ systems.
 
 Changes for version 0.2.3
 =========================
-The package hierarchy has been reorganised:
+Added example to tests to show SSL client authentication.
+
+Changes for version 0.2.2
+=========================
+The package hierarchy has been re-organised:
  * ``myproxy.server.wsgi``: contains middleware to make calls to a MyProxy 
    service using the ``MyProxyClient`` package.  It exposes this interface 
    through the ``environ`` dict so that other middleware or an app can access 
