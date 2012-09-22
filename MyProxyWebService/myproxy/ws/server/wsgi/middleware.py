@@ -59,8 +59,9 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
     """
     
     # Options for ini file
-    LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'     
-    
+    LOGON_FUNC_ENV_KEYNAME_OPTNAME = 'logonFuncEnvKeyName'
+    DEFAULT_GLOBAL_PASSWD_OPTNAME = 'global_passwd'
+
     # Default environ key names
     DEFAULT_LOGON_FUNC_ENV_KEYNAME = ('myproxy.server.wsgi.middleware.'
                                       'MyProxyClientMiddleware.logon')
@@ -68,7 +69,8 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
     CERT_REQ_POST_PARAM_KEYNAME = 'certificate_request'
     
     __slots__ = (
-        '__logonFuncEnvironKeyName',
+        '__logonFuncEnvironKeyName', 
+        '__global_passwd'
     )
     PARAM_PREFIX = 'myproxy.ws.server.logon.'
     
@@ -79,7 +81,8 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
         @param app: WSGI callable for next application in stack
         '''
         super(MyProxyLogonWSMiddleware, self).__init__(app)
-        self.__logonFuncEnvironKeyName = None  
+        self.__logonFuncEnvironKeyName = None
+        self.__global_passwd = None  
           
     def parseConfig(self, prefix=PARAM_PREFIX, myProxyClientPrefix=None,
                     **app_conf):
@@ -100,12 +103,17 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
         super(MyProxyLogonWSMiddleware, self).parseConfig(prefix=prefix, 
                             myProxyClientPrefix=myProxyClientPrefix, **app_conf)  
             
-        # Extract addtional parameters
+        # Extract additional parameters
         logonFuncEnvKeyOptName = prefix + \
                         self.__class__.LOGON_FUNC_ENV_KEYNAME_OPTNAME
 
         self.logonFuncEnvironKeyName = app_conf.get(logonFuncEnvKeyOptName,
                         self.__class__.DEFAULT_LOGON_FUNC_ENV_KEYNAME)
+        
+        global_passwd_optname = prefix + \
+                        self.__class__.DEFAULT_GLOBAL_PASSWD_OPTNAME
+                        
+        self.__global_passwd = app_conf.get(global_passwd_optname)
 
     @property
     def logonFuncEnvironKeyName(self):
@@ -203,9 +211,19 @@ class MyProxyLogonWSMiddleware(MyProxyClientMiddleware):
             asn1CertReq = crypto.dump_certificate_request(crypto.FILETYPE_ASN1, 
                                                           cert_req)
 
+            # A global password can be set for the MyProxy call.  This is used
+            # for the special case where this service is providing delegation
+            # The MyProxyCA uses a special PAM with a single password set for
+            # all usernames.  Clients to this service must be protected by
+            # SSL client authentication
+            if self.__global_passwd is not None:
+                password_ = self.__global_passwd
+            else:
+                password_ = password
+                
             try:
                 credentials = self.myProxyClient.logon(username, 
-                                                       password,
+                                                       password_,
                                                        certReq=asn1CertReq)
                 status = self.getStatusMessage(httplib.OK)
                 response = '\n'.join(credentials)

@@ -68,7 +68,7 @@ class MyProxyLogonAppWithPasterTestCase(unittest.TestCase):
         self.services = []
         self.disableServiceStartup = False
         
-        self.cfg = SafeConfigParser({'here': self.__class__.THIS_DIR})
+        self.cfg = SafeConfigParser(defaults={'here': self.__class__.THIS_DIR})
         self.cfg.optionxform = str
         self.cfg.read(self.__class__.CONFIG_FILEPATH)
         

@@ -263,7 +263,8 @@ class HttpBasicAuthMiddleware(object):
             
         return False   
 
-    def _parseCredentials(self, environ):
+    @classmethod
+    def parse_credentials(cls, environ):
         """Extract username and password from HTTP_AUTHORIZATION environ key
         
         @param environ: WSGI environ dict
@@ -274,22 +275,21 @@ class HttpBasicAuthMiddleware(object):
         method is not basic return a two element tuple with elements both set
         to None
         """
-        basicAuthHdr = environ.get(HttpBasicAuthMiddleware.AUTHZ_ENV_KEYNAME)
+        basicAuthHdr = environ.get(cls.AUTHZ_ENV_KEYNAME)
         if basicAuthHdr is None:
             log.debug("No %r setting in environ: skipping HTTP Basic Auth",
                       HttpBasicAuthMiddleware.AUTHZ_ENV_KEYNAME)
             return None, None
                        
         method, encodedCreds = basicAuthHdr.split(None, 1)
-        if (method.lower() != 
-            HttpBasicAuthMiddleware.AUTHN_SCHEME_HDR_FIELDNAME_LOWER):
+        if (method.lower() != cls.AUTHN_SCHEME_HDR_FIELDNAME_LOWER):
             log.debug("Auth method is %r not %r: skipping request",
                       method, 
-                      HttpBasicAuthMiddleware.AUTHN_SCHEME_HDR_FIELDNAME)
+                      cls.AUTHN_SCHEME_HDR_FIELDNAME)
             return None, None
             
         creds = base64.decodestring(encodedCreds)
-        username, password = creds.rsplit(HttpBasicAuthMiddleware.FIELD_SEP, 1)
+        username, password = creds.rsplit(cls.FIELD_SEP, 1)
         return username, password
 
     def __call__(self, environ, start_response):
@@ -331,7 +331,7 @@ class HttpBasicAuthMiddleware(object):
                 
             return start_response(status, headers)
         
-        username, password = self._parseCredentials(environ)
+        username, password = self.parse_credentials(environ)
         if username is None:
             log.error('No username set in HTTP Authorization header')
             return self.setErrorResponse(start_response_wrapper, 
