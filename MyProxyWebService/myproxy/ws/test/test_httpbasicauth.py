@@ -20,7 +20,8 @@ from myproxy.ws.server.wsgi.httpbasicauth import (HttpBasicAuthMiddleware,
 
 class TestApp(object):
     """Test WSGI Application for use with the unit tests for the HTTP Basic
-    Auth middleware developed for the myproxy.server.app.MyProxyApp application
+    Auth middleware developed for the myproxy.ws.server.app.MyProxyApp 
+    application
     """
     def __init__(self, global_conf, **app_conf):
         """Follow standard Paste Deploy app factory function signature"""

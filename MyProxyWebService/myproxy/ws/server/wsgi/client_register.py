@@ -28,13 +28,19 @@ class ClientRegisterMiddleware(object):
     CLIENT_REGISTER_OPT_PREFIX = 'client_register.'
     DN_SUB_OPTNAME = 'dn'
     USERS_SUB_OPTNAME = 'users'
+    DEFAULT_SSL_CLIENT_CERT_KEYNAME = 'SSL_CLIENT_CERT'
+    SSL_CLIENT_CERT_KEYNAME_OPTNAME = 'ssl_client_cert_keyname'
+    X509_DATETIME_FMT = '%Y%m%d%H%M%S%fZ'
     
     def __init__(self, app):
         self.app = app
         self.client_register = {}
+        self.ssl_client_cert_keyname = \
+            self.__class__.DEFAULT_SSL_CLIENT_CERT_KEYNAME
         
     @classmethod
-    def filter_app_factory(cls, app, global_conf, prefix='client_register.',
+    def filter_app_factory(cls, app, global_conf, 
+                           prefix=CLIENT_REGISTER_OPT_PREFIX,
                            **app_conf):
         obj = cls(app)
         
@@ -54,18 +60,18 @@ class ClientRegisterMiddleware(object):
         #                    ['asmith']}
         dn_lookup = {}
         users_lookup = {}
-        for optname, val in app_conf:
+        for optname, val in app_conf.items():
             if optname.startswith(prefix):
-                identifier, sub_optname = optname.split('.')[:-2]
+                identifier, sub_optname = optname.split('.')[-2:]
                                     
-                if sub_optname == 'dn':
+                if sub_optname == cls.DN_SUB_OPTNAME:
                     if sub_optname in dn_lookup:
                         raise ClientRegisterMiddlewareConfigError(
                                 '%r duplicate option name found' % optname)
                         
-                    dn_lookup[identifier] = sub_optname
+                    dn_lookup[identifier] = val
                     
-                elif sub_optname == 'users':
+                elif sub_optname == cls.USERS_SUB_OPTNAME:
                     users_lookup[identifier] = val.split()
                     
                 else:
@@ -76,14 +82,24 @@ class ClientRegisterMiddleware(object):
         for identifier, dn in dn_lookup.items():
             obj.client_register[dn] = users_lookup.get(identifier, [])  
 
+        # key name in environ which is expected to contain the SSL client
+        # certificate
+        ssl_client_cert_keyname_optname = prefix + \
+                                            cls.SSL_CLIENT_CERT_KEYNAME_OPTNAME
+        if ssl_client_cert_keyname_optname in app_conf:
+            obj.ssl_client_cert_keyname = app_conf[
+                                                ssl_client_cert_keyname_optname]
+        
         return obj
         
     def __call__(self, environ, start_response):
-        
+        '''Get client cert used in SSL handshake + username passed in HTTP
+        Basic Auth and apply client register to verify the request
+        '''
         username = HttpBasicAuthMiddleware.parse_credentials(environ)[0]
         cert = self._parse_cert(environ)
         if (cert is not None and 
-            self.is_valid_client_cert(cert) and
+            not self.is_valid_client_cert(cert) and
             self.check_client_register(cert, username)):
             
             return self.app(environ, start_response)
@@ -92,26 +108,26 @@ class ClientRegisterMiddleware(object):
         
     def _parse_cert(self, environ):
         '''Parse client certificate from environ'''
-        pem_cert = environ.get(self.sslClientCertKeyName)
+        pem_cert = environ.get(self.ssl_client_cert_keyname)
         if pem_cert is None:
             return None
         
         cert = crypto.load_certificate(crypto.FILETYPE_PEM, pem_cert)
         return cert
 
-    @staticmethod
-    def _is_cert_expired(cert):
+    @classmethod
+    def _is_cert_expired(cls, cert):
         '''Check if input certificate has expired
         @param cert: X.509 certificate
         @type cert: OpenSSL.crypto.X509
         @return: true if expired, false otherwise
         @rtype: bool
         '''
-        notAfter = cert.get_notAfter()
-        dtNotAfter = datetime.strptime(notAfter, '%Y%m%d%H%M%S%fZ')       
-        dtNow = datetime.utcNow()
+        not_after = cert.get_notAfter()
+        dt_not_after = datetime.strptime(not_after, cls.X509_DATETIME_FMT)       
+        dt_now = datetime.utcnow()
         
-        return dtNotAfter < dtNow
+        return dt_not_after < dt_now
     
     @classmethod
     def is_valid_client_cert(cls, cert):
