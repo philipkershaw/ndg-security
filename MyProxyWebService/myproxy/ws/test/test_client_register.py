@@ -10,6 +10,7 @@ __contact__ = "Philip.Kershaw@stfc.ac.uk"
 __revision__ = '$Id$'
 import logging
 logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger(__name__)
 
 import base64
 import os
@@ -17,9 +18,10 @@ import unittest
 
 import paste.fixture
 from paste.deploy import loadapp
+from paste.httpexceptions import HTTPUnauthorized
 
 from myproxy.ws.server.wsgi.client_register import ClientRegisterMiddleware
-from myproxy.ws.test import test_dir
+from myproxy.ws.test import test_dir, test_ca_dir
 
 
 class TestApp(object):
@@ -36,7 +38,7 @@ class TestApp(object):
         """
         contentType = 'text/plain'
         response = 'Authenticated!'
-        status = 200
+        status = '200 OK'
         start_response(status,
                        [('Content-type', contentType),
                         ('Content-Length', str(len(response)))])
@@ -46,6 +48,7 @@ class TestApp(object):
 class TestClientRegisterMiddleware(unittest.TestCase):
     CONFIG_FILE = 'client_register.ini'
     CLIENT_CERT = open(os.path.join(test_dir, 'localhost.crt')).read()
+    INVALID_CLIENT_CERT = open(os.path.join(test_ca_dir, 'd573507a.0')).read()
     
     def setUp(self):
         """Set-up Paste fixture from ini file settings"""
@@ -65,3 +68,41 @@ class TestClientRegisterMiddleware(unittest.TestCase):
                    self.__class__.CLIENT_CERT}
         response = self.app.get('/', status=200, headers=headers,
                                 extra_environ=environ)
+        log.debug(response)
+        
+    def test02_invalid_client_and_username(self):
+        username = 'j.bogus'
+        password = ''
+        base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
+        auth_header =  "Basic %s" % base64string
+        headers = {'Authorization': auth_header}
+
+        environ = {ClientRegisterMiddleware.DEFAULT_SSL_CLIENT_CERT_KEYNAME: 
+                   self.__class__.INVALID_CLIENT_CERT}
+        self.assertRaises(HTTPUnauthorized, self.app.get, '/', status=401, 
+                          headers=headers, extra_environ=environ)
+        
+    def test03_invalid_client(self):
+        username = 'an_other'
+        password = ''
+        base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
+        auth_header =  "Basic %s" % base64string
+        headers = {'Authorization': auth_header}
+
+        environ = {ClientRegisterMiddleware.DEFAULT_SSL_CLIENT_CERT_KEYNAME: 
+                   self.__class__.INVALID_CLIENT_CERT}
+        self.assertRaises(HTTPUnauthorized, self.app.get, '/', status=401, 
+                          headers=headers, extra_environ=environ)
+            
+    def test04_valid_username(self):
+        username = 'asmith'
+        password = ''
+        base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
+        auth_header =  "Basic %s" % base64string
+        headers = {'Authorization': auth_header}
+
+        environ = {ClientRegisterMiddleware.DEFAULT_SSL_CLIENT_CERT_KEYNAME: 
+                   self.__class__.CLIENT_CERT}
+        self.assertRaises(HTTPUnauthorized, self.app.get, '/', status=401, 
+                          headers=headers, extra_environ=environ)
+

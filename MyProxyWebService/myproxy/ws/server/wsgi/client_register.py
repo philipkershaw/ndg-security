@@ -1,8 +1,12 @@
-'''
-Created on Sep 22, 2012
-
-@author: philipkershaw
-'''
+"""MyProxy Web Service client register module - provides simple client 
+delegation mechanism
+"""
+__author__ = "P J Kershaw"
+__date__ = "22/09/12"
+__copyright__ = "(C) 2012 Science and Technology Facilities Council"
+__license__ = "BSD - see LICENSE file in top-level directory"
+__contact__ = "Philip.Kershaw@stfc.ac.uk"
+__revision__ = '$Id$'
 import logging
 log = logging.getLogger(__name__)
 from datetime import datetime
@@ -10,6 +14,7 @@ from datetime import datetime
 from OpenSSL import crypto
 from paste.httpexceptions import HTTPUnauthorized
 
+from myproxy.ws.openssl_utils import X509SubjectName
 from myproxy.ws.server.wsgi.httpbasicauth import HttpBasicAuthMiddleware
 
 
@@ -69,7 +74,8 @@ class ClientRegisterMiddleware(object):
                         raise ClientRegisterMiddlewareConfigError(
                                 '%r duplicate option name found' % optname)
                         
-                    dn_lookup[identifier] = val
+                    subject_name = X509SubjectName.from_string(val)
+                    dn_lookup[identifier] = subject_name.serialize()
                     
                 elif sub_optname == cls.USERS_SUB_OPTNAME:
                     users_lookup[identifier] = val.split()
@@ -99,8 +105,8 @@ class ClientRegisterMiddleware(object):
         username = HttpBasicAuthMiddleware.parse_credentials(environ)[0]
         cert = self._parse_cert(environ)
         if (cert is not None and 
-            not self.is_valid_client_cert(cert) and
-            self.check_client_register(cert, username)):
+            self.is_valid_client_cert(cert) and
+            self.in_client_register(cert, username)):
             
             return self.app(environ, start_response)
         else:
@@ -136,11 +142,15 @@ class ClientRegisterMiddleware(object):
         TODO: allow verification against CA certs - current assumption is 
         that Apache config performs this task!
         '''
-        return cls._is_cert_expired(cert)
+        return not cls._is_cert_expired(cert)
     
-    def check_client_register(self, cert, username):
+    def in_client_register(self, cert, username):
         '''Check client identity against registry'''
-        dn = self.__class__.cert_dn(cert)
+        dn_ = self.__class__.cert_dn(cert)
+        
+        # Parse DN into canonical form for comparison operation
+        subject_name = X509SubjectName.from_string(dn_)
+        dn = subject_name.serialize()
         if dn not in self.client_register:
             log.info('Client certificate DN %r not found in client register',
                      dn)
@@ -150,6 +160,8 @@ class ClientRegisterMiddleware(object):
             log.info('No match for user %r and client certificate DN %r '
                      ' in client register', username, dn)            
             raise HTTPUnauthorized()
+        
+        return True
         
     @staticmethod
     def cert_dn(cert):
