@@ -1,4 +1,0 @@
-Example OAuth 2.0 client app using an X.509 certificate as a token.
-
-Open a browser at http://localhost:5002/token to test.  Clear out cookies to
-reset between test runs.
