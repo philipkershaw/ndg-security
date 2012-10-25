@@ -26,13 +26,6 @@ TEMPLATE = '''
                         <input type="submit" name="authform" value="Go"/>                               
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="3">
-                        <div id="message">
-                            $$message
-                        </div>
-                    </td>
-                </tr>
             </table>
         </form>
         </div>
