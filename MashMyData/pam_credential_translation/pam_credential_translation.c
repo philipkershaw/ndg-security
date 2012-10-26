@@ -5,7 +5,12 @@
 #include <syslog.h>
 
 #include <security/pam_modules.h>
+
+#ifdef __APPLE__
+#include <security/pam_appl.h>
+#else
 #include <security/pam_ext.h>
+#endif
 #include <openssl/sha.h>
 
 #include "pam_credential_translation.h"
@@ -41,7 +46,11 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pam_h,
     int status = PAM_SUCCESS;
     int i=0;
     int _log = ! (flags & PAM_SILENT);
+    FILE *fp = fopen("/tmp/pam_cred.log", "w");
+    _log = 1;
     
+    fprintf(fp, "In pam_sm_authenticate()\n");
+    fclose(fp);
     status = pam_get_item(pam_h, PAM_SERVICE, (const void **)&service);
     if (status != PAM_SUCCESS)
     {

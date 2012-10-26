@@ -22,17 +22,25 @@ TEST_TARGET =	$(TEST_OBJS:%.o=%)
 
 CFLAGS =	-O2 -g -Wall -fmessage-length=0 -fPIC
 LDFLAGS = 	-shared -fPIC
-LIBS = 		-L. -Wl,-R. $(SHARED) -lpam -lpam_misc -lssl
+ifeq ($(OSTYPE), darwin11) 
+LIBS = 		-lpam -lssl -lcrypto
+else
+LIBS = 		-lpam -lpam_misc -lssl -lcrypto
+endif
 
 # This location may vary with different Linux distros
+ifeq ($(OSTYPE), darwin11)
+PAM_LIB_DIR = /usr/lib/pam/
+else
 PAM_LIB_DIR = 	/lib/security/
+endif
 PAM_LIB_FILEMASK = 644
 
 $(SHARED):	$(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(TEST_TARGET):	$(SHARED) $(TEST_OBJS)
-	$(CC) $(CFLAGS) $(LIBS) $(TEST_OBJS) -o $@
+	$(CC) $(CFLAGS) -L. -Wl,-R $(SHARED) $(LIBS) $(TEST_OBJS) -o $@
 
 install:	$(SHARED)
 	cp $(SHARED) $(PAM_LIB_DIR)

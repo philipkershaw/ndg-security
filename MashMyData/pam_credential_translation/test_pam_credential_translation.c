@@ -164,11 +164,19 @@ int main(int argc, char *argv[])
     int			flags = _PAM_SM_AUTHENTICATE_FLAGS;
     int			status = PAM_AUTH_ERR;
     const char *service_name = CREDENTIAL_TRANSLATION_PAM_ID;
-    const char *user = "pjkersha";
-    char *passwd = "testpassword";
+    const char *user = (char *)NULL;
+    char *passwd = (char *)NULL;
     pam_appdata _appdata;
     struct pam_conv pam_conversation;
     
+    if (argc < 2)
+    {
+	fprintf(stderr, "Usage %s <username> <password>\n", argv[0]);
+	exit(0);
+    }
+    user = argv[1];
+    passwd = argv[2];
+	
     _appdata.login = user;
     _appdata.password = passwd;
     _appdata.pamh = NULL;
