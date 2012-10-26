@@ -7,7 +7,7 @@ __date__ = "06/08/10"
 __copyright__ = "(C) 2010 Science and Technology Facilities Council"
 __license__ = "BSD - see LICENSE file in top-level directory"
 __contact__ = "Philip.Kershaw@stfc.ac.uk"
-__revision__ = '$Id:$'
+__revision__ = '$Id$'
 import logging
 log = logging.getLogger(__name__)
 
@@ -405,7 +405,7 @@ class PIP(PIPInterface):
         for line in mappingFile.readlines():
             _line = path.expandvars(line).strip()
             if _line and not _line.startswith('#'):
-                attributeId, attributeAuthorityURI = _line.split()
+                attributeId, attributeAuthorityURI = _line.split(',')
                 self.__attributeId2AttributeAuthorityMap[attributeId
                                                        ] = attributeAuthorityURI
         
