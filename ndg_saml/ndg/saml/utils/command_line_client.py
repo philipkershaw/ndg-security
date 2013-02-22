@@ -96,12 +96,6 @@ commands:
                                "subject name format",
                           default=NameID.X509_SUBJECT,
                           metavar="SUBJECT_ID_FORMAT") 
-                               
-        parser.add_option("-A", "--action_namespace",
-                          dest="action_namespace", 
-                          help="Namespace for requested action",
-                          default=Action.GHPP_NS_URI,
-                          metavar="ACTION_NS")
    
         parser.add_option("-c", "--cert",
                           dest="client_cert_filepath", 
@@ -135,12 +129,13 @@ commands:
                                "time stamps",
                           default=1.,
                           type="float",
-                          metavar="CLOSK_SKEW_TOLERANCE")
-    
+                          metavar="CLOCK_SKEW_TOLERANCE")
+        
         parser.add_option("-d", "--debug",
                           dest="debug", 
                           action="store_true",
-                          help="Set log level to debug for additional output",
+                          help="Set log level to debug for additional error "
+                               "output",
                           metavar="DEBUG")
         
         # Allow syntax whereby the first argument is a command - much as openssl
@@ -153,10 +148,15 @@ commands:
         
         # Catch example of just specifying --help or '-h'
         if command in ('--help', '-h'):
-            command = None
+            parser.print_usage()
+            return
           
         elif command == self.__class__.AUTHZ_DECISION_QUERY_CMD:
             # Set options which are specific to authorisation decision queries            
+            parser.set_usage('usage: %prog ' + \
+                             self.__class__.AUTHZ_DECISION_QUERY_CMD + \
+                             ' [options]')
+                             
             parser.add_option("-r", "--resource",
                               dest="resource_id", 
                               help="Resource ID to check for access to "
@@ -171,8 +171,19 @@ commands:
                                    "namespace %r" % Action.HTTP_GET_ACTION,
                               default=Action.HTTP_GET_ACTION,
                               metavar="ACTION")
-        
+                               
+            parser.add_option("-A", "--action_namespace",
+                              dest="action_namespace", 
+                              help="Namespace for requested action",
+                              default=Action.GHPP_NS_URI,
+                              metavar="ACTION_NS")
+                
         elif command == self.__class__.ATTRIBUTE_QUERY_CMD:
+            # Set options which are specific to attribute queries            
+            parser.set_usage('usage: %prog ' + \
+                             self.__class__.ATTRIBUTE_QUERY_CMD + \
+                             ' [options]')
+            
             parser.add_option("-a", "--attribute_name",
                               dest="attribute_names",
                               action="append", 
@@ -182,7 +193,9 @@ commands:
                                    "this option is not set, a generic query of "
                                    "all available attributes will be made.  "
                                    "This option should be used in conjunction "
-                                   "with options",
+                                   "with options the -f/--"
+                                   "attribute_friendly_name and "
+                                   "-F/--attribute_format.",
                               default=[],
                               metavar="ATTRIBUTE_NAME")
             
@@ -219,35 +232,39 @@ commands:
         # Leave the command option out of the parser's processing
         options = parser.parse_args(argv[2:])[0]
         
-        # Post-processing needed for attributes
-        len_attribute_names = len(options.attribute_names)
-        if len_attribute_names > 0:
-            len_attribute_friendly_names = len(options.attribute_friendly_names)
-            if (len_attribute_friendly_names > 0 and
-                len_attribute_friendly_names != len_attribute_names):
-                parser.error("The -f/--attribute_friendly_name option must be "
-                             "set so that it corresponds exactly with the "
-                             "number of -a/--attribute_name options set")
-            else:
-                options.attribute_friendly_names = [None]*len_attribute_names
+        # Post-processing needed for attribute query
+        if command == self.__class__.ATTRIBUTE_QUERY_CMD:
+            len_attribute_names = len(options.attribute_names)
+            if len_attribute_names > 0:
+                len_attribute_friendly_names = len(
+                                            options.attribute_friendly_names)
+                if (len_attribute_friendly_names > 0 and
+                    len_attribute_friendly_names != len_attribute_names):
+                    parser.error("The -f/--attribute_friendly_name option must "
+                                 "be set so that it corresponds exactly with "
+                                 "the number of -a/--attribute_name options "
+                                 "set")
+                else:
+                    options.attribute_friendly_names = [None
+                                                        ]*len_attribute_names
+                    
+                len_attribute_formats = len(options.attribute_formats)
                 
-            len_attribute_formats = len(options.attribute_formats)
-            
-            # A single format setting is allowed which will be applied to all
-            # attributes queried for, else set a format individually for each
-            # attribute set
-            if len_attribute_formats not in (len_attribute_names, 1):
-                parser.error("The -F/--attribute_format option should be set "
-                             "either once to denote all attributes, or once "
-                             "for each attribute set with the "
-                             "-a/--attribute_name option")
-             
-            # If a single format was for more than one attribute, then expand
-            # this so that it is a list of the same size - makes easier for 
-            # processing
-            if len_attribute_names > 1 and len_attribute_formats == 1:
-                options.attribute_formats = options.attribute_formats * \
-                                                len_attribute_names
+                # A single format setting is allowed which will be applied to 
+                # all attributes queried for, else set a format individually for
+                # each attribute set
+                if len_attribute_formats not in (len_attribute_names, 1):
+                    parser.error("The -F/--attribute_format option should be "
+                                 "set either once to denote all attributes, or "
+                                 "once for each attribute set with the "
+                                 "-a/--attribute_name option")
+                 
+                # If a single format was for more than one attribute, then 
+                # expand this so that it is a list of the same size - makes 
+                # easier for processing
+                if len_attribute_names > 1 and len_attribute_formats == 1:
+                    options.attribute_formats = options.attribute_formats * \
+                                                    len_attribute_names
   
         missing_vals = []
         for i in (self.__class__.__slots__):
@@ -344,6 +361,9 @@ commands:
     def main(cls, argv=sys.argv):
         client = cls()
         command = client.parse_command_line(sys.argv)
+        if command is None: # top-level help set
+            sys.exit(0)
+            
         try:
             response = client.dispatch(command)
         except Exception, e:

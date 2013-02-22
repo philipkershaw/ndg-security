@@ -37,11 +37,14 @@ except ImportError:
     from setuptools import setup, find_packages
    
 _longDescription = """\
-SAML 2.0 implementation for use with the NERC DataGrid / Earth System Grid 
-Project Attribute and Authorisation Query interfaces.  The implementation is 
-based on the Java OpenSAML libraries.  An implementation is provided with  
-ElementTree but it can easily be extended to use other Python XML parsers.
+SAML 2.0 implementation for use with the Earth System Grid Federation Attribute 
+and Authorisation Query interfaces.  The implementation is based on the Java 
+OpenSAML libraries.  An implementation is provided with ElementTree but it can 
+easily be extended to use other Python XML parsers.
 
+0.7.0 - add command line script for making attribute and authorisation decision
+        query client calls.
+        
 0.6.0 - added support for SAML 2.0 profile of XACML v2.0 (http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-saml-profile-spec-os.pdf),
         specifically the SAML request extensions: XACMLAuthzDecisionQuery and 
         XACMLAuthzDecisionStatement.  This an alternative to the SAML defined
@@ -77,7 +80,7 @@ Response).  Where possible, stubs have been provided for other classes.
 
 setup(
     name =           		'ndg_saml',
-    version =        		'0.6.0',
+    version =        		'0.7.0',
     description =    		('SAML 2.0 implementation for the NERC DataGrid '
                              'based on the Java OpenSAML library'),
     long_description =		_longDescription,
@@ -97,6 +100,11 @@ setup(
         # Required for the SAML profile to XACML - enables richer functionality
         # for expressing authorisation queries and decisions.
         'xacml_profile': ['ndg_xacml'],
+    },
+    entry_points = {
+    'console_scripts': [
+        'ndg_saml_client = ndg.saml.utils.command_line_client:main',
+        ],
     },
     include_package_data =  True,
     classifiers = [
