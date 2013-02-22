@@ -16,8 +16,13 @@ from ndg.soap.utils.etree import prettyPrint
 from ndg.saml.saml2.binding.soap.client.authzdecisionquery import \
     AuthzDecisionQuerySslSOAPBinding
     
+from ndg.saml.saml2.binding.soap.client.attributequery import \
+    AttributeQuerySslSOAPBinding
+    
 from ndg.saml.saml2.core import (SAMLVersion, Subject, NameID, Issuer, 
-                                 AuthzDecisionQuery, Action, StatusCode)
+                                 AuthzDecisionQuery, AttributeQuery,
+                                 Attribute, Action, StatusCode,
+                                 XSStringAttributeValue)
 from ndg.saml.xml.etree import ResponseElementTree
 
 
@@ -34,6 +39,9 @@ class SamlSoapCommandLineClient(object):
         "resource_id", 
         "action", 
         "action_namespace",
+        "attribute_names",
+        "attribute_friendly_names",
+        "attribute_formats",
         "ca_cert_dir",
         "client_cert_filepath",
         "client_prikey_filepath",
@@ -41,6 +49,9 @@ class SamlSoapCommandLineClient(object):
         "clock_skew_tolerance",
         "debug"
     )
+    
+    ATTRIBUTE_QUERY_CMD = 'attr'
+    AUTHZ_DECISION_QUERY_CMD = 'authz'
     
     def __init__(self):
         for i in self.__class__.__slots__:
@@ -144,12 +155,12 @@ commands:
         if command in ('--help', '-h'):
             command = None
           
-        elif command == 'authz':
+        elif command == self.__class__.AUTHZ_DECISION_QUERY_CMD:
             # Set options which are specific to authorisation decision queries            
             parser.add_option("-r", "--resource",
                               dest="resource_id", 
                               help="Resource ID to check for access to "
-                                   "(for testing authorisation request ONLY",
+                                   "(for testing authorisation request ONLY)",
                               default='',
                               metavar="RESOURCE_URI")
                                           
@@ -161,9 +172,44 @@ commands:
                               default=Action.HTTP_GET_ACTION,
                               metavar="ACTION")
         
-        elif command != 'attr':
-            pass
+        elif command == self.__class__.ATTRIBUTE_QUERY_CMD:
+            parser.add_option("-a", "--attribute_name",
+                              dest="attribute_names",
+                              action="append", 
+                              help="Query for a specific attribute name.  This "
+                                   "option can be provided more than once in "
+                                   "order to query more than one name.  If "
+                                   "this option is not set, a generic query of "
+                                   "all available attributes will be made.  "
+                                   "This option should be used in conjunction "
+                                   "with options",
+                              default=[],
+                              metavar="ATTRIBUTE_NAME")
             
+            parser.add_option("-f", "--attribute_friendly_name",
+                              dest="attribute_friendly_names",
+                              action="append", 
+                              help="Friendly name is an optional alias to "
+                                   "attribute name.  It can be used more than "
+                                   "once to specify mulitiple attributes but "
+                                   "if used, make sure it corresponds exactly "
+                                   "to the '--attribute_name' settings",
+                              default=[],
+                              metavar="ATTRIBUTE_FRIENDLY_NAME")            
+            
+            parser.add_option("-F", "--attribute_format",
+                              dest="attribute_formats",
+                              action="append", 
+                              help="Set the format of the attribute set with "
+                                   "the corresponding '--attribute_name'. "
+                                   "The option must be set the same number of "
+                                   "times as '--attribute_name'.  However, if "
+                                   "you wish ALL attributes to use the same "
+                                   "format, it is possible to indicate this by "
+                                   "setting it just once.",
+                              default=[
+                                XSStringAttributeValue.TYPE_NAME.namespaceURI],
+                              metavar="ATTRIBUTE_FORMAT")
         elif n_args < 3:
             parser.error('No command options set')
             
@@ -173,9 +219,39 @@ commands:
         # Leave the command option out of the parser's processing
         options = parser.parse_args(argv[2:])[0]
         
+        # Post-processing needed for attributes
+        len_attribute_names = len(options.attribute_names)
+        if len_attribute_names > 0:
+            len_attribute_friendly_names = len(options.attribute_friendly_names)
+            if (len_attribute_friendly_names > 0 and
+                len_attribute_friendly_names != len_attribute_names):
+                parser.error("The -f/--attribute_friendly_name option must be "
+                             "set so that it corresponds exactly with the "
+                             "number of -a/--attribute_name options set")
+            else:
+                options.attribute_friendly_names = [None]*len_attribute_names
+                
+            len_attribute_formats = len(options.attribute_formats)
+            
+            # A single format setting is allowed which will be applied to all
+            # attributes queried for, else set a format individually for each
+            # attribute set
+            if len_attribute_formats not in (len_attribute_names, 1):
+                parser.error("The -F/--attribute_format option should be set "
+                             "either once to denote all attributes, or once "
+                             "for each attribute set with the "
+                             "-a/--attribute_name option")
+             
+            # If a single format was for more than one attribute, then expand
+            # this so that it is a list of the same size - makes easier for 
+            # processing
+            if len_attribute_names > 1 and len_attribute_formats == 1:
+                options.attribute_formats = options.attribute_formats * \
+                                                len_attribute_names
+  
         missing_vals = []
         for i in (self.__class__.__slots__):
-            val = getattr(options, i)
+            val = getattr(options, i, None)
             if val == '':
                 missing_vals.append(i)
             else:
@@ -183,6 +259,8 @@ commands:
                 
         if len(missing_vals) > 0:
             parser.error('Missing option or options: %r' % missing_vals)
+            
+        return command
     
     def _set_query_common_attrs(self, query):
         """Set attributes common to both types of SAML query"""
@@ -218,11 +296,27 @@ commands:
 
         self._set_query_common_attrs(attr_query)
         
+        for i, name in enumerate(self.attribute_names): 
+            attribute = Attribute()
+            attribute.name = name
             
-    def dispatch(self):
-        query = self.create_authz_decision_query()
+            if self.attribute_friendly_names[i] is not None:
+                attribute.friendlyName = self.attribute_friendly_names[i]
+                
+            attribute.nameFormat = self.attribute_formats[i]
+            
+            attr_query.attributes.append(attribute)
         
-        binding = AuthzDecisionQuerySslSOAPBinding()
+        return attr_query
+                    
+    def dispatch(self, command):
+        if command == self.__class__.ATTRIBUTE_QUERY_CMD:
+            query = self.create_attribute_query()
+            binding = AttributeQuerySslSOAPBinding()
+            
+        elif command == self.__class__.AUTHZ_DECISION_QUERY_CMD:
+            query = self.create_authz_decision_query()
+            binding = AuthzDecisionQuerySslSOAPBinding()
 
         binding.sslCACertDir = self.ca_cert_dir
         binding.sslCertFilePath = self.client_cert_filepath
@@ -235,8 +329,7 @@ commands:
     
     @classmethod
     def response_successful(cls, response):
-        return response.status.statusCode.value == \
-                     StatusCode.SUCCESS_URI
+        return response.status.statusCode.value == StatusCode.SUCCESS_URI
     
     def display_result(self, response):
         # Convert back to ElementTree instance read for string output
@@ -250,9 +343,9 @@ commands:
     @classmethod
     def main(cls, argv=sys.argv):
         client = cls()
-        client.parse_command_line()
+        command = client.parse_command_line(sys.argv)
         try:
-            response = client.dispatch()
+            response = client.dispatch(command)
         except Exception, e:
             if client.debug:
                 raise
@@ -260,6 +353,8 @@ commands:
                 raise SystemExit(e)
                 
         client.display_result(response)
+        
+        sys.exit(cls.response_successful(response))
     
         
 if __name__ == "__main__":
