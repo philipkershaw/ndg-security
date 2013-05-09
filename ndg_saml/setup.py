@@ -103,7 +103,7 @@ setup(
     },
     entry_points = {
     'console_scripts': [
-        'ndg_saml_client = ndg.saml.utils.command_line_client:main',
+        'ndg_saml_client = ndg.saml.utils.command_line_client:SamlSoapCommandLineClient.main',
         ],
     },
     include_package_data =  True,
