@@ -114,7 +114,7 @@ commands:
                           help="Directory containing accepted CA certificates. "
                                "Peer must have an SSL certificate issued from "
                                "one of these.",
-                          metavar="CA_CERT")
+                          metavar="CA_CERT_DIR")
    
         parser.add_option("-p", "--pretty-print",
                           dest="pretty_print", 
@@ -204,7 +204,7 @@ commands:
                               action="append", 
                               help="Friendly name is an optional alias to "
                                    "attribute name.  It can be used more than "
-                                   "once to specify mulitiple attributes but "
+                                   "once to specify multiple attributes but "
                                    "if used, make sure it corresponds exactly "
                                    "to the '--attribute_name' settings",
                               default=[],
@@ -364,6 +364,14 @@ commands:
         if command is None: # top-level help set
             sys.exit(0)
             
+        import logging
+        if client.debug:
+            log_level = logging.NOTSET
+        else:
+            log_level = logging.CRITICAL
+            
+        logging.basicConfig(level=log_level)
+        
         try:
             response = client.dispatch(command)
         except Exception, e:
