@@ -21,84 +21,9 @@ from paste.script.create_distro import CreateDistroCommand
 _HERE_DIR = path.dirname(path.abspath(__file__))
 _NDGSEC_UNITTEST_KEEP_PASTER_CONF_DIRS = environ.get(
     'NDGSEC_UNITTEST_KEEP_PASTER_CONF_DIRS')
-    
-
-class ServicesTemplateTestCase(unittest.TestCase):
-    """Test create configuration for an application which bundles all the NDG 
-    Security Services
-    """
-    HERE_DIR = _HERE_DIR
-    SERVICE_TMPL_NAME = 'ndgsecurity_services'
-    SERVICE_CONF_DIR = 'services'
-    SERVICE_CONF_DIRPATH = path.join(HERE_DIR, SERVICE_CONF_DIR)
-    SERVICE_CONF_DIR_FILES = (
-        'pki', 'pip-mapping.txt', 'service.ini', 'policy.xml', 'user.db'
-    )
-    
-    def test01Run(self):
-        log.debug("_"*80)
-        log.debug("Creating Services template ...")
-        log.debug("_"*80)
-        cmd = CreateDistroCommand(None)
-        cmd.default_interactive = False
-        cmd.run([self.__class__.SERVICE_CONF_DIR, 
-                 '-t', 
-                 self.__class__.SERVICE_TMPL_NAME,
-                 '-o',
-                 self.__class__.HERE_DIR])
-        
-        createdFiles = listdir(self.__class__.SERVICE_CONF_DIRPATH)
-        
-        for _file in self.__class__.SERVICE_CONF_DIR_FILES:
-            self.assert_(_file in createdFiles, "Missing file %r" % _file)
-
-    def tearDown(self):
-        if _NDGSEC_UNITTEST_KEEP_PASTER_CONF_DIRS:
-            return
-
-        shutil.rmtree(self.__class__.SERVICE_CONF_DIRPATH, True)
-    
-
-class RelyingPartyAuthnServicesTemplateTestCase(unittest.TestCase):
-    """Test creation of configuration for authentication services for a Relying
-    Party.  This includes an OpenID Relying Party App fronted with an SSL client
-    authentication filter.  Nb. it does not include an OpenID Provider 
-    application.  For this, see the generic services template or the specific
-    OpenID Provider template.
-    """
-    HERE_DIR = _HERE_DIR
-    SERVICE_TMPL_NAME = 'ndgsecurity_relyingparty_authn_services'
-    SERVICE_CONF_DIR = 'relyingparty_authn_services'
-    SERVICE_CONF_DIRPATH = path.join(HERE_DIR, SERVICE_CONF_DIR)
-    SERVICE_CONF_DIR_FILES = (
-        'pki', 'authenticationservices.ini', 
-    )
-    
-    def test01Run(self):
-        log.debug("_"*80)
-        log.debug("Creating Relying Party Authentication Services template ...")
-        log.debug("_"*80)
-        cmd = CreateDistroCommand(None)
-        cmd.default_interactive = False
-        cmd.run([self.__class__.SERVICE_CONF_DIR, 
-                 '-t', 
-                 self.__class__.SERVICE_TMPL_NAME,
-                 '-o',
-                 self.__class__.HERE_DIR])
-        
-        createdFiles = listdir(self.__class__.SERVICE_CONF_DIRPATH)
-        
-        for _file in self.__class__.SERVICE_CONF_DIR_FILES:
-            self.assert_(_file in createdFiles, "Missing file %r" % _file)
-
-    def tearDown(self):
-        if _NDGSEC_UNITTEST_KEEP_PASTER_CONF_DIRS:
-            return
-
-        shutil.rmtree(self.__class__.SERVICE_CONF_DIRPATH, True)
             
 
-class SecuredAppTemplateTestCase(unittest.TestCase):
+class ServiceProviderTemplateTestCase(unittest.TestCase):
     """Test create configuration for an application secured with NDG Security
     filters
     """
