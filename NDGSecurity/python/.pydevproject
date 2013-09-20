@@ -7,7 +7,6 @@
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
 <path>/ndg_security_python/ndg_security_server</path>
 <path>/ndg_security_python/ndg_security_common</path>
-<path>/ndg_security_python/ndg_security_test</path>
 <path>/ndg_security_python/ndg_security_client</path>
 </pydev_pathproperty>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
