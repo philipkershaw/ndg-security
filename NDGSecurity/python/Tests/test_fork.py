@@ -1,6 +1,6 @@
 import unittest
 
-from ndg.security.test.unit import BaseTestCase
+from ndg.security.test.unit.base import BaseTestCase
 
 
 class TestCase(BaseTestCase):
