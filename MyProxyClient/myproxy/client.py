@@ -884,7 +884,7 @@ TRUSTED_CERTS=1"""
                                           *cls.HOSTKEY_SUBDIRPATH)
                 if os.access(sslKeyFile, os.R_OK):
                     sslCertFile = os.path.join(globusLoc, 
-                                           *cls.HOSTCERT_SUBDIRPATH)
+                                               *cls.HOSTCERT_SUBDIRPATH)
                 else:
                     # Access to the private key is prohibited default to
                     # username/password based authentication             
@@ -917,19 +917,18 @@ TRUSTED_CERTS=1"""
                                      "platform?")
         
         outStr = proxyCert + proxyPriKey + userX509Cert       
-        open(MyProxyClient.DEF_PROXY_FILEPATH, 'w').write(outStr)
+        open(filePath, 'w').write(outStr)
         try:
             # Make sure permissions are set correctly
-            os.chmod(MyProxyClient.DEF_PROXY_FILEPATH, 
-                     MyProxyClient.PROXY_FILE_PERMISSIONS)
-        except Exception, e:
-            # Don't leave the file lying around if couldn't change it's
-            # permissions
-            os.unlink(MyProxyClient.DEF_PROXY_FILEPATH)
+            os.chmod(filePath, MyProxyClient.PROXY_FILE_PERMISSIONS)
             
-            log.error('Unable to set %o permissions for proxy file "%s": %s'% 
-                      (MyProxyClient.PROXY_FILE_PERMISSIONS,
-                       MyProxyClient.DEF_PROXY_FILEPATH, e))
+        except OSError, e:
+            # Don't leave the file lying around if couldn't change its
+            # permissions
+            os.unlink(filePath)
+            
+            log.error('Unable to set %o permissions for proxy file "%s": %s', 
+                      MyProxyClient.PROXY_FILE_PERMISSIONS, filePath, e)
             raise
 
     @classmethod
@@ -946,7 +945,7 @@ TRUSTED_CERTS=1"""
             MyProxyClientConfigError("Error setting proxy file path - invalid "
                                      "platform?")
                
-        proxy = open(MyProxyClient.DEF_PROXY_FILEPATH).read()
+        proxy = open(filePath).read()
         
         # Split certs and key into separate tuple items
         return tuple(['-----BEGIN'+i for i in proxy.split('-----BEGIN')[1:]])
