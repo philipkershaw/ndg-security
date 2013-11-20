@@ -27,7 +27,7 @@ except ImportError:
 
 setup(
     name =            	'MyProxyClient',
-    version =         	'1.4.0',
+    version =         	'1.3.1',
     description =     	'MyProxy Client',
     long_description = 	'''\
 Python implementation of the client interface to the MyProxy credential 
@@ -36,7 +36,7 @@ management service (http://grid.ncsa.illinois.edu/myproxy/).
 The code has been extended from an original program myproxy_logon by Tom Uram of
 ANL.
 
-1.4.0
+1.3.1
 =====
  * fix to MyProxyClient.readProxyFile and MyProxyClient.writeProxyFile - make 
    sure it picks up filePath value if set.   Thanks to Nicolas Carenton, IPSL 
