@@ -42,6 +42,12 @@ messaging interface as outlined in: http://grid.ncsa.uiuc.edu/myproxy/protocol/
 
 The code is based on an original program myproxy_logon by Tom Uram of ANL.
 
+Releases
+========
+1.3.1
+-----
+ * Fix to MyProxyClient.writeProxyFile and MyProxyClient.readProxyFile to correctly pick-up overridden file setting.  Thanks to Nicolas Carenton, IPSL.
+
 Tests
 =====
 Unit test module with test files is in test/.  See the README in that directory.
